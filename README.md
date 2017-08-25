@@ -1,28 +1,16 @@
-# Bacc
+# baCC
+Digital equality for all user has an important role in our society. Means people with print disabilities need the same access to information, especially books, like other users. So it is necessary to consider this from the beginning of production of digital content. This paradigma is called [“born accessible”](https://www.benetech.org/our-programs/literacy/born-accessible/). *if content is “born digital,” it can—and should—be “born accessible.”*
+BaCC will try to help to achieve this digital equality. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+Today digital books are produced in [EPUB 3](http://idpf.org/epub/30). The baCC-tool will assist the eBook-EPUB3 production with focus on [Accessibility](http://www.idpf.org/epub/a11y/accessibility.html) requirements. It can check accessibility requirements automatically (not all) and so guarantee a base accessibility conformance.     
 
-## Development server
+## Who should use baCC?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Under the hood
+BaCC based on [Ace by DAISY](https://github.com/daisy/ace-core)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.

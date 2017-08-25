@@ -1,0 +1,25 @@
+<button [id]="btnId"
+        md-icon-button
+        type="button"
+        (click)="showReport()"
+        [disabled]="!btnReportEnabled"
+        [ngClass]="{'btn-animate': btnReportAnimated}">
+  <md-icon
+    [ngClass]="{'btn-active': btnReportEnabled}">
+    playlist_add_check
+  </md-icon>
+</button>
+<modal #reportModal>
+  <div class="app-modal-header">
+    <h2>BACC REPORT</h2>
+  </div>
+  <div class="app-modal-body">
+    <iframe [src]="reportUrl"></iframe>
+  </div>
+  <div class="app-modal-footer">
+    <button md-raised-button color="default" type="button" class="btn btn-default" (click)="reportModal.hide()">Close
+    </button>
+    <!--<button type="button" class="btn btn-default" (click)="modal2.show()">Show modal 2</button>-->
+    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+  </div>
+</modal>

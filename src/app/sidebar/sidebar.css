@@ -1,0 +1,40 @@
+[ng-click]:hover {
+  cursor: pointer;
+}
+
+/*md-content.md-default-theme {*/
+  /*background-color: #eee;*/
+/*}*/
+
+
+md-nav-list {
+  margin-top: 50%;
+}
+
+md-divider {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+md-list-item.md-2-line {
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #ffffff;
+}
+
+md-list-item.md-2-line > * :hover{
+  background-color: #ff5cb2;
+}
+
+.btnItem {
+  margin-right: 15px;
+}
+
+#sidebar {
+  color: #ffffff !important;
+}
+
+#sidebar md-icon {
+  font-size: 32px;
+}
+

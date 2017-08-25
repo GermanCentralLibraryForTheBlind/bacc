@@ -1,0 +1,86 @@
+/*@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';*/
+/*@import '~@angular/material/prebuilt-themes/indigo-pink.css';*/
+
+.check-over-whole-wrapper {
+  color: #949494;
+  width: 80vh;
+}
+
+.upload * {
+  margin: 2% 0;
+}
+
+.my-drop-zone {
+  border: dotted 5px lightgray;
+  background-color: white;
+  margin-top: 40px;
+}
+
+.nv-file-over {
+  border: dotted 5px #027a49;
+}
+
+.btn-file {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 88px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 2px;
+  background-color: whitesmoke;
+
+}
+
+.btn-file:not([disabled]):hover {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.btn-file[disabled] {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: transparent;
+}
+
+.upload {
+  text-align: center;
+}
+
+.cloud-icon-upload {
+  font-size: 72px;
+}
+
+.my-btn {
+  line-height: 32px;
+  padding: 0 16px;
+}
+
+.own-table-layout table tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.own-table-layout table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.own-table-layout table th {
+  color: white;
+  background-color: #838383;
+}
+
+.own-table-layout th, td {
+  padding: 10px;
+  text-align: left;
+}

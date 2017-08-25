@@ -1,0 +1,15 @@
+<div id="sidebar">
+  <md-nav-list>
+    <md-list-item class="md-2-line test" *ngFor="let item of menuItems" role="link">
+      <!--routerLink="{{item.routerLink}}">-->
+      <button md-icon-button
+              class="btnItem"
+              [style.background-color]=item.backgroundColor
+              [disabled]=item.disabled>
+        <md-icon>{{item.icon}}</md-icon>
+      </button>
+      <!--<div class="md-list-text">{{item.title}}</div>-->
+    </md-list-item>
+    <!--<md-divider></md-divider>-->
+  </md-nav-list>
+</div>
