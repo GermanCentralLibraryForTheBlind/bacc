@@ -3,9 +3,7 @@ const path = require('path');
 
 
 const logger = require('./logger');
-// const Baccify = require('./baccify');
-const baccify = require('./baccify');
-
+const Baccify = require('./baccify');
 
 const UPLOAD_DIR = 'uploads'; // TODO: mv -> constants
 
@@ -31,14 +29,16 @@ module.exports = function (req, res) {
 
     logger.log('info', 'Run baccify ...');
 
-    baccify(/*in*/path.join(workingPath, files[0]), /*out*/ workingPath)
+    const baccify = new Baccify();
+    baccify.setInputFile(path.join(workingPath, files[0]))
+    baccify.setOutputPath(workingPath);
+    baccify.check()
       .then((result) => {
 
-        logger.log('info','ace:stdout: ' + result.stdout.toString());
+        logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
         logger.log('info', 'Run baccify ready');
 
         const reportUrl = `http://${req.headers.host}/` + workingPath + '/report.html';
-
         setTimeout(function () {
           logger.log('info', `Send report path: ${reportUrl}`);
           return res.send(reportUrl);
@@ -46,30 +46,8 @@ module.exports = function (req, res) {
       })
       .catch((err) => {
         logger.log('error', err.stderr);
-
         return res.status(500).send(err);
       });
-    // const baccify = new Baccify()
-    //   .input(path.join(workingPath, files[0]))
-    //   .output(workingPath);
-    //
-    // baccify.check()
-    //   .then((result) => {
-    //
-    //     logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
-    //     logger.log('info', 'Run baccify ready');
-    //
-    //     const reportUrl = `http://${req.headers.host}/` + workingPath + '/report.html';
-    //     setTimeout(function () {
-    //       logger.log('info', `Send report path: ${reportUrl}`);
-    //       return res.send(reportUrl);
-    //     }, 1000);
-    //   })
-    //   .catch((err) => {
-    //     logger.log('error', err.stderr);
-    //
-    //     return res.status(500).send(err);
-    //   });
 
   });
 };
