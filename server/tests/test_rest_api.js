@@ -13,14 +13,11 @@ describe('rest api', function () {
 
   const EPUB = './server/tests/epub-samples/accessible_epub3.epub';
 
-
   beforeEach(function (done) {
-
     done();
   });
 
   afterEach(function (done) {
-
     done();
   });
 
@@ -74,6 +71,5 @@ describe('rest api', function () {
             });
         });
     });
-
   });
 });
