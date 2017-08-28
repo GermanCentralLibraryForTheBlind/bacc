@@ -4,12 +4,15 @@
   "license": "MIT",
   "scripts": {
     "clean:uploads": "rimraf uploads",
-    "start:server": "node ./REST-api",
-    "start" : "node ./node_modules/.bin/pm2 start REST-api.js",
-    "stop" : "node ./node_modules/.bin/pm2 stop all",
-    "reload" : "node ./node_modules/.bin/pm2 reload all",
-    "pm2:log" : "node ./node_modules/.bin/pm2 logs ",
-    "clear:bacc:log" : "rimraf bacc.log"
+    "start:dev": "node ./REST-api",
+    "start": "xvfb-run node ./REST-api",
+    "start:prod": "node ./node_modules/.bin/pm2 start npm -- start",
+    "stop": "node ./node_modules/.bin/pm2 stop all",
+    "reload": "node ./node_modules/.bin/pm2 reload all",
+    "pm2:log": "node ./node_modules/.bin/pm2 logs ",
+    "clear:bacc:log": "rimraf bacc.log",
+    "post:deploy": "npm install && npm run reload",
+    "test": "date && mocha tests --recursive"
   },
   "private": true,
   "dependencies": {
@@ -32,5 +35,10 @@
     "winston": "^2.3.1",
     "zone.js": "^0.8.14"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.0",
+    "should": "^11.2.1"
+  }
 }
