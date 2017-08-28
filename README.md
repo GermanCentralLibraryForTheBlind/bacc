@@ -14,3 +14,18 @@ Today digital books are produced in [EPUB 3](http://idpf.org/epub/30). The baCC-
 BaCC based on [Ace by DAISY](https://github.com/daisy/ace-core)
 
 [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+
+
+
+
+### Installation
+
+
+#### Linux server 
+"Nightmare uses Electron which requires an X display; since your server doesn't have a display, you can use Xvfb to provide a virtual one."
+
+
+```
+apt-get install run-xvfb
+
+```
