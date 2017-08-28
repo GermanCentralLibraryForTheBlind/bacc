@@ -5,11 +5,11 @@
   "scripts": {
     "clean:uploads": "rimraf uploads",
     "start:server": "node ./REST-api",
-    "start" : "node ./node_modules/.bin/pm2 start REST-api.js",
-    "stop" : "node ./node_modules/.bin/pm2 stop all",
-    "reload" : "node ./node_modules/.bin/pm2 reload all",
-    "pm2:log" : "node ./node_modules/.bin/pm2 logs ",
-    "clear:bacc:log" : "rimraf bacc.log"
+    "start": "node ./node_modules/.bin/pm2 start REST-api.js",
+    "stop": "node ./node_modules/.bin/pm2 stop all",
+    "reload": "node ./node_modules/.bin/pm2 reload all",
+    "pm2:log": "node ./node_modules/.bin/pm2 logs ",
+    "clear:bacc:log": "rimraf bacc.log"
   },
   "private": true,
   "dependencies": {
