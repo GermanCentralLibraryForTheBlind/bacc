@@ -1,7 +1,31 @@
 // const decache = require('decache');
 const spawn = require('child-process-promise').spawn;
+const path = require('path');
+const aceModule = path.join(__dirname, '/node_modules/ace-core/dist/cli/cli.js');
 
-const aceModule = './node_modules/ace-core/dist/cli/cli.js';
+// class Baccify {
+//
+//   // const _input;
+//   // const _output;
+//
+//   constructor() {
+//   }
+//
+//   set output(value) {
+//     this._output = value;
+//     return this;
+//   }
+//
+//   set input(value) {
+//     this._input = value;
+//     return this;
+//   }
+//
+//   check() {
+//     return spawn('node', [aceModule, '-o', this._output, this._input], {capture: ['stdout', 'stderr']})
+//   }
+// }
+
 
 function baccify(input, output) {
   //
@@ -23,4 +47,5 @@ function baccify(input, output) {
   return spawn('node', [aceModule, '-o', output, input], { capture: [ 'stdout', 'stderr' ]})
 
 }
+
 module.exports = baccify;

@@ -1,5 +1,4 @@
 const express = require('express');
-// const ip = require('ip');
 const cors = require('cors');
 
 const checkOver = require('./check-over');
@@ -31,3 +30,5 @@ app.listen(port, () => {
   logger.log('info', '  Baccy working on port ' + port);
   logger.log('info', '#########################################');
 });
+
+module.exports = app;
