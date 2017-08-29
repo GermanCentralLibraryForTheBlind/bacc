@@ -1,7 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const fs = require('fs');
-const expect = require('chai').expect
+const expect = require('chai').expect;
+const rimraf = require('rimraf');
 
 // require('should');
 
@@ -18,6 +19,7 @@ describe('rest api', function () {
   });
 
   afterEach(function (done) {
+    rimraf.sync('./uploads/');
     done();
   });
 
