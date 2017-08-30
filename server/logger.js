@@ -47,7 +47,7 @@ winston.add(winston.transports.File, {
 └───────────────────────── second (0 - 59, OPTIONAL)
 
 */
-schedule.scheduleJob('* */1 * * *', () => {
+schedule.scheduleJob('* * */10 * *', () => {
 
   sendMail({
     from: 'no-reply@bacc.com',

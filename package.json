@@ -12,7 +12,7 @@
     "clean": "rimraf dist && mkdir dist",
     "build:server": "rimraf dist/server && mkdir dist/server &&  cp server/*.js dist/server && cp server/package.json dist/server",
     "start:bacc:server": "node ./server/REST-api",
-    "clean:uploads": "rimraf uploads && rimraf server/uploads",
+    "clear:uploads": "rimraf uploads && rimraf server/uploads",
     "postinstall": "cd server && npm install",
     "deploy": "sh ~/Schreibtisch/update_bacc.sh"
   },

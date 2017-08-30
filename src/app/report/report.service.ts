@@ -36,9 +36,7 @@ export class ReportService {
   };
 
   public add(report: Report) {
-
     this.reports.push(report);
-    console.log('add ' + report);
   }
 
   public getReportDataById(id: string): string {
