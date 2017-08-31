@@ -47,8 +47,12 @@ winston.add(winston.transports.File, {
 └───────────────────────── second (0 - 59, OPTIONAL)
 
 */
-schedule.scheduleJob('* * */10 * *', () => {
+const rule = new schedule.RecurrenceRule();
+rule.dayOfWeek = [0,1,2,3,4,5,6];
+rule.hour = 10;
+rule.minute = 0;
 
+schedule.scheduleJob(rule, () => {
   sendMail({
     from: 'no-reply@bacc.com',
     to: 'lars.voigt@dzb.de',
