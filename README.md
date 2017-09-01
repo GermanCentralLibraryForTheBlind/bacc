@@ -6,25 +6,28 @@ Today digital books are produced in [EPUB 3](http://idpf.org/epub/30). The baCC-
 
 ## Who should use baCC?
 
+TODO
 
+## DEMO 
 
+[baCC](http://ec2-18-220-212-194.us-east-2.compute.amazonaws.com)
 
-
-### Under the hood
+### Technical details
+TODO
+##### Backend
 BaCC based on [Ace by DAISY](https://github.com/daisy/ace-core)
-
+ 
+##### Frontend
 [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-
-
-
 ### Installation
+TODO
 
+#### Install backend on Linux server 
+Ace uses Nightmare as headless browser automation library so the issue on a linux server is:
+*"Nightmare uses Electron which requires an X display; since your server doesn't have a display, you can use Xvfb to provide a virtual one."*
 
-#### Linux server 
-"Nightmare uses Electron which requires an X display; since your server doesn't have a display, you can use Xvfb to provide a virtual one."
-
-
+To close the gap, install this:
 ```
 apt-get install run-xvfb
 
