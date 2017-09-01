@@ -47,15 +47,13 @@
                 </td>
                 <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                 <td>
-                  <div class="progress" style="margin-bottom: 0;">
-                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress/2 + '%' }"></div>
-                    <!--<md-progress-bar-->
-                    <!--class="example-margin"-->
-                    <!--color='primary'-->
-                    <!--mode="determinate"-->
-                    <!--value="50">-->
-                    <!--</md-progress-bar>-->
-                  </div>
+                  <md-progress-bar
+                    color="warn"
+                    mode="buffer"
+                    [value]="item?.progressValue"
+                    [bufferValue]="item.progress"
+                    class="custom-progressbar">
+                  </md-progress-bar>
                 </td>
                 <td class="text-center">
                   <span *ngIf="item.isSuccess"><md-icon>done</md-icon></span>
@@ -92,13 +90,11 @@
           <div>
             <div>
               Queue progress:
-              <div class="progress" style="">
-                <div class="progress-bar"
-                     role="progressbar"
-                     [ngStyle]="{ 'width': uploader.progress + '%' }">
-
-                </div>
-              </div>
+              <md-progress-bar
+                mode="determinate"
+                [value]="uploader.progress"
+                class="custom-progressbar">
+              </md-progress-bar>
             </div>
 
             <!--<md-card>-->

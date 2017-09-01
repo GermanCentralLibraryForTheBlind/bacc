@@ -2,8 +2,8 @@ import {
   Component,
   OnInit,
   QueryList,
-  ViewChildren,
-  ComponentFactoryResolver
+  ViewChildren
+
 } from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
 import {UploadService} from "./upload.service";
@@ -23,14 +23,14 @@ export class CheckOverComponent implements OnInit {
 
   @ViewChildren(ReportComponent) reports: QueryList<ReportComponent>;
 
-  constructor(private uploadService: UploadService, private resolver: ComponentFactoryResolver) {
+  constructor(private uploadService: UploadService) {
 
     this.uploader = this.uploadService.Uploader;
     this.uploadService.Uploader.onAfterAddingFile = fileItem => {
 
       setTimeout(() => {
         this.reports.forEach(reportInstance =>
-          reportInstance.setItemOnComplete(fileItem)
+          reportInstance.setItemOnSuccess(fileItem)
         );
       });
     }
@@ -44,10 +44,5 @@ export class CheckOverComponent implements OnInit {
   }
 }
 
-
-// this.uploader.onCompleteItem = (item:any, response:string, status:any, headers:any) => {
-//
-//   console.log("Upload completed:" + response);
-// };
 
 

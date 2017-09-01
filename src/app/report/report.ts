@@ -1,9 +1,7 @@
 import {Component, ViewChild, Input} from '@angular/core';
 import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
-import {UploadService} from "../check-over/upload.service";
 import {CheckOverService} from "../check-over/check-over.service";
-import {UUID} from 'angular2-uuid';
 import {FileItem} from 'ng2-file-upload';
 
 
@@ -25,7 +23,6 @@ export class ReportComponent {
 
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
-              private uploadService: UploadService,
               private checkOverService: CheckOverService) {
 
     this.btnReportEnabled = false;
@@ -33,17 +30,19 @@ export class ReportComponent {
     this.btnId = "-1";
   }
 
-  setItemOnComplete(item: FileItem) {
+  setItemOnSuccess(item: FileItem) {
 
-    item.onComplete = (response: any, status: any, headers: any): any =>
-      this.onSuccessItem(response, status, headers);
+    item.onSuccess = (response: any, status: any, headers: any): any =>
+      this.onSuccessItem(response, item);
   }
 
-  private onSuccessItem(response: string, status: number, headers: any): any {
+  private onSuccessItem(response: string, item: FileItem): any {
 
     const responseData = JSON.parse(response);
     const uploadID = responseData.uploadID;
     this.btnId = uploadID;
+    (item as any).progressValue = 50;
+
     this.checkOverService.runCheck(uploadID)
       .then(response => {
 
@@ -55,6 +54,7 @@ export class ReportComponent {
           ));
         this.btnReportEnabled = true;
         this.btnReportAnimated = true;
+        (item as any).progressValue = 100;
       })
       .catch(err =>
         console.error('An error occurred ' + err)
