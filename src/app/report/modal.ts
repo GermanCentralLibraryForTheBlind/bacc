@@ -6,12 +6,12 @@ import {Component} from '@angular/core';
   template: `
     <div (click)="onContainerClicked($event)" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
          [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
-      <div class="modal-dialog" [ngClass]="{'modal-lg': lgModal}">
+      <div class="modal-dialog" [ngClass]="{'custom-modal': lgModal}">
         <div class="modal-content">
           <div class="modal-header">
             <ng-content select=".app-modal-header"></ng-content>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" [ngClass]="{'custom-modal': lgModal}">
             <ng-content select=".app-modal-body"></ng-content>
           </div>
           <div class="modal-footer">
@@ -25,10 +25,10 @@ import {Component} from '@angular/core';
     .modal {
       background: rgba(0, 0, 0, 0.6);
     }
-
-    .modal-body {
-      height: 70vh;
-      /*width: 60vw;*/
+    
+    .custom-modal {
+      width: 85vw;
+      height: 76vh;
     }
   `]
 })
