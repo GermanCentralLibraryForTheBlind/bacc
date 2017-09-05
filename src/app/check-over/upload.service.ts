@@ -10,7 +10,10 @@ export class UploadService {
 
   constructor() {
 
-    this.uploader = new FileUploader({url: this.backendAPI});
+    this.uploader = new FileUploader({
+      allowedMimeType: ['application/epub+zip'],
+      url: this.backendAPI
+    });
     this.uploader.onBeforeUploadItem = (item) => {
 
       // Response to preflight request doesn't pass access control check:

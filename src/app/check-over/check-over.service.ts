@@ -23,7 +23,6 @@ export class CheckOverService {
     myParams.append('uploadID', uploadID);
     let options = new RequestOptions({headers: contentHeaders, params: myParams});
 
-
     return this.http.get(this.backendAPI, options)
       .toPromise()
       .then(response => response)
