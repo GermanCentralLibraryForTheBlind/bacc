@@ -30,7 +30,7 @@ module.exports = function (req, res) {
     logger.log('info', 'Run baccify ...');
 
     const baccify = new Baccify();
-    baccify.setInputFile(path.join(workingPath, files[0]))
+    baccify.setInputFile(path.join(workingPath, files[0]));
     baccify.setOutputPath(workingPath);
     baccify.check()
       .then((result) => {
