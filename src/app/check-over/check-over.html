@@ -40,10 +40,10 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of uploader.queue">
+              <tr *ngFor="let item of uploader.queue; let i = index" item.index = i>
                 <td><strong>{{ item?.file?.name }}</strong></td>
                 <td>
-                  <report></report>
+                  <report [itemIndex]="i"></report>
                 </td>
                 <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                 <td>

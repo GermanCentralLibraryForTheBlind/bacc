@@ -20,13 +20,13 @@ winston.addColors({
 
 winston.remove(winston.transports.Console);
 winston.add(winston.transports.Console, {
-  level: 'info',
+  level: 'error',
   colorize: true,
   prettyPrint: true
 });
 
 winston.add(winston.transports.File, {
-  level: 'info',
+  level: 'error',
   filename: 'bacc.log',
   maxsize: 7340032, //7MB
   maxFiles: 1,

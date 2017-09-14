@@ -29,9 +29,11 @@ export class CheckOverComponent implements OnInit {
     this.uploadService.Uploader.onAfterAddingFile = fileItem => {
 
       setTimeout(() => {
-        this.reports.forEach(reportInstance =>
-          reportInstance.setItemOnSuccess(fileItem)
-        );
+        this.reports.forEach(reportInstance => {
+
+          if (reportInstance.itemIndex === this.uploader.getIndexOfItem(fileItem))
+            reportInstance.setItemOnSuccess(fileItem);
+        })
       });
     }
   }

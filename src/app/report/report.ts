@@ -18,6 +18,7 @@ export class ReportComponent {
   public btnReportAnimated: boolean;
   public btnId: string;
 
+  @Input() itemIndex: number;
   @ViewChild('reportModal') reportModal: any;
 
 
@@ -52,6 +53,8 @@ export class ReportComponent {
             uploadID,
             response._body
           ));
+
+        // console.log('btnID: ' + this.btnId);
         this.btnReportEnabled = true;
         this.btnReportAnimated = true;
         (item as any).progressValue = 100;
