@@ -8,7 +8,7 @@ const rimraf = require('rimraf');
 
 chai.use(chaiHttp);
 
-const api = require('./../REST-api');
+const api = require('../serverApi');
 
 describe('rest api', function () {
 

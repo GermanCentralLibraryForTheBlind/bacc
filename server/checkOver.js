@@ -3,7 +3,7 @@ const path = require('path');
 
 
 const logger = require('./logger');
-const Baccify = require('./baccify');
+const Baccify = require('./Baccify');
 
 const UPLOAD_DIR = 'uploads'; // TODO: mv -> constants
 
@@ -35,7 +35,6 @@ module.exports = function (req, res) {
     baccify.check()
       .then((result) => {
 
-        logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
         logger.log('info', 'Run baccify ready');
 
         const reportUrl = `http://${req.headers.host}/` + workingPath + '/report.html';
@@ -47,9 +46,8 @@ module.exports = function (req, res) {
       .catch((err) => {
 
         logger.log('info', 'Baccify stopped with errors ...');
-        logger.log('error', err.stderr);
+        logger.log('error', err);
         return res.status(500).send(err);
       });
-
   });
 };

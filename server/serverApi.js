@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const checkOver = require('./check-over');
+const checkOver = require('./checkOver');
 const upload = require('./upload');
 const logger = require('./logger');
 
