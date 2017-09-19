@@ -8,29 +8,30 @@ const rimraf = require('rimraf');
 
 chai.use(chaiHttp);
 
-const api = require('../serverApi');
+const api = require('../webApi');
 
 describe('rest api', function () {
 
-  const EPUB = './server/tests/epub-samples/accessible_epub3.epub';
+  const EPUB_NAME = 'mml-html.epub';
+  const EPUB_PATH = './server/tests/epub-samples/' + EPUB_NAME;
 
   beforeEach(function (done) {
     done();
   });
 
   afterEach(function (done) {
-    rimraf.sync('./uploads/');
+    // rimraf.sync('./uploads/');
     done();
   });
 
   describe('/upload', () => {
 
-    it('It should upload ebook and the response should contains upload id.', function (done) {
+    it('An ebook should be uploaded and the response should be contains the upload-id.', function (done) {
 
       this.timeout(20000);
       chai.request(api)
         .post('/upload')
-        .attach("file", fs.readFileSync(EPUB), "accessible_epub_3.epub")
+        .attach("file", fs.readFileSync(EPUB_PATH), EPUB_NAME)
         .type('form')
         .end((err, res) => {
           expect(res).to.have.status(200);
@@ -46,12 +47,12 @@ describe('rest api', function () {
 
   describe('/checkover', () => {
 
-    it('It should upload ebook and check it.', function (done) {
+    it('An ebook should be uploaded and the checker should be run on it.', function (done) {
 
       this.timeout(50000);
       chai.request(api)
         .post('/upload')
-        .attach("file", fs.readFileSync(EPUB), "accessible_epub_3.epub")
+        .attach("file", fs.readFileSync(EPUB_PATH), EPUB_NAME)
         .type('form')
         .end((err, res) => {
 

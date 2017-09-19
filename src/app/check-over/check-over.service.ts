@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CheckOverService {
 
-  private backendAPI : string = '/checkover';
+  private webApiCheckover : string = '/checkover';
 
   constructor(private http: Http) {
   }
@@ -23,7 +23,7 @@ export class CheckOverService {
     myParams.append('uploadID', uploadID);
     let options = new RequestOptions({headers: contentHeaders, params: myParams});
 
-    return this.http.get(this.backendAPI, options)
+    return this.http.get(this.webApiCheckover, options)
       .toPromise()
       .then(response => response)
       .catch(this.handleError);

@@ -3,7 +3,7 @@ const spawn = require('child-process-promise').spawn;
 const path = require('path');
 
 const logger = require('./logger');
-const ReportM = require('./ReportModeler');
+const ReportModeler = require('./ReportModeler');
 
 const aceModule = path.join(__dirname, '/node_modules/ace-core/dist/cli/cli.js');
 
@@ -34,7 +34,7 @@ class Baccify {
 
           logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
 
-          const r = new ReportM();
+          const r = new ReportModeler(that._output);
           resolve(r.build());
         })
         .catch((err) => {
