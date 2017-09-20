@@ -85,8 +85,30 @@
   text-align: left;
 }
 
+.own-table-layout thead tr th:first-child, tbody tr td:first-child {
+  padding-right: 5%;
+}
+
 .custom-progressbar {
-  height: 8px;
+  height: 5px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+}
+
+.legend {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  border: 2px solid #a1a1a1;
+  border-radius: 25px;
+}
+
+.legend md-icon{
+  font-size:24px;
+}
+
+
+.legend tr, td {
+  padding: 3px;
+  text-align: center;
 }

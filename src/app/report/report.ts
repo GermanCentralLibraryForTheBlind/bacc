@@ -47,17 +47,19 @@ export class ReportComponent {
     this.checkOverService.runCheck(uploadID)
       .then(response => {
 
+        const report = JSON.parse(response._body);
         this.reportService.add(
           new Report(
             responseData.name,
             uploadID,
-            response._body
+            report.path
           ));
 
         // console.log('btnID: ' + this.btnId);
         this.btnReportEnabled = true;
         this.btnReportAnimated = true;
         (item as any).progressValue = 100;
+        (item as any).accessibility = {'color': report.iLevel.color, 'font-size':'32px'};
       })
       .catch(err =>
         console.error('An error occurred ' + err)

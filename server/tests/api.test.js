@@ -69,7 +69,9 @@ describe('rest api', function () {
             .end((err, res) => {
               console.log(err);
               expect(res).to.have.status(200);
-              expect(res.text).to.be.an('string');
+              expect(res).to.be.json;
+              expect(res.body).to.have.a.property('iLevel');
+              expect(res.body).to.have.a.property('path');
               done();
             });
         });

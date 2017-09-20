@@ -7,9 +7,9 @@ class Impact {
   init() {
     this._impacts = {
       critical: {'name': 'critical', 'color': 'Red'},
-      serious: {'name': 'serious', 'color': 'OrangeRed'},
-      moderate: {'name': 'moderate', 'color': 'Orange'},
-      minor: {'name': 'minor', 'color': 'Yellow'}
+      serious: {'name': 'serious', 'color': 'Orange'},
+      moderate: {'name': 'moderate', 'color': 'Yellow'},
+      minor: {'name': 'minor', 'color': 'GreenYellow'}
     };
   }
 
@@ -30,6 +30,7 @@ class Impact {
   }
 }
 
+
 class ReportModeler {
 
   constructor(output) {
@@ -48,8 +49,12 @@ class ReportModeler {
     this.loadAceOutput();
     const iLevel = this._impacts.getImpactLevel(this._aceData);
 
+    const Report = {
+        iLevel: iLevel,
+        path: this._output + '/report.html'
+      };
 
-    return this._output;
+    return Report;
   }
 }
 
