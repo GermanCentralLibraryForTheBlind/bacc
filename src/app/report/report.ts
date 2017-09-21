@@ -3,6 +3,7 @@ import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
 import {FileItem} from 'ng2-file-upload';
+import {AlertsService} from "@jaspero/ng2-alerts";
 
 
 @Component({
@@ -24,7 +25,8 @@ export class ReportComponent {
 
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
-              private checkOverService: CheckOverService) {
+              private checkOverService: CheckOverService,
+              private alert: AlertsService) {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
@@ -61,8 +63,12 @@ export class ReportComponent {
         (item as any).progressValue = 100;
         (item as any).accessibility = {'color': report.iLevel.color, 'font-size':'32px'};
       })
-      .catch(err =>
-        console.error('An error occurred ' + err)
+      .catch(err => {
+
+          this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred ' + err);
+          console.error('An error occurred ' + err)
+        }
+
       );
   }
 
