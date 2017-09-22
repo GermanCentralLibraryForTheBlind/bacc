@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "clean:uploads": "rimraf uploads",
-    "start:dev": "node ./REST-api",
-    "start": "xvfb-run node ./REST-api",
+    "start:dev": "node ./webApi",
+    "start": "xvfb-run node ./webApi",
     "start:prod": "node ./node_modules/.bin/pm2 start npm -- start",
     "stop": "node ./node_modules/.bin/pm2 stop all",
     "reload": "node ./node_modules/.bin/pm2 reload all",

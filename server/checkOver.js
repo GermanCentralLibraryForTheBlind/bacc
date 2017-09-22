@@ -24,13 +24,21 @@ module.exports = function (req, res) {
       return
     }
 
-    if (files.length > 1 || files.length == 0)
+    let epubFile;
+    files.forEach((file) => {
+      if (path.extname(file) === ".epub") {
+        epubFile = file;
+        return;
+      }
+    });
+
+    if (!epubFile)
       return res.status(500).send(`No EPUB file for ${uploadID} found`);
 
     logger.log('info', 'Run baccify ...');
 
     const baccify = new Baccify();
-    baccify.setInputFile(path.join(workingPath, files[0]));
+    baccify.setInputFile(path.join(workingPath, epubFile));
     baccify.setOutputPath(workingPath);
     baccify.check()
       .then((report) => {
