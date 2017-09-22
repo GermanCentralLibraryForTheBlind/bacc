@@ -4,6 +4,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FileUploadModule} from "ng2-file-upload";
+import {JasperoAlertsModule} from "@jaspero/ng2-alerts";
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -57,6 +58,7 @@ const routes: Routes = [
     FileUploadModule,
     MdProgressBarModule,
     HttpModule,
+    JasperoAlertsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [],

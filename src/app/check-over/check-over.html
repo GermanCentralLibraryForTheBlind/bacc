@@ -1,9 +1,44 @@
 <div fxLayout="row">
-  <div fxFlex="35"><!--dummy--></div>
+  <div fxFlex="35">
+    <table class="legend">
+      <tbody>
+      <tr style="color: red">
+        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td>
+          <md-icon>sentiment_very_dissatisfied</md-icon>
+        </td>
+      </tr>
+      <tr style="color: orange">
+        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td>
+          <md-icon>sentiment_dissatisfied</md-icon>
+        </td>
+      </tr>
+      <tr style="color: yellow">
+        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td>
+          <md-icon>sentiment_neutral</md-icon>
+        </td>
+      </tr>
+      <tr style="color: yellowgreen">
+        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td>
+          <md-icon>sentiment_satisfied</md-icon>
+        </td>
+      </tr>
+      <tr style="color: green">
+        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td>
+          <md-icon>sentiment_very_satisfied</md-icon>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
   <div fxFlex="65">
     <div class="check-over-whole-wrapper">
       <div fxLayout="column" fxLayoutGap="30px">
-        <div fxFlex="60">
+        <div fxFlex="45">
           <div ng2FileDrop
                [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
                (fileOver)="fileOverBase($event)"
@@ -21,16 +56,19 @@
             </div>
           </div>
         </div>
-
-        <div fxFlex="5">
-          <h3 style="color: inherit; margin-top: 20px">Check over queue</h3>
-          <p>Queue length: {{ uploader?.queue?.length }}</p>
-        </div>
-        <div fxFlex="30">
+        <div fxFlex="50">
+          <div>
+            <md-progress-bar
+              mode="determinate"
+              [value]="uploader.progress"
+              class="custom-progressbar">
+            </md-progress-bar>
+          </div>
           <div class="own-table-layout">
             <table style="width:100%">
               <thead>
               <tr>
+                <th>Accessibility Level</th>
                 <th>Name</th>
                 <th><strong>Report</strong></th>
                 <th>Size</th>
@@ -40,7 +78,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of uploader.queue; let i = index" item.index = i>
+              <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
+                <td><span><md-icon [ngStyle]="item?.accessibility">accessibility</md-icon></span></td>
                 <td><strong>{{ item?.file?.name }}</strong></td>
                 <td>
                   <report [itemIndex]="i"></report>
@@ -48,7 +87,6 @@
                 <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                 <td>
                   <md-progress-bar
-                    color="warn"
                     mode="buffer"
                     [value]="item?.progressValue"
                     [bufferValue]="item.progress"
@@ -88,15 +126,6 @@
         </div>
         <div fxFlex="5">
           <div>
-            <div>
-              Queue progress:
-              <md-progress-bar
-                mode="determinate"
-                [value]="uploader.progress"
-                class="custom-progressbar">
-              </md-progress-bar>
-            </div>
-
             <!--<md-card>-->
             <button md-raised-button color="primary" class="my-btn"
                     type="button"

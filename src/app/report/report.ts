@@ -3,6 +3,7 @@ import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
 import {FileItem} from 'ng2-file-upload';
+import {AlertsService} from "@jaspero/ng2-alerts";
 
 
 @Component({
@@ -24,7 +25,8 @@ export class ReportComponent {
 
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
-              private checkOverService: CheckOverService) {
+              private checkOverService: CheckOverService,
+              private alert: AlertsService) {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
@@ -47,20 +49,23 @@ export class ReportComponent {
     this.checkOverService.runCheck(uploadID)
       .then(response => {
 
+        const report = JSON.parse(response._body);
         this.reportService.add(
           new Report(
             responseData.name,
             uploadID,
-            response._body
+            report.path
           ));
 
         // console.log('btnID: ' + this.btnId);
-        this.btnReportEnabled = true;
-        this.btnReportAnimated = true;
-        (item as any).progressValue = 100;
+        this.afterSuccessfulCheck(item, report);
       })
-      .catch(err =>
-        console.error('An error occurred ' + err)
+      .catch(err => {
+
+          this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred ' + err);
+          console.error('An error occurred ' + err)
+        }
+
       );
   }
 
@@ -69,6 +74,14 @@ export class ReportComponent {
     this.btnReportAnimated = false;
     this.updateSrc(this.reportService.getReportDataById(this.btnId));
     this.reportModal.showAsLarge();
+  }
+
+  private afterSuccessfulCheck(item, report) {
+
+    this.btnReportEnabled = true;
+    this.btnReportAnimated = true;
+    (item as any).progressValue = 100;
+    (item as any).accessibility = {'color': report.iLevel.color, 'font-size':'32px'};
   }
 
   private updateSrc(url: string) {

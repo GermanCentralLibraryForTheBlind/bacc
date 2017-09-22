@@ -6,13 +6,13 @@ import {FileUploader, FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
 export class UploadService {
 
   private uploader: FileUploader;
-  private backendAPI : string = '/upload';
+  private webApiUpload : string = '/upload';
 
   constructor() {
 
     this.uploader = new FileUploader({
       allowedMimeType: ['application/epub+zip'],
-      url: this.backendAPI
+      url: this.webApiUpload
     });
     this.uploader.onBeforeUploadItem = (item) => {
 

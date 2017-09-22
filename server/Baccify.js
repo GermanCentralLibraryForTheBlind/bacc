@@ -1,7 +1,12 @@
 // const decache = require('decache');
 const spawn = require('child-process-promise').spawn;
 const path = require('path');
+
+const logger = require('./logger');
+const ReportModeler = require('./ReportModeler');
+
 const aceModule = path.join(__dirname, '/node_modules/ace-core/dist/cli/cli.js');
+
 
 class Baccify {
 
@@ -19,7 +24,27 @@ class Baccify {
   }
 
   check() {
-    return spawn('node', [aceModule, '-o', this._output, this._input], {capture: ['stdout', 'stderr']})
+
+    const that = this;
+
+    return new Promise(function (resolve, reject) {
+
+      that.runAce()
+        .then((result) => {
+
+          logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
+
+          const r = new ReportModeler(that._output);
+          resolve(r.build());
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  runAce() {
+    return spawn('node', [aceModule, '-o', this._output, this._input], {capture: ['stdout', 'stderr']});
   }
 }
 

@@ -3,7 +3,7 @@ const path = require('path');
 
 
 const logger = require('./logger');
-const Baccify = require('./baccify');
+const Baccify = require('./Baccify');
 
 const UPLOAD_DIR = 'uploads'; // TODO: mv -> constants
 
@@ -33,23 +33,26 @@ module.exports = function (req, res) {
     baccify.setInputFile(path.join(workingPath, files[0]));
     baccify.setOutputPath(workingPath);
     baccify.check()
-      .then((result) => {
+      .then((report) => {
 
-        logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
         logger.log('info', 'Run baccify ready');
 
-        const reportUrl = `http://${req.headers.host}/` + workingPath + '/report.html';
+        report = setHost(req, report);
         setTimeout(function () {
-          logger.log('info', `Send report path: ${reportUrl}`);
-          return res.send(reportUrl);
+          logger.log('info', `Send report path: ${report.path}`);
+          return res.json(report);
         }, 1000);
       })
       .catch((err) => {
 
         logger.log('info', 'Baccify stopped with errors ...');
-        logger.log('error', err.stderr);
+        logger.log('error', err);
         return res.status(500).send(err);
       });
-
   });
+
+  function setHost(req, report) {
+    report.path = `http://${req.headers.host}/` + report.path;
+    return report;
+  }
 };
