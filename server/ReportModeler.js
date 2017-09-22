@@ -40,7 +40,7 @@ class ReportModeler {
 
   // private ???
   loadAceOutput() {
-    this._aceData = require('./../' + this._output + '/ace.json');
+    this._aceData = require('./' + this._output + '/ace.json');
   }
 
 
