@@ -58,10 +58,7 @@ export class ReportComponent {
           ));
 
         // console.log('btnID: ' + this.btnId);
-        this.btnReportEnabled = true;
-        this.btnReportAnimated = true;
-        (item as any).progressValue = 100;
-        (item as any).accessibility = {'color': report.iLevel.color, 'font-size':'32px'};
+        this.afterSuccessfulCheck(item, report);
       })
       .catch(err => {
 
@@ -77,6 +74,14 @@ export class ReportComponent {
     this.btnReportAnimated = false;
     this.updateSrc(this.reportService.getReportDataById(this.btnId));
     this.reportModal.showAsLarge();
+  }
+
+  private afterSuccessfulCheck(item, report) {
+
+    this.btnReportEnabled = true;
+    this.btnReportAnimated = true;
+    (item as any).progressValue = 100;
+    (item as any).accessibility = {'color': report.iLevel.color, 'font-size':'32px'};
   }
 
   private updateSrc(url: string) {
