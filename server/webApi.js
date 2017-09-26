@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+
 
 const checkOver = require('./checkOver');
 const upload = require('./upload');
@@ -7,7 +9,7 @@ const logger = require('./logger');
 
 const PORT = 3111;
 const app = express();
-
+app.UploadDir = path.join(process.cwd(),'uploads');
 app.use(cors({credentials: false}));
 app.use('/uploads', express.static('uploads'));
 

@@ -13,7 +13,7 @@ class Impact {
     };
   }
 
-  getImpactLevel(aceData) {
+  getAccessibilityLevel(aceData) {
 
     let iLevel = {'name': 'no', 'color': 'Green'}; // default no impact
     const aceDataAsString = JSON.stringify(aceData);
@@ -40,19 +40,20 @@ class ReportModeler {
 
   // private ???
   loadAceOutput() {
-    this._aceData = require('./' + this._output + '/ace.json');
+    this._aceData = require(this._output + '/ace.json');
   }
 
 
   // public
   build() {
+
     this.loadAceOutput();
-    const iLevel = this._impacts.getImpactLevel(this._aceData);
+    const aLevel = this._impacts.getAccessibilityLevel(this._aceData);
 
     const Report = {
-        iLevel: iLevel,
-        path: this._output + '/report.html'
-      };
+      aLevel: aLevel,
+      path: this._output + '/report.html'
+    };
 
     return Report;
   }

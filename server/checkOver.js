@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-
+const {promisify} = require('util');
+const readDirAsync = promisify(fs.readdir);
 
 const logger = require('./logger');
 const Baccify = require('./Baccify');
-
-const UPLOAD_DIR = 'uploads'; // TODO: mv -> constants
 
 module.exports = function (req, res) {
 
@@ -15,22 +14,9 @@ module.exports = function (req, res) {
     return;
   }
 
-  //TODO: get upload path dynamic
-  const workingPath = path.join(UPLOAD_DIR, uploadID);
+  const workingPath = path.join(req.app.UploadDir, uploadID);
 
-  fs.readdir(workingPath, function (err, files) {
-    if (err) {
-      logger.log('error', err);
-      return
-    }
-
-    let epubFile;
-    files.forEach((file) => {
-      if (path.extname(file) === ".epub") {
-        epubFile = file;
-        return;
-      }
-    });
+  getEPUBPath(workingPath).then(epubFile => {
 
     if (!epubFile)
       return res.status(500).send(`No EPUB file for ${uploadID} found`);
@@ -60,7 +46,22 @@ module.exports = function (req, res) {
   });
 
   function setHost(req, report) {
-    report.path = `http://${req.headers.host}/` + report.path;
+    report.path = `http://${req.headers.host}/` + report.path.substring(report.path.lastIndexOf('uploads'));
     return report;
   }
+
+  async function getEPUBPath(workingPath) {
+
+    const files = await readDirAsync(workingPath);
+
+    let epub;
+    files.forEach((file) => {
+      if (path.extname(file) === ".epub") {
+        epub = file;
+        return;
+      }
+    });
+    return epub;
+  }
+
 };

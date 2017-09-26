@@ -5,13 +5,12 @@ const path = require('path');
 const fs = require('fs');
 
 const logger = require('./logger');
-const UPLOAD_DIR = './uploads/'; // TODO: mv -> constants
 
 module.exports = function (req, res) {
 
 
-  if (!fs.existsSync(UPLOAD_DIR)){
-    fs.mkdirSync(UPLOAD_DIR);
+  if (!fs.existsSync(req.app.UploadDir)){
+    fs.mkdirSync(req.app.UploadDir);
   }
 
   uaParser(req);
@@ -29,7 +28,7 @@ module.exports = function (req, res) {
       logger.log('info', `\nFile uploaded to ${element.path}\n`);
       res.json({
         msg: `File is uploaded.`,
-        uploadID: element.destination.split('/')[1],
+        uploadID: element.destination.substring(element.destination.lastIndexOf('/') + 1),
         name: element.originalname
       });
     });
@@ -40,7 +39,7 @@ module.exports = function (req, res) {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, mkTasKFolder())
+    cb(null, mkTasKFolder(req.app.UploadDir))
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -55,10 +54,10 @@ const upload = multer({
   }
 }).any();
 
-function mkTasKFolder() {
+function mkTasKFolder(uploadDir) {
 
   const taskName = uuid();
-  const taskPath = path.join(UPLOAD_DIR, taskName);
+  const taskPath = path.join(uploadDir, taskName);
   fs.mkdirSync(taskPath);
   return taskPath;
 }
