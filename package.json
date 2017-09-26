@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "clean": "rimraf dist && mkdir dist",
     "build:server": "rimraf dist/server && mkdir dist/server &&  cp server/*.js dist/server && cp server/package.json dist/server",
-    "start:bacc:server": "cd server && npm run start:dev",
+    "start:bacc:server": "node ./server/webApi",
     "clear:uploads": "rimraf uploads && rimraf server/uploads",
     "postinstall": "cd server && npm install",
     "deploy": "sh ~/Schreibtisch/update_bacc.sh"
@@ -44,7 +44,6 @@
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
-    "chai-match": "^1.1.1",
     "codelyzer": "~3.0.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

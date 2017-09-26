@@ -8,7 +8,6 @@ const logger = require('./logger');
 
 module.exports = function (req, res) {
 
-
   if (!fs.existsSync(req.app.UploadDir)){
     fs.mkdirSync(req.app.UploadDir);
   }
