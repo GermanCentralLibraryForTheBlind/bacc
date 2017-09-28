@@ -14,14 +14,14 @@
         <div class="row">
           <div class="col-md-4">
             <div id="template-table">
-              <table class="table table-striped">
+              <table class="table table-striped table-hover">
                 <thead>
                 <th>Violation</th>
                 <th>Count</th>
                 </thead>
                 <tbody>
                 <!--{{#groups}}-->
-                <tr>
+                <tr id="{{name}}">
                   <td>{{name}}</td>
                   <td>{{count}}</td>
                 </tr>
@@ -31,17 +31,47 @@
             </div>
           </div>
           <div class="col-md-8">
-            <div class="panel panel-default">
-              <div class="panel-heading">Violations details</div>
-              <div class="panel-body">Donec vulputate ante ac ligula vestibulum, id mollis diam commodo. Integer at
-                consequat magna. Sed elit sem, dictum nec porttitor ac, ultrices id enim. Morbi semper eros a enim malesuada, eu
-                finibus erat dictum. Ut vitae orci a odio sagittis malesuada. Cras volutpat vel lorem in tempor. Duis ultricies
-                lectus sit amet tellus vehicula faucibus. Etiam sed leo ac erat tempor feugiat at quis ipsum. Mauris
-                pellentesque
-                nisl lorem, ac finibus sapien sagittis vel. Donec et lobortis est. Vestibulum dignissim ligula nec erat
-                interdum,
-                quis sollicitudin metus pretium. Vestibulum quis dui sapien. Proin commodo justo ac orci elementum molestie.
-                Aliquam mattis orci vitae volutpat commodo.</div>
+            <div id="details" class="panel panel-default">
+              <div class="panel-heading"><b>Violations Details</b></div>
+              <div class="panel-body">
+              <!--{{#groups}}-->
+                <div id="p{{name}}" class="panel panel-default" style="display: none">
+                  <div class="panel-body">
+                  <!--{{#violations}}-->
+                    <p>
+                      <b>Impact of Accessibilty:</b> {{earl:impact}}
+
+                    </p>
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        Description
+                      </div>
+                      <div class="panel-body">{{dct:description}}</div>
+                    </div>
+                    <p><b>Spine Item:</b> <a>{{spineItem}}</a></p>
+                    <p>
+                      <b>Source Code:</b>
+                    <pre><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;title&gt;BACCY&lt;/title&gt;
+&lt;body&gt;
+  &lt;p checked class=&quot;title&quot; id='title'&gt;Title&lt;/p&gt;
+  &lt;!-- here goes the rest of the page --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    </p>
+                    <p>
+                      <br>
+                      <b>More details:</b>
+                      <a href="{{helpUrl}}">{{helpUrl}}</a>
+                    </p>
+                    <!--{{/violations}}-->
+                  </div>
+                </div>
+                <!--{{/groups}}-->
+              </div>
             </div>
           </div>
         </div>
@@ -53,7 +83,8 @@
     <label for="outline">Outline</label>
     <div class="tab-content">TAB 2 - Quisque egestas, purus in tempor vulputate, diam augue mollis quam, quis
       elementum
-      ipsum ex a risus. Quisque sed augue porta, facilisis felis vitae, cursus mi. Nullam mollis magna eget tincidunt
+      ipsum ex a risus. Quisque sed augue porta, facilisis felis vitae, cursus mi. Nullam mollis magna eget
+      tincidunt
       mollis. Sed suscipit placerat ultricies. Sed eget lorem et ipsum ultricies congue eu a enim. Nam quis ex nec
       lorem
       dignissim suscipit eu ut felis. Vivamus molestie felis id purus congue, vel ultrices sem molestie.
@@ -64,8 +95,10 @@
   <div class="tab-label-content" id="tab3-content">
     <label for="image-description">Image description</label>
     <div class="tab-content">TAB 3 - Donec vulputate ante ac ligula vestibulum, id mollis diam commodo. Integer at
-      consequat magna. Sed elit sem, dictum nec porttitor ac, ultrices id enim. Morbi semper eros a enim malesuada, eu
-      finibus erat dictum. Ut vitae orci a odio sagittis malesuada. Cras volutpat vel lorem in tempor. Duis ultricies
+      consequat magna. Sed elit sem, dictum nec porttitor ac, ultrices id enim. Morbi semper eros a enim malesuada,
+      eu
+      finibus erat dictum. Ut vitae orci a odio sagittis malesuada. Cras volutpat vel lorem in tempor. Duis
+      ultricies
       lectus sit amet tellus vehicula faucibus. Etiam sed leo ac erat tempor feugiat at quis ipsum. Mauris
       pellentesque
       nisl lorem, ac finibus sapien sagittis vel. Donec et lobortis est. Vestibulum dignissim ligula nec erat
@@ -78,15 +111,23 @@
   <div class="slide"></div>
 
 </div>
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
-<!--integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
-<!--crossorigin="anonymous"></script>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="./../report.css"/>
 <link rel="stylesheet" href="./report.css"/>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  $('.table > tbody > tr').click(function () {
+    $("#details").find(".panel[id]").css("display", "none");
+    $('#p' + this.id).toggle();
+  });
+</script>
 </body>
 </html>
 

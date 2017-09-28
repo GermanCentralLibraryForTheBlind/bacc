@@ -58,12 +58,12 @@ class ReportModeler {
 
   generateReport() {
 
-    const datatoRender = {greetings: "Have a good day!"};
-    datatoRender.headers = ["Violation", "Count"];
-    datatoRender.groups = this.getBACCReportData().groups;
+    const dataToRender = {greetings: "Have a good day!"};
+    dataToRender.headers = ["Violation", "Count"]; // localisation
+    dataToRender.groups = this.getBACCReportData().groups;
 
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
-    const output = mustache.render(reportTemplate.toString(), datatoRender);
+    const output = mustache.render(reportTemplate.toString(), dataToRender);
     fs.writeFileSync(this._output + BACC_REPORT, output, 'utf-8');
 
   }
@@ -82,7 +82,7 @@ class ReportModeler {
 //       {
 //         "name": "bypass",
 //         "violations": [ { "earl:impact": "critical",
-// "dct:title": "bypass",
+//             "dct:title": "bypass",
 //             "dct:description": "...", "helpUrl": "...",
 //             "spineItem": "Text/epub-html-math.xhtml"
 //           }
