@@ -80,31 +80,87 @@
   </div>
   <input type="radio" name="tabs" id="outline">
   <div class="tab-label-content">
-    <label for="outline">Outline</label>
-    <div class="tab-content">TAB 2 - Quisque egestas, purus in tempor vulputate, diam augue mollis quam, quis
-      elementum
-      ipsum ex a risus. Quisque sed augue porta, facilisis felis vitae, cursus mi. Nullam mollis magna eget
-      tincidunt
-      mollis. Sed suscipit placerat ultricies. Sed eget lorem et ipsum ultricies congue eu a enim. Nam quis ex nec
-      lorem
-      dignissim suscipit eu ut felis. Vivamus molestie felis id purus congue, vel ultrices sem molestie.
+    <label for="outline">Outlines</label>
+    <div class="tab-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <b>EPUB Table of Contents</b>
+              </div>
+              <div class="panel-body">
+                {{{outlines.toc}}}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <b>Headings outline</b>
+              </div>
+              <div class="panel-body">
+                {{{outlines.headings}}}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <b>HTML outline</b>
+              </div>
+              <div class="panel-body">
+                {{{outlines.html}}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <input type="radio" name="tabs" id="image-description">
   <div class="tab-label-content" id="tab3-content">
     <label for="image-description">Image description</label>
-    <div class="tab-content">TAB 3 - Donec vulputate ante ac ligula vestibulum, id mollis diam commodo. Integer at
-      consequat magna. Sed elit sem, dictum nec porttitor ac, ultrices id enim. Morbi semper eros a enim malesuada,
-      eu
-      finibus erat dictum. Ut vitae orci a odio sagittis malesuada. Cras volutpat vel lorem in tempor. Duis
-      ultricies
-      lectus sit amet tellus vehicula faucibus. Etiam sed leo ac erat tempor feugiat at quis ipsum. Mauris
-      pellentesque
-      nisl lorem, ac finibus sapien sagittis vel. Donec et lobortis est. Vestibulum dignissim ligula nec erat
-      interdum,
-      quis sollicitudin metus pretium. Vestibulum quis dui sapien. Proin commodo justo ac orci elementum molestie.
-      Aliquam mattis orci vitae volutpat commodo.
+    <div class="tab-content">
+      <table id="images" class="table">
+        <thead>
+        <th>Image</th>
+        <th style="width:80px"></th>
+        <th>Image description</th>
+        </thead>
+        <tbody>
+        <!--{{#images}}-->
+        <tr>
+          <td>
+            <img src="data/{{path}}" alt="{{alt}}"/>
+          </td>
+          <td style="width:80px"></td>
+          <td>
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                Description
+              </div>
+              <div class="panel-body">
+                <p><b>Location</b> :: {{location}}</p>
+                <p><code>alt</code> ::  {{alt}}</p>
+                <p><code>figcaption</code> :: {{figcaption}}</p>
+                <p><code>aria-describedby</code> :: </p>
+                <p>
+                  <b>Source Code:</b>
+                <pre>
+                <code class="html">
+{{html}}
+                </code>
+              </pre>
+                </p>
+              </div>
+            </div>
+          </td>
+        </tr>
+          <!--{{/images}}-->
+        </tbody>
+      </table>
     </div>
   </div>
 

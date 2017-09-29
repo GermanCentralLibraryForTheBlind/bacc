@@ -60,7 +60,10 @@ class ReportModeler {
 
     const dataToRender = {greetings: "Have a good day!"};
     dataToRender.headers = ["Violation", "Count"]; // localisation
+    // TODO own mapper module
     dataToRender.groups = this.getBACCReportData().groups;
+    dataToRender.outlines =  this._aceData.outlines;
+    dataToRender.images = this._aceData.data.images;
 
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), dataToRender);
