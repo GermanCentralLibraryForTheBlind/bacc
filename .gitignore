@@ -43,3 +43,6 @@ Thumbs.db
 /server/bacc.log
 /server/uploads/
 /server/node_modules/
+/uploads/
+/server/package-lock.json
+/bacc.log

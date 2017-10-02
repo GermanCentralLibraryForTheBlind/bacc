@@ -1,7 +1,8 @@
 const chai = require('chai');
+chai.use(require('chai-match'));
 const chaiHttp = require('chai-http');
 const fs = require('fs');
-const expect = require('chai').expect;
+const expect = chai.expect;
 const rimraf = require('rimraf');
 
 // require('should');
@@ -38,6 +39,8 @@ describe('rest api', function () {
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.property('msg');
           expect(res.body).to.have.property('uploadID');
+          // test uploadID has uuid format
+          expect(res.body.uploadID).to.match(/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/);
           expect(res.body).to.have.property('name');
           expect(res.body.uploadID).to.be.an('string');
           done();
@@ -60,6 +63,8 @@ describe('rest api', function () {
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.property('msg');
           expect(res.body).to.have.property('uploadID');
+          // test uploadID has uuid format
+          expect(res.body.uploadID).to.match(/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/);
           expect(res.body).to.have.property('name');
           expect(res.body.uploadID).to.be.an('string');
 
@@ -70,7 +75,7 @@ describe('rest api', function () {
               console.log(err);
               expect(res).to.have.status(200);
               expect(res).to.be.json;
-              expect(res.body).to.have.a.property('iLevel');
+              expect(res.body).to.have.a.property('aLevel');
               expect(res.body).to.have.a.property('path');
               done();
             });

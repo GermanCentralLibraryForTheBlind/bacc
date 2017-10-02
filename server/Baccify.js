@@ -3,7 +3,7 @@ const spawn = require('child-process-promise').spawn;
 const path = require('path');
 
 const logger = require('./logger');
-const ReportModeler = require('./ReportModeler');
+const ReportModeler = require('./report/ReportModeler');
 
 const aceModule = path.join(__dirname, '/node_modules/ace-core/dist/cli/cli.js');
 

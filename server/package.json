@@ -23,14 +23,17 @@
     "dateformat": "^2.0.0",
     "debug": "^3.0.0",
     "express": "^4.15.4",
+    "fs-extra": "^4.0.2",
     "ip": "^1.1.5",
     "multer": "^1.3.0",
+    "mustache": "^2.3.0",
     "node-schedule": "^1.2.4",
     "pm2": "^2.6.1",
     "rimraf": "^2.6.1",
     "rxjs": "^5.4.1",
     "sendmail": "^1.2.0",
     "ua-parser": "^0.3.5",
+    "underscore": "^1.8.3",
     "uuid": "^3.1.0",
     "winston": "^2.3.1",
     "zone.js": "^0.8.14"
@@ -38,6 +41,7 @@
   "devDependencies": {
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
+    "chai-match": "^1.1.1",
     "mocha": "^3.5.0"
   }
 }
