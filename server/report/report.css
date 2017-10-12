@@ -113,7 +113,7 @@ label {
 }
 
 .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
-  background-color: #550055;
+  background-color: #043f91;
   color:#eeeeee;
   cursor: pointer;
 }
@@ -155,4 +155,11 @@ code {
   color: #bd4147;
   background-color: #f7f7f9;
   border-radius: 0.25rem;
+}
+
+
+.selected td
+{
+  background-color: #550055 !important;
+  color:#eeeeee;
 }

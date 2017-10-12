@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./../report.css"/>
+  <link rel="stylesheet" href="./report.css"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <h1>{{greetings}}</h1>
@@ -14,7 +24,8 @@
         <div class="row">
           <div class="col-md-4">
             <div id="template-table">
-              <table class="table table-striped table-hover">
+              <table id="template-violation-table" class="table table-striped table-hover"  data-click-to-select="true"
+                     data-single-select="true">
                 <thead>
                 <th>Violation</th>
                 <th>Count</th>
@@ -118,7 +129,6 @@
       </div>
     </div>
   </div>
-
   <input type="radio" name="tabs" id="image-description">
   <div class="tab-label-content" id="tab3-content">
     <label for="image-description">Image description</label>
@@ -133,7 +143,7 @@
         <!--{{#images}}-->
         <tr>
           <td>
-            <img src="data/{{path}}" alt="{{alt}}"/>
+            <img src="data/{{src}}" alt="{{alt}}"/>
           </td>
           <td style="width:80px"></td>
           <td>
@@ -167,21 +177,12 @@
   <div class="slide"></div>
 
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="./../report.css"/>
-<link rel="stylesheet" href="./report.css"/>
-<link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 <script>
-  $('.table > tbody > tr').click(function () {
+  $('#template-violation-table > tbody > tr').click(function () {
     $("#details").find(".panel[id]").css("display", "none");
     $('#p' + this.id).toggle();
+    $('.selected').removeClass('selected');
+    $(this).addClass('selected');
   });
 </script>
 </body>
