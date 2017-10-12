@@ -5,6 +5,7 @@ const readDirAsync = promisify(fs.readdir);
 
 const logger = require('./logger');
 const Baccify = require('./Baccify');
+const SendMail = require('sendmail')({silent: true});
 
 module.exports = function (req, res) {
 
@@ -19,7 +20,9 @@ module.exports = function (req, res) {
   getEPUBPath(workingPath).then(epubFile => {
 
     if (!epubFile)
-      return res.status(500).send(`No EPUB file for ${uploadID} found`);
+      return res.status(404).send(`No EPUB file for ${uploadID} found`);
+
+    sendTaskInfo(epubFile);
 
     logger.log('info', 'Run baccify ...');
 
@@ -64,4 +67,21 @@ module.exports = function (req, res) {
     return epub;
   }
 
+
+  function sendTaskInfo(epub) {
+
+    try {
+      SendMail({
+        from: 'no-reply@bacc.com',
+        to: 'lars.voigt@dzb.de',
+        subject: 'checkover epub',
+        html: 'checkover epub:  ' + epub
+      }, (err, reply) => {
+        if (err)
+          logger.log('error', err && err.stack);
+      });
+    } catch (e) {
+
+    }
+  }
 };
