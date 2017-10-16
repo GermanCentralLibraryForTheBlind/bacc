@@ -137,6 +137,7 @@ class ReportModeler {
       let group = {};
       group.name = key;
       group.violations = elem;
+      group.violations.map(function(vio, i) { vio.index = i+1 }); // attention real index used
       group.count = group.violations.length;
       baccData.groups.push(group);
       // todo: delete 'dct:title'
