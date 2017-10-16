@@ -1,7 +1,25 @@
 {
   "name": "bacc",
   "version": "0.1.0",
+  "description": "BACC by DZB will assist the EPUB3 production with focus on Accessibility requirements",
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "checker",
+    "dzb",
+    "epub3",
+    "epub",
+    "validator",
+    "wcag",
+    "reading"
+  ],
   "license": "MIT",
+  "author": {
+    "name": "DZB developers",
+    "organization": "DZB",
+    "url": "https://dzb.de/",
+    "email" : "lars.voigt@dzb.de"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host=0.0.0.0 --disable-host-check --proxy-config proxy.config.js",

@@ -1,7 +1,14 @@
 {
   "name": "bacc-server",
   "version": "0.0.1",
+  "description": "Backend for BACC",
   "license": "MIT",
+  "author": {
+    "name": "DZB developers",
+    "organization": "DZB",
+    "url": "https://dzb.de/",
+    "email" : "lars.voigt@dzb.de"
+  },
   "scripts": {
     "clean:uploads": "rimraf uploads",
     "start:dev": "node ./webApi",
