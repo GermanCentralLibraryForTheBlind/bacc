@@ -7,7 +7,7 @@
     "name": "DZB developers",
     "organization": "DZB",
     "url": "https://dzb.de/",
-    "email" : "lars.voigt@dzb.de"
+    "email": "lars.voigt@dzb.de"
   },
   "scripts": {
     "clean:uploads": "rimraf uploads",

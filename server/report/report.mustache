@@ -61,29 +61,32 @@
                   <div class="violation">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <b>{{index}}.</b>
+                        <b>{{index}}. Impact of Accessibilty:</b> {{earl:impact}}
                       </div>
                       <div class="panel-body">
                         <p>
-                          <b>Impact of Accessibilty:</b> {{earl:impact}}
+                          <b>EPUB spine Item:</b> <a>{{spineItem}}</a>
                         </p>
                         <div class="panel panel-warning">
                           <div class="panel-heading">
                             Description
+                            <div style="float: right">
+                              <b>More help:</b>
+                              <a href="{{helpUrl}}">{{helpUrl}}</a>
+                            </div>
                           </div>
                           <div class="panel-body">{{dct:description}}</div>
                         </div>
-                        <p><b>Spine Item:</b> <a>{{spineItem}}</a></p>
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="source-code">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#expandSource"
+                              <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
                                  aria-expanded="false" aria-controls="collapseOne">
                                 Source Code
                               </a>
                             </h4>
                           </div>
-                          <div id="expandSource" class="panel-collapse collapse out" role="panel"
+                          <div id="expandSource-{{name}}-{{index}}" class="panel-collapse collapse out" role="panel"
                                aria-labelledby="source-code">
                             <div class="panel-body">
                               <pre><code class="html">
@@ -97,11 +100,6 @@
                             </div>
                           </div>
                         </div>
-                        <p>
-                          <br>
-                          <b>More details:</b>
-                          <a href="{{helpUrl}}">{{helpUrl}}</a>
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -239,6 +237,8 @@
     $('.selected').removeClass('selected');
     $(this).addClass('selected');
   });
+
+  $('#template-violation-table > tbody > tr').first().trigger('click')
 </script>
 </body>
 </html>
