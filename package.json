@@ -49,6 +49,8 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@jaspero/ng2-alerts": "0.0.7",
+    "@ngx-translate/core": "^8.0.0",
+    "@ngx-translate/http-loader": "^2.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "ng2-file-upload": "^1.2.1",

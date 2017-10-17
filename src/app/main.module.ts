@@ -1,10 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FileUploadModule} from "ng2-file-upload";
 import {JasperoAlertsModule} from "@jaspero/ng2-alerts";
+import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -29,6 +32,18 @@ import {CheckOverService} from "./check-over/check-over.service";
 import {ReportService} from "./report/report.service";
 import {ModalComponent} from './report/modal';
 
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+const translateConfig : TranslateModuleConfig = {
+  loader: {
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }
+};
 
 const routes: Routes = [
   {path: 'co', component: CheckOverComponent},
@@ -59,6 +74,8 @@ const routes: Routes = [
     MdProgressBarModule,
     HttpModule,
     JasperoAlertsModule,
+    HttpClientModule,
+    TranslateModule.forRoot(translateConfig),
     RouterModule.forRoot(routes)
   ],
   exports: [],

@@ -46,13 +46,13 @@
                class="my-drop-zone">
             <div class="upload">
               <md-icon class="cloud-icon-upload">cloud_upload</md-icon>
-              <h4>Drag & Drop your file here to check-over your EPUB<br><br> or</h4>
+              <h4 [innerHTML]="'BACC.DRAG_DROP' | translate"></h4>
               <div class="app-component-filler"></div>
               <input id="input-file-id" ng2FileSelect
                      [uploader]="uploader"
                      [ngClass]="{'hide': true}"
                      type="file"/>
-              <label for="input-file-id" class="btn-file"> Choose a file to upload.</label>
+              <label for="input-file-id" class="btn-file">{{ 'BACC.FILE_DIALOG' | translate }}</label>
             </div>
           </div>
         </div>
@@ -68,13 +68,13 @@
             <table style="width:100%">
               <thead>
               <tr>
-                <th>Accessibility Level</th>
-                <th>Name</th>
-                <th><strong>Report</strong></th>
-                <th>Size</th>
-                <th>Progress</th>
-                <th>Upload-Status</th>
-                <th>Actions</th>
+                <th>{{ 'BACC.ACCESSIBILITY_LEVEL' | translate }}</th>
+                <th>{{ 'BACC.NAME' | translate }}</th>
+                <th><strong>{{ 'BACC.REPORT' | translate }}</strong></th>
+                <th>{{ 'BACC.SIZE' | translate }}</th>
+                <th>{{ 'BACC.PROGRESS' | translate }}</th>
+                <th>{{ 'BACC.UPLOAD_STATUS' | translate }}</th>
+                <th>{{ 'BACC.ACTIONS' | translate }}</th>
               </tr>
               </thead>
               <tbody>
@@ -132,21 +132,21 @@
                     (click)="uploader.uploadAll()"
                     [disabled]="!uploader.getNotUploadedItems().length">
               <md-icon>file_upload</md-icon>
-              Check over all
+              {{ 'BACC.CHECK_OVER_ALL' | translate }}
             </button>
             <button md-raised-button color="warn" class="my-btn"
                     type="button"
                     (click)="uploader.cancelAll()"
                     [disabled]="!uploader.isUploading">
               <md-icon>cancel</md-icon>
-              Cancel all
+              {{ 'BACC.CANCEL_ALL' | translate }}
             </button>
             <button md-raised-button color="accent" class="my-btn"
                     type="button"
                     (click)="uploader.clearQueue()"
                     [disabled]="!uploader.queue.length">
               <md-icon>delete</md-icon>
-              Remove all
+              {{ 'BACC.REMOVE_ALL' | translate }}
             </button>
             <!--</md-card>-->
           </div>

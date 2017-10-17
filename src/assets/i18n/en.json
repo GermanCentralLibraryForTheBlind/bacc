@@ -1,0 +1,16 @@
+{
+  "BACC": {
+    "PROGRESS": "Progress",
+    "ACCESSIBILITY_LEVEL": "Accessibility Level",
+    "NAME": "Name",
+    "REPORT": "Report",
+    "SIZE": "Size",
+    "UPLOAD_STATUS": "Upload-Status",
+    "ACTIONS": "Actions",
+    "CHECK_OVER_ALL": "Check over all",
+    "CANCEL_ALL": "Cancel all",
+    "REMOVE_ALL": "Remove all",
+    "DRAG_DROP": "Drag & Drop your file here to check-over your EPUB<br><br> or",
+    "FILE_DIALOG": "Choose a file to upload."
+  }
+}
