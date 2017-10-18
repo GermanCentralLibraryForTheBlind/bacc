@@ -5,6 +5,7 @@ const path = require('path');
 const _ = require('underscore');
 
 const logger = require('./../logger');
+const Localise = require('./locales/Localise');
 
 const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
@@ -58,12 +59,16 @@ class ReportModeler {
 
   generateReport() {
 
-    const dataToRender = {greetings: "Have a good day!"};
-    dataToRender.headers = ["Violation", "Count"]; // localisation
+    let dataToRender = {};
     // TODO own mapper module
     dataToRender.groups = this.getBACCReportData().groups;
-    dataToRender.outlines =  this._aceData.outlines;
+    dataToRender.outlines = this._aceData.outlines;
     dataToRender.images = this._aceData.data.images;
+
+    dataToRender = new Localise()
+      .setReportData(dataToRender)
+      .setLocale('de')
+      .build();
 
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), dataToRender);
@@ -137,7 +142,9 @@ class ReportModeler {
       let group = {};
       group.name = key;
       group.violations = elem;
-      group.violations.map(function(vio, i) { vio.index = i+1 }); // attention real index used
+      group.violations.map(function (vio, i) {
+        vio.index = i + 1
+      }); // attention real index used
       group.count = group.violations.length;
       baccData.groups.push(group);
       // todo: delete 'dct:title'
@@ -160,7 +167,6 @@ class ReportModeler {
 
     this.loadAceOutput();
     const aLevel = this._impacts.getAccessibilityLevel(this._aceData);
-    this.getBACCReportData();
     this.generateReport();
     this.copyReportStyle();
 
