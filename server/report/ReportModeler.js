@@ -65,6 +65,7 @@ class ReportModeler {
     dataToRender.outlines = this._aceData.outlines;
     dataToRender.images = this._aceData.data.images;
 
+    // console.log(JSON.stringify(dataToRender));
     dataToRender = new Localise()
       .setReportData(dataToRender)
       .setLocale('de')

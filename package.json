@@ -28,7 +28,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "clean": "rimraf dist && mkdir dist",
-    "build:server": "rimraf dist/server && mkdir dist/server && mkdir dist/server/report &&  cp server/*.js dist/server &&  cp server/report/*.* dist/server/report && cp server/package.json dist/server",
+    "build:server": "rimraf dist/server && mkdir dist/server && mkdir dist/server/report && mkdir dist/server/report/locales &&  cp server/*.js dist/server &&  cp server/report/*.* dist/server/report && cp server/report/locales/*.* dist/server/report/locales && cp server/package.json dist/server",
     "start:bacc:server": "node ./server/webApi",
     "clear:uploads": "rimraf uploads && rimraf server/uploads",
     "postinstall": "cd server && npm install",
