@@ -34,13 +34,16 @@ export class ReportComponent {
   }
 
   setItemOnSuccess(item: FileItem) {
-
+    console.log('setItemOnSuccess');
     item.onSuccess = (response: any, status: any, headers: any): any =>
       this.onSuccessItem(response, item);
+
+    item.onComplete = (response: any, status: any, headers: any): any =>
+      console.log('completed');
   }
 
   private onSuccessItem(response: string, item: FileItem): any {
-
+    console.log('onSuccessItem');
     const responseData = JSON.parse(response);
     const uploadID = responseData.uploadID;
     this.btnId = uploadID;

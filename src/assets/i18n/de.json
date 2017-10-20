@@ -1,16 +1,16 @@
 {
   "BACC": {
     "PROGRESS": "Fortschritt",
+    "REMOVE_ALL": "Alle löschen",
     "ACCESSIBILITY_LEVEL": "Grad der Barrierefreiheit",
     "NAME": "Dateiname",
     "REPORT": "Fehlerbericht",
     "SIZE": "Dateigröße",
-    "UPLOAD_STATUS": "Upload-Status",
     "ACTIONS": "Funktionen",
     "CHECK_OVER_ALL": "Alle Dateien prüfen",
     "CANCEL_ALL": "Alle Prüfungen abbrechen",
     "REMOVE_ALL": "Alle Dateien entfernen",
     "DRAG_DROP": "Zur Prüfung von EPUBs. eine oder mehrere Dateien per <b>Drag & Drop</b> einfügen <br><br>oder",
-"FILE_DIALOG": "Datei zum Hochladen auswählen."
+    "FILE_DIALOG": "Datei zum Hochladen auswählen."
   }
 }
