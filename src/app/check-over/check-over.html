@@ -73,7 +73,6 @@
                 <th><strong>{{ 'BACC.REPORT' | translate }}</strong></th>
                 <th>{{ 'BACC.SIZE' | translate }}</th>
                 <th>{{ 'BACC.PROGRESS' | translate }}</th>
-                <th>{{ 'BACC.UPLOAD_STATUS' | translate }}</th>
                 <th>{{ 'BACC.ACTIONS' | translate }}</th>
               </tr>
               </thead>
@@ -92,11 +91,6 @@
                     [bufferValue]="item.progress"
                     class="custom-progressbar">
                   </md-progress-bar>
-                </td>
-                <td class="text-center">
-                  <span *ngIf="item.isSuccess"><md-icon>done</md-icon></span>
-                  <span *ngIf="item.isCancel"><md-icon>not_interested</md-icon></span>
-                  <span *ngIf="item.isError"><md-icon>delete</md-icon></span>
                 </td>
                 <td nowrap>
                   <button md-icon-button
