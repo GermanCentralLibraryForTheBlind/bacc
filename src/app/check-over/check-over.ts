@@ -19,6 +19,7 @@ import {ReportComponent} from "../report/report";
 export class CheckOverComponent implements OnInit {
 
   public hasBaseDropZoneOver: boolean = false;
+  public autoStartCheckOver: boolean = true;
   public uploader: FileUploader;
 
   @ViewChildren(ReportComponent) reports: QueryList<ReportComponent>;
@@ -33,7 +34,10 @@ export class CheckOverComponent implements OnInit {
 
           if (reportInstance.itemIndex === this.uploader.getIndexOfItem(fileItem))
             reportInstance.setItemOnSuccess(fileItem);
-        })
+        });
+
+        if (this.autoStartCheckOver)
+          this.uploader.uploadAll();
       });
     }
   }

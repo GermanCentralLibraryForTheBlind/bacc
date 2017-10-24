@@ -85,9 +85,9 @@
   text-align: left;
 }
 
-.own-table-layout thead tr th:first-child, tbody tr td:first-child {
-  padding-right: 5%;
-}
+/*.own-table-layout thead tr th:first-child, tbody tr td:first-child {*/
+  /*padding-right: 5%;*/
+/*}*/
 
 .custom-progressbar {
   height: 5px;
