@@ -14,7 +14,7 @@ module.exports = function (req, res) {
     res.status(500).send('check-over:  You have to request this route with parameter uploadID!');
     return;
   }
-
+  const lang = req.query['lang'];
   const workingPath = path.join(req.app.UploadDir, uploadID);
 
   getEPUBPath(workingPath).then(epubFile => {
@@ -27,9 +27,12 @@ module.exports = function (req, res) {
     logger.log('info', 'Run baccify ...');
 
     const baccify = new Baccify();
-    baccify.setInputFile(path.join(workingPath, epubFile));
-    baccify.setOutputPath(workingPath);
-    baccify.check()
+
+    baccify
+      .setInputFile(path.join(workingPath, epubFile))
+      .setOutputPath(workingPath)
+      .setLanguage(lang)
+      .check()
       .then((report) => {
 
         logger.log('info', 'Run baccify ready');

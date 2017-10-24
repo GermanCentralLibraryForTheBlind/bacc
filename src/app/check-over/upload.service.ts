@@ -6,7 +6,7 @@ import {FileUploader, FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
 export class UploadService {
 
   private uploader: FileUploader;
-  private webApiUpload : string = '/upload';
+  private webApiUpload: string = '/upload';
 
   constructor() {
 
@@ -22,8 +22,10 @@ export class UploadService {
       // mode is 'include'
       item.withCredentials = false;
     };
-    this.uploader.onErrorItem = ((item: FileItem, response: string,
-                                  status: number, headers: ParsedResponseHeaders): any => {
+    this.uploader.onErrorItem = ((item: FileItem,
+                                  response: string,
+                                  status: number,
+                                  headers: ParsedResponseHeaders): any => {
       console.error(response);
     });
   }

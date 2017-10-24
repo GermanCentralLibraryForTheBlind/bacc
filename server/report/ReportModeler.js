@@ -47,8 +47,9 @@ class Impact {
 
 class ReportModeler {
 
-  constructor(output) {
+  constructor(output, lang) {
     this._output = output;
+    this._language = lang || 'en';
     this._impacts = new Impact();
   }
 
@@ -68,7 +69,7 @@ class ReportModeler {
     // console.log(JSON.stringify(dataToRender));
     dataToRender = new Localise()
       .setReportData(dataToRender)
-      .setLocale('de')
+      .setLocale(this._language)
       .build();
 
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');

@@ -17,7 +17,6 @@ export class AppComponent {
     let browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
 
-
     router.navigate(['/co']); // bootstrap default route ...
   }
 }

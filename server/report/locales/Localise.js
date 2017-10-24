@@ -4,9 +4,13 @@ const baccEN = require('./bacc_en.json');
 const axeDE = require('./axe_de.json');
 const aceDE = require('./ace_de.json');
 
+const logger = require('./../../logger');
+
+// default language is english
 class Localise {
 
-  constructor() {}
+  constructor() {
+  }
 
   setReportData(value) {
     this._data = value;
@@ -14,11 +18,16 @@ class Localise {
   }
 
   setLocale(value) {
-    this._locale = value;
+    this._locale = value || 'en';
+    logger.log('info', 'Report localisation ' + this._locale);
     return this;
   }
 
   localiseRuleDescription(lang) {
+
+    // default en
+    if (lang !== 'de')
+      return;
 
     const groups = this._data.groups;
     let locale = axeDE;

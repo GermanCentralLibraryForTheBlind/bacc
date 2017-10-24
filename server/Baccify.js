@@ -23,6 +23,11 @@ class Baccify {
     return this;
   }
 
+  setLanguage(value) {
+    this._language = value || 'en';
+    return this;
+  }
+
   check() {
 
     const that = this;
@@ -34,7 +39,7 @@ class Baccify {
 
           logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
 
-          const r = new ReportModeler(that._output);
+          const r = new ReportModeler(that._output, that._language);
           resolve(r.build());
         })
         .catch((err) => {
