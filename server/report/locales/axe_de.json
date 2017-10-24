@@ -1,5 +1,5 @@
 {
-  "lang": "No translation",
+  "lang": "de",
   "rules": {
     "accesskeys": {
       "description": "No translation",
@@ -74,7 +74,7 @@
       "help": "No translation"
     },
     "document-title": {
-      "description": "No translation",
+      "description": "Stellt sicher daß das HTML-Dokument einen Titel hat.",
       "help": "No translation"
     },
     "duplicate-id": {

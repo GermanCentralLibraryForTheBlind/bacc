@@ -1,0 +1,19 @@
+{
+  "lang": "de",
+  "rules": {
+    "metadata-schema-accessmode": {
+      "description": "Stellt sicher das 'schema:accessMode' vorhanden ist."
+    },
+    "metadata-schema-accessibilityfeature": {
+      "description": "Stellt sicher das 'schema:accessibilityFeature' vorhanden ist."
+    },
+    "metadata-schema-accessibilitysummary": {
+      "description": "Stellt sicher das 'schema:accessibilitySummary' vorhanden ist."
+    },
+    "metadata-schema-accessmodesufficient": {
+      "description": "Stellt sicher das 'schema:accessModeSufficient' vorhanden ist."
+    }
+
+  }
+}
+

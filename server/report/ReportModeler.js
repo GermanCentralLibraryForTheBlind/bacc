@@ -118,15 +118,19 @@ class ReportModeler {
 
     for (let i in violationsGroupedBySpineItem) {
 
-      let spineItemViolations = violationsGroupedBySpineItem[i];
-      let spineItem = spineItemViolations["earl:testSubject"].url;
+      let violationsInSpineItem = violationsGroupedBySpineItem[i];
+      let spineItem = violationsInSpineItem["earl:testSubject"].url;
+      console.log('spineItem: ' + spineItem);
 
+      for (let j in violationsInSpineItem.assertions) {
 
-      for (let j in spineItemViolations.assertions) {
-        let violation = spineItemViolations.assertions[j];
+        let violation = violationsInSpineItem.assertions[j];
 
+        violation['earl:test'].assertedBy = violation['earl:assertedBy'];
+        violation['earl:test'].spineItem = spineItem;
+
+        console.log('assertedBy: ' + violation['earl:test'].assertedBy);
         violations.push(violation['earl:test']);
-        violations[j].spineItem = spineItem;
       }
     }
     return this.makeViolationGroups(violations);
@@ -141,8 +145,13 @@ class ReportModeler {
 
     _(groupedByViolation).each(function (elem, key) {
       let group = {};
+
+      if (elem.length == 0)
+        logger.log('error', 'Found no violations in group!');
+
       group.name = key;
       group.violations = elem;
+      group.assertedBy = elem.length > 0 ? elem[0].assertedBy : 'No violations in group!';
       group.violations.map(function (vio, i) {
         vio.index = i + 1
       }); // attention real index used
