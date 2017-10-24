@@ -5,6 +5,7 @@ const path = require('path');
 const _ = require('underscore');
 
 const logger = require('./../logger');
+const Localise = require('./locales/Localise');
 
 const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
@@ -46,8 +47,9 @@ class Impact {
 
 class ReportModeler {
 
-  constructor(output) {
+  constructor(output, lang) {
     this._output = output;
+    this._language = lang || 'en';
     this._impacts = new Impact();
   }
 
@@ -58,12 +60,17 @@ class ReportModeler {
 
   generateReport() {
 
-    const dataToRender = {greetings: "Have a good day!"};
-    dataToRender.headers = ["Violation", "Count"]; // localisation
+    let dataToRender = {};
     // TODO own mapper module
     dataToRender.groups = this.getBACCReportData().groups;
-    dataToRender.outlines =  this._aceData.outlines;
+    dataToRender.outlines = this._aceData.outlines;
     dataToRender.images = this._aceData.data.images;
+
+    // console.log(JSON.stringify(dataToRender));
+    dataToRender = new Localise()
+      .setReportData(dataToRender)
+      .setLocale(this._language)
+      .build();
 
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), dataToRender);
@@ -112,15 +119,19 @@ class ReportModeler {
 
     for (let i in violationsGroupedBySpineItem) {
 
-      let spineItemViolations = violationsGroupedBySpineItem[i];
-      let spineItem = spineItemViolations["earl:testSubject"].url;
+      let violationsInSpineItem = violationsGroupedBySpineItem[i];
+      let spineItem = violationsInSpineItem["earl:testSubject"].url;
+      console.log('spineItem: ' + spineItem);
 
+      for (let j in violationsInSpineItem.assertions) {
 
-      for (let j in spineItemViolations.assertions) {
-        let violation = spineItemViolations.assertions[j];
+        let violation = violationsInSpineItem.assertions[j];
 
+        violation['earl:test'].assertedBy = violation['earl:assertedBy'];
+        violation['earl:test'].spineItem = spineItem;
+
+        console.log('assertedBy: ' + violation['earl:test'].assertedBy);
         violations.push(violation['earl:test']);
-        violations[j].spineItem = spineItem;
       }
     }
     return this.makeViolationGroups(violations);
@@ -135,9 +146,16 @@ class ReportModeler {
 
     _(groupedByViolation).each(function (elem, key) {
       let group = {};
+
+      if (elem.length == 0)
+        logger.log('error', 'Found no violations in group!');
+
       group.name = key;
       group.violations = elem;
-      group.violations.map(function(vio, i) { vio.index = i+1 }); // attention real index used
+      group.assertedBy = elem.length > 0 ? elem[0].assertedBy : 'No violations in group!';
+      group.violations.map(function (vio, i) {
+        vio.index = i + 1
+      }); // attention real index used
       group.count = group.violations.length;
       baccData.groups.push(group);
       // todo: delete 'dct:title'
@@ -160,7 +178,6 @@ class ReportModeler {
 
     this.loadAceOutput();
     const aLevel = this._impacts.getAccessibilityLevel(this._aceData);
-    this.getBACCReportData();
     this.generateReport();
     this.copyReportStyle();
 
