@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -9,7 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  constructor(router: Router, private translate: TranslateService) {
+  constructor(private translate: TranslateService) {
 
     // bacc localisation
     translate.addLangs(["en", "de"]);
