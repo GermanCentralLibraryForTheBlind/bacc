@@ -12,6 +12,12 @@
     },
     "metadata-schema-accessmodesufficient": {
       "description": "Stellt sicher das 'schema:accessModeSufficient' vorhanden ist."
+    },
+    "epub-title": {
+      "description": "???"
+    },
+    "epub-pagesource": {
+      "description": "???"
     }
 
   }

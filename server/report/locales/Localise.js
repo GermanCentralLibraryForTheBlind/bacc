@@ -42,7 +42,15 @@ class Localise {
       else
         logger.log('error', 'Rule description localisation: assertedBy not valid.');
 
-      const localeDescription = locale.rules[groups[i].name].description;
+      const translatedRule = locale.rules[groups[i].name]
+
+      if(translatedRule == undefined)
+      {
+        logger.log('error', 'No translation found for rule ' + groups[i].name + ' from ' + groups[i].assertedBy);
+        continue;
+      }
+
+      const localeDescription = translatedRule.description;
 
       if (localeDescription !== "No translation") {
         groups[i].violations.map((obj) => {
