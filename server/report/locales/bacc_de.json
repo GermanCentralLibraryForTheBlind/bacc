@@ -1,19 +1,19 @@
 {
   "labeling": {
     "greetings": "Have a good day!",
-    "violation": "Violation",
+    "violation": "Regelverletzung",
     "count": "Anzahl",
-    "outlines": "Outlines",
-    "imgDescription": "Image description",
+    "outlines": "Gliederungen",
+    "imgDescription": "Bildbeschreibungen",
     "details": "Details",
     "impact": "Einfluss auf die Zugänglichkeit",
-    "help": "More help",
-    "code": "Source Code",
+    "help": "Weiterführende Hilfe",
+    "code": "Quellcode",
     "tocEPUB": "EPUB Table of Contents",
-    "headingsOutline": "Headings outline",
-    "htmlOutline": "HTML outline",
-    "description": "Description",
-    "image": "Image",
-    "location": "Location"
+    "headingsOutline": "Überschriftenebenen",
+    "htmlOutline": "HTML-Struktur",
+    "description": "Beschreibung",
+    "image": "Bild",
+    "location": "Fundstelle"
   }
 }
