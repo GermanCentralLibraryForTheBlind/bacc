@@ -46,7 +46,7 @@ const translateConfig : TranslateModuleConfig = {
 };
 
 const routes: Routes = [
-  {path: 'co', component: CheckOverComponent},
+  // {path: 'co', component: CheckOverComponent},
   {path: 'report', component: ReportComponent}
 ];
 
