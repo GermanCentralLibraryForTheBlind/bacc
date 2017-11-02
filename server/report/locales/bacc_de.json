@@ -1,19 +1,19 @@
 {
   "labeling": {
     "greetings": "Have a good day!",
-    "violation": "Violation",
+    "violation": "Regelverstoß",
     "count": "Anzahl",
-    "outlines": "Outlines",
-    "imgDescription": "Image description",
+    "outlines": "Abbildung der Struktur des Buches",
+    "imgDescription": "Bildbeschreibungen",
     "details": "Details",
     "impact": "Einfluss auf die Zugänglichkeit",
-    "help": "More help",
-    "code": "Source Code",
-    "tocEPUB": "EPUB Table of Contents",
-    "headingsOutline": "Headings outline",
-    "htmlOutline": "HTML outline",
-    "description": "Description",
-    "image": "Image",
-    "location": "Location"
+    "help": "Weiterführende Informationen",
+    "code": "Quellcode",
+    "tocEPUB": "Erzeugt aus der EPUB-TOC-Datei",
+    "headingsOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Elementnamen)",
+    "htmlOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Nummerierung)",
+    "description": "Beschreibung",
+    "image": "Bild",
+    "location": "Bereich im Dokument"
   }
 }
