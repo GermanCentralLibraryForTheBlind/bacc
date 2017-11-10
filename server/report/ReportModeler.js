@@ -9,11 +9,11 @@ const Localise = require('./locales/Localise');
 
 const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
+const ACE_REPORT = '/report.json';
 const BACC_REPORT = '/bacc_report.html';
 
 
 class Impact {
-
   constructor() {
     this.init();
   }
@@ -39,7 +39,6 @@ class Impact {
         iLevel = impactLevels[prop];
         break;
       }
-
     return iLevel;
   }
 }
@@ -55,7 +54,7 @@ class ReportModeler {
 
   // private ???
   loadAceOutput() {
-    this._aceData = require(this._output + '/ace.json');
+    this._aceData = require(this._output + ACE_REPORT);
   }
 
   generateReport() {
@@ -134,33 +133,57 @@ class ReportModeler {
         violations.push(violation['earl:test']);
       }
     }
-    return this.makeViolationGroups(violations);
+    return this.groupViolationsAndMapToBacc(violations);
   }
 
-  makeViolationGroups(violations) {
+  groupViolationsAndMapToBacc(violations) {
 
     let groupedByViolation = _.groupBy(violations, 'dct:title');
 
     let baccData = {};
+    baccData.totalCount = 0;
     baccData.groups = [];
 
-    _(groupedByViolation).each(function (elem, key) {
+    _(groupedByViolation).each((elem, key) => {
+
+      // console.log(elem);
       let group = {};
 
       if (elem.length == 0)
         logger.log('error', 'Found no violations in group!');
 
+      // name of rule
       group.name = key;
+
+      // grouped violations
       group.violations = elem;
+
+      // engine axe or ace
       group.assertedBy = elem.length > 0 ? elem[0].assertedBy : 'No violations in group!';
+
       group.violations.map(function (vio, i) {
         vio.index = i + 1
-      }); // attention real index used
+        // attention violation counter start on 1
+      });
+
+      // total count of violation type
       group.count = group.violations.length;
+
+
+      group.ruleSet = elem.length > 0 ? elem[0].rulesetTags.filter(isSpec).toString() : '';
+
+      function isSpec(value) {
+        return _.contains(['wcag2a','wcag2a','EPUB'], value);
+      }
+
+      // total count of all violation
+      baccData.totalCount += group.count;
+
       baccData.groups.push(group);
       // todo: delete 'dct:title'
     });
 
+    console.log(baccData);
     return baccData;
   }
 
@@ -177,10 +200,10 @@ class ReportModeler {
   build() {
 
     this.loadAceOutput();
-    const aLevel = this._impacts.getAccessibilityLevel(this._aceData);
     this.generateReport();
     this.copyReportStyle();
 
+    const aLevel = this._impacts.getAccessibilityLevel(this._aceData);
     const Report = {
       aLevel: aLevel,
       path: this._output + BACC_REPORT

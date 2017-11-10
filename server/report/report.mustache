@@ -24,12 +24,14 @@
                      data-single-select="true">
                 <thead>
                 <th>{{labeling.violation}}</th>
+                <th>Standard</th>
                 <th>{{labeling.count}}</th>
                 </thead>
                 <tbody>
                 <!--{{#groups}}-->
                 <tr id="{{name}}">
                   <td>{{name}}</td>
+                  <td>{{ruleSet}}</td>
                   <td>{{count}}</td>
                 </tr>
                   <!--{{/groups}}-->
@@ -55,6 +57,7 @@
                 </div>
               </div>
               <div class="panel-body">
+{{totalCount}}
               <!--{{#groups}}-->
                 <div id="p-{{name}}" class="violation" style="display: none">
                 <!--{{#violations}}-->
