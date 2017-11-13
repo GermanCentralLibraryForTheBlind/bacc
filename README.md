@@ -24,11 +24,5 @@ BaCC based on [Ace by DAISY](https://github.com/daisy/ace-core)
 TODO
 
 #### Install backend on Linux server 
-Ace uses Nightmare as headless browser automation library so the issue on a linux server is:
-*"Nightmare uses Electron which requires an X display; since your server doesn't have a display, you can use Xvfb to provide a virtual one."*
-
-To close the gap, install this:
-```
-apt-get install run-xvfb
-
-```
+[hint puppeteer](https://github.com/GoogleChrome/puppeteer/issues/404
+)

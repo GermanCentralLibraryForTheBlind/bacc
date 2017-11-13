@@ -11,7 +11,7 @@ const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
 const ACE_REPORT = '/report.json';
 const BACC_REPORT = '/bacc_report.html';
-
+const guidelineTags = {wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA', EPUB: 'EPUB'};
 
 class Impact {
   constructor() {
@@ -27,7 +27,7 @@ class Impact {
     };
   }
 
-  getAccessibilityLevel(aceData) {
+  getTotalAccessibilityImpactLevel(aceData) {
 
     let iLevel = {'name': 'no', 'color': 'Green'}; // default no impact
     const aceDataAsString = JSON.stringify(aceData);
@@ -40,6 +40,10 @@ class Impact {
         break;
       }
     return iLevel;
+  }
+
+  getAccessibilityImpactLevel(impact) {
+    return this._impacts[impact];
   }
 }
 
@@ -61,7 +65,7 @@ class ReportModeler {
 
     let dataToRender = {};
     // TODO own mapper module
-    dataToRender.groups = this.getBACCReportData().groups;
+    dataToRender = this.getBACCReportData();
     dataToRender.outlines = this._aceData.outlines;
     dataToRender.images = this._aceData.data.images;
 
@@ -136,6 +140,10 @@ class ReportModeler {
     return this.groupViolationsAndMapToBacc(violations);
   }
 
+  guidelineTagForHumans(tag) {
+    return guidelineTags[tag];
+  }
+
   groupViolationsAndMapToBacc(violations) {
 
     let groupedByViolation = _.groupBy(violations, 'dct:title');
@@ -149,44 +157,40 @@ class ReportModeler {
       // console.log(elem);
       let group = {};
 
-      if (elem.length == 0)
+      if (elem.length == 0) {
         logger.log('error', 'Found no violations in group!');
-
+        return;
+      }
       // name of rule
       group.name = key;
-
       // grouped violations
       group.violations = elem;
-
+      group.impact = this._impacts.getAccessibilityImpactLevel(elem[0]['earl:impact']);
       // engine axe or ace
-      group.assertedBy = elem.length > 0 ? elem[0].assertedBy : 'No violations in group!';
-
+      group.assertedBy = elem[0].assertedBy;
+      // add index
       group.violations.map(function (vio, i) {
         vio.index = i + 1
         // attention violation counter start on 1
       });
-
       // total count of violation type
       group.count = group.violations.length;
-
-
-      group.ruleSet = elem.length > 0 ? elem[0].rulesetTags.filter(isSpec).toString() : '';
-
-      function isSpec(value) {
-        return _.contains(['wcag2a','wcag2a','EPUB'], value);
-      }
-
+      // add guideline
+      const that = this;
+      group.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags.filter(
+        v => _.contains(['wcag2a', 'wcag2a', 'EPUB'], v))
+      );
       // total count of all violation
       baccData.totalCount += group.count;
+
 
       baccData.groups.push(group);
       // todo: delete 'dct:title'
     });
 
-    console.log(baccData);
+    // console.log(baccData);
     return baccData;
   }
-
   // mv report style to upload folder
   copyReportStyle() {
     try {
@@ -203,7 +207,7 @@ class ReportModeler {
     this.generateReport();
     this.copyReportStyle();
 
-    const aLevel = this._impacts.getAccessibilityLevel(this._aceData);
+    const aLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
     const Report = {
       aLevel: aLevel,
       path: this._output + BACC_REPORT

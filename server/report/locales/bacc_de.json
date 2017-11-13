@@ -14,6 +14,8 @@
     "htmlOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Nummerierung)",
     "description": "Beschreibung",
     "image": "Bild",
-    "location": "Bereich im Dokument"
+    "location": "Bereich im Dokument",
+    "total": "Gesamtanzahl der Regelverstöße",
+    "guideline" : "Richtlinie"
   }
 }
