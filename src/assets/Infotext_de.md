@@ -15,7 +15,7 @@ Um einen ganzheitlichen Eindruck von der Zugänglichkeit eines EPUB-Dokumentes z
 ## Entwicklung
 __Aktuell befindet sich BACC in der Beta-Version.__  
 Die Entwicklung erfolgt durch die Deutsche Zentralbücherei für Blinde Leipzig.  
-Das BACC-Prüfwerkzeug setzt auf dem vom Daisy-Consortium entwickelten Ace-Tool auf und erweitert dieses um weitere Features:
+Das BACC-Prüfwerkzeug setzt auf dem vom Daisy-Consortium entwickelten *Ace*-Tool auf und erweitert dieses um weitere Features:
 *	Als __Web-Applikation__ ist BACC __ohne Installations- und Wartungsaufwand__ auf allen Systemen und von überall nutzbar.
 *	Die __grafische Bedienoberfläche__ ermöglicht eine nutzerfreundliche Bedienung.
 *	Durch die __Drag & Drop-Funktion__ kann die Validierung einfach und schnell gestartet werden.
