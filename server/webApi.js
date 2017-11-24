@@ -6,6 +6,7 @@ const path = require('path');
 const checkOver = require('./checkOver');
 const upload = require('./upload');
 const logger = require('./logger');
+const getRules = require('./getRules');
 
 const PORT = 3111;
 const app = express();
@@ -18,6 +19,7 @@ routes
 */
 app.post('/upload', upload);
 app.get('/checkover', checkOver);
+app.get('/allRules', getRules);
 app.get('/bacc', function (req, res) {
   // res.end('Test: Greetings from baccy! IP:' + ip.address());
   res.end('Test: Greetings from baccy!');

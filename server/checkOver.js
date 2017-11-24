@@ -5,6 +5,8 @@ const readDirAsync = promisify(fs.readdir);
 
 const logger = require('./logger');
 const Baccify = require('./Baccify');
+const Util = require('./util');
+
 const SendMail = require('sendmail')({silent: true});
 
 module.exports = function (req, res) {
@@ -37,7 +39,7 @@ module.exports = function (req, res) {
 
         logger.log('info', 'Run baccify ready');
 
-        report = setHost(req, report);
+        report.path = Util.setHost(req.headers.host, report.path);
         setTimeout(function () {
           logger.log('info', `Send report path: ${report.path}`);
           return res.json(report);
@@ -51,10 +53,7 @@ module.exports = function (req, res) {
       });
   });
 
-  function setHost(req, report) {
-    report.path = `http://${req.headers.host}/` + report.path.substring(report.path.lastIndexOf('uploads'));
-    return report;
-  }
+
 
   async function getEPUBPath(workingPath) {
 

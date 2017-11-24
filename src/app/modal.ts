@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 
-
 @Component({
   selector: 'modal',
   template: `
@@ -20,7 +19,7 @@ import {Component} from '@angular/core';
         </div>
       </div>
     </div>
-  `,
+    `,
   styles: [`
     .modal {
       background: rgba(0, 0, 0, 0.6);

@@ -29,8 +29,9 @@ import {SidebarComponent} from './sidebar/sidebar';
 import {ReportComponent} from './report/report';
 import {UploadService} from "./check-over/upload.service";
 import {CheckOverService} from "./check-over/check-over.service";
+import {ModalComponent} from './modal';
 import {ReportService} from "./report/report.service";
-import {ModalComponent} from './report/modal';
+import {ShowRulesComponent} from './show-rules/show-rules';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,8 +47,8 @@ const translateConfig : TranslateModuleConfig = {
 };
 
 const routes: Routes = [
-  // {path: 'co', component: CheckOverComponent},
-  {path: 'report', component: ReportComponent}
+  {path: 'report', component: ReportComponent},
+  {path: 'rules', component: ShowRulesComponent}
 ];
 
 @NgModule({
@@ -57,7 +58,8 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     ReportComponent,
-    ModalComponent
+    ModalComponent,
+    ShowRulesComponent
   ],
   imports: [
     BrowserModule,
