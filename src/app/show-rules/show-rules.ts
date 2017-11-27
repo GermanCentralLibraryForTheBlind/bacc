@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map';
 })
 export class ShowRulesComponent implements OnInit {
 
-  private webApiAllRules : string = '/allRules';
-  public rulesAsHTML : SafeHtml;
+  private WEB_API_ALL_RULES = '/allRules';
+  public rulesAsHTML: SafeHtml;
 
   @ViewChild('rulesModal') rulesModal: any;
 
@@ -21,8 +21,8 @@ export class ShowRulesComponent implements OnInit {
   }
 
   show() {
-      this.http.get(this.webApiAllRules).subscribe(res =>   {
-      this.rulesAsHTML = this.sanitizer.bypassSecurityTrustUrl(res.text());
+      this.http.get(this.WEB_API_ALL_RULES).subscribe(res =>   {
+      this.rulesAsHTML = this.sanitizer.bypassSecurityTrustResourceUrl(res.text());
       // console.log(this.rulesAsHTML);
       this.rulesModal.showAsLarge();
     });

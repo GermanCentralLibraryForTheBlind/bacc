@@ -1,11 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {RouterModule, Routes} from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {FileUploadModule} from "ng2-file-upload";
-import {JasperoAlertsModule} from "@jaspero/ng2-alerts";
+import {FileUploadModule} from 'ng2-file-upload';
+import {JasperoAlertsModule} from '@jaspero/ng2-alerts';
 import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -27,10 +26,10 @@ import {CheckOverComponent} from './check-over/check-over';
 import {HeaderComponent} from './header/header';
 import {SidebarComponent} from './sidebar/sidebar';
 import {ReportComponent} from './report/report';
-import {UploadService} from "./check-over/upload.service";
-import {CheckOverService} from "./check-over/check-over.service";
+import {UploadService} from './check-over/upload.service';
+import {CheckOverService} from './check-over/check-over.service';
 import {ModalComponent} from './modal';
-import {ReportService} from "./report/report.service";
+import {ReportService} from './report/report.service';
 import {ShowRulesComponent} from './show-rules/show-rules';
 
 
@@ -38,7 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-const translateConfig : TranslateModuleConfig = {
+const translateConfig: TranslateModuleConfig = {
   loader: {
     provide: TranslateLoader,
     useFactory: HttpLoaderFactory,
@@ -46,10 +45,6 @@ const translateConfig : TranslateModuleConfig = {
   }
 };
 
-const routes: Routes = [
-  {path: 'report', component: ReportComponent},
-  {path: 'rules', component: ShowRulesComponent}
-];
 
 @NgModule({
   declarations: [
@@ -77,12 +72,10 @@ const routes: Routes = [
     HttpModule,
     JasperoAlertsModule,
     HttpClientModule,
-    TranslateModule.forRoot(translateConfig),
-    RouterModule.forRoot(routes)
+    TranslateModule.forRoot(translateConfig)
   ],
   exports: [],
   providers: [
-    RouterModule,
     UploadService,
     CheckOverService,
     ReportService

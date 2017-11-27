@@ -30,7 +30,7 @@ export class ReportComponent {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
-    this.btnId = "-1";
+    this.btnId = '-1';
   }
 
   setItemOnSuccess(item: FileItem) {
@@ -66,7 +66,7 @@ export class ReportComponent {
       .catch(err => {
 
           this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred ' + err);
-          console.error('An error occurred ' + err)
+          console.error('An error occurred ' + err);
         }
 
       );
@@ -84,7 +84,7 @@ export class ReportComponent {
     this.btnReportEnabled = true;
     this.btnReportAnimated = true;
     (item as any).progressValue = 100;
-    (item as any).accessibility = {'color': report.aLevel.color, 'font-size':'32px'};
+    (item as any).accessibility = {'color': report.aLevel.color, 'font-size': '32px'};
   }
 
   private updateSrc(url: string) {
