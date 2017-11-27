@@ -26,3 +26,11 @@ TODO
 #### Install backend on Linux server 
 [hint puppeteer](https://github.com/GoogleChrome/puppeteer/issues/404
 )
+
+
+## CHANGELOG 
+
+### 0.0.1
+
+### 0.0.0
+* Initial commit
