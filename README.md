@@ -15,12 +15,15 @@ TODO
 ### Technical details
 TODO
 ##### Backend
-BaCC based on [Ace by DAISY](https://github.com/daisy/ace-core)
+BaCC runs [Ace by DAISY](https://github.com/daisy/ace-core) for programmatic EPUB accessibility reporting.
  
 ##### Frontend
 [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-### Installation
+### Setup
+#### Requirements
+BaCC requires [Node.js][node] 7+ to run.
+
 TODO
 
 #### Install backend on Linux server 
