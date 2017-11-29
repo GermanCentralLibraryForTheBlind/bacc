@@ -40,9 +40,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/server/bacc.log
-/server/uploads/
-/server/node_modules/
+/backend/bacc.log
+/backend/uploads/
+/backend/node_modules/
 /uploads/
-/server/package-lock.json
+/backend/package-lock.json
 /bacc.log
