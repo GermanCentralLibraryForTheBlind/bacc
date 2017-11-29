@@ -7,7 +7,7 @@ const PROXY_CONFIG = [
     ],
     "target": "http://localhost:3111",
     "secure": false,
-    "logLevel": "debug"
+    "logLevel": "info"
   }
 ];
 
