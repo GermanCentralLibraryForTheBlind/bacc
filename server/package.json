@@ -23,7 +23,7 @@
   },
   "private": true,
   "dependencies": {
-    "ace-core": "^0.6.0",
+    "ace-core": "github:larsvoigt/ace-core#get_all_rules",
     "child-process-promise": "^2.2.1",
     "core-js": "^2.4.1",
     "cors": "^2.8.4",
