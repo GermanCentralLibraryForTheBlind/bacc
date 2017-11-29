@@ -22,7 +22,7 @@ BaCC runs [Ace by DAISY](https://github.com/daisy/ace-core) for programmatic EPU
 
 ### Setup
 #### Requirements
-BaCC requires [Node.js][node] 7+ to run.
+BaCC requires [Node.js](https://nodejs.org/en/) 7+ to run.
 
 TODO
 
@@ -55,9 +55,9 @@ TODO
     - Display violation grouped via type of violation
     - Display details to every violation group
   + Tab outlines: 
-    - display outline side by side viewer
+    - Display outline side by side viewer
   + Tab image descriptions:
-    - display images with <img> attributes    
+    - Display images with <img> attributes    
      
 ### 0.0.0
 * Initial commit
