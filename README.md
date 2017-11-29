@@ -33,7 +33,31 @@ TODO
 
 ## CHANGELOG 
 
-### 0.0.1
+### 0.3.0
 
+* Display the list of rules that used for the audit 
+
+### 0.2.0
+
+* Localisation:
+  + Frontend 
+  + Report 
+
+### 0.1.0
+
+* Audit EPUB 
+  + Upload EPUB via Drag and Drop 
+  + Start Audit automatically
+  + Show state of audit 
+  
+* Report
+  + Tab violations: 
+    - Display violation grouped via type of violation
+    - Display details to every violation group
+  + Tab outlines: 
+    - display outline side by side viewer
+  + Tab image descriptions:
+    - display images with <img> attributes    
+     
 ### 0.0.0
 * Initial commit

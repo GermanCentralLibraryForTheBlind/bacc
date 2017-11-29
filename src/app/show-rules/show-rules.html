@@ -1,0 +1,14 @@
+<button md-icon-button aria-label="accessibility" (click)="show()">
+  <md-icon>check_circle</md-icon>
+</button>
+<modal #rulesModal>
+  <div class="app-modal-header">
+  </div>
+  <div class="app-modal-body">
+    <iframe [src]="rulesAsHTML"></iframe>
+  </div>
+  <div class="app-modal-footer">
+    <button md-raised-button color="default" type="button" class="btn btn-default" (click)="rulesModal.hide()">Close
+    </button>
+  </div>
+</modal>

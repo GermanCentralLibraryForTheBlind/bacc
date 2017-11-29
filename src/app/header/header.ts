@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
+
+// @ViewChild('reportModal') reportModal: any;
+
 export class HeaderComponent implements OnInit {
 
   title = 'borne accessible content checker';

@@ -1,7 +1,7 @@
 {
   "name": "bacc",
-  "version": "0.1.0",
-  "description": "BACC by DZB will assist the EPUB3 production with focus on Accessibility requirements",
+  "version": "0.3.0",
+  "description": "BACC by DZB assist the EPUB3 production with focus on Accessibility requirements",
   "keywords": [
     "a11y",
     "accessibility",
@@ -35,7 +35,8 @@
     "start:bacc:server": "node ./server/webApi",
     "clear:uploads": "rimraf uploads && rimraf server/uploads",
     "postinstall": "cd server && npm install",
-    "deploy": "sh ~/Schreibtisch/update_bacc.sh"
+    "deploy": "sh ~/Schreibtisch/update_bacc.sh",
+    "preminor" : "npm version minor"
   },
   "private": true,
   "dependencies": {

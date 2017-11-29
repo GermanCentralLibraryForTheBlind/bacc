@@ -4,13 +4,12 @@ const uuid = require('uuid/v4');
 const path = require('path');
 const fs = require('fs');
 
+const util = require('./util');
 const logger = require('./logger');
 
 module.exports = function (req, res) {
 
-  if (!fs.existsSync(req.app.UploadDir)){
-    fs.mkdirSync(req.app.UploadDir);
-  }
+  util.ensureUploadDirExists(req.app.UploadDir);
 
   uaParser(req);
 
