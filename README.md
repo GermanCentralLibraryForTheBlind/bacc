@@ -1,4 +1,6 @@
 # baCC
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Digital equality for all users has an important role in our society. That means people with print disabilities need the same access to information, especially books, like other users. So it is necessary to consider accessibility issues right at the beginning of production of digital content. This paradigma is called [“born accessible”](https://www.benetech.org/our-programs/literacy/born-accessible/). *if content is “born digital,” it can-and should-be “born accessible.”*
 BaCC tries to help achieving this digital equality. 
 
