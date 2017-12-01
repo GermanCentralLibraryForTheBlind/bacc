@@ -10,9 +10,13 @@ Today digital books are produced in [EPUB 3](http://idpf.org/epub/30). The baCC-
 
 TODO
 
-## DEMO 
+## Live DEMO 
 
 [baCC](http://ec2-18-220-212-194.us-east-2.compute.amazonaws.com)
+
+## Video DEMO
+
+[<img src="https://i.ytimg.com/vi/rbgiVBv-rFw/maxresdefault.jpg" height="300px" width="500px" >](https://www.youtube.com/embed/rbgiVBv-rFw?rel=0&autoplay=1 "Demo")
 
 ### Technical details
 TODO
