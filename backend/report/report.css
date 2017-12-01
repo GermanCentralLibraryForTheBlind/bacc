@@ -239,3 +239,8 @@ code {
 #template-table {
   margin: -13px;;
 }
+
+.table-responsive {
+  max-height:400px;
+}
+
