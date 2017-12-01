@@ -14,7 +14,7 @@ const api = require('../webApi');
 describe('rest api', function () {
 
   const EPUB_NAME = 'mml-html.epub';
-  const EPUB_PATH = './server/tests/epub-samples/' + EPUB_NAME;
+  const EPUB_PATH = './backend/tests/epub-samples/' + EPUB_NAME;
 
   beforeEach(function (done) {
     done();

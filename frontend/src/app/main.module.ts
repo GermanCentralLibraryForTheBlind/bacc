@@ -10,15 +10,14 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MdToolbarModule,
-  MdMenuModule,
-  MdCardModule,
-  MdIconModule,
-  MdButtonModule,
-  MdListModule,
-  MdTableModule,
-  MdProgressBarModule
-
+  MatToolbarModule,
+  MatMenuModule,
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule,
+  MatListModule,
+  MatTableModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 import {AppComponent} from './main';
@@ -58,17 +57,17 @@ const translateConfig: TranslateModuleConfig = {
   ],
   imports: [
     BrowserModule,
-    MdToolbarModule,
-    MdMenuModule,
-    MdCardModule,
-    MdIconModule,
-    MdButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
     FlexLayoutModule,
-    MdListModule,
-    MdTableModule,
+    MatListModule,
+    MatTableModule,
     BrowserAnimationsModule,
     FileUploadModule,
-    MdProgressBarModule,
+    MatProgressBarModule,
     HttpModule,
     JasperoAlertsModule,
     HttpClientModule,

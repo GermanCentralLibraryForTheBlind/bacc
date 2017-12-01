@@ -34,8 +34,8 @@ testem.log
 /typings
 
 # e2e
-/e2e/*.js
-/e2e/*.map
+/frontend/e2e/*.js
+/frontend/e2e/*.map
 
 # System Files
 .DS_Store
@@ -46,3 +46,6 @@ Thumbs.db
 /uploads/
 /backend/package-lock.json
 /bacc.log
+/frontend/package-lock.json
+/package-lock.json
+/frontend/node_modules/

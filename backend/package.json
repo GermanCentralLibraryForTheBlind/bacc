@@ -1,6 +1,6 @@
 {
-  "name": "bacc-server",
-  "version": "0.0.1",
+  "name": "bacc-backend",
+  "version": "0.3.0",
   "description": "Backend for BACC",
   "license": "MIT",
   "author": {

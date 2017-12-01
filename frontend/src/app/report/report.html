@@ -1,13 +1,13 @@
 <button [id]="btnId"
-        md-icon-button
+        mat-icon-button
         type="button"
         (click)="showReport()"
         [disabled]="!btnReportEnabled"
         [ngClass]="{'btn-animate': btnReportAnimated}">
-  <md-icon
+  <mat-icon
     [ngClass]="{'btn-active': btnReportEnabled}">
     playlist_add_check
-  </md-icon>
+  </mat-icon>
 </button>
 <modal #reportModal>
   <div class="app-modal-header">
@@ -17,7 +17,7 @@
     <iframe [src]="reportUrl"></iframe>
   </div>
   <div class="app-modal-footer">
-    <button md-raised-button color="default" type="button" class="btn btn-default" (click)="reportModal.hide()">Close
+    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="reportModal.hide()">Close
     </button>
   </div>
 </modal>

@@ -3,33 +3,33 @@
     <table class="legend">
       <tbody>
       <tr style="color: red">
-        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td><span><mat-icon>accessibility</mat-icon></span></td>
         <td>
-          <md-icon>sentiment_very_dissatisfied</md-icon>
+          <mat-icon>sentiment_very_dissatisfied</mat-icon>
         </td>
       </tr>
       <tr style="color: orange">
-        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td><span><mat-icon>accessibility</mat-icon></span></td>
         <td>
-          <md-icon>sentiment_dissatisfied</md-icon>
+          <mat-icon>sentiment_dissatisfied</mat-icon>
         </td>
       </tr>
       <tr style="color: yellow">
-        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td><span><mat-icon>accessibility</mat-icon></span></td>
         <td>
-          <md-icon>sentiment_neutral</md-icon>
+          <mat-icon>sentiment_neutral</mat-icon>
         </td>
       </tr>
       <tr style="color: yellowgreen">
-        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td><span><mat-icon>accessibility</mat-icon></span></td>
         <td>
-          <md-icon>sentiment_satisfied</md-icon>
+          <mat-icon>sentiment_satisfied</mat-icon>
         </td>
       </tr>
       <tr style="color: green">
-        <td><span><md-icon>accessibility</md-icon></span></td>
+        <td><span><mat-icon>accessibility</mat-icon></span></td>
         <td>
-          <md-icon>sentiment_very_satisfied</md-icon>
+          <mat-icon>sentiment_very_satisfied</mat-icon>
         </td>
       </tr>
       </tbody>
@@ -45,7 +45,7 @@
                [uploader]="uploader"
                class="my-drop-zone">
             <div class="upload">
-              <md-icon class="cloud-icon-upload">cloud_upload</md-icon>
+              <mat-icon class="cloud-icon-upload">cloud_upload</mat-icon>
               <h4 [innerHTML]="'BACC.DRAG_DROP' | translate"></h4>
               <div class="app-component-filler"></div>
               <input id="input-file-id" ng2FileSelect
@@ -58,11 +58,11 @@
         </div>
         <div fxFlex="50">
           <div>
-            <md-progress-bar
+            <mat-progress-bar
               mode="determinate"
               [value]="uploader.progress"
               class="custom-progressbar">
-            </md-progress-bar>
+            </mat-progress-bar>
           </div>
           <div class="own-table-layout">
             <table style="width:100%">
@@ -78,39 +78,39 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
-                <td><span><md-icon [ngStyle]="item?.accessibility">accessibility</md-icon></span></td>
+                <td><span><mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon></span></td>
                 <td><strong>{{ item?.file?.name }}</strong></td>
                 <td>
                   <report [itemIndex]="i"></report>
                 </td>
                 <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                 <td>
-                  <md-progress-bar
+                  <mat-progress-bar
                     mode="buffer"
                     [value]="item?.progressValue"
                     [bufferValue]="item.progress"
                     class="custom-progressbar">
-                  </md-progress-bar>
+                  </mat-progress-bar>
                 </td>
                 <td nowrap>
-                  <button md-icon-button
+                  <button mat-icon-button
                           type="button"
                           color="primary"
                           (click)="item.upload()"
                           [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                    <md-icon>file_upload</md-icon>
+                    <mat-icon>file_upload</mat-icon>
                   </button>
-                  <button md-icon-button
+                  <button mat-icon-button
                           type="button"
                           color="warn"
                           (click)="item.cancel()" [disabled]="!item.isUploading">
-                    <md-icon>cancel</md-icon>
+                    <mat-icon>cancel</mat-icon>
                   </button>
-                  <button md-icon-button
+                  <button mat-icon-button
                           color="accent"
                           type="button"
                           (click)="item.remove()">
-                    <md-icon>delete</md-icon>
+                    <mat-icon>delete</mat-icon>
                   </button>
                 </td>
               </tr>
@@ -120,29 +120,29 @@
         </div>
         <div fxFlex="5">
           <div>
-            <!--<md-card>-->
-            <button md-raised-button color="primary" class="my-btn"
+            <!--<mat-card>-->
+            <button mat-raised-button color="primary" class="my-btn"
                     type="button"
                     (click)="uploader.uploadAll()"
                     [disabled]="!uploader.getNotUploadedItems().length">
-              <md-icon>file_upload</md-icon>
+              <mat-icon>file_upload</mat-icon>
               {{ 'BACC.CHECK_OVER_ALL' | translate }}
             </button>
-            <button md-raised-button color="warn" class="my-btn"
+            <button mat-raised-button color="warn" class="my-btn"
                     type="button"
                     (click)="uploader.cancelAll()"
                     [disabled]="!uploader.isUploading">
-              <md-icon>cancel</md-icon>
+              <mat-icon>cancel</mat-icon>
               {{ 'BACC.CANCEL_ALL' | translate }}
             </button>
-            <button md-raised-button color="accent" class="my-btn"
+            <button mat-raised-button color="accent" class="my-btn"
                     type="button"
                     (click)="uploader.clearQueue()"
                     [disabled]="!uploader.queue.length">
-              <md-icon>delete</md-icon>
+              <mat-icon>delete</mat-icon>
               {{ 'BACC.REMOVE_ALL' | translate }}
             </button>
-            <!--</md-card>-->
+            <!--</mat-card>-->
           </div>
         </div>
       </div>
