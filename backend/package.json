@@ -11,9 +11,8 @@
   },
   "scripts": {
     "clean:uploads": "rimraf uploads",
-    "start:dev": "node ./webApi",
-    "start": "xvfb-run node ./webApi",
-    "start:prod": "node ./node_modules/.bin/pm2 start npm -- start",
+    "start": "node ./webApi",
+    "start:prod": "node ./node_modules/.bin/pm2 start webApi.js",
     "stop": "node ./node_modules/.bin/pm2 stop all",
     "reload": "node ./node_modules/.bin/pm2 reload all",
     "pm2:log": "node ./node_modules/.bin/pm2 logs ",

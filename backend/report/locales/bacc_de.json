@@ -15,7 +15,7 @@
     "description": "Beschreibung",
     "image": "Bild",
     "location": "Bereich im Dokument",
-    "total": "Gesamtanzahl der Regelverstöße",
+    "total": "Gesamtanzahl Meldungen",
     "guideline" : "Richtlinie"
   }
 }
