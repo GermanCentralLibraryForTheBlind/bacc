@@ -23,7 +23,6 @@ import {
 import {AppComponent} from './main';
 import {CheckOverComponent} from './check-over/check-over';
 import {HeaderComponent} from './header/header';
-import {SidebarComponent} from './sidebar/sidebar';
 import {ReportComponent} from './report/report';
 import {UploadService} from './check-over/upload.service';
 import {CheckOverService} from './check-over/check-over.service';
@@ -50,7 +49,6 @@ const translateConfig: TranslateModuleConfig = {
     AppComponent,
     CheckOverComponent,
     HeaderComponent,
-    SidebarComponent,
     ReportComponent,
     ModalComponent,
     ShowRulesComponent
