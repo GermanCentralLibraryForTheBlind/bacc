@@ -68,15 +68,13 @@ export class ReportComponent {
           this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred ' + err);
           console.error('An error occurred ' + err);
         }
-
       );
   }
 
   showReport(): void {
 
     this.btnReportAnimated = false;
-    this.updateSrc(this.reportService.getReportDataById(this.btnId));
-    this.reportModal.showAsLarge();
+    this.setReportSrc(this.reportService.getReportDataById(this.btnId));
   }
 
   private afterSuccessfulCheck(item, report) {
@@ -87,9 +85,14 @@ export class ReportComponent {
     (item as any).accessibility = {'color': report.aLevel.color, 'font-size': '32px'};
   }
 
-  private updateSrc(url: string) {
+  private setReportSrc(url: string) {
     console.log('url: ' + url);
     this.reportUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  onLoad() {
+    if (this.reportUrl)
+      this.reportModal.showAsLarge();
   }
 }
 
