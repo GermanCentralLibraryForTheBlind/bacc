@@ -63,13 +63,13 @@
             <div id="details" class="panel panel-default">
               <div class="panel-heading">
                 <div class="row">
-                  <div class="col-sm-8"><h3 class="panel-title">{{labeling.details}}</h3></div>
+                  <div class="col-sm-8"><h3 class="panel-title panel-title-custom">{{labeling.details}}</h3></div>
                   <div class="col-sm-4">
                     <nav class="violation-nav" aria-label="Violation navigation">
                       <button class="btn btnPagerPrev" href="#" aria-label="Previous">
                         <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
                       </button>
-                      <button class="btn btnPagerNext" href="#" aria-label="Next">
+                      <button class="btn" href="#" aria-label="Next">
                         <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
                       </button>
                     </nav>
@@ -242,18 +242,23 @@
   $('#template-violation-table > tbody > tr').click(function () {
 
     $("#details").find(".violation[id]").css("display", "none");
+    $('.violation-nav').show();
 
     const currViolationID = '#p-' + this.id;
     vioPanel = currViolationID + ' .violation';
     $(currViolationID).toggle();
     $(vioPanel).hide().first().show();
 
+    // hide navigation bar if only one violation occurred for current type
+    if ($(currViolationID).children().length < 2)
+     $('.violation-nav').hide();
+
     $('.selected').removeClass('selected');
     $(this).find("i").addClass('material-icons.mat-36');
     $(this).addClass('selected');
   });
 
-  $('#template-violation-table > tbody > tr').first().trigger('click')
+  $('#template-violation-table > tbody > tr').first().trigger('click');
 </script>
 </body>
 </html>

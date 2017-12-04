@@ -205,6 +205,11 @@ code {
   float: right;
 }
 
+.panel-title-custom {
+  margin-bottom: 12px !important;
+  font-size: 20px!important;
+}
+
 .panel-title > a:before {
   float: right !important;
   font-family: FontAwesome;
