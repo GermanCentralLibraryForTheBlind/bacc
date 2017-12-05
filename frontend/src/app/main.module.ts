@@ -7,6 +7,7 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {JasperoAlertsModule} from '@jaspero/ng2-alerts';
 import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {MarkdownModule} from 'angular2-markdown';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -29,6 +30,7 @@ import {CheckOverService} from './check-over/check-over.service';
 import {ModalComponent} from './modal';
 import {ReportService} from './report/report.service';
 import {ShowRulesComponent} from './show-rules/show-rules';
+import {InfoComponent} from './info/info';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,7 +53,8 @@ const translateConfig: TranslateModuleConfig = {
     HeaderComponent,
     ReportComponent,
     ModalComponent,
-    ShowRulesComponent
+    ShowRulesComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ const translateConfig: TranslateModuleConfig = {
     HttpModule,
     JasperoAlertsModule,
     HttpClientModule,
-    TranslateModule.forRoot(translateConfig)
+    TranslateModule.forRoot(translateConfig),
+    MarkdownModule.forRoot()
   ],
   exports: [],
   providers: [

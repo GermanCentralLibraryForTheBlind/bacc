@@ -41,7 +41,8 @@ TODO
 
 ### 0.3.0
 
-* Display the list of rules that used for the audit 
+* Display the list of rules that used for the audit
+* Display information about bacc itself and user infractions in a separate info modal  
 
 ### 0.2.0
 
