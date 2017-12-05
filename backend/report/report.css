@@ -185,12 +185,12 @@ code {
 
 .selected td {
   font-weight: bold;
-  font-size: medium;
+  /*font-size: medium;*/
 }
 
-.selected i {
-  font-size: 28px;
-}
+/*.selected i {*/
+  /*font-size: 28px;*/
+/*}*/
 
 
 .btnPagerPrev {

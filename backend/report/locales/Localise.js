@@ -46,7 +46,7 @@ class Localise {
 
       if(translatedRule == undefined)
       {
-        logger.log('error', 'No translation found for rule ' + groups[i].name + ' from ' + groups[i].assertedBy);
+        logger.log('warn', 'No translation found for rule ' + groups[i].name + ' from ' + groups[i].assertedBy);
         continue;
       }
 

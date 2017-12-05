@@ -148,6 +148,8 @@ class ReportModeler {
 
     let groupedByViolation = _.groupBy(violations, 'dct:title');
 
+    // console.log(JSON.stringify(groupedByViolation, null, '\t'));
+
     let baccData = {};
     baccData.totalCount = 0;
     baccData.groups = [];
@@ -188,7 +190,7 @@ class ReportModeler {
       // todo: delete 'dct:title'
     });
 
-    // console.log(baccData);
+    // console.log(JSON.stringify(baccData, null, '\t'));
     return baccData;
   }
   // mv report style to upload folder
