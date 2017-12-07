@@ -4,6 +4,7 @@
 .check-over-whole-wrapper {
   color: #949494;
   width: 80vh;
+  text-align: center;
 }
 
 .upload * {
@@ -52,10 +53,6 @@
 .btn-file[disabled] {
   color: rgba(0, 0, 0, 0.26);
   background-color: transparent;
-}
-
-.upload {
-  text-align: center;
 }
 
 .cloud-icon-upload {
@@ -111,10 +108,4 @@
 .legend tr, td {
   padding: 3px;
   text-align: center;
-}
-
-@media screen and (max-width: 1080px) {
-  .spacer {
-    flex: none !important;
-  }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {URLSearchParams, RequestOptions, Headers} from '@angular/http';
 import {TranslateService} from '@ngx-translate/core';
+import {Observable} from 'rxjs/Rx';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -10,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CheckOverService {
 
-  private webApiCheckover : string = '/checkover';
+  private WEB_API_CHECKOVER: string = '/checkover';
 
   constructor(private http: Http, private translate: TranslateService) {
   }
@@ -26,7 +27,8 @@ export class CheckOverService {
 
     let options = new RequestOptions({headers: contentHeaders, params: myParams});
 
-    return this.http.get(this.webApiCheckover, options)
+    return this.http.get(this.WEB_API_CHECKOVER, options)
+      // .timeout(120000)
       .toPromise()
       .then(response => response)
       .catch(this.handleError);

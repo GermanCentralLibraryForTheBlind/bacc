@@ -1,150 +1,144 @@
-<div fxLayout="row">
-  <div class="spacer" fxFlex="35">
-    <table class="legend">
-      <tbody>
-      <tr style="color: red">
-        <td><span><mat-icon>accessibility</mat-icon></span></td>
-        <td>
-          <mat-icon>sentiment_very_dissatisfied</mat-icon>
-        </td>
-      </tr>
-      <tr style="color: orange">
-        <td><span><mat-icon>accessibility</mat-icon></span></td>
-        <td>
-          <mat-icon>sentiment_dissatisfied</mat-icon>
-        </td>
-      </tr>
-      <tr style="color: yellow">
-        <td><span><mat-icon>accessibility</mat-icon></span></td>
-        <td>
-          <mat-icon>sentiment_neutral</mat-icon>
-        </td>
-      </tr>
-      <tr style="color: yellowgreen">
-        <td><span><mat-icon>accessibility</mat-icon></span></td>
-        <td>
-          <mat-icon>sentiment_satisfied</mat-icon>
-        </td>
-      </tr>
-      <tr style="color: green">
-        <td><span><mat-icon>accessibility</mat-icon></span></td>
-        <td>
-          <mat-icon>sentiment_very_satisfied</mat-icon>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div fxFlex="65">
-    <div class="check-over-whole-wrapper">
-      <div fxLayout="column" fxLayoutGap="30px">
-        <div fxFlex="45">
-          <div ng2FileDrop
-               [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-               (fileOver)="fileOverBase($event)"
-               [uploader]="uploader"
-               class="my-drop-zone">
-            <div class="upload">
-              <mat-icon class="cloud-icon-upload">cloud_upload</mat-icon>
-              <h4 [innerHTML]="'BACC.DRAG_DROP' | translate"></h4>
-              <div class="app-component-filler"></div>
-              <input id="input-file-id" ng2FileSelect
-                     [uploader]="uploader"
-                     [ngClass]="{'hide': true}"
-                     type="file"/>
-              <label for="input-file-id" class="btn-file">{{ 'BACC.FILE_DIALOG' | translate }}</label>
-            </div>
-          </div>
+<table class="legend">
+  <tbody>
+  <tr style="color: red">
+    <td><span><mat-icon>accessibility</mat-icon></span></td>
+    <td>
+      <mat-icon>sentiment_very_dissatisfied</mat-icon>
+    </td>
+  </tr>
+  <tr style="color: orange">
+    <td><span><mat-icon>accessibility</mat-icon></span></td>
+    <td>
+      <mat-icon>sentiment_dissatisfied</mat-icon>
+    </td>
+  </tr>
+  <tr style="color: yellow">
+    <td><span><mat-icon>accessibility</mat-icon></span></td>
+    <td>
+      <mat-icon>sentiment_neutral</mat-icon>
+    </td>
+  </tr>
+  <tr style="color: yellowgreen">
+    <td><span><mat-icon>accessibility</mat-icon></span></td>
+    <td>
+      <mat-icon>sentiment_satisfied</mat-icon>
+    </td>
+  </tr>
+  <tr style="color: green">
+    <td><span><mat-icon>accessibility</mat-icon></span></td>
+    <td>
+      <mat-icon>sentiment_very_satisfied</mat-icon>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="check-over-whole-wrapper">
+  <div fxLayout="column" fxLayoutGap="30px">
+    <div fxFlex="45">
+      <div ng2FileDrop
+           [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+           (fileOver)="fileOverBase($event)"
+           [uploader]="uploader"
+           class="my-drop-zone">
+        <div class="upload">
+          <mat-icon class="cloud-icon-upload">cloud_upload</mat-icon>
+          <h4 [innerHTML]="'BACC.DRAG_DROP' | translate"></h4>
+          <div class="app-component-filler"></div>
+          <input id="input-file-id" ng2FileSelect
+                 [uploader]="uploader"
+                 [ngClass]="{'hide': true}"
+                 type="file"/>
+          <label for="input-file-id" class="btn-file">{{ 'BACC.FILE_DIALOG' | translate }}</label>
         </div>
-        <div fxFlex="50">
-          <div>
-            <mat-progress-bar
-              mode="determinate"
-              [value]="uploader.progress"
-              class="custom-progressbar">
-            </mat-progress-bar>
-          </div>
-          <div class="own-table-layout">
-            <table style="width:100%">
-              <thead>
-              <tr>
-                <th>{{ 'BACC.ACCESSIBILITY_LEVEL' | translate }}</th>
-                <th>{{ 'BACC.NAME' | translate }}</th>
-                <th><strong>{{ 'BACC.REPORT' | translate }}</strong></th>
-                <th>{{ 'BACC.SIZE' | translate }}</th>
-                <th>{{ 'BACC.PROGRESS' | translate }}</th>
-                <th>{{ 'BACC.ACTIONS' | translate }}</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
-                <td><span><mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon></span></td>
-                <td><strong>{{ item?.file?.name }}</strong></td>
-                <td>
-                  <report [itemIndex]="i"></report>
-                </td>
-                <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-                <td>
-                  <mat-progress-bar
-                    mode="buffer"
-                    [value]="item?.progressValue"
-                    [bufferValue]="item.progress"
-                    class="custom-progressbar">
-                  </mat-progress-bar>
-                </td>
-                <td nowrap>
-                  <button mat-icon-button
-                          type="button"
-                          color="primary"
-                          (click)="item.upload()"
-                          [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                    <mat-icon>file_upload</mat-icon>
-                  </button>
-                  <button mat-icon-button
-                          type="button"
-                          color="warn"
-                          (click)="item.cancel()" [disabled]="!item.isUploading">
-                    <mat-icon>cancel</mat-icon>
-                  </button>
-                  <button mat-icon-button
-                          color="accent"
-                          type="button"
-                          (click)="item.remove()">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div fxFlex="5">
-          <div>
-            <!--<mat-card>-->
-            <button mat-raised-button color="primary" class="my-btn"
-                    type="button"
-                    (click)="uploader.uploadAll()"
-                    [disabled]="!uploader.getNotUploadedItems().length">
-              <mat-icon>file_upload</mat-icon>
-              {{ 'BACC.CHECK_OVER_ALL' | translate }}
-            </button>
-            <button mat-raised-button color="warn" class="my-btn"
-                    type="button"
-                    (click)="uploader.cancelAll()"
-                    [disabled]="!uploader.isUploading">
-              <mat-icon>cancel</mat-icon>
-              {{ 'BACC.CANCEL_ALL' | translate }}
-            </button>
-            <button mat-raised-button color="accent" class="my-btn"
-                    type="button"
-                    (click)="uploader.clearQueue()"
-                    [disabled]="!uploader.queue.length">
-              <mat-icon>delete</mat-icon>
-              {{ 'BACC.REMOVE_ALL' | translate }}
-            </button>
-            <!--</mat-card>-->
-          </div>
-        </div>
+      </div>
+    </div>
+    <div fxFlex="50">
+      <div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="uploader.progress"
+          class="custom-progressbar">
+        </mat-progress-bar>
+      </div>
+      <div class="own-table-layout">
+        <table style="width:100%">
+          <thead>
+          <tr>
+            <th>{{ 'BACC.ACCESSIBILITY_LEVEL' | translate }}</th>
+            <th>{{ 'BACC.NAME' | translate }}</th>
+            <th><strong>{{ 'BACC.REPORT' | translate }}</strong></th>
+            <th>{{ 'BACC.SIZE' | translate }}</th>
+            <th>{{ 'BACC.PROGRESS' | translate }}</th>
+            <th>{{ 'BACC.ACTIONS' | translate }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
+            <td><span><mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon></span></td>
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td>
+              <report [itemIndex]="i"></report>
+            </td>
+            <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+            <td>
+              <mat-progress-bar
+                mode="buffer"
+                [value]="item?.progressValue"
+                [bufferValue]="item.progress"
+                class="custom-progressbar">
+              </mat-progress-bar>
+            </td>
+            <td nowrap>
+              <button mat-icon-button
+                      type="button"
+                      color="primary"
+                      (click)="item.upload()"
+                      [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                <mat-icon>file_upload</mat-icon>
+              </button>
+              <button mat-icon-button
+                      type="button"
+                      color="warn"
+                      (click)="item.cancel()" [disabled]="!item.isUploading">
+                <mat-icon>cancel</mat-icon>
+              </button>
+              <button mat-icon-button
+                      color="accent"
+                      type="button"
+                      (click)="item.remove()">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div fxFlex="5">
+      <div>
+        <!--<mat-card>-->
+        <button mat-raised-button color="primary" class="my-btn"
+                type="button"
+                (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length">
+          <mat-icon>file_upload</mat-icon>
+          {{ 'BACC.CHECK_OVER_ALL' | translate }}
+        </button>
+        <button mat-raised-button color="warn" class="my-btn"
+                type="button"
+                (click)="uploader.cancelAll()"
+                [disabled]="!uploader.isUploading">
+          <mat-icon>cancel</mat-icon>
+          {{ 'BACC.CANCEL_ALL' | translate }}
+        </button>
+        <button mat-raised-button color="accent" class="my-btn"
+                type="button"
+                (click)="uploader.clearQueue()"
+                [disabled]="!uploader.queue.length">
+          <mat-icon>delete</mat-icon>
+          {{ 'BACC.REMOVE_ALL' | translate }}
+        </button>
+        <!--</mat-card>-->
       </div>
     </div>
   </div>
