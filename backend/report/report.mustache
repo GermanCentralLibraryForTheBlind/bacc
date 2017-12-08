@@ -11,15 +11,24 @@
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-<h1>{{labeling.greetings}}</h1>
+<div class="header">
+  <span class="header-title">BACC REPORT</span>
+  <br>
+  <span class="bookTitle">{{metaData.dc:title}}   </span>
+  <i class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-size: 36px">accessibility</i>
+  <br>
+  <span class="check-date">{{labeling.checkDate}}: {{checkDate}}</span>
+</div>
+<div class="subheader">
+</div>
 <div class="tab-wrap">
   <input type="radio" name="tabs" id="violation" checked>
   <div class="tab-label-content">
     <label for="violation">{{labeling.violation}}</label>
     <div class="tab-content">
-      <div class="container">
+      <div class="container violation-container">
         <div class="row">
-          <div class="col-md-5 ">
+          <div class="col-md-5">
             <div class="panel panel-default">
               <div class="panel-body table-responsive">
                 <div id="template-table">
@@ -251,7 +260,7 @@
 
     // hide navigation bar if only one violation occurred for current type
     if ($(currViolationID).children().length < 2)
-     $('.violation-nav').hide();
+      $('.violation-nav').hide();
 
     $('.selected').removeClass('selected');
     $(this).find("i").addClass('material-icons.mat-36');

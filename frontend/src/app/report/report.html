@@ -10,14 +10,11 @@
   </mat-icon>
 </button>
 <modal #reportModal>
-  <div class="app-modal-header">
-    <h2>BACC REPORT</h2>
-  </div>
   <div class="app-modal-body">
-    <iframe [src]="reportUrl" (load)="onLoad()"></iframe>
+    <iframe #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
   </div>
   <div class="app-modal-footer">
-    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="reportModal.hide()">Close
-    </button>
+    <button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>
+    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="reportModal.hide()">Close</button>
   </div>
 </modal>

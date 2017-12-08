@@ -14,12 +14,12 @@ class Baccify {
   }
 
   setOutputPath(value) {
-    this._output = value;
+    this._outputPath = value;
     return this;
   }
 
   setInputFile(value) {
-    this._input = value;
+    this._inputPath = value;
     return this;
   }
 
@@ -39,7 +39,7 @@ class Baccify {
 
           logger.log('info', 'ace:stdout:\n' + result.stdout.toString());
 
-          const r = new ReportModeler(that._output, that._language);
+          const r = new ReportModeler(that._outputPath, that._language);
           resolve(r.build());
         })
         .catch((err) => {
@@ -49,7 +49,7 @@ class Baccify {
   }
 
   runAce() {
-    return spawn('node', [aceModule, '-o', this._output, this._input], {capture: ['stdout', 'stderr']});
+    return spawn('node', [aceModule, '-o', this._outputPath, this._inputPath], {capture: ['stdout', 'stderr']});
   }
 }
 

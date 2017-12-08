@@ -16,6 +16,7 @@
     "image": "Image",
     "location": "Location",
     "total": "Total count of violations",
-    "guideline" : "Guideline"
+    "guideline" : "Guideline",
+    "checkDate" : "checked on"
   }
 }

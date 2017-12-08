@@ -16,6 +16,7 @@
     "image": "Bild",
     "location": "Bereich im Dokument",
     "total": "Gesamtanzahl Meldungen",
-    "guideline" : "Richtlinie"
+    "guideline" : "Richtlinie",
+    "checkDate" : "geprüft am"
   }
 }

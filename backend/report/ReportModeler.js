@@ -50,34 +50,36 @@ class Impact {
 
 class ReportModeler {
 
-  constructor(output, lang) {
-    this._output = output;
+  constructor(outputPath, lang) {
+    this._outputPath = outputPath;
     this._language = lang || 'en';
     this._impacts = new Impact();
   }
 
   // private ???
   loadAceOutput() {
-    this._aceData = require(this._output + ACE_REPORT);
+    this._aceData = require(this._outputPath + ACE_REPORT);
   }
 
   generateReport() {
 
-    let dataToRender = {};
+    this._totalAccessibilityLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
+
+    let reportData = {};
     // TODO own mapper module
-    dataToRender = this.getBACCReportData();
-    dataToRender.outlines = this._aceData.outlines;
-    dataToRender.images = this._aceData.data.images;
+    reportData = this.getBACCReportData();
+    reportData.outlines = this._aceData.outlines;
+    reportData.images = this._aceData.data.images;
 
     // console.log(JSON.stringify(dataToRender));
-    dataToRender = new Localise()
-      .setReportData(dataToRender)
+    reportData = new Localise()
+      .setReportData(reportData)
       .setLocale(this._language)
       .build();
 
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
-    const output = mustache.render(reportTemplate.toString(), dataToRender);
-    fs.writeFileSync(this._output + BACC_REPORT, output, 'utf-8');
+    const output = mustache.render(reportTemplate.toString(), reportData);
+    fs.writeFileSync(this._outputPath + BACC_REPORT, output, 'utf-8');
 
   }
 
@@ -124,7 +126,7 @@ class ReportModeler {
 
       let violationsInSpineItem = violationsGroupedBySpineItem[i];
       let spineItem = violationsInSpineItem["earl:testSubject"].url;
-      console.log('spineItem: ' + spineItem);
+      // console.log('spineItem: ' + spineItem);
 
       for (let j in violationsInSpineItem.assertions) {
 
@@ -133,7 +135,7 @@ class ReportModeler {
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
         violation['earl:test'].spineItem = spineItem;
 
-        console.log('assertedBy: ' + violation['earl:test'].assertedBy);
+        // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
         violations.push(violation['earl:test']);
       }
     }
@@ -151,8 +153,11 @@ class ReportModeler {
     // console.log(JSON.stringify(groupedByViolation, null, '\t'));
 
     let baccData = {};
+    baccData.checkDate = this._aceData['dct:date'];
+    baccData.metaData = this._aceData['earl:testSubject'].metadata;
     baccData.totalCount = 0;
     baccData.groups = [];
+    baccData.totalAccessibilityLevel = this._totalAccessibilityLevel;
 
     _(groupedByViolation).each((elem, key) => {
 
@@ -196,7 +201,7 @@ class ReportModeler {
   // mv report style to upload folder
   copyReportStyle() {
     try {
-      fsExtra.copySync(path.resolve(__dirname, REPORT_SYTLE), path.join(this._output, '../' + REPORT_SYTLE));
+      fsExtra.copySync(path.resolve(__dirname, REPORT_SYTLE), path.join(this._outputPath, '../' + REPORT_SYTLE));
     } catch (err) {
       logger.log('error', err);
     }
@@ -209,10 +214,9 @@ class ReportModeler {
     this.generateReport();
     this.copyReportStyle();
 
-    const aLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
     const Report = {
-      aLevel: aLevel,
-      path: this._output + BACC_REPORT
+      aLevel: this._totalAccessibilityLevel,
+      path: this._outputPath + BACC_REPORT
     };
 
     return Report;

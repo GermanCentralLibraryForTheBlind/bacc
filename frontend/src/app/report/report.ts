@@ -1,10 +1,11 @@
-import {Component, ViewChild, Input} from '@angular/core';
+import {Component, ViewChild, Input, ElementRef} from '@angular/core';
 import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
 import {FileItem} from 'ng2-file-upload';
 import {AlertsService} from "@jaspero/ng2-alerts";
 
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'report',
@@ -21,7 +22,7 @@ export class ReportComponent {
 
   @Input() itemIndex: number;
   @ViewChild('reportModal') reportModal: any;
-
+  @ViewChild('reportIframe') iframe: ElementRef;
 
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
@@ -93,6 +94,21 @@ export class ReportComponent {
   onLoad() {
     if (this.reportUrl)
       this.reportModal.showAsLarge();
+  }
+
+
+  saveAsPDF() {
+
+    let pdf = new jsPDF('p', 'pt', 'a4');
+    pdf.text(20, 20, 'BACC Report');
+    pdf.fromHTML(this.iframe.nativeElement.contentDocument.body, 15, 15, {
+        'width': 180
+      },
+      (dispose) => {
+        // dispose: object with X, Y of the last line add to the PDF
+        //          this allow the insertion of new lines after html
+        pdf.save('Test.pdf');
+      });
   }
 }
 

@@ -8,12 +8,35 @@ html, body {
   width: 100%;
 }
 
-h1 {
-  font-size: 26px;
+.subheader {
   background: #264b63;
-  color: white;
-  padding: 20px 0 60px 20%;
-  margin-bottom: 50px;
+  color: #c2c2c2;
+  padding: 0 0 100px 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+.bookTitle {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.header {
+  /*background-color: #c2c2c2;*/
+  color: #6e6e6e;
+  padding-bottom: 15px;
+  margin-left: 10px;
+  font-family: "Helvetica Neue", "Helvetica";
+}
+
+.header-title {
+  font-size: 36px;
+}
+
+.check-date {
+  padding-top: 2px;
+  font-size: smaller;
 }
 
 label, p, a, h1, div {
@@ -86,7 +109,7 @@ label {
 .slide {
   background: #ffeb3b;
   width: calc(100% / 3); /* tab count */
-  height: 4px;
+  height: 1px;
   position: absolute;
   left: 0;
   top: calc(100% - 4px);
@@ -104,6 +127,7 @@ label {
   left: 16px;
   line-height: 130%;
   display: none;
+  width: 100%;
 }
 
 @media screen and (max-width: 800px) {
@@ -189,9 +213,8 @@ code {
 }
 
 /*.selected i {*/
-  /*font-size: 28px;*/
+/*font-size: 28px;*/
 /*}*/
-
 
 .btnPagerPrev {
   margin-left: 5px;
@@ -207,7 +230,7 @@ code {
 
 .panel-title-custom {
   margin-bottom: 12px !important;
-  font-size: 20px!important;
+  font-size: 20px !important;
 }
 
 .panel-title > a:before {
@@ -246,6 +269,10 @@ code {
 }
 
 .table-responsive {
-  max-height:400px;
+  max-height: 350px;
 }
 
+.violation-container {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
