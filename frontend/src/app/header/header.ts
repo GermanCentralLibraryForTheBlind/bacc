@@ -11,7 +11,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 
 export class HeaderComponent implements OnInit {
 
-  title = 'borne accessible content checker';
+  title = 'born accessible content checker';
 
   constructor() { }
 
