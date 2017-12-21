@@ -132,7 +132,10 @@ class ReportModeler {
 
         let violation = violationsInSpineItem.assertions[j];
 
+        // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
+
+        violation['earl:test'].help = violation['earl:result']['dct:description'];
         violation['earl:test'].spineItem = spineItem;
 
         // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
@@ -161,7 +164,7 @@ class ReportModeler {
 
     _(groupedByViolation).each((elem, key) => {
 
-      // console.log(elem);
+       // console.log(elem);
       let group = {};
 
       if (elem.length == 0) {
