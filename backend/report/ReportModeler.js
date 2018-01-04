@@ -135,7 +135,8 @@ class ReportModeler {
         // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
 
-        violation['earl:test'].help = violation['earl:result']['dct:description'];
+        violation['earl:test'].help = this.formatHelp(violation['earl:result']['dct:description']);
+
         violation['earl:test'].spineItem = spineItem;
 
         // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
@@ -144,6 +145,35 @@ class ReportModeler {
     }
     return this.groupViolationsAndMapToBacc(violations);
   }
+
+  formatHelp(help) {
+
+    if(!help)
+      return help;
+
+    help = help.replace("Fix all of the following:", "");
+    help = help.replace("Fix any of the following:", "");
+    help = help.replace('<', '&lt;');
+    help = help.replace('>', '&gt;');
+    help = help.replace('&lt;', '<i>&lt;');
+    help = help.replace('&gt;', '&gt;</i>');
+
+    const helpItems = help.split("\n");
+
+    if (helpItems.length <= 1)
+      return help;
+
+    let ul = "<ul>";
+
+    helpItems.forEach(function (item) {
+      if (item !== "")
+        ul += ("<li>" + item +"</li>");
+    });
+
+    ul += ("</ul>");
+    return ul;
+  }
+
 
   guidelineTagForHumans(tag) {
     return guidelineTags[tag];
@@ -164,7 +194,7 @@ class ReportModeler {
 
     _(groupedByViolation).each((elem, key) => {
 
-       // console.log(elem);
+      // console.log(elem);
       let group = {};
 
       if (elem.length == 0) {
@@ -201,6 +231,7 @@ class ReportModeler {
     // console.log(JSON.stringify(baccData, null, '\t'));
     return baccData;
   }
+
   // mv report style to upload folder
   copyReportStyle() {
     try {
