@@ -135,7 +135,7 @@ class ReportModeler {
         // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
 
-        violation['earl:test'].help = this.formatHelp(violation['earl:result']['dct:description']);
+        violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
 
         violation['earl:test'].spineItem = spineItem;
 
