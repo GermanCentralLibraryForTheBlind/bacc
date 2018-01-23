@@ -8,7 +8,7 @@
     "details": "Details",
     "impact": "Einfluss auf die Zugänglichkeit",
     "help": "Weiterführende Informationen",
-    "code": "Quellcode",
+    "code": "Quellcode (Nur beispielhaft, noch nicht aktiv!)",
     "tocEPUB": "Erzeugt aus der EPUB-TOC-Datei",
     "headingsOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Elementnamen)",
     "htmlOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Nummerierung)",

@@ -11,6 +11,7 @@
     "CANCEL_ALL": "Cancel all",
     "REMOVE_ALL": "Remove all",
     "DRAG_DROP": "Drag & Drop your file here to check-over your EPUB<br><br> or",
-    "FILE_DIALOG": "Choose a file to upload."
+    "FILE_DIALOG": "Choose a file to upload.",
+    "CLOSE": "close"
   }
 }
