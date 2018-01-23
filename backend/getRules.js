@@ -20,7 +20,7 @@ module.exports = function (req, res) {
 
     logger.log('info', 'Send rules...');
 
-    res.send(util.setHost(req.headers.host, 'uploads/rules.html'));
+    res.send(util.setHost(req, 'uploads/rules.html'));
 
   }).catch((err) => {
 

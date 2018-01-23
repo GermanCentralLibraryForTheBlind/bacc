@@ -2,7 +2,9 @@ const fs = require('fs');
 
 const Util = {};
 
-Util.setHost = (host, path) => {
+Util.setHost = (req, path) => {
+
+  const host = req.headers['x-forwarded-host'] || req.headers.host;
   return `http://${host}/` + path.substring(path.lastIndexOf('uploads'));
 };
 

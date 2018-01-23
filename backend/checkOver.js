@@ -39,7 +39,7 @@ module.exports = function (req, res) {
 
         logger.log('info', 'Run baccify ready');
 
-        report.path = Util.setHost(req.headers.host, report.path);
+        report.path = Util.setHost(req, report.path);
         setTimeout(function () {
           logger.log('info', `Send report path: ${report.path}`);
           return res.json(report);
