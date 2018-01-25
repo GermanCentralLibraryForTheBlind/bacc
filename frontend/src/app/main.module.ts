@@ -8,6 +8,7 @@ import {JasperoAlertsModule} from '@jaspero/ng2-alerts';
 import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MarkdownModule} from 'angular2-markdown';
+import {PopoverModule} from 'ngx-popover';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -72,6 +73,7 @@ const translateConfig: TranslateModuleConfig = {
     HttpModule,
     JasperoAlertsModule,
     HttpClientModule,
+    PopoverModule,
     TranslateModule.forRoot(translateConfig),
     MarkdownModule.forRoot()
   ],

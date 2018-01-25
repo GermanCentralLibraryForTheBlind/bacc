@@ -11,3 +11,13 @@ iframe {
 modal {
   color: black;
 }
+
+.popover {
+  font-weight: bold;
+  color: white;
+  background-color: #353535;
+}
+
+.my-fab {
+  background-color: #45575c !important;
+}

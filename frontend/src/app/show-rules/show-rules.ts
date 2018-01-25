@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -6,7 +6,8 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'show-rules',
   templateUrl: './show-rules.html',
-  styleUrls: ['./show-rules.css']
+  styleUrls: ['./show-rules.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ShowRulesComponent implements OnInit {
 

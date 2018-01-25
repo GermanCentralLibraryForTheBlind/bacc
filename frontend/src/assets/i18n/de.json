@@ -11,6 +11,8 @@
     "REMOVE_ALL": "Alle Dateien entfernen",
     "DRAG_DROP": "Zum Prüfen der Zugänglichkeit,<br><br> EPUB-Dateien per <b>Drag & Drop</b> einfügen <br><br>oder",
     "FILE_DIALOG": "Datei zum Hochladen auswählen.",
-    "CLOSE": "Schließen"
+    "CLOSE": "Schließen",
+    "TOOLTIP_SHOW_RULES" : "Regelwerk anzeigen",
+    "TOOLTIP_INFO" : "Informationen über das Prüftool."
   }
 }

@@ -2,15 +2,12 @@ modal {
   color: black;
 }
 
-
-
 #info {
 
   font-family: "Helvetica Neue"!important;
   padding: 30px !important;
   font-size: 14px;
   font-weight: 300;
-  max-height: 650px !important;
   white-space: normal !important;
   background: #fefefe;
   color: #333;

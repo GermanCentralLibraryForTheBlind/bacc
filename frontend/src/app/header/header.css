@@ -3,7 +3,7 @@
 
 mat-toolbar.mat-default-theme:not(.mat-menu-toolbar), mat-toolbar:not(.mat-menu-toolbar) {
   background-color: #6e6e6e;
-  color: white;
+  /*color: white;*/
 }
 
 
@@ -11,6 +11,11 @@ mat-toolbar.mat-default-theme:not(.mat-menu-toolbar), mat-toolbar:not(.mat-menu-
   flex: 1 1 auto;
 }
 
+info, show-rules {
+  padding-right: 20px;
+}
 
-
-
+.my-header-title {
+  color: white;
+  font-weight: bold;
+}

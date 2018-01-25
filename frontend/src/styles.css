@@ -2,5 +2,34 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 body {
-  min-width: 940px;
+  min-width: 840px;
+}
+
+.flat-btn {
+  display: inline-block;
+  border-radius: 6px;
+  color: #f2f2f2;
+  cursor: pointer;
+  outline: 0;
+  font-size: small;
+  line-height: normal;
+}
+
+.flat-info-btn {
+  background: transparent;
+}
+.flat-info-btn:hover {
+  background: #223e53;
+}
+
+.flat-border-btn {
+  padding: 6px 14px;
+  border: 2px solid #ffffff;
+}
+.flat-border-btn:hover {
+  border: 2px solid #ffffff;
+}
+
+.flat-info-border-btn:hover {
+  border-color: #ffffff;
 }

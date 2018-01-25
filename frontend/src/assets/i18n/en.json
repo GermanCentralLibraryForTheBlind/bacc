@@ -12,6 +12,8 @@
     "REMOVE_ALL": "Remove all",
     "DRAG_DROP": "Drag & Drop your file here to check-over your EPUB<br><br> or",
     "FILE_DIALOG": "Choose a file to upload.",
-    "CLOSE": "close"
+    "CLOSE": "close",
+    "TOOLTIP_SHOW_RULES" : "Show used rules",
+    "TOOLTIP_INFO" : "Information about this tool."
   }
 }
