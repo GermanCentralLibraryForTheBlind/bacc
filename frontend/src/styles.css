@@ -22,6 +22,11 @@ body {
   background: #223e53;
 }
 
+.flat-info-btn:focus {
+  background: #223e53;
+  color: #9c2b2e;
+}
+
 .flat-border-btn {
   padding: 6px 14px;
   border: 2px solid #ffffff;

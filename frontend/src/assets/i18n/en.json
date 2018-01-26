@@ -14,6 +14,7 @@
     "FILE_DIALOG": "Choose a file to upload.",
     "CLOSE": "close",
     "TOOLTIP_SHOW_RULES" : "Show used rules",
-    "TOOLTIP_INFO" : "Information about this tool."
+    "TOOLTIP_INFO" : "Information about this tool.",
+    "SKIP_TO_CHECKER": "Choose an Ebook-file to check it"
   }
 }

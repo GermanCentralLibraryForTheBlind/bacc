@@ -6,3 +6,35 @@
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+
+a {
+  text-decoration: unset;
+}
+
+
+#skipToChooseEbook a {
+  padding: 6px;
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  color: white;
+  background: transparent;
+  -webkit-transition: top 1s ease-out, background 1s linear;
+  transition: top 1s ease-out, background 1s linear;
+  z-index: 100;
+}
+
+#skipToChooseEbook a:focus {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  background: #223e53;
+  outline: 0;
+  -webkit-transition: top .1s ease-in, background .5s linear;
+  transition: top .1s ease-in, background .5s linear;
+  border: 2px solid white;
+  border-radius: 6px;
+  font-size: medium;
+  font-weight: bold;
+}
+

@@ -13,6 +13,7 @@
     "FILE_DIALOG": "Datei zum Hochladen auswählen.",
     "CLOSE": "Schließen",
     "TOOLTIP_SHOW_RULES" : "Regelwerk anzeigen",
-    "TOOLTIP_INFO" : "Informationen über das Prüftool."
+    "TOOLTIP_INFO" : "Informationen über das Prüftool.",
+    "SKIP_TO_CHECKER": "Ebook zur Prüfung auswählen"
   }
 }

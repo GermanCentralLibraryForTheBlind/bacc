@@ -1,4 +1,16 @@
-<button class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn" popover="{{'BACC.TOOLTIP_SHOW_RULES' | translate }}" [popoverOnHover]="true" (click)="show()">
+<popover-content #myPopover
+                 placement="bottom"
+                 [animation]="true"
+                 [closeOnClickOutside]="true"
+                 aria-hidden="true">
+  {{'BACC.TOOLTIP_SHOW_RULES' | translate }}
+</popover-content>
+<button
+  aria-label=""
+  class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
+        [popover]="myPopover"
+        [popoverOnHover]="true"
+        (click)="show()">
   <mat-icon>check_circle</mat-icon>
 </button>
 <modal #rulesModal>
@@ -8,6 +20,8 @@
     <iframe [src]="rulesAsHTML"></iframe>
   </div>
   <div class="app-modal-footer">
-    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="rulesModal.hide()">{{'BACC.CLOSE' | translate }}</button>
+    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="rulesModal.hide()">
+      {{'BACC.CLOSE' | translate }}
+    </button>
   </div>
 </modal>

@@ -13,10 +13,15 @@ export class ShowRulesComponent implements OnInit {
 
   private WEB_API_ALL_RULES = '/allRules';
   public rulesAsHTML: SafeHtml;
+  private tooltipText : string;
 
   @ViewChild('rulesModal') rulesModal: any;
 
-  constructor(private http: Http, private sanitizer: DomSanitizer) { }
+  constructor(private http: Http, private sanitizer: DomSanitizer) {
+
+    // this.tooltipText= "{{'BACC.TOOLTIP_SHOW_RULES' | translate}}"
+    console.log(this.tooltipText);
+  }
 
   ngOnInit() {
   }

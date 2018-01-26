@@ -1,3 +1,11 @@
+<div id="skipToChooseEbook">
+  <a (click)="skipLink()"
+     href
+     onclick="return false;"
+     accesskey="o">
+    {{ 'BACC.SKIP_TO_CHECKER' | translate }}
+  </a>
+</div>
 <app-header></app-header>
 <div fxLayout="row" class="app-component-filler">
   <div fxFlex="0" fxLayoutAlign="center top" style="background-color:#e2e2e2;">
@@ -8,6 +16,5 @@
   </div>
 </div>
 <jaspero-alerts [defaultSettings]="{duration:8000}"></jaspero-alerts>
-
 
 

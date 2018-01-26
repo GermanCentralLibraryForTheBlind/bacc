@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   QueryList,
-  ViewChildren
+  ViewChildren,
+  ElementRef,
+  Renderer2, ViewChild
 
 } from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
@@ -21,11 +23,14 @@ export class CheckOverComponent implements OnInit {
   public hasBaseDropZoneOver: boolean = false;
   public autoStartCheckOver: boolean = true;
   public uploader: FileUploader;
+  private renderer: Renderer2;
 
   @ViewChildren(ReportComponent) reports: QueryList<ReportComponent>;
+  @ViewChild('chooseEPUB') input: ElementRef;
 
-  constructor(private uploadService: UploadService) {
+  constructor(private uploadService: UploadService, private r: Renderer2) {
 
+    this.renderer = r;
     this.uploader = this.uploadService.Uploader;
     this.uploadService.Uploader.onAfterAddingFile = fileItem => {
 
@@ -47,6 +52,12 @@ export class CheckOverComponent implements OnInit {
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
+  }
+
+
+  public focusOnInput() {
+    let onElement = this.renderer.selectRootElement('#input-file-id');
+    onElement.click();
   }
 }
 
