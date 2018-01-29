@@ -1,4 +1,15 @@
-<button   class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn" popover="{{'BACC.TOOLTIP_INFO' | translate }}" [popoverOnHover]="true" aria-label="Information about bacc" (click)="show()" >
+<popover-content #popoverInfo
+                 placement="bottom"
+                 [animation]="true"
+                 [closeOnClickOutside]="true"
+                 aria-hidden="true">
+  {{'BACC.TOOLTIP_INFO' | translate }}
+</popover-content>
+<button  attr.aria-label="{{'BACC.TOOLTIP_INFO' | translate }}"
+         class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
+         [popover]="popoverInfo"
+         [popoverOnHover]="true"
+         (click)="show()" >
   <mat-icon>info</mat-icon>
 </button>
 <modal #infoModal>

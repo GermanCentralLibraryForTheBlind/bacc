@@ -1,4 +1,4 @@
-<popover-content #myPopover
+<popover-content #popoverShowRules
                  placement="bottom"
                  [animation]="true"
                  [closeOnClickOutside]="true"
@@ -6,9 +6,9 @@
   {{'BACC.TOOLTIP_SHOW_RULES' | translate }}
 </popover-content>
 <button
-  aria-label=""
+  attr.aria-label="{{'BACC.TOOLTIP_SHOW_RULES' | translate }}"
   class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
-        [popover]="myPopover"
+        [popover]="popoverShowRules"
         [popoverOnHover]="true"
         (click)="show()">
   <mat-icon>check_circle</mat-icon>

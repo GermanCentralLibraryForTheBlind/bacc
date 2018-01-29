@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'show-rules',
@@ -13,14 +14,11 @@ export class ShowRulesComponent implements OnInit {
 
   private WEB_API_ALL_RULES = '/allRules';
   public rulesAsHTML: SafeHtml;
-  private tooltipText : string;
 
   @ViewChild('rulesModal') rulesModal: any;
 
   constructor(private http: Http, private sanitizer: DomSanitizer) {
 
-    // this.tooltipText= "{{'BACC.TOOLTIP_SHOW_RULES' | translate}}"
-    console.log(this.tooltipText);
   }
 
   ngOnInit() {
