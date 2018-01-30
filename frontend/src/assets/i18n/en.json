@@ -15,6 +15,14 @@
     "CLOSE": "close",
     "TOOLTIP_SHOW_RULES" : "Show used rules",
     "TOOLTIP_INFO" : "Information about this tool.",
-    "SKIP_TO_CHECKER": "Choose an Ebook-file to check it"
+    "SKIP_TO_CHECKER": "Choose an Ebook-file to check it",
+    "LEGEND" : "legend of accessibility levels",
+    "LEGEND_LEVELS": {
+      "VERY_STRONG" : "very strong limited accessibility",
+      "STRONG" : "very strong limited accessibility",
+      "PARTIALLY" : "partially limited accessibility",
+      "MINOR" : "minor limited accessibility",
+      "NONE" : "None limited accessibility"
+    }
   }
 }

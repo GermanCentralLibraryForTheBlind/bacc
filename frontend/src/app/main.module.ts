@@ -32,6 +32,7 @@ import {ModalComponent} from './modal';
 import {ReportService} from './report/report.service';
 import {ShowRulesComponent} from './show-rules/show-rules';
 import {InfoComponent} from './info/info';
+import {Accessibility} from './accessibility';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -81,7 +82,8 @@ const translateConfig: TranslateModuleConfig = {
   providers: [
     UploadService,
     CheckOverService,
-    ReportService
+    ReportService,
+    Accessibility
   ],
   bootstrap: [AppComponent]
 })

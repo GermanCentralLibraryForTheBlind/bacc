@@ -199,8 +199,8 @@ declare module 'jspdf' {
         // jsPDF plugin: total_pages
         putTotalPages(pageExpression:string):jsPDF;
     }
-    
+
     namespace jsPDF {}
 
-    export = jsPDF;
+    // export = jsPDF;
 }

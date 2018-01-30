@@ -6,6 +6,7 @@ import {FileItem} from 'ng2-file-upload';
 import {AlertsService} from "@jaspero/ng2-alerts";
 
 import * as jsPDF from 'jspdf';
+import {Accessibility} from "../accessibility";
 
 @Component({
   selector: 'report',
@@ -27,7 +28,8 @@ export class ReportComponent {
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
               private checkOverService: CheckOverService,
-              private alert: AlertsService) {
+              private alert: AlertsService,
+              private access: Accessibility) {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
@@ -36,6 +38,17 @@ export class ReportComponent {
 
   setItemOnSuccess(item: FileItem) {
     console.log('setItemOnSuccess');
+
+    const timer = setInterval(() => {
+        if ((item as any).progressValue > 90)
+          clearInterval(timer);
+        else {
+          (item as any).progressValue += 10;
+          this.access.setAriaLiveValue((item as any).progressValue);
+        }
+      },
+      500);
+
     item.onSuccess = (response: any, status: any, headers: any): any =>
       this.onSuccessItem(response, item);
 
@@ -49,6 +62,7 @@ export class ReportComponent {
     const uploadID = responseData.uploadID;
     this.btnId = uploadID;
     (item as any).progressValue = 50;
+    this.access.setAriaLiveValue("50");
 
     this.checkOverService.runCheck(uploadID)
       .then(response => {
@@ -83,6 +97,7 @@ export class ReportComponent {
     this.btnReportEnabled = true;
     this.btnReportAnimated = true;
     (item as any).progressValue = 100;
+    this.access.setAriaLiveValue("100");
     (item as any).accessibility = {'color': report.aLevel.color, 'font-size': '32px'};
   }
 
