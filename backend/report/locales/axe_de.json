@@ -375,29 +375,29 @@
     },
     "caption": {
       "pass": "No translation",
-      "fail": "No translation",
+      "fail": "Das Multimedia-Element enthält keine Deskriptionsspur zur Beschreibung der Audio-Inhalte.",
       "incomplete": "No translation"
     },
     "description": {
       "pass": "No translation",
-      "fail": "No translation",
-      "incomplete": "No translation"
+      "fail": "Das Multimedia-Element enthält keine Deskriptionsspur zur Beschreibung der visuellen Inhalte.",
+      "incomplete": "Für das Multimedia-Element konnte keine Audio-Deskriptionsspur gefunden werden."
     },
     "meta-viewport-large": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die viewport-Einstellungen im <meta>-Tag schränken das Zoomen auf mobilen Geräten ein."
     },
     "meta-viewport": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die viewport-Einstellungen im <meta>-Tag blockieren das Zoomen auf mobilen Geräten."
     },
     "header-present": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Seite besitzt kein <header>-Element."
     },
     "heading-order": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Überschriftenstruktur ist nicht valide."
     },
     "href-no-hash": {
       "pass": "No translation",
