@@ -22,6 +22,8 @@
       "PARTIALLY" : "Teilweise Einschränkungen",
       "MINOR" : "Geringe Einschränkungen",
       "NONE" : "Keine Einschränkungen"
-    }
+    },
+    "START_CHECKER": "Starte Prüfung",
+    "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf."
   }
 }

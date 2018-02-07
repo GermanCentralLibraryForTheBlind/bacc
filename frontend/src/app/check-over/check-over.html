@@ -86,7 +86,11 @@
           </thead>
           <tbody>
           <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
-            <td><span><mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon></span></td>
+            <td>
+              <span [attr.aria-label]="item?.accessibilityAriaLabel">
+              <mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon>
+            </span>
+            </td>
             <td><strong>{{ item?.file?.name }}</strong></td>
             <td>
               <report [itemIndex]="i"></report>
@@ -98,7 +102,6 @@
                 [value]="item?.progressValue"
                 [bufferValue]="item.progress"
                 class="custom-progressbar"
-                aria-valuenow="item?.progressValue"
                 aria-valuemin="0"
                 aria-valuemax="100">
               </mat-progress-bar>

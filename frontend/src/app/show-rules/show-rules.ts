@@ -18,7 +18,6 @@ export class ShowRulesComponent implements OnInit {
   @ViewChild('rulesModal') rulesModal: any;
 
   constructor(private http: Http, private sanitizer: DomSanitizer) {
-
   }
 
   ngOnInit() {

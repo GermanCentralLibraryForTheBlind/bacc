@@ -1,4 +1,4 @@
-import {Component, ViewChild, Input, ElementRef} from '@angular/core';
+import {Component, ViewChild, Input, ElementRef, Renderer2} from '@angular/core';
 import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
@@ -7,6 +7,7 @@ import {AlertsService} from "@jaspero/ng2-alerts";
 
 import * as jsPDF from 'jspdf';
 import {Accessibility} from "../accessibility";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'report',
@@ -20,6 +21,7 @@ export class ReportComponent {
   public btnReportEnabled: boolean;
   public btnReportAnimated: boolean;
   public btnId: string;
+  private a11y: Accessibility;
 
   @Input() itemIndex: number;
   @ViewChild('reportModal') reportModal: any;
@@ -29,40 +31,39 @@ export class ReportComponent {
               private sanitizer: DomSanitizer,
               private checkOverService: CheckOverService,
               private alert: AlertsService,
-              private access: Accessibility) {
+              private translate: TranslateService) {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
     this.btnId = '-1';
+
+    this.a11y = new Accessibility(translate);
   }
 
   setItemOnSuccess(item: FileItem) {
+
     console.log('setItemOnSuccess');
 
-    const timer = setInterval(() => {
-        if ((item as any).progressValue > 90)
-          clearInterval(timer);
-        else {
-          (item as any).progressValue += 10;
-          this.access.setAriaLiveValue((item as any).progressValue);
-        }
-      },
-      500);
+    this.a11y.setAriaLiveValue("Starte Prüfung");
+    this.a11y.progressInterpolation(item, 90);
 
     item.onSuccess = (response: any, status: any, headers: any): any =>
-      this.onSuccessItem(response, item);
+      this.afterSuccessfulUpload(response, item);
 
     item.onComplete = (response: any, status: any, headers: any): any =>
       console.log('completed');
   }
 
-  private onSuccessItem(response: string, item: FileItem): any {
-    console.log('onSuccessItem');
+  private afterSuccessfulUpload(response: string, item: FileItem): any {
+
+    console.log('afterSuccessfulUpload');
+
     const responseData = JSON.parse(response);
     const uploadID = responseData.uploadID;
     this.btnId = uploadID;
+
     (item as any).progressValue = 50;
-    this.access.setAriaLiveValue("50");
+    this.a11y.setAriaLiveValue("50%");
 
     this.checkOverService.runCheck(uploadID)
       .then(response => {
@@ -97,8 +98,28 @@ export class ReportComponent {
     this.btnReportEnabled = true;
     this.btnReportAnimated = true;
     (item as any).progressValue = 100;
-    this.access.setAriaLiveValue("100");
     (item as any).accessibility = {'color': report.aLevel.color, 'font-size': '32px'};
+
+
+    const accessibilityAsWord = this.a11y.getAccessibilityLevelAsWord(report.aLevel.color);
+
+    this.translate.get('BACC.CHECKER_IS_FINISHED',
+      {
+        fileName: (item as any).file.name,
+        accessibilityAsWord: accessibilityAsWord
+      })
+      .subscribe((res: string) => {
+        this.a11y.setAriaLiveValue(res);
+        let onElement = document.getElementById(this.btnId);
+
+        setTimeout(() => {
+          console.log(onElement);
+          onElement.focus();
+        }, 500)
+      });
+
+    (item as any).accessibilityAriaLabel = accessibilityAsWord;
+
   }
 
   private setReportSrc(url: string) {
