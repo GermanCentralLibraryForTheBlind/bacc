@@ -47,9 +47,9 @@ module.exports = function (req, res) {
       })
       .catch((err) => {
 
-        logger.log('info', 'Baccify stopped with errors ...');
-        logger.log('error', err);
-        return res.status(500).send(err);
+        logger.log('error', 'Baccify stopped with errors ...');
+        logger.log('error', err.stderr);
+        return res.status(500).send(err.stderr);
       });
   });
 
