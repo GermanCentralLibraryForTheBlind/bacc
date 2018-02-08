@@ -273,7 +273,7 @@
     },
     "color-contrast": {
       "pass": "No translation",
-      "fail": "No translation",
+      "fail": "Das Element hat einen unzureichenden Kontrast von {{=it.data.contrastRatio}} (Vordergrundfarbe: {{=it.data.fgColor}}, Hintergrundfarbe: {{=it.data.bgColor}}, Schriftgröße: {{=it.data.fontSize}}, Schriftstärke: {{=it.data.fontWeight}}).",
       "incomplete": {
         "bgImage": "No translation",
         "bgGradient": "No translation",
@@ -287,7 +287,7 @@
     },
     "link-in-text-block": {
       "pass": "No translation",
-      "fail": "No translation",
+      "fail": "Links können (abgesehen von einer farblichen Kennzeichnung) nicht vom umgebenden Text unterschieden werden.",
       "incomplete": {
         "bgContrast": "No translation",
         "bgImage": "No translation",
@@ -343,61 +343,61 @@
     },
     "has-lang": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das <html>-Element besitzt kein lang-Attribut."
     },
     "valid-lang": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Der Wert des lang-Attributes ist nicht valide."
     },
     "dlitem": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Der Definitionslisteneintrag besitzt kein <dl>-Elternelement."
     },
     "has-listitem": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Listen-Element besitzt kein <li>-Element."
     },
     "listitem": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Der Listeneintrag besitzt kein <ul>-, <ol>- oder role=\"list\" Elternelement."
     },
     "only-dlitems": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Definitionslisten-Element enthält unerlaubte Kindelemente."
     },
     "only-listitems": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Listen-Element enthält unerlaubte Kindelemente."
     },
     "structured-dlitems": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Definitionslisten-Element enthält nicht mindestens ein <dt>-Element, gefolgt von mindestens einem <dd>-Element (wenn es nicht leer ist)."
     },
     "caption": {
       "pass": "No translation",
-      "fail": "No translation",
+      "fail": "Das Multimedia-Element enthält keine Deskriptionsspur zur Beschreibung der Audio-Inhalte.",
       "incomplete": "No translation"
     },
     "description": {
       "pass": "No translation",
-      "fail": "No translation",
-      "incomplete": "No translation"
+      "fail": "Das Multimedia-Element enthält keine Deskriptionsspur zur Beschreibung der visuellen Inhalte.",
+      "incomplete": "Für das Multimedia-Element konnte keine Audio-Deskriptionsspur gefunden werden."
     },
     "meta-viewport-large": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die viewport-Einstellungen im <meta>-Tag schränken das Zoomen auf mobilen Geräten ein."
     },
     "meta-viewport": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die viewport-Einstellungen im <meta>-Tag blockieren das Zoomen auf mobilen Geräten."
     },
     "header-present": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Seite besitzt kein <header>-Element."
     },
     "heading-order": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Überschriftenstruktur ist nicht valide."
     },
     "href-no-hash": {
       "pass": "No translation",
