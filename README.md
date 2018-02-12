@@ -12,9 +12,9 @@ TODO
 
 ## Live 
 
-[]([bacc](http://bacc.dzb.de))
+[http://bacc.dzb.de](http://bacc.dzb.de)
 
-[bacc](http://ec2-18-220-212-194.us-east-2.compute.amazonaws.com)
+[]([bacc](http://ec2-18-220-212-194.us-east-2.compute.amazonaws.com))
 
 ## Video DEMO
 
