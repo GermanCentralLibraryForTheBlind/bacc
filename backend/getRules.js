@@ -1,15 +1,14 @@
 const spawn = require('child-process-promise').spawn;
-const path = require('path');
 
 const util = require('./util');
 const logger = require('./logger');
-const aceModule = path.join(__dirname, '/node_modules/ace-core/dist/cli/cli.js');
+const constants = require('./constants');
 
 module.exports = function (req, res) {
 
   util.ensureUploadDirExists(req.app.UploadDir);
 
-  const runAce = spawn('node', [aceModule, '-R'],
+  const runAce = spawn('node', [constants.ACE, '-R'],
     {
       capture: ['stdout', 'stderr'],
       cwd: req.app.UploadDir

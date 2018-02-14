@@ -1,11 +1,9 @@
 // const decache = require('decache');
 const spawn = require('child-process-promise').spawn;
-const path = require('path');
 
 const logger = require('./logger');
 const ReportModeler = require('./report/ReportModeler');
-
-const aceModule = path.join(__dirname, '/node_modules/ace-core/dist/cli/cli.js');
+const constants = require('./constants');
 
 
 class Baccify {
@@ -49,7 +47,7 @@ class Baccify {
   }
 
   runAce() {
-    return spawn('node', [aceModule, '-o', this._outputPath, this._inputPath], {capture: ['stdout', 'stderr']});
+    return spawn('node', [constants.ACE, '-o', this._outputPath, this._inputPath], {capture: ['stdout', 'stderr']});
   }
 }
 
