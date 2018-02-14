@@ -29,9 +29,10 @@ module.exports = function (req, res) {
     logger.log('info', 'Run baccify ...');
 
     const baccify = new Baccify();
+    const epubPath = path.join(workingPath, epubFile);
 
     baccify
-      .setInputFile(path.join(workingPath, epubFile))
+      .setInputFile(epubPath)
       .setOutputPath(workingPath)
       .setLanguage(lang)
       .check()
@@ -40,6 +41,8 @@ module.exports = function (req, res) {
         logger.log('info', 'Run baccify ready');
 
         report.path = Util.setHost(req, report.path);
+        deleteEPUB(epubPath);
+
         setTimeout(function () {
           logger.log('info', `Send report path: ${report.path}`);
           return res.json(report);
@@ -47,6 +50,7 @@ module.exports = function (req, res) {
       })
       .catch((err) => {
 
+        deleteEPUB(epubPath);
         logger.log('error', 'Baccify stopped with errors ...');
         logger.log('error', err.stderr);
         return res.status(500).send(err.stderr);
@@ -54,6 +58,16 @@ module.exports = function (req, res) {
   });
 
 
+  function deleteEPUB(filePath) {
+
+    try {
+      fs.unlinkSync(filePath);
+      logger.log('info', `Successfully ${filePath} deleted`);
+
+    } catch (err) {
+      logger.log('error', `Error delete ${filePath} ` + err);
+    }
+  }
 
   async function getEPUBPath(workingPath) {
 
