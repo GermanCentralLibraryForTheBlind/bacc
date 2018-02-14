@@ -23,7 +23,7 @@ module.exports = function (req, res) {
     }
 
     req.files.forEach(function (element) {
-      logger.log('info', `\nFile uploaded to ${element.path}\n`);
+      logger.log('info', `File uploaded to ${element.path}`);
       res.json({
         msg: `File is uploaded.`,
         uploadID: element.destination.substring(element.destination.lastIndexOf('/') + 1),
