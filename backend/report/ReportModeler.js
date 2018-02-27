@@ -11,7 +11,7 @@ const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
 const ACE_REPORT = '/report.json';
 const BACC_REPORT = '/bacc_report.html';
-const guidelineTags = {wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA', EPUB: 'EPUB'};
+const guidelineTags = { wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
 
 class Impact {
   constructor() {
@@ -134,9 +134,7 @@ class ReportModeler {
 
         // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
-
         violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
-
         violation['earl:test'].spineItem = spineItem;
 
         // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
@@ -176,7 +174,9 @@ class ReportModeler {
 
 
   guidelineTagForHumans(tag) {
-    return guidelineTags[tag];
+
+    let found = _.intersection(Object.keys(guidelineTags), tag);
+    return found.length > 0 ? guidelineTags[found] : tag.join();
   }
 
   groupViolationsAndMapToBacc(violations) {
@@ -217,9 +217,8 @@ class ReportModeler {
       group.count = group.violations.length;
       // add guideline
       const that = this;
-      group.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags.filter(
-        v => _.contains(['wcag2a', 'wcag2a', 'EPUB'], v))
-      );
+
+      group.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
       // total count of all violation
       baccData.totalCount += group.count;
 
