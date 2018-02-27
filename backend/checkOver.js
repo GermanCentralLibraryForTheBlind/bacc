@@ -24,8 +24,6 @@ module.exports = function (req, res) {
     if (!epubFile)
       return res.status(404).send(`No EPUB file for ${uploadID} found`);
 
-    sendTaskInfo(epubFile);
-
     logger.log('info', 'Run baccify ...');
 
     const baccify = new Baccify();
@@ -45,12 +43,17 @@ module.exports = function (req, res) {
 
         setTimeout(function () {
           logger.log('info', `Send report path: ${report.path}`);
+
+          sendTaskInfo(epubFile, report.path);
+
           return res.json(report);
+
         }, 1000);
       })
       .catch((err) => {
 
         deleteEPUB(epubPath);
+        sendTaskInfo(epubFile);
         logger.log('error', 'Baccify stopped with errors ...');
         logger.log('error', err.stderr);
         return res.status(500).send(err.stderr);
@@ -84,14 +87,14 @@ module.exports = function (req, res) {
   }
 
 
-  function sendTaskInfo(epub) {
+  function sendTaskInfo(epub, reportPath) {
 
     try {
       SendMail({
         from: 'no-reply@bacc.com',
-        to: 'lars.voigt@dzb.de',
+        to: 'sarah.bohnert@dzb.de, lars.voigt@dzb.de',
         subject: 'checkover epub',
-        html: 'checkover epub:  ' + epub
+        text: 'Checked:  ' + epub + '\n\nReport: ' + (reportPath !== null ? reportPath : "error"),
       }, (err, reply) => {
         if (err)
           logger.log('error', err && err.stack);
