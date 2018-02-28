@@ -18,11 +18,12 @@
     "pm2:log": "node ./node_modules/.bin/pm2 logs ",
     "clear:bacc:log": "rimraf bacc.log",
     "post:deploy": "npm install && npm run reload",
-    "test": "date && mocha tests --recursive"
+    "test": "date && mocha tests --recursive",
+    "postinstall:proxy": "cd ./node_modules/ && export http_proxy=http://192.168.1.135:8080 && export https_proxy=$http_proxy && export HTTP_PROXY=$http_proxy && export HTTPS_PROXY=$http_proxy && rm -rf ace-core && git clone -b get-all-rules https://github.com/larsvoigt/ace-core && cd ace-core && lerna bootstrap",
+    "postinstall": "cd ./node_modules/ && rm -rf ace-core && git clone -b get-all-rules https://github.com/larsvoigt/ace-core && cd ace-core && lerna bootstrap"
   },
   "private": true,
   "dependencies": {
-    "ace-core": "github:larsvoigt/ace-core#get_all_rules",
     "child-process-promise": "^2.2.1",
     "core-js": "^2.4.1",
     "cors": "^2.8.4",

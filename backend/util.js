@@ -4,8 +4,10 @@ const Util = {};
 
 Util.setHost = (req, path) => {
 
-  const host = req.headers['x-forwarded-host'] || req.headers.host;
-  return `http://${host}/` + path.substring(path.lastIndexOf('uploads'));
+  var host = req.headers['x-forwarded-host'] || req.headers.host;
+  host = req.headers.referer || `http://${host}/`;
+
+  return host + path.substring(path.lastIndexOf('uploads'));
 };
 
 Util.ensureUploadDirExists = (path) => {
