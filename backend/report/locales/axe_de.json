@@ -253,23 +253,23 @@
     },
     "aria-required-attr": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die folgenden erforderlichen ARIA-Attribute sind nicht vorhanden:{{~it.data:value}} {{=value}}{{~}}."
     },
     "aria-required-children": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die folgenden erforderlichen untergeordneten ARIA-Rollen (ARIA-Kind-Rollen) sind nicht vorhanden:{{~it.data:value}} {{=value}}{{~}}."
     },
     "aria-required-parent": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die folgenden erforderlichen übergeordneten ARIA-Rollen (ARIA-Eltern-Rollen) sind nicht vorhanden:{{~it.data:value}} {{=value}}{{~}}."
     },
     "aria-valid-attr-value": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Folgende ARIA-Attributwerte sind nicht valide:{{~it.data:value}} {{=value}}{{~}}."
     },
     "aria-valid-attr": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Folgende ARIA-Attributnamen sind nicht valide:{{~it.data:value}} {{=value}}{{~}}"
     },
     "color-contrast": {
       "pass": "No translation",
@@ -307,7 +307,7 @@
     },
     "accesskeys": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Dokument enthält mehrere Elemente mit demselben accesskey-Attribut."
     },
     "focusable-no-name": {
       "pass": "No translation",
@@ -413,11 +413,11 @@
     },
     "meta-refresh": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das <meta>-Tag erzwingt eine zeitgesteuerte Aktualisierung der Seite."
     },
     "p-as-heading": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Anstelle eines Überschriftenelementes wird lediglich ein durch Formatierungen hervorgehobenes <p>-Element verwendet."
     },
     "region": {
       "pass": "No translation",
