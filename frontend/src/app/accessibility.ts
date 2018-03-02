@@ -55,4 +55,5 @@ export class Accessibility {
 
     return asWord;
   }
+
 }

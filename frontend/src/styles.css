@@ -36,3 +36,9 @@ body {
 .flat-info-border-btn:hover {
   border-color: #ffffff;
 }
+
+
+.custom-modal {
+  width: 85vw !important;
+  height: 76vh !important;
+}

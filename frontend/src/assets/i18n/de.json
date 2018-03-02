@@ -24,6 +24,11 @@
       "NONE" : "Keine Einschränkungen"
     },
     "START_CHECKER": "Starte Prüfung",
-    "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf."
+    "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
+    "HEADER_INFO_DIALOG": "Informationen über das BACC Tool",
+    "HEADER_RULES_DIALOG": "Regelwerk",
+    "HEADER_REPORT_DIALOG": "Report"
+
+
   }
 }

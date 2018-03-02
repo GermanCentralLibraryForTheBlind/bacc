@@ -1,4 +1,4 @@
-import {Component, ViewChild, Input, ElementRef, Renderer2} from '@angular/core';
+import {Component, ViewChild, Input, ElementRef} from '@angular/core';
 import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
@@ -8,6 +8,8 @@ import {AlertsService} from "@jaspero/ng2-alerts";
 import * as jsPDF from 'jspdf';
 import {Accessibility} from "../accessibility";
 import {TranslateService} from "@ngx-translate/core";
+
+declare var $:any;
 
 @Component({
   selector: 'report',
@@ -21,10 +23,12 @@ export class ReportComponent {
   public btnReportEnabled: boolean;
   public btnReportAnimated: boolean;
   public btnId: string;
+  public reportId: string;
+
   private a11y: Accessibility;
+  private focusedElementBeforeOpen:any;
 
   @Input() itemIndex: number;
-  @ViewChild('reportModal') reportModal: any;
   @ViewChild('reportIframe') iframe: ElementRef;
 
   constructor(private reportService: ReportService,
@@ -61,6 +65,7 @@ export class ReportComponent {
     const responseData = JSON.parse(response);
     const uploadID = responseData.uploadID;
     this.btnId = uploadID;
+    this.reportId = uploadID + "_id";
 
     (item as any).progressValue = 50;
     this.a11y.setAriaLiveValue("50%");
@@ -119,7 +124,6 @@ export class ReportComponent {
       });
 
     (item as any).accessibilityAriaLabel = accessibilityAsWord;
-
   }
 
   private setReportSrc(url: string) {
@@ -128,10 +132,18 @@ export class ReportComponent {
   }
 
   onLoad() {
-    if (this.reportUrl)
-      this.reportModal.showAsLarge();
-  }
+    if (this.reportUrl) {
+      $("#" + this.reportId).modal('show');
 
+      // TODO: move to accessibility module
+      this.focusedElementBeforeOpen = document.activeElement;
+      const that = this;
+      $("#" + this.reportId).on('hidden.bs.modal', function () {
+        if (that.focusedElementBeforeOpen)
+          that.focusedElementBeforeOpen.focus();
+      })
+    }
+  }
 
   saveAsPDF() {
 
