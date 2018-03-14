@@ -237,19 +237,19 @@
   "checks": {
     "abstractrole": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Element enhält eine abstrakte ARIA-Rolle."
     },
     "aria-allowed-attr": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die folgenden ARIA-Attribute sind (für die ARIA-Rolle des Elementes) nicht erlaubt:{{~it.data:value}} {{=value}}{{~}}."
     },
     "aria-hidden-body": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das <body>-Element des Dokumentes enthält das Attribut aria-hidden="true"."
     },
     "invalidrole": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Rolle des Elementes ist keine valide ARIA-Rolle."
     },
     "aria-required-attr": {
       "pass": "No translation",
@@ -311,11 +311,11 @@
     },
     "focusable-no-name": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Element befindet sich in der Tabreihenfolge und enthält keinen erreichbaren Text."
     },
     "tabindex": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Element besitzt einen Tab-Index größer als 0."
     },
     "duplicate-img-label": {
       "pass": "No translation",
