@@ -93,7 +93,7 @@ module.exports = function (req, res) {
       SendMail({
         from: 'no-reply@bacc.com',
         to: 'sarah.bohnert@dzb.de, lars.voigt@dzb.de',
-        subject: 'Checked: ' + epub,
+        subject: epub,
         text: 'Report: ' + (reportPath !== null ? reportPath : "error"),
       }, (err, reply) => {
         if (err)
