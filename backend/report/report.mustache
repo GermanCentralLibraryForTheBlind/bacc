@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{lang}}">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./../report.css"/>
@@ -15,7 +15,7 @@
   <span class="header-title">BACC REPORT</span>
   <br>
   <span class="bookTitle">{{metaData.dc:title}}   </span>
-  <i class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-size: 36px">accessibility</i>
+  <i class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-size: 36px" aria-label="{{totalAccessibilityLevel.label}}">accessibility</i>
   <br>
   <span class="check-date">{{labeling.checkDate}}: {{checkDate}}</span>
 </div>
@@ -104,7 +104,7 @@
                           </div>
                           <div class="panel-body">{{{shortHelp}}}</div>
                         </div>
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" aria-hidden="true">
                           <div class="panel-heading" role="tab" id="source-code">
                             <h4 class="panel-title">
                               <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
@@ -140,8 +140,8 @@
       </div>
     </div>
   </div>
-  <input type="radio" name="tabs" id="outline">
-  <div class="tab-label-content">
+  <input type="radio" name="tabs" id="outline" aria-hidden="true">
+  <div class="tab-label-content" aria-hidden="true">
     <label for="outline">{{labeling.outlines}}</label>
     <div class="tab-content">
       <div class="container">
@@ -180,8 +180,8 @@
       </div>
     </div>
   </div>
-  <input type="radio" name="tabs" id="image-description">
-  <div class="tab-label-content" id="tab3-content">
+  <input type="radio" name="tabs" id="image-description" aria-hidden="true">
+  <div class="tab-label-content" id="tab3-content" aria-hidden="true">
     <label for="image-description">{{labeling.imgDescription}}</label>
     <div class="tab-content">
       <table id="images" class="table">

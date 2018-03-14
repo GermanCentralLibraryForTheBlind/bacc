@@ -18,5 +18,12 @@
     "total": "Total count of violations",
     "guideline" : "Guideline",
     "checkDate" : "checked on"
+  },
+  "accessibilityLimitation" : {
+    "veryStrong" : "very strong limited accessibility",
+    "strong" : "very strong limited accessibility",
+    "partially" : "partially limited accessibility",
+    "minor" : "minor limited accessibility",
+    "none" : "None limited accessibility"
   }
 }

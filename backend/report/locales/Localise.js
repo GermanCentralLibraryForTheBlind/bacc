@@ -29,6 +29,8 @@ class Localise {
     if (lang !== 'de')
       return;
 
+    this._data.lang = lang;
+
     const groups = this._data.groups;
     let locale = axeDE;
     // console.log(groups)
@@ -44,8 +46,7 @@ class Localise {
 
       const translatedRule = locale.rules[groups[i].name]
 
-      if(translatedRule == undefined)
-      {
+      if (translatedRule == undefined) {
         logger.log('warn', 'No translation found for rule ' + groups[i].name + ' from ' + groups[i].assertedBy);
         continue;
       }
@@ -61,16 +62,40 @@ class Localise {
     // console.log(JSON.stringify(groups));
   }
 
-  localiseBACCLabeling(lang) {
+
+  setDefaultBACCLabeling() {
 
     this._data.labeling = baccEN.labeling;
+  }
+
+  //TODO:
+  localiseARIALabeling(lang) {
+
+    if (lang === 'de') {
+      const groups = this._data.groups;
+      // for (let i in groups) {
+      //
+      //   groups[i].impact.text
+      // }
+
+    } else
+      logger.log('warn', 'Unsupported language:' + lang);
+  }
+
+
+  localiseBACCLabeling(lang) {
 
     if (lang === 'de')
       this._data.labeling = baccDE.labeling;
+    else
+      logger.log('warn', 'Unsupported language:' + lang);
   }
+
 
   build() {
 
+    this.setDefaultBACCLabeling();
+    this.localiseARIALabeling(this._locale);
     this.localiseRuleDescription(this._locale);
     this.localiseBACCLabeling(this._locale);
 

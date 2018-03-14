@@ -6,6 +6,7 @@ const _ = require('underscore');
 
 const logger = require('./../logger');
 const Localise = require('./locales/Localise');
+const baccEN = require('./locales/bacc_en.json');
 
 const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
@@ -20,16 +21,24 @@ class Impact {
 
   init() {
     this._impacts = {
-      critical: {'name': 'critical', 'color': 'Red'},
-      serious: {'name': 'serious', 'color': 'Orange'},
-      moderate: {'name': 'moderate', 'color': 'Yellow'},
-      minor: {'name': 'minor', 'color': 'GreenYellow'}
+      critical: {'name': 'critical', 'baccName':'veryStrong', 'color': 'Red'},
+      serious: {'name': 'serious', 'baccName':'strong', 'color': 'Orange'},
+      moderate: {'name': 'moderate', 'baccName':'partially', 'color': 'Yellow'},
+      minor: {'name': 'minor', 'baccName':'minor', 'color': 'GreenYellow'}
     };
+
+    //TODO: for loop
+    this._impacts.critical.text = baccEN.accessibilityLimitation.veryStrong;
+    this._impacts.serious.text = baccEN.accessibilityLimitation.strong;
+    this._impacts.moderate.text = baccEN.accessibilityLimitation.partially;
+    this._impacts.minor.text = baccEN.accessibilityLimitation.minor;
   }
 
   getTotalAccessibilityImpactLevel(aceData) {
 
     let iLevel = {'name': 'no', 'color': 'Green'}; // default no impact
+    iLevel.text = baccEN.accessibilityLimitation.none;
+
     const aceDataAsString = JSON.stringify(aceData);
 
     const impactLevels = this._impacts;
@@ -66,12 +75,14 @@ class ReportModeler {
     this._totalAccessibilityLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
 
     let reportData = {};
+
     // TODO own mapper module
     reportData = this.getBACCReportData();
+    reportData.lang = "en";
     reportData.outlines = this._aceData.outlines;
     reportData.images = this._aceData.data.images;
 
-    // console.log(JSON.stringify(dataToRender));
+    // console.log(JSON.stringify(reportData));
     reportData = new Localise()
       .setReportData(reportData)
       .setLocale(this._language)

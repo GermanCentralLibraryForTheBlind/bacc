@@ -16,7 +16,14 @@
     "image": "Bild",
     "location": "Bereich im Dokument",
     "total": "Gesamtanzahl Meldungen",
-    "guideline" : "Richtlinie",
-    "checkDate" : "geprüft am"
+    "guideline": "Richtlinie",
+    "checkDate": "geprüft am"
+  },
+  "accessibilityLimitation": {
+    "veryStrong": "Sehr starke Einschränkungen",
+    "strong": "Starke Einschränkungen",
+    "partially": "Teilweise Einschränkungen",
+    "minor": "Geringe Einschränkungen",
+    "none": "Keine Einschränkungen"
   }
 }
