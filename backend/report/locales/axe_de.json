@@ -245,7 +245,7 @@
     },
     "aria-hidden-body": {
       "pass": "No translation",
-      "fail": "Das <body>-Element des Dokumentes enthält das Attribut aria-hidden="true"."
+      "fail": "Das <body>-Element des Dokumentes enthält das Attribut aria-hidden='true'"
     },
     "invalidrole": {
       "pass": "No translation",
