@@ -1,7 +1,7 @@
 {
   "labeling": {
     "greetings": "Have a good day!",
-    "violation": "Regelverstoß",
+    "violation": "Fehlgeschlagene Regeln",
     "count": "Anzahl",
     "outlines": "Abbildung der Struktur des Buches",
     "imgDescription": "Bildbeschreibungen",
