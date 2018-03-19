@@ -318,19 +318,19 @@
       "fail": "Das Element besitzt einen Tab-Index größer als 0."
     },
     "duplicate-img-label": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt ein <img>-Element mit Alternativtext, der vorhandenen Text wiederholt.",
       "fail": "No translation"
     },
     "explicit-label": {
-      "pass": "No translation",
+      "pass": "Das Formular-Element besitzt kein explizites <label>.",
       "fail": "No translation"
     },
     "help-same-as-label": {
-      "pass": "No translation",
+      "pass": "Der Hilfstext (angegeben durch ein title- oder aria-describedby-Attribut) entspricht dem Label-Text.",
       "fail": "No translation"
     },
     "implicit-label": {
-      "pass": "No translation",
+      "pass": "Das Formular-Element besitzt kein implizites <label>.",
       "fail": "No translation"
     },
     "multiple-label": {
@@ -428,35 +428,35 @@
       "fail": "No translation"
     },
     "unique-frame-title": {
-      "pass": "No translation",
+      "pass": "Das title-Attribut des Elementes ist nicht einmalig.",
       "fail": "No translation"
     },
     "aria-label": {
-      "pass": "No translation",
+      "pass": "Es existiert kein aria-label-Attribut oder das Attribut ist leer.",
       "fail": "No translation"
     },
     "aria-labelledby": {
-      "pass": "No translation",
+      "pass": "Das aria-labelledby-Attribut existiert nicht oder referenziert ein Element, das nicht existiert, nicht sichtbar oder leer ist.",
       "fail": "No translation"
     },
     "button-has-visible-text": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt keinen Text, der für Screenreader sichtbar ist.",
       "fail": "No translation"
     },
     "doc-has-title": {
-      "pass": "No translation",
+      "pass": "Das Dokument besitzt kein <title>-Element oder das <title>-Element ist leer.",
       "fail": "No translation"
     },
     "duplicate-id": {
-      "pass": "No translation",
+      "pass": "Das Dokument besitzt mehrere Elemente mit demselben id-Attributwert: {{=it.data}}.",
       "fail": "No translation"
     },
     "exists": {
-      "pass": "No translation",
+      "pass": "Das Element existiert.",
       "fail": "No translation"
     },
     "has-alt": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt kein alt-Attribut.",
       "fail": "No translation"
     },
     "has-visible-text": {
