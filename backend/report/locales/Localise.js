@@ -18,6 +18,10 @@ class Localise {
   }
 
   setLocale(value) {
+
+    if (value !== 'de' && value !== 'en')
+      logger.log('warn', 'Unsupported language:' + value);
+
     this._locale = value || 'en';
     logger.log('info', 'Report localisation ' + this._locale);
     return this;
@@ -62,26 +66,23 @@ class Localise {
     // console.log(JSON.stringify(groups));
   }
 
-
   setDefaultBACCLabeling() {
 
     this._data.labeling = baccEN.labeling;
   }
 
-  //TODO:
-  localiseARIALabeling(lang) {
+  localiseImpactLabel(lang) {
 
-    if (lang === 'de') {
-      const groups = this._data.groups;
-      // for (let i in groups) {
-      //
-      //   groups[i].impact.text
-      // }
+    var locale = baccEN;
+    if (lang === 'de')
+      locale = baccDE;
 
-    } else
-      logger.log('warn', 'Unsupported language:' + lang);
+    this._data.totalAccessibilityLevel.label = locale.accessibilityLimitation[this._data.totalAccessibilityLevel.baccName];
+
+    const groups = this._data.groups;
+    for (let i in groups)
+      groups[i].impact.label = locale.accessibilityLimitation[groups[i].impact.baccName]
   }
-
 
   localiseBACCLabeling(lang) {
 
@@ -95,7 +96,7 @@ class Localise {
   build() {
 
     this.setDefaultBACCLabeling();
-    this.localiseARIALabeling(this._locale);
+    this.localiseImpactLabel(this._locale);
     this.localiseRuleDescription(this._locale);
     this.localiseBACCLabeling(this._locale);
 

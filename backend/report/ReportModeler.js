@@ -6,38 +6,34 @@ const _ = require('underscore');
 
 const logger = require('./../logger');
 const Localise = require('./locales/Localise');
-const baccEN = require('./locales/bacc_en.json');
+
 
 const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
 const ACE_REPORT = '/report.json';
 const BACC_REPORT = '/bacc_report.html';
+
 const guidelineTags = { wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
 
 class Impact {
+
   constructor() {
     this.init();
   }
 
   init() {
+
     this._impacts = {
       critical: {'name': 'critical', 'baccName':'veryStrong', 'color': 'Red'},
       serious: {'name': 'serious', 'baccName':'strong', 'color': 'Orange'},
       moderate: {'name': 'moderate', 'baccName':'partially', 'color': 'Yellow'},
       minor: {'name': 'minor', 'baccName':'minor', 'color': 'GreenYellow'}
     };
-
-    //TODO: for loop
-    this._impacts.critical.text = baccEN.accessibilityLimitation.veryStrong;
-    this._impacts.serious.text = baccEN.accessibilityLimitation.strong;
-    this._impacts.moderate.text = baccEN.accessibilityLimitation.partially;
-    this._impacts.minor.text = baccEN.accessibilityLimitation.minor;
   }
 
   getTotalAccessibilityImpactLevel(aceData) {
 
-    let iLevel = {'name': 'no', 'color': 'Green'}; // default no impact
-    iLevel.text = baccEN.accessibilityLimitation.none;
+    let iLevel = {'name': 'no', 'baccName':'none', 'color': 'Green'}; // default no impact
 
     const aceDataAsString = JSON.stringify(aceData);
 
@@ -62,7 +58,7 @@ class ReportModeler {
   constructor(outputPath, lang) {
     this._outputPath = outputPath;
     this._language = lang || 'en';
-    this._impacts = new Impact();
+    this._impacts = new Impact(lang);
   }
 
   // private ???
@@ -82,12 +78,12 @@ class ReportModeler {
     reportData.outlines = this._aceData.outlines;
     reportData.images = this._aceData.data.images;
 
-    // console.log(JSON.stringify(reportData));
     reportData = new Localise()
       .setReportData(reportData)
       .setLocale(this._language)
       .build();
 
+    // console.log(JSON.stringify(reportData), undefined, 2);
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), reportData);
     fs.writeFileSync(this._outputPath + BACC_REPORT, output, 'utf-8');
