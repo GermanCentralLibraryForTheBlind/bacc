@@ -15,9 +15,13 @@
     "description": "Beschreibung",
     "image": "Bild",
     "location": "Bereich im Dokument",
-    "total": "Gesamtanzahl Meldungen",
+    "total": "Gesamtanzahl fehlgeschlagene Regeln",
     "guideline": "Richtlinie",
-    "checkDate": "geprüft am"
+    "checkDate": "geprüft am",
+    "detailsPrevious" : "vorheriges",
+    "detailsNext" : "nächstes",
+    "vioNav" : "Navigation fehlgeschlagene Regeln Details",
+    "violationImpact" : "Einfluss"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

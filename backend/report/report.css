@@ -213,12 +213,7 @@ code {
 
 .selected td {
   font-weight: bold;
-  /*font-size: medium;*/
 }
-
-/*.selected i {*/
-/*font-size: 28px;*/
-/*}*/
 
 .btnPagerPrev {
   margin-left: 5px;
@@ -255,28 +250,37 @@ code {
   text-decoration: none;
 }
 
-/*.violations {*/
-/*background-color: #efd8d9;*/
-/*}*/
-
-/*#template-violation-table {*/
-/*background-color: white;*/
-/*}*/
-
 .thead-violations {
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.54);
 }
 
-#template-table {
-  margin: -13px;;
-}
-
-.table-responsive {
-  max-height: 350px;
-}
-
 .violation-container {
   margin-left: 0px !important;
   margin-right: 0px !important;
+}
+
+
+table{
+  caption-side: bottom;
+}
+
+
+.table-fixed thead {
+  width: 100%;
+}
+.table-fixed tbody {
+  height: 300px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  border-bottom-width: 0;
+}
+
+caption {
+  margin-top: 30px;
 }
