@@ -460,27 +460,27 @@
       "fail": "No translation"
     },
     "has-visible-text": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt keinen Text, der für Screenreader sichtbar ist.",
       "fail": "No translation"
     },
     "is-on-screen": {
-      "pass": "No translation",
+      "pass": "Das Element ist sichtbar.",
       "fail": "No translation"
     },
     "non-empty-alt": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt kein alt-Attribut oder das alt-Attribut ist leer.",
       "fail": "No translation"
     },
     "non-empty-if-present": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt ein value-Attribut und das value-Attribut ist leer.",
       "fail": "No translation"
     },
     "non-empty-title": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt kein title-Attribut oder das title-Attribut ist leer.",
       "fail": "No translation"
     },
     "non-empty-value": {
-      "pass": "No translation",
+      "pass": "Das Element besitzt kein value-Attribut oder das value-Attribut ist leer.",
       "fail": "No translation"
     },
     "role-none": {
@@ -496,19 +496,19 @@
       "fail": "No translation"
     },
     "has-caption": {
-      "pass": "No translation",
+      "pass": "Die Layout-Tabelle besitzt ein <caption>-Element.",
       "fail": "No translation"
     },
     "has-summary": {
-      "pass": "No translation",
+      "pass": "Die Layout-Tabelle besitzt ein summary-Attribut.",
       "fail": "No translation"
     },
     "has-th": {
-      "pass": "No translation",
+      "pass": "Die Layout-Tabelle besitzt ein oder mehrere <th>-Elemente.",
       "fail": "No translation"
     },
     "html5-scope": {
-      "pass": "No translation",
+      "pass": "Das <td>-Element besitzt ein scope-Attribut. In HTML5 dürfen scope-Attribute jedoch lediglich für Tabellenkopfzellen <th> verwendet werden.",
       "fail": "No translation"
     },
     "same-caption-summary": {
