@@ -261,26 +261,30 @@ code {
 }
 
 
-table{
+#template-violation-table {
   caption-side: bottom;
 }
 
-
-.table-fixed thead {
+#template-violation-table > thead {
   width: 100%;
 }
-.table-fixed tbody {
+#template-violation-table > tbody {
   height: 300px;
   overflow-y: auto;
   width: 100%;
 }
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+#template-violation-table > thead,
+#template-violation-table > tbody,
+#template-violation-table > tr,
+#template-violation-table > td,
+#template-violation-table > th {
   display: block;
 }
-.table-fixed tbody td, .table-fixed thead > tr> th {
+#template-violation-table > tbody td,
+#template-violation-table > thead > tr > th {
   border-bottom-width: 0;
 }
 
-caption {
+#template-violation-table caption {
   margin-top: 30px;
 }

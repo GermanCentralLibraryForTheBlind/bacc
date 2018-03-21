@@ -28,41 +28,39 @@
   <div class="tab-label-content">
     <label for="violation">{{labeling.violation}}</label>
     <div class="tab-content">
-      <div class="container violation-container">
+      <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-6">
             <div class="panel panel-default">
               <div class="panel-body">
                 <table id="template-violation-table"
-                       class="table table-striped table-hover table-fixed"
+                       class="table table-striped table-hover"
                        data-click-to-select="true"
                        data-single-select="true">
+                  <caption>{{labeling.total}}: {{totalCount}}</caption>
                   <thead class="thead-violations">
-                  <th class="col-xs-2">{{labeling.violationImpact}}</th>
-                  <th class="col-xs-9">{{labeling.violation}}</th>
-                  <th class="col-xs-4">{{labeling.guideline}}</th>
-                  <th class="col-xs-1">{{labeling.count}}</th>
+                  <th class="col-md-2">{{labeling.violationImpact}}</th>
+                  <th class="col-md-7">{{labeling.violation}}</th>
+                  <th class="col-md-4">{{labeling.guideline}}</th>
+                  <th class="col-md-2">{{labeling.count}}</th>
                   </thead>
                   <tbody>
                   <!--{{#groups}}-->
                   <tr id="{{name}}">
-                    <td class="col-xs-2">
-                      <span class="sr-only" aria-labeledby="impact-icon">{{impact.label}}</span>
-                      <i id="impact-icon" class="material-icons mat-36" style="color:{{impact.color}}"
-                         aria-hidden="true">accessibility</i>
+                    <td class="col-md-2"><span class="sr-only" aria-labeledby="impact-icon">{{impact.label}}</span><i
+                      id="impact-icon" class="material-icons mat-36" style="color:{{impact.color}}" aria-hidden="true">accessibility</i>
                     </td>
-                    <td class="col-xs-9">{{name}}</td>
-                    <td class="col-xs-4">{{ruleSet}}</td>
-                    <td class="col-xs-1">{{count}}</td>
+                    <td class="col-md-7">{{name}}</td>
+                    <td class="col-md-4">{{ruleSet}}</td>
+                    <td class="col-md-2">{{count}}</td>
                   </tr>
                     <!--{{/groups}}-->
                   </tbody>
-                  <caption>{{labeling.total}}: {{totalCount}}</caption>
                 </table>
               </div>
             </div>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-6">
             <div id="details" class="panel panel-default">
               <div class="panel-heading">
                 <div class="row">
@@ -103,12 +101,12 @@
                         </div>
                         <div class="panel panel-default" aria-hidden="true">
                           <div class="panel-heading" role="tab" id="source-code">
-                            <h4 class="panel-title">
+                            <div class="panel-title" style="font-size: small; font-weight: bold">
                               <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
                                  aria-expanded="false" aria-controls="collapseOne">
                                 {{labeling.code}}
                               </a>
-                            </h4>
+                            </div>
                           </div>
                           <div id="expandSource-{{name}}-{{index}}" class="panel-collapse collapse out" role="panel"
                                aria-labelledby="source-code">
@@ -217,10 +215,10 @@
       </table>
     </div>
   </div>
-
   <div class="slide"></div>
-
 </div>
+<div id="ariaLive" class="sr-only" role="status" aria-live="polite"></div>
+<div id="detailsStatusString" class="hidden">{{labeling.updateDetails}}</div>
 <script>
 
   var vioPanel;
@@ -264,9 +262,9 @@
   //
   $('#template-violation-table > tbody > tr').keypress(function (event) {
 
-    if (event.which == 13) {
+    if (event.which == 13)
       selectViolationDetails(this);
-    }
+
   });
 
   //
@@ -286,6 +284,11 @@
 
     $('#detailsViolationLabel').text(el.id);
 
+    const violation = el.id;
+    const detailsStatus = $('#detailsStatusString').text();
+
+    setStateForSR(detailsStatus.replace("${violation}", violation));
+
     // hide navigation bar if only one violation occurred for current type
     prefNextBtnState();
 
@@ -299,6 +302,12 @@
     $('button.btnPagerPrev').prop('disabled', $(vioPanel + ':visible').prev(vioPanel).length === 0);
     $('button.btnPagerNext').prop('disabled', $(vioPanel + ':visible').next(vioPanel).length === 0);
   }
+
+  // provide current application state to screen reader user
+  function setStateForSR(text) {
+    $('#ariaLive').text(text);
+  }
+
 </script>
 </body>
 </html>

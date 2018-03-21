@@ -21,7 +21,9 @@
     "detailsPrevious" : "previous",
     "detailsNext" : "next",
     "vioNav" : "Violation details navigation",
-    "violationImpact" : "impact"
+    "violationImpact" : "impact",
+    "dialogViolations" : "dialog violations",
+    "updateDetails" : "Details of ${violation} are shown"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",

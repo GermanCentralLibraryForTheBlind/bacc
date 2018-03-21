@@ -21,7 +21,9 @@
     "detailsPrevious" : "vorheriges",
     "detailsNext" : "nächstes",
     "vioNav" : "Navigation fehlgeschlagene Regeln Details",
-    "violationImpact" : "Einfluss"
+    "violationImpact" : "Einfluss",
+    "dialogViolations" : "Dialog fehlgeschlagene Regeln",
+    "updateDetails" : "Details zu ${violation} wird angezeigt"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",
