@@ -303,7 +303,7 @@
     },
     "group-labelledby": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Elemente mit dem Namen \"{{=it.data.name}}\" referenzieren mit aria-labelledby nicht alle dasselbe Element."
     },
     "accesskeys": {
       "pass": "No translation",
@@ -318,20 +318,20 @@
       "fail": "Das Element besitzt einen Tab-Index größer als 0."
     },
     "duplicate-img-label": {
-      "pass": "Das Element besitzt ein <img>-Element mit Alternativtext, der vorhandenen Text wiederholt.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt ein <img>-Element mit Alternativtext, der vorhandenen Text wiederholt."
     },
     "explicit-label": {
-      "pass": "Das Formular-Element besitzt kein explizites <label>.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Formular-Element besitzt kein explizites <label>."
     },
     "help-same-as-label": {
-      "pass": "Der Hilfstext (angegeben durch ein title- oder aria-describedby-Attribut) entspricht dem Label-Text.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Der Hilfstext (angegeben durch ein title- oder aria-describedby-Attribut) entspricht dem Label-Text."
     },
     "implicit-label": {
-      "pass": "Das Formular-Element besitzt kein implizites <label>.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Formular-Element besitzt kein implizites <label>."
     },
     "multiple-label": {
       "pass": "No translation",
@@ -428,60 +428,60 @@
       "fail": "No translation"
     },
     "unique-frame-title": {
-      "pass": "Das title-Attribut des Elementes ist nicht einmalig.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das title-Attribut des Elementes ist nicht einmalig."
     },
     "aria-label": {
-      "pass": "Es existiert kein aria-label-Attribut oder das Attribut ist leer.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Es existiert kein aria-label-Attribut oder das Attribut ist leer."
     },
     "aria-labelledby": {
-      "pass": "Das aria-labelledby-Attribut existiert nicht oder referenziert ein Element, das nicht existiert, nicht sichtbar oder leer ist.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das aria-labelledby-Attribut existiert nicht oder referenziert ein Element, das nicht existiert, nicht sichtbar oder leer ist."
     },
     "button-has-visible-text": {
-      "pass": "Das Element besitzt keinen Text, der für Screenreader sichtbar ist.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt keinen Text, der für Screenreader sichtbar ist."
     },
     "doc-has-title": {
-      "pass": "Das Dokument besitzt kein <title>-Element oder das <title>-Element ist leer.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Dokument besitzt kein <title>-Element oder das <title>-Element ist leer."
     },
     "duplicate-id": {
-      "pass": "Das Dokument besitzt mehrere Elemente mit demselben id-Attributwert: {{=it.data}}.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Dokument besitzt mehrere Elemente mit demselben id-Attributwert: {{=it.data}}."
     },
     "exists": {
-      "pass": "Das Element existiert.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element existiert."
     },
     "has-alt": {
-      "pass": "Das Element besitzt kein alt-Attribut.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt kein alt-Attribut."
     },
     "has-visible-text": {
-      "pass": "Das Element besitzt keinen Text, der für Screenreader sichtbar ist.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt keinen Text, der für Screenreader sichtbar ist."
     },
     "is-on-screen": {
-      "pass": "Das Element ist sichtbar.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element ist sichtbar."
     },
     "non-empty-alt": {
-      "pass": "Das Element besitzt kein alt-Attribut oder das alt-Attribut ist leer.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt kein alt-Attribut oder das alt-Attribut ist leer."
     },
     "non-empty-if-present": {
-      "pass": "Das Element besitzt ein value-Attribut und das value-Attribut ist leer.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt ein value-Attribut und das value-Attribut ist leer."
     },
     "non-empty-title": {
-      "pass": "Das Element besitzt kein title-Attribut oder das title-Attribut ist leer.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt kein title-Attribut oder das title-Attribut ist leer."
     },
     "non-empty-value": {
-      "pass": "Das Element besitzt kein value-Attribut oder das value-Attribut ist leer.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das Element besitzt kein value-Attribut oder das value-Attribut ist leer."
     },
     "role-none": {
       "pass": "No translation",
@@ -496,24 +496,24 @@
       "fail": "No translation"
     },
     "has-caption": {
-      "pass": "Die Layout-Tabelle besitzt ein <caption>-Element.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Die Layout-Tabelle besitzt ein <caption>-Element."
     },
     "has-summary": {
-      "pass": "Die Layout-Tabelle besitzt ein summary-Attribut.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Die Layout-Tabelle besitzt ein summary-Attribut."
     },
     "has-th": {
-      "pass": "Die Layout-Tabelle besitzt ein oder mehrere <th>-Elemente.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Die Layout-Tabelle besitzt ein oder mehrere <th>-Elemente."
     },
     "html5-scope": {
-      "pass": "Das <td>-Element besitzt ein scope-Attribut. In HTML5 dürfen scope-Attribute jedoch lediglich für Tabellenkopfzellen <th> verwendet werden.",
-      "fail": "No translation"
+      "pass": "No translation",
+      "fail": "Das <td>-Element besitzt ein scope-Attribut. In HTML5 dürfen scope-Attribute jedoch lediglich für Tabellenkopfzellen <th> verwendet werden."
     },
     "same-caption-summary": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Inhalte des summary-Attributes und des <caption>-Elementes sind identisch."
     },
     "scope-value": {
       "pass": "No translation",
