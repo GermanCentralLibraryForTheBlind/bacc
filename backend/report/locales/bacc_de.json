@@ -23,7 +23,8 @@
     "vioNav" : "Navigation fehlgeschlagene Regeln Details",
     "violationImpact" : "Einfluss",
     "dialogViolations" : "Dialog fehlgeschlagene Regeln",
-    "updateDetails" : "Details zu ${violation} wird angezeigt"
+    "updateDetails" : "Details zu ${violation} wird angezeigt",
+    "ruleDescription" : "Regelbeschreibung"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

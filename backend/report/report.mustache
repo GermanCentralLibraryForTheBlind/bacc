@@ -47,8 +47,10 @@
                   <tbody>
                   <!--{{#groups}}-->
                   <tr id="{{name}}">
-                    <td class="col-md-2"><span class="sr-only" aria-labeledby="impact-icon">{{impact.label}}</span><i
-                      id="impact-icon" class="material-icons mat-36" style="color:{{impact.color}}" aria-hidden="true">accessibility</i>
+                    <td class="col-md-2"><span class="sr-only"
+                                               aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
+                      <i id="{{name}}-impact-icon" class="material-icons mat-36" style="color:{{impact.color}}"
+                         aria-hidden="true">accessibility</i>
                     </td>
                     <td class="col-md-7">{{name}}</td>
                     <td class="col-md-4">{{ruleSet}}</td>
@@ -90,6 +92,14 @@
                         <b>{{index}}. EPUB item:</b> <a>{{spineItem}}</a>
                       </div>
                       <div class="panel-body">
+                        {{#help.dct:description}}
+                          <div class="panel panel-warning">
+                            <div class="panel-heading">
+                              {{labeling.ruleDescription}}
+                            </div>
+                            <div class="panel-body">{{help.dct:description}}</div>
+                          </div>
+                        {{/help.dct:description}}
                         <div class="panel panel-warning">
                           <div class="panel-heading">
                             {{labeling.description}}

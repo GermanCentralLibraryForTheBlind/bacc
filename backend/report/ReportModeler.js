@@ -13,7 +13,7 @@ const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
 const ACE_REPORT = '/report.json';
 const BACC_REPORT = '/bacc_report.html';
 
-const guidelineTags = { wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
+const guidelineTags = {wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
 
 class Impact {
 
@@ -24,16 +24,16 @@ class Impact {
   init() {
 
     this._impacts = {
-      critical: {'name': 'critical', 'baccName':'veryStrong', 'color': 'Red'},
-      serious: {'name': 'serious', 'baccName':'strong', 'color': 'Orange'},
-      moderate: {'name': 'moderate', 'baccName':'partially', 'color': 'Yellow'},
-      minor: {'name': 'minor', 'baccName':'minor', 'color': 'GreenYellow'}
+      critical: {'name': 'critical', 'baccName': 'veryStrong', 'color': 'Red'},
+      serious: {'name': 'serious', 'baccName': 'strong', 'color': 'Orange'},
+      moderate: {'name': 'moderate', 'baccName': 'partially', 'color': 'Yellow'},
+      minor: {'name': 'minor', 'baccName': 'minor', 'color': 'GreenYellow'}
     };
   }
 
   getTotalAccessibilityImpactLevel(aceData) {
 
-    let iLevel = {'name': 'no', 'baccName':'none', 'color': 'Green'}; // default no impact
+    let iLevel = {'name': 'no', 'baccName': 'none', 'color': 'Green'}; // default no impact
 
     const aceDataAsString = JSON.stringify(aceData);
 
@@ -153,11 +153,9 @@ class ReportModeler {
 
   formatHelp(help) {
 
-    if(!help)
+    if (!help)
       return help;
 
-    help = help.replace("Fix all of the following:", "");
-    help = help.replace("Fix any of the following:", "");
     help = help.replace('<', '&lt;');
     help = help.replace('>', '&gt;');
     help = help.replace('&lt;', '<i>&lt;');
@@ -168,11 +166,21 @@ class ReportModeler {
     if (helpItems.length <= 1)
       return help;
 
-    let ul = "<ul>";
+    let ul = '';
+
 
     helpItems.forEach(function (item) {
-      if (item !== "")
-        ul += ("<li>" + item +"</li>");
+
+      if (item === "")
+        return;
+
+      if (item.indexOf("Fix") > -1) {
+        ul += ("</ul>");
+        ul += item;
+        ul += "<ul>";
+      }
+      else
+        ul += ("<li>" + item + "</li>");
     });
 
     ul += ("</ul>");
