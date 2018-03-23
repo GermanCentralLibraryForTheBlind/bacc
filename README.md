@@ -41,6 +41,11 @@ TODO
 
 ## CHANGELOG 
 
+### 0.4.0
+
+* BACC support screenreader users 
+
+
 ### 0.3.0
 
 * Display the list of rules that used for the audit
