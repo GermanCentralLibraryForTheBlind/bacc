@@ -6,6 +6,10 @@ import {FileItem} from 'ng2-file-upload';
 import {AlertsService} from "@jaspero/ng2-alerts";
 
 import * as jsPDF from 'jspdf';
+import {Accessibility} from "../accessibility";
+import {TranslateService} from "@ngx-translate/core";
+
+declare var $:any;
 
 @Component({
   selector: 'report',
@@ -19,36 +23,52 @@ export class ReportComponent {
   public btnReportEnabled: boolean;
   public btnReportAnimated: boolean;
   public btnId: string;
+  public reportId: string;
+
+  private a11y: Accessibility;
+  private focusedElementBeforeOpen:any;
 
   @Input() itemIndex: number;
-  @ViewChild('reportModal') reportModal: any;
   @ViewChild('reportIframe') iframe: ElementRef;
 
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
               private checkOverService: CheckOverService,
-              private alert: AlertsService) {
+              private alert: AlertsService,
+              private translate: TranslateService) {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
     this.btnId = '-1';
+
+    this.a11y = new Accessibility(translate);
   }
 
   setItemOnSuccess(item: FileItem) {
+
     console.log('setItemOnSuccess');
+
+    this.a11y.setAriaLiveValue("Starte Prüfung");
+    this.a11y.progressInterpolation(item, 90);
+
     item.onSuccess = (response: any, status: any, headers: any): any =>
-      this.onSuccessItem(response, item);
+      this.afterSuccessfulUpload(response, item);
 
     item.onComplete = (response: any, status: any, headers: any): any =>
       console.log('completed');
   }
 
-  private onSuccessItem(response: string, item: FileItem): any {
-    console.log('onSuccessItem');
+  private afterSuccessfulUpload(response: string, item: FileItem): any {
+
+    console.log('afterSuccessfulUpload');
+
     const responseData = JSON.parse(response);
     const uploadID = responseData.uploadID;
     this.btnId = uploadID;
+    this.reportId = uploadID + "_id";
+
     (item as any).progressValue = 50;
+    this.a11y.setAriaLiveValue("50%");
 
     this.checkOverService.runCheck(uploadID)
       .then(response => {
@@ -84,6 +104,26 @@ export class ReportComponent {
     this.btnReportAnimated = true;
     (item as any).progressValue = 100;
     (item as any).accessibility = {'color': report.aLevel.color, 'font-size': '32px'};
+
+
+    const accessibilityAsWord = this.a11y.getAccessibilityLevelAsWord(report.aLevel.color);
+
+    this.translate.get('BACC.CHECKER_IS_FINISHED',
+      {
+        fileName: (item as any).file.name,
+        accessibilityAsWord: accessibilityAsWord
+      })
+      .subscribe((res: string) => {
+        this.a11y.setAriaLiveValue(res);
+        let onElement = document.getElementById(this.btnId);
+
+        setTimeout(() => {
+          console.log(onElement);
+          onElement.focus();
+        }, 500)
+      });
+
+    (item as any).accessibilityAriaLabel = accessibilityAsWord;
   }
 
   private setReportSrc(url: string) {
@@ -92,10 +132,18 @@ export class ReportComponent {
   }
 
   onLoad() {
-    if (this.reportUrl)
-      this.reportModal.showAsLarge();
-  }
+    if (this.reportUrl) {
+      $("#" + this.reportId).modal('show');
 
+      // TODO: move to accessibility module
+      this.focusedElementBeforeOpen = document.activeElement;
+      const that = this;
+      $("#" + this.reportId).on('hidden.bs.modal', function () {
+        if (that.focusedElementBeforeOpen)
+          that.focusedElementBeforeOpen.focus();
+      })
+    }
+  }
 
   saveAsPDF() {
 

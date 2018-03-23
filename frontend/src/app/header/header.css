@@ -16,6 +16,9 @@ info, show-rules {
 }
 
 .my-header-title {
-  color: white;
-  font-weight: bold;
+  color: white !important;
+  /*font-weight: bold !important;*/
+  /*border: 2px solid white;*/
+  /*border-radius: 6px;*/
+
 }

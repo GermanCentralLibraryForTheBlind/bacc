@@ -17,6 +17,20 @@
     "location": "Location",
     "total": "Total count of violations",
     "guideline" : "Guideline",
-    "checkDate" : "checked on"
+    "checkDate" : "checked on",
+    "detailsPrevious" : "previous",
+    "detailsNext" : "next",
+    "vioNav" : "Violation details navigation",
+    "violationImpact" : "impact",
+    "dialogViolations" : "dialog violations",
+    "updateDetails" : "Details of ${violation} are shown",
+    "ruleDescription" : "rule description"
+  },
+  "accessibilityLimitation" : {
+    "veryStrong" : "very strong limited accessibility",
+    "strong" : "very strong limited accessibility",
+    "partially" : "partially limited accessibility",
+    "minor" : "minor limited accessibility",
+    "none" : "None limited accessibility"
   }
 }

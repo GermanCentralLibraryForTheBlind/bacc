@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {CheckOverComponent} from './check-over/check-over';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,9 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent {
 
+
+  @ViewChild(CheckOverComponent) checkOver: CheckOverComponent;
+
   constructor(private translate: TranslateService) {
 
     // bacc localisation
@@ -15,7 +19,10 @@ export class AppComponent {
     translate.setDefaultLang('en');
     let browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
+  }
 
-    // router.navigate(['/co']); // bootstrap default route ...
+  // direkt link for screenreader user
+  skipLink() {
+    this.checkOver.focusOnInput();
   }
 }

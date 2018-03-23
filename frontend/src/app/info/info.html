@@ -1,12 +1,34 @@
-<button   class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn" popover="{{'BACC.TOOLTIP_INFO' | translate }}" [popoverOnHover]="true" aria-label="Information about bacc" (click)="show()" >
+<popover-content #popoverInfo
+                 placement="bottom"
+                 [animation]="true"
+                 [closeOnClickOutside]="true"
+                 aria-hidden="true">
+  {{'BACC.TOOLTIP_INFO' | translate }}
+</popover-content>
+<button attr.aria-label="{{'BACC.TOOLTIP_INFO' | translate }}"
+        class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
+        [popover]="popoverInfo"
+        [popoverOnHover]="true"
+        data-toggle="modal"
+        data-target="#myModalInfo">
   <mat-icon>info</mat-icon>
 </button>
-<modal #infoModal>
-  <div class="app-modal-header">Informationen über das BACC Tool</div>
-  <div class="app-modal-body">
-    <div id="info" Markdown path="./assets/Infotext_de.md"></div>
-  </div>
-  <div class="app-modal-footer">
-    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="infoModal.hide()">{{ 'BACC.CLOSE' | translate }}</button>
-  </div>
-</modal>
+<!-- Modal -->
+<div class="modal fade" id="myModalInfo" tabindex="-1" role="dialog" aria-labelledby="myInfo">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myInfo"> {{'BACC.HEADER_INFO_DIALOG' | translate }}</h4>
+      </div>
+      <div class="modal-body custom-modal">
+        <div id="info" Markdown path="./assets/Infotext_de.md"></div>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button color="default" type="button" class="btn btn-default" data-dismiss="modal">{{
+          'BACC.CLOSE' | translate }}
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -9,12 +9,23 @@
     playlist_add_check
   </mat-icon>
 </button>
-<modal #reportModal>
-  <div class="app-modal-body">
-    <iframe #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
+<!-- Modal -->
+<div class="modal fade" [id]="reportId" tabindex="-1" role="dialog" aria-labelledby="myReport">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myReport"> {{'BACC.HEADER_REPORT_DIALOG' | translate }}</h4>
+      </div>
+      <div class="modal-body custom-modal">
+        <iframe #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>
+        <button mat-raised-button color="default" type="button" class="btn btn-default" data-dismiss="modal">
+          {{'BACC.CLOSE' | translate }}
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="app-modal-footer">
-    <button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>
-    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="reportModal.hide()">{{ 'BACC.CLOSE' | translate }}</button>
-  </div>
-</modal>
+</div>

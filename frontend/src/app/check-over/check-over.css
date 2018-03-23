@@ -109,3 +109,9 @@
   padding: 5px;
   text-align: center;
 }
+
+.sr-label {
+  height: 1px !important;
+  width: 1px !important;
+  position: relative;
+}

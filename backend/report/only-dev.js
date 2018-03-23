@@ -3,4 +3,5 @@ const r = new ReportModeler('/home/alan/workspace/bacc/uploads/0ada3cd3-1adf-4bb
 console.log('start report build ...');
 r.build();
 console.log('build ready');
+
 process.exit(0);

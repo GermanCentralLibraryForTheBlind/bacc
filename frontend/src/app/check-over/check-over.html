@@ -1,32 +1,37 @@
-<table class="legend">
+<table class="legend" attr.aria-label="{{'BACC.LEGEND' | translate }}">
   <tbody>
   <tr style="color: red">
-    <td><span><mat-icon>accessibility</mat-icon></span></td>
-    <td>
+    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.VERY_STRONG' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
+    </td>
+    <td aria-hidden="true">
       <mat-icon>sentiment_very_dissatisfied</mat-icon>
     </td>
   </tr>
   <tr style="color: orange">
-    <td><span><mat-icon>accessibility</mat-icon></span></td>
-    <td>
+    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.STRONG' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
+    </td>
+    <td aria-hidden="true">
       <mat-icon>sentiment_dissatisfied</mat-icon>
     </td>
   </tr>
   <tr style="color: yellow">
-    <td><span><mat-icon>accessibility</mat-icon></span></td>
-    <td>
+    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.PARTIALLY' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
+    </td>
+    <td aria-hidden="true">
       <mat-icon>sentiment_neutral</mat-icon>
     </td>
   </tr>
   <tr style="color: yellowgreen">
-    <td><span><mat-icon>accessibility</mat-icon></span></td>
-    <td>
+    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.MINOR' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
+    </td>
+    <td aria-hidden="true">
       <mat-icon>sentiment_satisfied</mat-icon>
     </td>
   </tr>
   <tr style="color: green">
-    <td><span><mat-icon>accessibility</mat-icon></span></td>
-    <td>
+    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.NONE' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
+    </td>
+    <td aria-hidden="true">
       <mat-icon>sentiment_very_satisfied</mat-icon>
     </td>
   </tr>
@@ -41,14 +46,17 @@
            [uploader]="uploader"
            class="my-drop-zone">
         <div class="upload">
-          <mat-icon class="cloud-icon-upload">cloud_upload</mat-icon>
-          <h4 [innerHTML]="'BACC.DRAG_DROP' | translate"></h4>
+          <mat-icon aria-hidden="true" class="cloud-icon-upload">cloud_upload</mat-icon>
+          <h4 aria-hidden="true" [innerHTML]="'BACC.DRAG_DROP' | translate"></h4>
           <div class="app-component-filler"></div>
-          <input id="input-file-id" ng2FileSelect
+          <input id="input-file-id"
+                 ng2FileSelect
                  [uploader]="uploader"
                  [ngClass]="{'hide': true}"
-                 type="file"/>
-          <label for="input-file-id" class="btn-file">{{ 'BACC.FILE_DIALOG' | translate }}</label>
+                 type="file"
+          />
+          <label for="input-file-id" class="btn-file" aria-hidden="true">{{ 'BACC.FILE_DIALOG' | translate }}</label>
+          <label for="input-file-id" class="sr-only sr-label">{{'BACC.SKIP_TO_CHECKER' | translate }}</label>
         </div>
       </div>
     </div>
@@ -57,10 +65,14 @@
         <mat-progress-bar
           mode="determinate"
           [value]="uploader.progress"
-          class="custom-progressbar">
+          class="custom-progressbar"
+          aria-valuenow="uploader.progress"
+          aria-valuemin="0"
+          aria-valuemax="100">
         </mat-progress-bar>
       </div>
       <div class="own-table-layout">
+        <div id="aria-live" class="sr-only" aria-live="polite"></div>
         <table style="width:100%">
           <thead>
           <tr>
@@ -74,7 +86,11 @@
           </thead>
           <tbody>
           <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
-            <td><span><mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon></span></td>
+            <td>
+              <span [attr.aria-label]="item?.accessibilityAriaLabel">
+              <mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon>
+            </span>
+            </td>
             <td><strong>{{ item?.file?.name }}</strong></td>
             <td>
               <report [itemIndex]="i"></report>
@@ -85,21 +101,24 @@
                 mode="buffer"
                 [value]="item?.progressValue"
                 [bufferValue]="item.progress"
-                class="custom-progressbar">
+                class="custom-progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100">
               </mat-progress-bar>
             </td>
             <td nowrap>
-              <button mat-icon-button
-                      type="button"
-                      color="primary"
-                      (click)="item.upload()"
-                      [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                <mat-icon>file_upload</mat-icon>
-              </button>
+              <!--<button mat-icon-button-->
+              <!--type="button"-->
+              <!--color="primary"-->
+              <!--(click)="item.upload()"-->
+              <!--[disabled]="item.isReady || item.isUploading || item.isSuccess">-->
+              <!--<mat-icon>file_upload</mat-icon>-->
+              <!--</button>-->
               <button mat-icon-button
                       type="button"
                       color="warn"
-                      (click)="item.cancel()" [disabled]="!item.isUploading">
+                      (click)="item.cancel()"
+                      [disabled]="!item.isUploading">
                 <mat-icon>cancel</mat-icon>
               </button>
               <button mat-icon-button

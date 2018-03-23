@@ -13,6 +13,22 @@
     "FILE_DIALOG": "Datei zum Hochladen auswählen.",
     "CLOSE": "Schließen",
     "TOOLTIP_SHOW_RULES" : "Regelwerk anzeigen",
-    "TOOLTIP_INFO" : "Informationen über das Prüftool."
+    "TOOLTIP_INFO" : "Informationen über das Prüftool.",
+    "SKIP_TO_CHECKER": "Ebook zur Prüfung auswählen",
+    "LEGEND" : "Legende der Zugänglichkeitsstufen eines E-books",
+    "LEGEND_LEVELS": {
+      "VERY_STRONG" : "Sehr starke Einschränkungen",
+      "STRONG" : "Starke Einschränkungen",
+      "PARTIALLY" : "Teilweise Einschränkungen",
+      "MINOR" : "Geringe Einschränkungen",
+      "NONE" : "Keine Einschränkungen"
+    },
+    "START_CHECKER": "Starte Prüfung",
+    "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
+    "HEADER_INFO_DIALOG": "Informationen über das BACC Tool",
+    "HEADER_RULES_DIALOG": "Regelwerk",
+    "HEADER_REPORT_DIALOG": "Report"
+
+
   }
 }

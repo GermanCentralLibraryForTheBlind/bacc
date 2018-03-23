@@ -1,13 +1,35 @@
-<button class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn" popover="{{'BACC.TOOLTIP_SHOW_RULES' | translate }}" [popoverOnHover]="true" (click)="show()">
+<popover-content #popoverShowRules
+                 placement="bottom"
+                 [animation]="true"
+                 [closeOnClickOutside]="true"
+                 aria-hidden="true">
+  {{'BACC.TOOLTIP_SHOW_RULES' | translate }}
+</popover-content>
+<button
+  attr.aria-label="{{'BACC.TOOLTIP_SHOW_RULES' | translate }}"
+  class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
+  [popover]="popoverShowRules"
+  [popoverOnHover]="true"
+  (click)="show()">
   <mat-icon>check_circle</mat-icon>
 </button>
-<modal #rulesModal>
-  <div class="app-modal-header">
+<!-- Modal -->
+<div class="modal fade" id="showRules" tabindex="-1" role="dialog" aria-labelledby="myRules">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myRules"> {{'BACC.HEADER_RULES_DIALOG' | translate }}</h4>
+      </div>
+      <div class="modal-body custom-modal">
+        <iframe [src]="rulesAsHTML"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button color="default" type="button" class="btn btn-default" data-dismiss="modal">
+          {{'BACC.CLOSE' | translate }}
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="app-modal-body">
-    <iframe [src]="rulesAsHTML"></iframe>
-  </div>
-  <div class="app-modal-footer">
-    <button mat-raised-button color="default" type="button" class="btn btn-default" (click)="rulesModal.hide()">{{'BACC.CLOSE' | translate }}</button>
-  </div>
-</modal>
+</div>
+

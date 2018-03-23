@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'info',
@@ -7,15 +7,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  @ViewChild('infoModal') infoModal: any;
-
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  show() {
-    this.infoModal.showAsLarge();
   }
 }

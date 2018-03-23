@@ -7,29 +7,34 @@ const _ = require('underscore');
 const logger = require('./../logger');
 const Localise = require('./locales/Localise');
 
+
 const REPORT_SYTLE = 'report.css';
 const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
 const ACE_REPORT = '/report.json';
 const BACC_REPORT = '/bacc_report.html';
-const guidelineTags = { wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
+
+const guidelineTags = {wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
 
 class Impact {
+
   constructor() {
     this.init();
   }
 
   init() {
+
     this._impacts = {
-      critical: {'name': 'critical', 'color': 'Red'},
-      serious: {'name': 'serious', 'color': 'Orange'},
-      moderate: {'name': 'moderate', 'color': 'Yellow'},
-      minor: {'name': 'minor', 'color': 'GreenYellow'}
+      critical: {'name': 'critical', 'baccName': 'veryStrong', 'color': 'Red'},
+      serious: {'name': 'serious', 'baccName': 'strong', 'color': 'Orange'},
+      moderate: {'name': 'moderate', 'baccName': 'partially', 'color': 'Yellow'},
+      minor: {'name': 'minor', 'baccName': 'minor', 'color': 'GreenYellow'}
     };
   }
 
   getTotalAccessibilityImpactLevel(aceData) {
 
-    let iLevel = {'name': 'no', 'color': 'Green'}; // default no impact
+    let iLevel = {'name': 'no', 'baccName': 'none', 'color': 'Green'}; // default no impact
+
     const aceDataAsString = JSON.stringify(aceData);
 
     const impactLevels = this._impacts;
@@ -53,7 +58,7 @@ class ReportModeler {
   constructor(outputPath, lang) {
     this._outputPath = outputPath;
     this._language = lang || 'en';
-    this._impacts = new Impact();
+    this._impacts = new Impact(lang);
   }
 
   // private ???
@@ -66,17 +71,19 @@ class ReportModeler {
     this._totalAccessibilityLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
 
     let reportData = {};
+
     // TODO own mapper module
     reportData = this.getBACCReportData();
+    reportData.lang = "en";
     reportData.outlines = this._aceData.outlines;
     reportData.images = this._aceData.data.images;
 
-    // console.log(JSON.stringify(dataToRender));
     reportData = new Localise()
       .setReportData(reportData)
       .setLocale(this._language)
       .build();
 
+    // console.log(JSON.stringify(reportData), undefined, 2);
     const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), reportData);
     fs.writeFileSync(this._outputPath + BACC_REPORT, output, 'utf-8');
@@ -146,11 +153,9 @@ class ReportModeler {
 
   formatHelp(help) {
 
-    if(!help)
+    if (!help)
       return help;
 
-    help = help.replace("Fix all of the following:", "");
-    help = help.replace("Fix any of the following:", "");
     help = help.replace('<', '&lt;');
     help = help.replace('>', '&gt;');
     help = help.replace('&lt;', '<i>&lt;');
@@ -161,11 +166,21 @@ class ReportModeler {
     if (helpItems.length <= 1)
       return help;
 
-    let ul = "<ul>";
+    let ul = '';
+
 
     helpItems.forEach(function (item) {
-      if (item !== "")
-        ul += ("<li>" + item +"</li>");
+
+      if (item === "")
+        return;
+
+      if (item.indexOf("Fix") > -1) {
+        ul += ("</ul>");
+        ul += item;
+        ul += "<ul>";
+      }
+      else
+        ul += ("<li>" + item + "</li>");
     });
 
     ul += ("</ul>");
