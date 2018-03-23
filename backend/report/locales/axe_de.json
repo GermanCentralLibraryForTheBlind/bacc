@@ -299,7 +299,7 @@
     },
     "fieldset": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "{{var code = it.data && it.data.failureCode;}}{{? code === 'no-legend'}}Das <fieldset>-Element besitzt kein <legend>-Element als erstes Kindelement.{{?? code === 'empty-legend'}}Das <legend>-Element enthält keinen Text, der für Screenreader sichtbar ist.{{?? code === 'mixed-inputs'}}Fieldset contains unrelated inputs{{?? code === 'no-group-label'}}ARIA group does not have aria-label or aria-labelledby{{?? code === 'group-mixed-inputs'}}ARIA group contains unrelated inputs{{??}}Element does not have a containing fieldset or ARIA group{{?}}"
     },
     "group-labelledby": {
       "pass": "No translation",
@@ -335,11 +335,11 @@
     },
     "multiple-label": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Formular-Element besitzt mehrere <label>-Elemente."
     },
     "title-only": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das Form-Element ist lediglich durch ein title-Attribut beschriftet."
     },
     "has-lang": {
       "pass": "No translation",
@@ -421,11 +421,11 @@
     },
     "region": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Der Inhalt befindet sich nicht in einer ARIA landmark."
     },
     "skip-link": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Es existiert kein Ziel für den Sprunglink."
     },
     "unique-frame-title": {
       "pass": "No translation",
@@ -485,15 +485,15 @@
     },
     "role-none": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Standard-Semantik des Elementes ist nicht mit role=\"none\" überschrieben."
     },
     "role-presentation": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die Standard-Semantik des Elementes ist nicht mit role=\"presentation\" überschrieben."
     },
     "caption-faked": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Die erste Zeile der Tabelle sollte eine Tabellenüberschrift anstelle einer Tabellenzelle sein."
     },
     "has-caption": {
       "pass": "No translation",
@@ -517,24 +517,24 @@
     },
     "scope-value": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das <td>-Element besitzt ein scope-Attribut. In HTML5 dürfen scope-Attribute jedoch lediglich für Tabellenkopfzellen <th> verwendet werden."
     },
     "td-has-header": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Nicht alle (nicht-leeren) Datenzellen haben eine Tabellenkopfzelle."
     },
     "td-headers-attr": {
       "pass": "No translation",
-      "fail": "No translation"
+      "fail": "Das headers-Attribut wird nicht ausschließlich dafür verwendet, um auf andere Zellen in der Tabelle zu verweisen."
     },
     "th-has-data-cells": {
       "pass": "No translation",
-      "fail": "No translation",
+      "fail": "Nicht alle Tabellenkopfzellen beziehen sich auf Datenzellen. ",
       "incomplete": "No translation"
     },
     "hidden-content": {
       "pass": "No translation",
-      "fail": "No translation",
+      "fail": "Auf der Seite befinden sich versteckte Inhalte, die nicht analysiert werden konnten. ",
       "incomplete": "No translation"
     }
   },
