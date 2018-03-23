@@ -60,6 +60,7 @@ class Localise {
       if (localeDescription !== "No translation") {
         groups[i].violations.map((obj) => {
           obj['dct:description'] = localeDescription;
+          obj['shortHelp'] = localeDescription;
         })
       }
     }

@@ -24,7 +24,8 @@
     "violationImpact" : "Einfluss",
     "dialogViolations" : "Dialog fehlgeschlagene Regeln",
     "updateDetails" : "Details zu ${violation} wird angezeigt",
-    "ruleDescription" : "Regelbeschreibung"
+    "rule" : "Regel",
+    "optimiseHints" : "Optimierungshinweise:"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",
