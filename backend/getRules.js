@@ -1,8 +1,10 @@
 const spawn = require('child-process-promise').spawn;
+const fs = require('fs');
 
 const util = require('./util');
 const logger = require('./logger');
 const constants = require('./constants');
+const RULES_FILE = 'uploads/rules.html';
 
 module.exports = function (req, res) {
 
@@ -17,14 +19,25 @@ module.exports = function (req, res) {
 
   runAce.then((result) => {
 
+    removeUnusedRules(req.app.UploadDir);
     logger.log('info', 'Send rules...');
-
-    res.send(util.setHost(req, 'uploads/rules.html'));
+    res.send(util.setHost(req, RULES_FILE));
 
   }).catch((err) => {
 
     logger.log('error', err);
     res.status(501).send(err);
   });
+
+
+  // TODO: fix this in Ace
+  function removeUnusedRules(uploadDir) {
+
+    const file = uploadDir + '/rules.html';
+    const rules = fs
+      .readFileSync(file, 'utf8')
+      .replace(/<tr>\s+<td>bypass<\/td>\s+<td>.*?<\/td>\s+<td><\/td>\s+<\/tr>/g,'');
+    fs.writeFileSync(file, rules);
+  }
 };
 
