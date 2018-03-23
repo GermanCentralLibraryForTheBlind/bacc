@@ -1,16 +1,16 @@
 {
   "lang": "de",
   "rules": {
-    "metadata-schema-accessmode": {
+    "metadata-schema-accessMode": {
       "description": "Stellt sicher das 'schema:accessMode' vorhanden ist."
     },
-    "metadata-schema-accessibilityfeature": {
+    "metadata-schema-accessibilityFeature": {
       "description": "Stellt sicher das 'schema:accessibilityFeature' vorhanden ist."
     },
-    "metadata-schema-accessibilitysummary": {
+    "metadata-schema-accessibilitySummary": {
       "description": "Stellt sicher das 'schema:accessibilitySummary' vorhanden ist."
     },
-    "metadata-schema-accessmodesufficient": {
+    "metadata-schema-accessModeSufficient": {
       "description": "Stellt sicher das 'schema:accessModeSufficient' vorhanden ist."
     },
     "epub-title": {
