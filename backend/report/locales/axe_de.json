@@ -3,55 +3,55 @@
   "rules": {
     "accesskeys": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Der Wert des accesskey-Attributes muss einzigartig sein."
     },
     "area-alt": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Aktive <area>-Elemente müssen einen Alternativtext besitzen."
     },
     "aria-allowed-attr": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Elemente dürfen nur erlaubte ARIA-Attribute verwenden."
     },
     "aria-hidden-body": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Aria-hidden="true" darf nicht für den <body> des Dokumentes verwendet werden."
     },
     "aria-required-attr": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Erforderliche ARIA-Attribute müssen bereitgestellt werden."
     },
     "aria-required-children": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Bestimmte ARIA-Rollen müssen spezifische, untergeordnete Kind-Rollen enthalten."
     },
     "aria-required-parent": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Bestimmte ARIA-Rollen müssen in spezifischen, übergeordneten Eltern-Rollen enthalten sein."
     },
     "aria-roles": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Verwendete ARIA-Rollen müssen gültigen Werten entsprechen."
     },
     "aria-valid-attr-value": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Verwendete ARIA-Attribute müssen gültigen Werten entsprechen."
     },
     "aria-valid-attr": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Verwendete ARIA-Attribute müssen gültigen Namen entsprechen."
     },
     "audio-caption": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<audio>-Elemente müssen eine Deskriptionsspur (Untertitel) besitzen."
     },
     "blink": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<blink>-Elemente sind veraltet und dürfen nicht verwendet werden."
     },
     "button-name": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Schaltflächen müssen wahrnehmbaren Text enthalten."
     },
     "bypass": {
       "description": "No translation",
@@ -59,47 +59,47 @@
     },
     "checkboxgroup": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Checkbox-Eingaben mit demselben Namens-Attributwert müssen Teil einer Gruppe sein."
     },
     "color-contrast": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Elemente müssen einen ausreichenden Farbkontrast haben."
     },
     "definition-list": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<dl>-Elemente dürfen unmittelbar nur korrekt verschachtelte <dt>- und <dd>-Gruppen, <script>- oder <template>-Elemente enthalten."
     },
     "dlitem": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<dt>- und <dd>-Elemente müssen in einem <dl>-Element enthalten sein."
     },
     "document-title": {
       "description": "Stellt sicher daß das HTML-Dokument einen Titel hat.",
-      "help": "No translation"
+      "help": "Elemente müssen ein <title>-Element besitzen, um die Navigation zu erleichtern."
     },
     "duplicate-id": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Der Wert des id-Attributes muss einzigartig sein."
     },
     "empty-heading": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Überschriften dürfen nicht leer sein."
     },
     "frame-title-unique": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Frames müssen ein einzigartiges title-Attribut besitzen."
     },
     "frame-title": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Frames müssen ein title-Attribut besitzen."
     },
     "heading-order": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Die Reihenfolge der Überschriftsebenen sollten semantisch korrekt sein."
     },
     "hidden-content": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Versteckter Inhalt auf der Seite kann nicht analysiert werden."
     },
     "href-no-hash": {
       "description": "No translation",
@@ -107,131 +107,131 @@
     },
     "html-has-lang": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Das <html>-Element muss ein lang-Attribut besitzen."
     },
     "html-lang-valid": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Das <html>-Element muss einen gültigen Attributwert für das lang-Attribut besitzen."
     },
     "image-alt": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Abbildungen müssen einen Alternativtext besitzen."
     },
     "image-redundant-alt": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Der Text von Schaltflächen oder Links sollte in der Abbildungsalternative nicht wiederholt werden."
     },
     "input-image-alt": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Bild-Schaltflächen müssen einen Alternativtext besitzen."
     },
     "label-title-only": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Formularelemente sollten eine sichtbare Beschriftung haben."
     },
     "label": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Formularelemente müssen eine Beschriftung haben."
     },
     "layout-table": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Layouttabellen dürfen keine Datentabellenelemente verwenden."
     },
     "link-in-text-block": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Links müssen vom umgebenden Text auf eine Weise unterschieden werden können, die nicht allein auf Farbe beruht."
     },
     "link-name": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Links müssen wahrnehmbaren Text enthalten."
     },
     "list": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<ul>- und <ol>-Elemente dürfen unmittelbar nur <li>-, <script>- oder <template>-Elemente enthalten."
     },
     "listitem": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<li>-Elemente müssen in einem <ul>- oder <ol>-Element enthalten sein."
     },
     "marquee": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<marquee>-Elemente sind veraltet und dürfen nicht verwendet werden."
     },
     "meta-refresh": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Eine zeitgesteuerte Aktualisierung darf nicht existieren."
     },
     "meta-viewport-large": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Benutzer sollten in der Lage sein, den Text um bis zu 500% vergrößern und skalieren zu können."
     },
     "meta-viewport": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Zoomen und Skalieren darf nicht deaktiviert werden."
     },
     "object-alt": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<object>-Elemente müssen einen Alternativtext besitzen."
     },
     "p-as-heading": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Die Schriftschnitte bold und italic sowie die Schriftgröße dürfen nicht verwendet werden, um <p>-Elemente wie Überschriften zu formatieren.v"
     },
     "radiogroup": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Radio-Eingaben mit demselben Namens-Attributwert müssen Teil einer Gruppe sein."
     },
     "region": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Die Inhalte sollten in einer Landmark-Region enthalten sein."
     },
     "scope-attr-valid": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Das scope-Attribut sollte korrekt verwendet werden."
     },
     "server-side-image-map": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Serverseitige Imagemaps dürfen nicht verwendet werden."
     },
     "skip-link": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Das Ziel des Sprunklinks sollte existieren und fokussierbar sein."
     },
     "tabindex": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Elemenet sollten keinen Tabindex besitzen, der größer als null ist."
     },
     "table-duplicate-name": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Das <caption>-Element sollte nicht den gleichen Text wie das summary-Attribut enthalten."
     },
     "table-fake-caption": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Daten- oder Kopfzellen sollten nicht verwendet werden, um einer Datentabelle eine Überschrift zu geben."
     },
     "td-has-header": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "In Tabellen, die größer als 3 mal 3 sind, müssen alle nicht leeren <td>-Elemente einen zugehörigen Tabellenkopf haben."
     },
     "td-headers-attr": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Innerhalb eines <table>-Elementes dürfen sich Zellen, die das header-Attribut verwenden, nur auf andere Zellen derselben Tabelle beziehen."
     },
     "th-has-data-cells": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Alle <th>-Elemente sowie Elemente mit role=columnheader/rowheader müssen Datenzellen  haben, die sie beschreiben."
     },
     "valid-lang": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "Das lang-Attribut muss einen gültigen Wert haben."
     },
     "video-caption": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<video>-Elemente müssen Untertitel besitzen."
     },
     "video-description": {
       "description": "No translation",
-      "help": "No translation"
+      "help": "<video>-Elemente müssen eine Audiodeskription besitzen."
     }
   },
   "checks": {
