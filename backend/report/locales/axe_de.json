@@ -275,26 +275,26 @@
       "pass": "No translation",
       "fail": "Das Element hat einen unzureichenden Kontrast von {{=it.data.contrastRatio}} (Vordergrundfarbe: {{=it.data.fgColor}}, Hintergrundfarbe: {{=it.data.bgColor}}, Schriftgröße: {{=it.data.fontSize}}, Schriftstärke: {{=it.data.fontWeight}}).",
       "incomplete": {
-        "bgImage": "No translation",
-        "bgGradient": "No translation",
-        "imgNode": "No translation",
-        "bgOverlap": "No translation",
-        "fgAlpha": "No translation",
+        "bgImage": "Die Hintergrundfarbe des Elementes konnte aufgrund eines Hintergrundbildes nicht bestimmt werden.",
+        "bgGradient": "Die Hintergrundfarbe des Elementes konnte aufgrund eines Hintergrundfarbverlaufes nicht bestimmt werden.",
+        "imgNode": "Die Hintergrundfarbe des Elementes konnte nicht bestimmt werden, da das Element einen Image Node enthält.",
+        "bgOverlap": "Die Hintergrundfarbe des Elementes konnte nicht bestimmt werden, da es von einem anderen Element überlagert wird.",
+        "fgAlpha": "Die Vordergrundfarbe des Elementes konnte aufgrund der Alpha-Transparenz nicht ermittelt werden.",
         "elmPartiallyObscured": "No translation",
         "equalRatio": "No translation",
-        "default": "No translation"
+        "default": "Das Kontrastverhältnis konnte nicht ermittelt werden."
       }
     },
     "link-in-text-block": {
       "pass": "No translation",
       "fail": "Links können (abgesehen von einer farblichen Kennzeichnung) nicht vom umgebenden Text unterschieden werden.",
       "incomplete": {
-        "bgContrast": "No translation",
-        "bgImage": "No translation",
-        "bgGradient": "No translation",
-        "imgNode": "No translation",
-        "bgOverlap": "No translation",
-        "default": "No translation"
+        "bgContrast": "Das Kontrastverhältnis des Elements konnte nicht bestimmt werden. Suchen Sie nach einem bestimmten Hover/Fokus-Stil.",
+        "bgImage": "Das Kontrastverhältnis des Elements konnte aufgrund eines Hintergrundbildes nicht bestimmt werden.",
+        "bgGradient": "Das Kontrastverhältnis des Elements konnte aufgrund eines Hintergrundfarbverlaufes nicht bestimmt werden.",
+        "imgNode": "Das Kontrastverhältnis des Elements konnte nicht bestimmt werden, da das Element einen Image Node enthält.",
+        "bgOverlap": "Das Kontrastverhältnis des Elements konnte aufgrund einer Überlagerung nicht bestimmt werden.",
+        "default": "Das Kontrastverhältnis konnte nicht ermittelt werden."
       }
     },
     "fieldset": {
@@ -376,12 +376,12 @@
     "caption": {
       "pass": "No translation",
       "fail": "Das Multimedia-Element enthält keine Deskriptionsspur zur Beschreibung der Audio-Inhalte.",
-      "incomplete": "No translation"
+      "incomplete": "Für das Element konnte keine Deskriptionsspur/Untertitel gefunden werden."
     },
     "description": {
       "pass": "No translation",
       "fail": "Das Multimedia-Element enthält keine Deskriptionsspur zur Beschreibung der visuellen Inhalte.",
-      "incomplete": "Für das Multimedia-Element konnte keine Audio-Deskriptionsspur gefunden werden."
+      "incomplete": "Für das Element konnte keine Audio-Deskriptionsspur gefunden werden."
     },
     "meta-viewport-large": {
       "pass": "No translation",
@@ -530,12 +530,12 @@
     "th-has-data-cells": {
       "pass": "No translation",
       "fail": "Nicht alle Tabellenkopfzellen beziehen sich auf Datenzellen. ",
-      "incomplete": "No translation"
+      "incomplete": "Datenzellen der Tabelle fehlen oder sind leer."
     },
     "hidden-content": {
       "pass": "No translation",
       "fail": "Auf der Seite befinden sich versteckte Inhalte, die nicht analysiert werden konnten. ",
-      "incomplete": "No translation"
+      "incomplete": "Auf der Seite befinden sich versteckte Inhalte, die nicht analysiert werden konnten. Um den Inhalt analysieren zu können, müssen Sie die Anzeige auslösen."
     }
   },
   "failureSummaries": {
