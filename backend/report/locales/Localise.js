@@ -55,15 +55,20 @@ class Localise {
         continue;
       }
 
-      const localeDescription = translatedRule.description;
+      if (groups[i].assertedBy === 'Ace') {
 
-      if (localeDescription !== "No translation") {
-        groups[i].violations.map((obj) => {
-          obj['dct:description'] = localeDescription;
-          obj['shortHelp'] = localeDescription;
-        })
+        const localeDescription = translatedRule.description;
+
+
+        if (localeDescription !== "No translation") {
+          groups[i].violations.map((obj) => {
+            obj['dct:description'] = localeDescription;
+            obj['shortHelp'] = localeDescription;
+          })
+        }
       }
     }
+
     // console.log(JSON.stringify(groups));
   }
 

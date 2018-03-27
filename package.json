@@ -28,7 +28,7 @@
     "build:dist": "npm run prebuild && npm run build:frontend && npm run build:backend",
     "prebuild": "./backend/node_modules/.bin/rimraf dist && mkdir dist",
     "prebuild:backend": "./backend/node_modules/.bin/rimraf dist/backend && mkdir dist/backend",
-    "build:backend": "npm run prebuild:backend && mkdir dist/backend/report && mkdir dist/backend/report/locales && cp backend/*.js dist/backend &&  cp backend/report/*.* dist/backend/report && cp backend/report/locales/*.* dist/backend/report/locales && cp backend/package.json dist/backend",
+    "build:backend": "npm run prebuild:backend && mkdir dist/backend/report && mkdir dist/backend/report/locales && mkdir dist/backend/report/locales/ace_patch && cp backend/*.js dist/backend &&  cp backend/report/*.* dist/backend/report && cp backend/report/locales/*.* dist/backend/report/locales && cp backend/report/locales/ace_patch/*.* dist/backend/report/locales/ace_patch && cp backend/package.json dist/backend",
     "build:frontend": "cd ./frontend && npm run build:dist",
     "run:backend": "node ./backend/webApi",
     "clear:uploads": "./backend/node_modules/.bin/rimraf uploads && ./backend/node_modules/.bin/rimraf backend/uploads",

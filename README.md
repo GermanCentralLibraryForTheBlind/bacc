@@ -41,6 +41,10 @@ TODO
 
 ## CHANGELOG 
 
+### 0.5.0
+
+* Localise violation (rule/check) descriptions - provides german localisation 
+
 ### 0.4.0
 
 * BACC support screenreader users 
@@ -53,9 +57,9 @@ TODO
 
 ### 0.2.0
 
-* Localisation:
-  + Frontend 
-  + Report 
+* Localisation labeling:
+  + Frontend
+  + Report  
 
 ### 0.1.0
 

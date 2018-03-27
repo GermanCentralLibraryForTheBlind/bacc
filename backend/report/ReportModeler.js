@@ -156,10 +156,10 @@ class ReportModeler {
     if (!help)
       return help;
 
-    help = help.replace('<', '&lt;');
-    help = help.replace('>', '&gt;');
-    help = help.replace('&lt;', '<i>&lt;');
-    help = help.replace('&gt;', '&gt;</i>');
+    help = help.replace(/</g, '&lt;');
+    help = help.replace(/>/g, '&gt;');
+    help = help.replace(/&lt;/g, '<i>&lt;');
+    help = help.replace(/&gt;/g, '&gt;</i>');
 
     const helpItems = help.split("\n");
 
@@ -167,7 +167,6 @@ class ReportModeler {
       return help;
 
     let ul = '';
-
 
     helpItems.forEach(function (item) {
 
@@ -184,6 +183,7 @@ class ReportModeler {
     });
 
     ul += ("</ul>");
+
     return ul;
   }
 

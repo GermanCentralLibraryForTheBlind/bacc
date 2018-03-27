@@ -1,5 +1,5 @@
 const ReportModeler = require('./ReportModeler');
-const r = new ReportModeler('/home/alan/workspace/bacc/uploads/0ada3cd3-1adf-4bba-91d1-94725a198ec7', 'de');
+const r = new ReportModeler('/home/alan/workspace/bacc/uploads/f8857e07-d334-4b7d-b3f6-b53e814300fd', 'de');
 console.log('start report build ...');
 r.build();
 console.log('build ready');
