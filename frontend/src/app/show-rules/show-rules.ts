@@ -2,7 +2,6 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {TranslateService} from "@ngx-translate/core";
 
 declare var $: any;
 

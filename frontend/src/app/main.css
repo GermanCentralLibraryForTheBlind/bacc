@@ -6,11 +6,9 @@
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-
 a {
   text-decoration: unset;
 }
-
 
 #skipToChooseEbook a {
   padding: 6px;
@@ -37,4 +35,3 @@ a {
   font-size: medium;
   font-weight: bold;
 }
-

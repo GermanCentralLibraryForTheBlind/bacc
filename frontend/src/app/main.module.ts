@@ -9,6 +9,7 @@ import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-tran
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MarkdownModule} from 'angular2-markdown';
 import {PopoverModule} from 'ngx-popover';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -31,6 +32,7 @@ import {CheckOverService} from './check-over/check-over.service';
 import {ReportService} from './report/report.service';
 import {ShowRulesComponent} from './show-rules/show-rules';
 import {InfoComponent} from './info/info';
+import {FeedbackComponent} from './feedback/feedback';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -53,7 +55,8 @@ const translateConfig: TranslateModuleConfig = {
     HeaderComponent,
     ReportComponent,
     ShowRulesComponent,
-    InfoComponent
+    InfoComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,8 @@ const translateConfig: TranslateModuleConfig = {
     JasperoAlertsModule,
     HttpClientModule,
     PopoverModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot(translateConfig),
     MarkdownModule.forRoot()
   ],
