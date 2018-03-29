@@ -339,7 +339,7 @@
     },
     "title-only": {
       "pass": "No 83",
-      "fail": "Das Form-Element ist lediglich durch ein title-Attribut beschriftet."
+      "fail": "Das Formular-Element ist lediglich durch ein title-Attribut beschriftet."
     },
     "has-lang": {
       "pass": "No 84",
