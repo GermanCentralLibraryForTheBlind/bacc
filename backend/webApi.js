@@ -3,10 +3,10 @@ const cors = require('cors');
 const path = require('path');
 
 
-const checkOver = require('./checkOver');
-const upload = require('./upload');
-const logger = require('./logger');
-const getRules = require('./getRules');
+const checkOver = require('./routes/checkOver');
+const upload = require('./routes/upload');
+const logger = require('./helper/logger');
+const getRules = require('./routes/getRules');
 
 const PORT = 3111;
 const app = express();

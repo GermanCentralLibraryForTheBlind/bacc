@@ -1,9 +1,9 @@
 const spawn = require('child-process-promise').spawn;
 const fs = require('fs');
 
-const util = require('./util');
-const logger = require('./logger');
-const constants = require('./constants');
+const util = require('../helper/util');
+const logger = require('../helper/logger');
+const constants = require('../constants');
 const RULES_FILE = 'uploads/rules.html';
 
 module.exports = function (req, res) {

@@ -4,7 +4,7 @@ const baccEN = require('./bacc_en.json');
 const axeDE = require('./axe_de.json');
 const aceDE = require('./ace_de.json');
 
-const logger = require('./../../logger');
+const logger = require('../../helper/logger');
 
 // default language is english
 class Localise {

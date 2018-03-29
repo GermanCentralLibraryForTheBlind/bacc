@@ -4,8 +4,8 @@ const uuid = require('uuid/v4');
 const path = require('path');
 const fs = require('fs');
 
-const util = require('./util');
-const logger = require('./logger');
+const util = require('../helper/util');
+const logger = require('../helper/logger');
 
 module.exports = function (req, res) {
 

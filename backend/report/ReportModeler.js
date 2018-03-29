@@ -4,7 +4,7 @@ const fsExtra = require('fs-extra');
 const path = require('path');
 const _ = require('underscore');
 
-const logger = require('./../logger');
+const logger = require('../helper/logger');
 const Localise = require('./locales/Localise');
 
 

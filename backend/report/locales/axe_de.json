@@ -540,7 +540,7 @@
   },
   "failureSummaries": {
     "any": {
-      "failureMessage": "Fix einige der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
+      "failureMessage": "Fix mindestens einen der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
     },
     "none": {
       "failureMessage": "Fix alle der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"

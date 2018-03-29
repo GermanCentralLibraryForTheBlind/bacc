@@ -1,7 +1,7 @@
 // const decache = require('decache');
 const spawn = require('child-process-promise').spawn;
 const fs = require('fs');
-const logger = require('./logger');
+const logger = require('./helper/logger');
 const ReportModeler = require('./report/ReportModeler');
 const constants = require('./constants');
 

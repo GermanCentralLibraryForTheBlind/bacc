@@ -3,9 +3,9 @@ const path = require('path');
 const {promisify} = require('util');
 const readDirAsync = promisify(fs.readdir);
 
-const logger = require('./logger');
-const Baccify = require('./Baccify');
-const Util = require('./util');
+const logger = require('../helper/logger');
+const Baccify = require('../Baccify');
+const Util = require('../helper/util');
 
 const SendMail = require('sendmail')({silent: true});
 
