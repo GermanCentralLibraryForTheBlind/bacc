@@ -16,9 +16,9 @@ module.exports = function (req, res) {
 
     try {
       SendMail({
-        from: mail,
+        from: 'feedback@bacc.com',
         to: 'sarah.bohnert@dzb.de, lars.voigt@dzb.de',
-        subject: 'BACC Feedback from ' + name,
+        subject: 'BACC Feedback from ' + name + ' --- ' + mail,
         text: message,
       }, (err, reply) => {
 

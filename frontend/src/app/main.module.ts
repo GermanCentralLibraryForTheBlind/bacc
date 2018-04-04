@@ -33,6 +33,7 @@ import {ReportService} from './report/report.service';
 import {ShowRulesComponent} from './show-rules/show-rules';
 import {InfoComponent} from './info/info';
 import {FeedbackComponent} from './feedback/feedback';
+import {HintOfficialComponent} from './hintOfficialVersion';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -56,7 +57,8 @@ const translateConfig: TranslateModuleConfig = {
     ReportComponent,
     ShowRulesComponent,
     InfoComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    HintOfficialComponent
   ],
   imports: [
     BrowserModule,

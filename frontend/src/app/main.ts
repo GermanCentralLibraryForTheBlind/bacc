@@ -2,6 +2,8 @@ import {Component, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {CheckOverComponent} from './check-over/check-over';
 
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './main.html',
@@ -19,10 +21,16 @@ export class AppComponent {
     translate.setDefaultLang('en');
     let browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
+    this.showLinkToOfficialBACC();
   }
 
   // direkt link for screenreader user
   skipLink() {
     this.checkOver.focusOnInput();
+  }
+
+
+  showLinkToOfficialBACC() {
+    setTimeout(function(){ $('#officialVersion').modal('show');},1000);
   }
 }
