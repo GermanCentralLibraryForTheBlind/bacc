@@ -1,7 +1,8 @@
 const fs = require('fs');
 const os = require('os');
-const shell = require('child_process').execSync ;
+const shell = require('child_process').execSync;
 const rimraf = require('rimraf');
+const dateFormat = require('dateformat');
 
 const logger = require('../helper/logger');
 const util = require('../helper/util');
@@ -11,10 +12,12 @@ const path = require('path');
 
 module.exports = function (req, res) {
 
+  logger.log('info', 'Export reports...');
+
   const ids = req.query.ids;
 
   if (!ids || ids.length === 0)
-    return res.status(200).send();
+    return res.status(400).send('Missing Id paramters.');
 
   const uploadDir = req.app.UploadDir;
   const temp = path.join(os.tmpdir(), 'BACC');
@@ -49,9 +52,19 @@ module.exports = function (req, res) {
       logger.log('error', 'Report ID not exits: ' + id);
   });
 
-  // rimraf.sync(temp);
 
-  return res.status(200).send();
+  const reportsZipped = `bacc_reports_${dateFormat(Date.now(), "dd_mmmm_yyyy_HH:MM:ss")}.zip`
+  const fullReportsZipped = `${os.tmpdir()}/${reportsZipped}`;
+  shell(`cd ${temp} && zip -r ${reportsZipped} .`);
+
+  res.writeHead(200, {"Content-Type": "application/zip", "Content-Disposition": "attachment; filename=" + reportsZipped});
+  fs.createReadStream(fullReportsZipped).pipe(res);
+  res.end("Export reports ready.");
+
+  rimraf.sync(temp);
+  rimraf.sync(fullReportsZipped);
+
+  logger.log('info', 'Export reports ready');
 };
 
 
