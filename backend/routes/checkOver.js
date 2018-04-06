@@ -46,6 +46,8 @@ module.exports = function (req, res) {
 
           sendTaskInfo(epubFile, report.path);
 
+          Util.setCheckFinishedFlag(workingPath, epubFile);
+
           return res.json(report);
 
         }, 1000);
@@ -71,6 +73,7 @@ module.exports = function (req, res) {
       logger.log('error', `Error delete ${filePath} ` + err);
     }
   }
+
 
   async function getEPUBPath(workingPath) {
 

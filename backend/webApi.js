@@ -3,25 +3,27 @@ const cors = require('cors');
 const path = require('path');
 
 
+const getReports = require('./routes/getReports');
 const checkOver = require('./routes/checkOver');
-const upload = require('./routes/upload');
-const logger = require('./helper/logger');
 const getRules = require('./routes/getRules');
 const contact = require('./routes/contact');
+const upload = require('./routes/upload');
+const logger = require('./helper/logger');
 
 const PORT = 3111;
 const app = express();
-app.UploadDir = path.join(process.cwd(),'uploads');
+app.UploadDir = path.join(process.cwd(), 'uploads');
 app.use(cors({credentials: false}));
 app.use('/uploads', express.static('uploads'));
 
 /*
 routes
 */
-app.post('/upload', upload);
 app.get('/checkover', checkOver);
+app.get('/reports', getReports);
 app.get('/allRules', getRules);
 app.post('/contact', contact);
+app.post('/upload', upload);
 app.get('/bacc', function (req, res) {
   // res.end('Test: Greetings from baccy! IP:' + ip.address());
   res.end('Test: Greetings from baccy!');
