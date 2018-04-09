@@ -1,42 +1,3 @@
-<table class="legend" attr.aria-label="{{'BACC.LEGEND' | translate }}">
-  <tbody>
-  <tr style="color: red">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.VERY_STRONG' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_very_dissatisfied</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: orange">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.STRONG' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_dissatisfied</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: yellow">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.PARTIALLY' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_neutral</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: yellowgreen">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.MINOR' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_satisfied</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: green">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.NONE' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_very_satisfied</mat-icon>
-    </td>
-  </tr>
-  </tbody>
-</table>
 <div class="check-over-whole-wrapper">
   <div fxLayout="column" fxLayoutGap="30px">
     <div fxFlex="45">
@@ -136,19 +97,24 @@
     <div fxFlex="5">
       <div>
         <!--<mat-card>-->
-        <button mat-raised-button color="primary" class="my-btn"
-                type="button"
-                (click)="uploader.uploadAll()"
-                [disabled]="!uploader.getNotUploadedItems().length">
-          <mat-icon>file_upload</mat-icon>
-          {{ 'BACC.CHECK_OVER_ALL' | translate }}
-        </button>
-        <button mat-raised-button color="warn" class="my-btn"
-                type="button"
-                (click)="uploader.cancelAll()"
-                [disabled]="!uploader.isUploading">
-          <mat-icon>cancel</mat-icon>
-          {{ 'BACC.CANCEL_ALL' | translate }}
+        <!--<button mat-raised-button color="primary" class="my-btn"-->
+        <!--type="button"-->
+        <!--(click)="uploader.uploadAll()"-->
+        <!--[disabled]="!uploader.getNotUploadedItems().length">-->
+        <!--<mat-icon>file_upload</mat-icon>-->
+        <!--{{ 'BACC.CHECK_OVER_ALL' | translate }}-->
+        <!--</button>-->
+        <!--<button mat-raised-button color="warn" class="my-btn"-->
+        <!--type="button"-->
+        <!--(click)="uploader.cancelAll()"-->
+        <!--[disabled]="!uploader.isUploading">-->
+        <!--<mat-icon>cancel</mat-icon>-->
+        <!--{{ 'BACC.CANCEL_ALL' | translate }}-->
+        <!--</button>-->
+
+        <button mat-raised-button color="primary" class="my-btn" type="button" [disabled]="!uploader.queue.length">
+          <mat-icon>file_download</mat-icon>
+          {{ 'BACC.SAVE_REPORTS' | translate }}
         </button>
         <button mat-raised-button color="accent" class="my-btn"
                 type="button"

@@ -92,24 +92,6 @@
   margin-bottom: 2px;
 }
 
-.legend {
-  position: absolute;
-  bottom: 2px;
-  left: 2px;
-  border: 2px solid #a1a1a1;
-  border-radius: 25px;
-}
-
-.legend mat-icon{
-  font-size: 26px;
-}
-
-
-.legend tr, td {
-  padding: 5px;
-  text-align: center;
-}
-
 .sr-label {
   height: 1px !important;
   width: 1px !important;
