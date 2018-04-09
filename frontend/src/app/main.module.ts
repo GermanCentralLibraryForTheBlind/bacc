@@ -34,6 +34,7 @@ import {ShowRulesComponent} from './show-rules/show-rules';
 import {InfoComponent} from './info/info';
 import {FeedbackComponent} from './feedback/feedback';
 import {HintOfficialComponent} from './hintOfficialVersion';
+import {LegendComponent} from './legend/legend';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,7 +59,8 @@ const translateConfig: TranslateModuleConfig = {
     ShowRulesComponent,
     InfoComponent,
     FeedbackComponent,
-    HintOfficialComponent
+    HintOfficialComponent,
+    LegendComponent
   ],
   imports: [
     BrowserModule,
