@@ -43,7 +43,7 @@ TODO
 
 ### 0.6.0
 
-* Save reports from check query table to local disk 
+* Save actually checked reports to local disk 
 
 ### 0.5.0
 
