@@ -1,6 +1,6 @@
 {
   "name": "bacc",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "description": "BACC by DZB assist the EPUB3 production with focus on Accessibility requirements",
   "keywords": [
     "a11y",
@@ -34,6 +34,6 @@
     "clear:uploads": "./backend/node_modules/.bin/rimraf uploads && ./backend/node_modules/.bin/rimraf backend/uploads",
     "postinstall": "cd backend && npm install && cd ./../frontend && npm i",
     "deploy": "sh ~/Schreibtisch/update_bacc.sh",
-    "preminor": "npm version minor && cd backend && npm version minor && cd ./../frontend && npm version minor"
+    "preminor": "npm -f version minor && cd backend && npm -f version minor && cd ./../frontend && npm -f version minor"
   }
 }
