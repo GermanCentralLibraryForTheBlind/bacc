@@ -37,12 +37,13 @@ module.exports = function (req, res) {
         const fileName = fs.readFileSync(path.join(workingPath, constants.SUCCEEDED_FLAG)).toString();
         try {
 
-          const reportPath = path.join(temp, fileName);
+          const reportPath = makeReportPath(temp, fileName);
           // Hint only for linux/unix OS
-          shell(`mkdir -p ${reportPath}`);
+          shell(`mkdir ${reportPath}`);
           shell(`cp -r ${workingPath}/bacc_report.html ${reportPath}`);
 
           const dataPath = `${workingPath}/data`;
+
           if (fs.existsSync(dataPath))
             shell(`cp -r ${dataPath} ${reportPath}`);
 
@@ -80,3 +81,14 @@ function makeTempFolder(temp) {
   logger.log('info', 'Make temp folder : ' + temp);
 }
 
+function makeReportPath(temp, fileName) {
+
+  var idx = 0;
+  var tempFileName = fileName;
+
+  while (fs.existsSync(path.join(temp, tempFileName))) {
+    idx++;
+    tempFileName = fileName + idx;
+  }
+  return path.join(temp, tempFileName);
+}
