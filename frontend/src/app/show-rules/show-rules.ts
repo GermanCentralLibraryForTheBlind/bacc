@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 declare var $: any;
@@ -17,15 +17,20 @@ export class ShowRulesComponent implements OnInit {
   public rulesAsHTML: SafeHtml;
   private focusedElementBeforeOpen: any;
 
-  constructor(private http: Http, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
   }
 
   show() {
-    this.http.get(this.WEB_API_ALL_RULES).subscribe(res => {
-      this.rulesAsHTML = this.sanitizer.bypassSecurityTrustResourceUrl(res.text());
+    this.http
+      .get(
+        this.WEB_API_ALL_RULES,
+        {responseType: 'text'})
+      .subscribe(res => {
+
+      this.rulesAsHTML = this.sanitizer.bypassSecurityTrustResourceUrl(res);
       $("#showRules").modal('show');
 
       // TODO: move to accessibility module

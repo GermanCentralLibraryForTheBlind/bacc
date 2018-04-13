@@ -111,15 +111,18 @@
         <!--<mat-icon>cancel</mat-icon>-->
         <!--{{ 'BACC.CANCEL_ALL' | translate }}-->
         <!--</button>-->
-
-        <button mat-raised-button color="primary" class="my-btn" type="button" [disabled]="!uploader.queue.length">
+        <button mat-raised-button color="primary"
+                class="my-btn"
+                type="button"
+                (click)="saveReports()"
+                [disabled]="!checkOverService.checkoverReady">
           <mat-icon>file_download</mat-icon>
           {{ 'BACC.SAVE_REPORTS' | translate }}
         </button>
         <button mat-raised-button color="accent" class="my-btn"
                 type="button"
                 (click)="uploader.clearQueue()"
-                [disabled]="!uploader.queue.length">
+                [disabled]="!checkOverService.checkoverReady">
           <mat-icon>delete</mat-icon>
           {{ 'BACC.REMOVE_ALL' | translate }}
         </button>

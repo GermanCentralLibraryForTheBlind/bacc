@@ -1,4 +1,4 @@
-import {Component, ViewChild, Input, ElementRef} from '@angular/core';
+import {Component, ViewChild, Input, ElementRef, Inject} from '@angular/core';
 import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
@@ -6,10 +6,11 @@ import {FileItem} from 'ng2-file-upload';
 import {AlertsService} from "@jaspero/ng2-alerts";
 
 import * as jsPDF from 'jspdf';
+
 import {Accessibility} from "../accessibility";
 import {TranslateService} from "@ngx-translate/core";
 
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'report',
@@ -26,7 +27,7 @@ export class ReportComponent {
   public reportId: string;
 
   private a11y: Accessibility;
-  private focusedElementBeforeOpen:any;
+  private focusedElementBeforeOpen: any;
 
   @Input() itemIndex: number;
   @ViewChild('reportIframe') iframe: ElementRef;
@@ -73,19 +74,12 @@ export class ReportComponent {
     this.checkOverService.runCheck(uploadID)
       .then(response => {
 
-        const report = JSON.parse(response._body);
-        this.reportService.add(
-          new Report(
-            responseData.name,
-            uploadID,
-            report.path
-          ));
-
+        const report = JSON.parse(response);
+        this.reportService.add(new Report(responseData.name, uploadID, report.path));
         // console.log('btnID: ' + this.btnId);
         this.afterSuccessfulCheck(item, report);
       })
       .catch(err => {
-
           this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred ' + err);
           console.error('An error occurred ' + err);
         }

@@ -28,6 +28,7 @@
     "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
     "HEADER_INFO_DIALOG": "Information about BACC tool",
     "HEADER_RULES_DIALOG": "Rules",
-    "HEADER_REPORT_DIALOG": "Report"
+    "HEADER_REPORT_DIALOG": "Report",
+    "SAVE_REPORTS": "Save reports"
   }
 }

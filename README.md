@@ -41,6 +41,10 @@ TODO
 
 ## CHANGELOG 
 
+### 0.6.0
+
+* Save reports from check query table to local disk 
+
 ### 0.5.0
 
 * Localise violation (rule/check) descriptions - provides german localisation 

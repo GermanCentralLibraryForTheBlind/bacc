@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Http } from '@angular/http';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'feedback',
@@ -14,7 +14,8 @@ export class FeedbackComponent implements OnInit {
 
   private WEB_API_CONTACT: string = '/contact';
 
-  constructor(private http: Http, private fb: FormBuilder) { }
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+  }
 
   ngOnInit() {
 
@@ -28,13 +29,18 @@ export class FeedbackComponent implements OnInit {
   submit() {
     const {name, email, message} = this.form.value;
 
-    this.http.post(this.WEB_API_CONTACT, {name:name, email:email, message:message})
+    this.http
+      .post(
+        this.WEB_API_CONTACT,
+        {name: name, email: email, message: message},
+        {responseType: 'text'})
       .subscribe(res => {
 
-        if(res.ok) {
           this.form.reset();
-          this.successMessage = res.text();
-        }
-      });
+          this.successMessage = res.toString();
+        },
+        err => {
+          console.error(err);
+        });
   }
 }

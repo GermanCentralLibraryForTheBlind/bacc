@@ -21,6 +21,7 @@ module.exports = function (req, res) {
 
     removeUnusedRules(req.app.UploadDir);
     logger.log('info', 'Send rules...');
+    res.type('text/plain');
     res.send(util.setHost(req, RULES_FILE));
 
   }).catch((err) => {

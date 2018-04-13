@@ -13,7 +13,7 @@ module.exports = function (req, res) {
 
   const uploadID = req.query['uploadID'];
   if (!uploadID) {
-    res.status(500).send('check-over:  You have to request this route with parameter uploadID!');
+    res.status(400).send('Parameter uploadID is missing!');
     return;
   }
   const lang = req.query['lang'];

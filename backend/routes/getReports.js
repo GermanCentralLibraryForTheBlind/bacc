@@ -41,7 +41,10 @@ module.exports = function (req, res) {
           // Hint only for linux/unix OS
           shell(`mkdir -p ${reportPath}`);
           shell(`cp -r ${workingPath}/bacc_report.html ${reportPath}`);
-          shell(`cp -r ${workingPath}/data ${reportPath}`);
+
+          const dataPath = `${workingPath}/data`;
+          if (fs.existsSync(dataPath))
+            shell(`cp -r ${dataPath} ${reportPath}`);
 
         } catch (err) {
           console.error(err)
@@ -53,17 +56,17 @@ module.exports = function (req, res) {
   });
 
 
-  const reportsZipped = `bacc_reports_${dateFormat(Date.now(), "dd_mmmm_yyyy_HH:MM:ss")}.zip`
+  const reportsZipped = `bacc_reports_${dateFormat(Date.now(), "dd_mmmm_yyyy_HH:MM:ss")}.zip`;
   const fullReportsZipped = `${os.tmpdir()}/${reportsZipped}`;
-  shell(`cd ${temp} && zip -r ${reportsZipped} .`);
+  shell(`cd ${os.tmpdir()} && zip -r ${reportsZipped} ./BACC`);
 
-  res.writeHead(200, {"Content-Type": "application/zip", "Content-Disposition": "attachment; filename=" + reportsZipped});
+  res.writeHead(200, {
+    "Content-Type": "application/zip",
+    "Content-Disposition": "attachment; filename=" + reportsZipped,
+    'Access-Control-Expose-Headers': 'Content-Disposition'
+  });
   fs.createReadStream(fullReportsZipped).pipe(res);
-  res.end("Export reports ready.");
-
   rimraf.sync(temp);
-  rimraf.sync(fullReportsZipped);
-
   logger.log('info', 'Export reports ready');
 };
 
@@ -74,5 +77,6 @@ function makeTempFolder(temp) {
     rimraf.sync(temp);
 
   fs.mkdirSync(temp);
+  logger.log('info', 'Make temp folder : ' + temp);
 }
 
