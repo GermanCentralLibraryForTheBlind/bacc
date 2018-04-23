@@ -12,8 +12,9 @@
   "scripts": {
     "clean:uploads": "rimraf uploads",
     "start": "node ./webApi",
-    "start:prod": "node ./node_modules/.bin/pm2 start webApi.js",
-    "stop": "node ./node_modules/.bin/pm2 stop all",
+    "start:prod:test": "./node_modules/.bin/pm2 start webApi.js --name bacc",
+    "start:prod": "BACC=prod ./node_modules/.bin/pm2 start webApi.js --name bacc",
+    "stop": "node ./node_modules/.bin/pm2 stop bacc",
     "reload": "node ./node_modules/.bin/pm2 reload all",
     "pm2:log": "node ./node_modules/.bin/pm2 logs ",
     "clear:bacc:log": "rimraf bacc.log",

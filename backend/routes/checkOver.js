@@ -44,7 +44,8 @@ module.exports = function (req, res) {
         setTimeout(function () {
           logger.log('info', `Send report path: ${report.path}`);
 
-          sendTaskInfo(epubFile, report.path);
+          if (process.env.BACC)
+            sendTaskInfo(epubFile, report.path);
 
           Util.setCheckFinishedFlag(workingPath, epubFile);
 

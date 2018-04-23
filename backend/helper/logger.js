@@ -47,27 +47,30 @@ winston.add(winston.transports.File, {
 └───────────────────────── second (0 - 59, OPTIONAL)
 
 */
-const rule = new schedule.RecurrenceRule();
-rule.dayOfWeek = [0,1,2,3,4,5,6];
-rule.hour = 10;
-rule.minute = 0;
 
-schedule.scheduleJob(rule, () => {
-  sendMail({
-    from: 'no-reply@bacc.com',
-    to: 'lars.voigt@dzb.de',
-    subject: 'bacc.log',
-    html: '',
-    attachments: [
-      {   // define custom content type for the attachment
-        filename: 'bacc.log',
-        path: './bacc.log' // stream this file
-      }
-    ]
-  }, (err, reply) => {
-    winston.log('error', err && err.stack);
+if (process.env.BACC) {
+
+  const rule = new schedule.RecurrenceRule();
+  rule.dayOfWeek = [0, 1, 2, 3, 4, 5, 6];
+  rule.hour = 10;
+  rule.minute = 0;
+
+  schedule.scheduleJob(rule, () => {
+    sendMail({
+      from: 'no-reply@bacc.com',
+      to: 'lars.voigt@dzb.de',
+      subject: 'bacc.log',
+      html: '',
+      attachments: [
+        {   // define custom content type for the attachment
+          filename: 'bacc.log',
+          path: './bacc.log' // stream this file
+        }
+      ]
+    }, (err, reply) => {
+      winston.log('error', err && err.stack);
+    });
   });
-});
-
+}
 
 module.exports = winston;
