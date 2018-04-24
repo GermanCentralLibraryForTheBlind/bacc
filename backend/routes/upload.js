@@ -6,10 +6,11 @@ const fs = require('fs');
 
 const util = require('../helper/util');
 const logger = require('../helper/logger');
+const constants = require('../constants');
 
 module.exports = function (req, res) {
 
-  util.ensureUploadDirExists(req.app.UploadDir);
+  util.ensureUploadDirExists(constants.UPLOAD_DIR);
 
   uaParser(req);
 
@@ -37,7 +38,7 @@ module.exports = function (req, res) {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, mkTasKFolder(req.app.UploadDir))
+    cb(null, mkTasKFolder(constants.UPLOAD_DIR))
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)

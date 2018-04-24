@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 
 const getReports = require('./routes/getReports');
@@ -12,7 +11,6 @@ const logger = require('./helper/logger');
 
 const PORT = 3111;
 const app = express();
-app.UploadDir = path.join(process.cwd(), 'uploads');
 app.use(cors({credentials: false}));
 app.use('/uploads', express.static('uploads'));
 

@@ -97,7 +97,12 @@ export class ReportComponent {
     this.btnReportEnabled = true;
     this.btnReportAnimated = true;
     (item as any).progressValue = 100;
-    (item as any).accessibility = {'color': report.aLevel.color, 'font-size': '32px'};
+    (item as any).accessibility = {
+      'color': report.aLevel.color,
+      'font-size': '32px',
+      'width': '32px',
+      'height': '32px'
+    };
 
 
     const accessibilityAsWord = this.a11y.getAccessibilityLevelAsWord(report.aLevel.color);

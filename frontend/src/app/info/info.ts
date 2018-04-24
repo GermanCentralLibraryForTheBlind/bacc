@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'info',
@@ -7,9 +8,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() {
+  infoPath: string;
+
+  constructor(private translate: TranslateService) {
   }
 
   ngOnInit() {
+
+    let browserLang = this.translate.getBrowserLang();
+    this.infoPath = "./assets/Infotext_en.md";
+
+    if(browserLang === 'de')
+      this.infoPath = "./assets/Infotext_de.md";
   }
 }

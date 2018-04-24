@@ -33,7 +33,8 @@
     "run:backend": "node ./backend/webApi",
     "clear:uploads": "./backend/node_modules/.bin/rimraf uploads && ./backend/node_modules/.bin/rimraf backend/uploads",
     "postinstall": "cd backend && npm install && cd ./../frontend && npm i",
-    "deploy": "sh ~/Schreibtisch/update_bacc.sh",
+    "deploy": "sh ~/Schreibtisch/update_bacc_test.sh",
     "preminor": "npm -f version minor && cd backend && npm -f version minor && cd ./../frontend && npm -f version minor"
-  }
+  },
+  "dependencies": {}
 }

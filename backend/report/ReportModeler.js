@@ -6,12 +6,8 @@ const _ = require('underscore');
 
 const logger = require('../helper/logger');
 const Localise = require('./locales/Localise');
-
-
-const REPORT_SYTLE = 'report.css';
-const PATH_TO_TEMPLATE_REPORT = __dirname + '/report.mustache';
-const ACE_REPORT = '/report.json';
-const BACC_REPORT = '/bacc_report.html';
+const constants = require('../constants');
+const util = require('../helper/util');
 
 const guidelineTags = {wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
 
@@ -59,11 +55,12 @@ class ReportModeler {
     this._outputPath = outputPath;
     this._language = lang || 'en';
     this._impacts = new Impact(lang);
+    this.statistics = {};
   }
 
   // private ???
   loadAceOutput() {
-    this._aceData = require(this._outputPath + ACE_REPORT);
+    this._aceData = require(this._outputPath + constants.ACE_REPORT);
   }
 
   generateReport() {
@@ -78,16 +75,21 @@ class ReportModeler {
     reportData.outlines = this._aceData.outlines;
     reportData.images = this._aceData.data.images;
 
+    this.statistics.cover = reportData.images ? reportData.images[0] : '';
+
     reportData = new Localise()
       .setReportData(reportData)
       .setLocale(this._language)
       .build();
 
     // console.log(JSON.stringify(reportData), undefined, 2);
-    const reportTemplate = fs.readFileSync(PATH_TO_TEMPLATE_REPORT, 'utf-8');
+    const reportTemplate = fs.readFileSync(constants.PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), reportData);
-    fs.writeFileSync(this._outputPath + BACC_REPORT, output, 'utf-8');
+    const reportPath = this._outputPath + constants.BACC_REPORT
+    fs.writeFileSync(reportPath, output, 'utf-8');
+    this.statistics.reportPath = reportPath;
 
+    util.addToStatistics(this.statistics)
   }
 
 
@@ -183,7 +185,6 @@ class ReportModeler {
     });
 
     ul += ("</ul>");
-
     return ul;
   }
 
@@ -201,11 +202,13 @@ class ReportModeler {
     // console.log(JSON.stringify(groupedByViolation, null, '\t'));
 
     let baccData = {};
-    baccData.checkDate = this._aceData['dct:date'];
+    this.statistics.checkDate = baccData.checkDate = this._aceData['dct:date'];
     baccData.metaData = this._aceData['earl:testSubject'].metadata;
+
+    this.statistics.title = baccData.metaData['dc:title'];
     baccData.totalCount = 0;
     baccData.groups = [];
-    baccData.totalAccessibilityLevel = this._totalAccessibilityLevel;
+    this.statistics.impact = baccData.totalAccessibilityLevel = this._totalAccessibilityLevel;
 
     _(groupedByViolation).each((elem, key) => {
 
@@ -237,11 +240,11 @@ class ReportModeler {
       // total count of all violation
       baccData.totalCount += group.count;
 
-
       baccData.groups.push(group);
       // todo: delete 'dct:title'
     });
 
+    this.statistics.totalCount = baccData.totalCount;
     // console.log(JSON.stringify(baccData, null, '\t'));
     return baccData;
   }
@@ -249,7 +252,10 @@ class ReportModeler {
   // mv report style to upload folder
   copyReportStyle() {
     try {
-      fsExtra.copySync(path.resolve(__dirname, REPORT_SYTLE), path.join(this._outputPath, '../' + REPORT_SYTLE));
+      fsExtra.copySync(
+        path.resolve(__dirname, constants.REPORT_SYTLE),
+        path.join(this._outputPath, '../' + constants.REPORT_SYTLE)
+      );
     } catch (err) {
       logger.log('error', err);
     }
@@ -264,7 +270,7 @@ class ReportModeler {
 
     const Report = {
       aLevel: this._totalAccessibilityLevel,
-      path: this._outputPath + BACC_REPORT
+      path: this._outputPath + constants.BACC_REPORT
     };
 
     return Report;

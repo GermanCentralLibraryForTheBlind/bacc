@@ -6,6 +6,7 @@ const readDirAsync = promisify(fs.readdir);
 const logger = require('../helper/logger');
 const Baccify = require('../Baccify');
 const Util = require('../helper/util');
+const constants = require('../constants');
 
 const SendMail = require('sendmail')({silent: true});
 
@@ -17,7 +18,7 @@ module.exports = function (req, res) {
     return;
   }
   const lang = req.query['lang'];
-  const workingPath = path.join(req.app.UploadDir, uploadID);
+  const workingPath = path.join(constants.UPLOAD_DIR, uploadID);
 
   getEPUBPath(workingPath).then(epubFile => {
 
@@ -56,9 +57,10 @@ module.exports = function (req, res) {
       .catch((err) => {
 
         deleteEPUB(epubPath);
-        sendTaskInfo(epubFile);
+        if (process.env.BACC)
+          sendTaskInfo(epubFile);
         logger.log('error', 'Baccify stopped with errors ...');
-        logger.log('error', err.stderr);
+        logger.log('error', err);
         return res.status(500).send(err.stderr);
       });
   });

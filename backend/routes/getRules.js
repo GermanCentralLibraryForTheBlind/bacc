@@ -8,18 +8,18 @@ const RULES_FILE = 'uploads/rules.html';
 
 module.exports = function (req, res) {
 
-  util.ensureUploadDirExists(req.app.UploadDir);
+  util.ensureUploadDirExists(constants.UPLOAD_DIR);
 
   const runAce = spawn('node', [constants.ACE, '-R'],
     {
       capture: ['stdout', 'stderr'],
-      cwd: req.app.UploadDir
+      cwd: constants.UPLOAD_DIR
     }
   );
 
   runAce.then((result) => {
 
-    removeUnusedRules(req.app.UploadDir);
+    removeUnusedRules(constants.UPLOAD_DIR);
     logger.log('info', 'Send rules...');
     res.type('text/plain');
     res.send(util.setHost(req, RULES_FILE));

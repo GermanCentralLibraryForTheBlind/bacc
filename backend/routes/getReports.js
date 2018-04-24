@@ -19,7 +19,7 @@ module.exports = function (req, res) {
   if (!ids || ids.length === 0)
     return res.status(400).send('Missing Id paramters.');
 
-  const uploadDir = req.app.UploadDir;
+  const uploadDir = constants.UPLOAD_DIR;
   const temp = path.join(os.tmpdir(), 'BACC');
 
   makeTempFolder(temp);
