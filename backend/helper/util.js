@@ -26,7 +26,7 @@ Util.setCheckFinishedFlag = (workingPath, epubFileName) => {
 };
 
 Util.isReadyState = (workingPath) => {
-  return fs.existsSync(path.join(workingPath, contants.SUCCEEDED_FLAG))
+  return fs.existsSync(path.join(workingPath, constants.SUCCEEDED_FLAG))
 };
 
 Util.addToStatistics = (task) => {

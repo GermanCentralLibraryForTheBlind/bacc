@@ -35,11 +35,16 @@ class Impact {
 
     const impactLevels = this._impacts;
 
-    for (let prop in impactLevels)
-      if (aceDataAsString.indexOf(prop) >= 0) {
+    for (let prop in impactLevels) {
+
+      const match = '\"' + prop + '\",';
+      // console.log(match);
+
+      if (aceDataAsString.includes(match)) {
         iLevel = impactLevels[prop];
         break;
       }
+    }
     return iLevel;
   }
 

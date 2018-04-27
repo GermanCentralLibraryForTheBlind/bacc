@@ -92,6 +92,9 @@ class Localise {
 
   localiseBACCLabeling(lang) {
 
+    if(lang === 'en')
+      return;
+
     if (lang === 'de')
       this._data.labeling = baccDE.labeling;
     else
