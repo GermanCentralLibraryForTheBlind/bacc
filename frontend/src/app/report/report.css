@@ -12,6 +12,12 @@
 /*padding: 10px;*/
 /*text-align: left;*/
 /*}*/
+
+#myReport {
+  font-family: "Helvetica Neue";
+  color: #bfbfbf;
+}
+
 iframe {
   width: 100%;
   height: 100%;

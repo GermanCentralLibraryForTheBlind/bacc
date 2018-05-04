@@ -8,7 +8,7 @@
     "ACTIONS": "Funktionen",
     "CHECK_OVER_ALL": "Alle Dateien prüfen",
     "CANCEL_ALL": "Alle Prüfungen abbrechen",
-    "REMOVE_ALL": "Alle Dateien entfernen",
+    "REMOVE_ALL": "Alle Einträge löschen",
     "DRAG_DROP": "Zum Prüfen der Zugänglichkeit,<br><br> EPUB-Dateien per <b>Drag & Drop</b> einfügen <br><br>oder",
     "FILE_DIALOG": "Datei zum Hochladen auswählen.",
     "CLOSE": "Schließen",
@@ -27,7 +27,7 @@
     "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
     "HEADER_INFO_DIALOG": "Informationen über das BACC Tool",
     "HEADER_RULES_DIALOG": "Regelwerk",
-    "HEADER_REPORT_DIALOG": "Report",
+    "HEADER_REPORT_DIALOG": "BACC REPORT",
     "SAVE_REPORTS": "Reports speichern"
 
 

@@ -18,7 +18,7 @@
         <h4 class="modal-title" id="myReport"> {{'BACC.HEADER_REPORT_DIALOG' | translate }}</h4>
       </div>
       <div class="modal-body custom-modal">
-        <iframe #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
+        <iframe [id]="'reportIframe-' + reportId" #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>

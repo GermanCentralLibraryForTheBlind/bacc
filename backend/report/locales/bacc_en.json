@@ -8,8 +8,7 @@
     "details": "Details",
     "impact": "Impact of Accessibility",
     "help": "More help",
-    "code1": "Source Code - only exemplary placeholder",
-    "code2": "Source Code",
+    "code": "Source Code",
     "tocEPUB": "EPUB Table of Contents *.ncx",
     "headingsOutline": "From HTML headings (with element name)",
     "htmlOutline": "From HTML headings (with numbering)",
@@ -26,7 +25,8 @@
     "dialogViolations" : "dialog violations",
     "updateDetails" : "Details of ${violation} are shown",
     "rule" : "Rule",
-    "optimiseHints" : "Recommendations for optimisation:"
+    "optimiseHints" : "Recommendations for optimisation:",
+    "metadata" : "Metadata"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",

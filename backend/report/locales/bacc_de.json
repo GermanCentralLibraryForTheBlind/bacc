@@ -8,8 +8,7 @@
     "details": "Details",
     "impact": "Einfluss auf die Zugänglichkeit",
     "help": "Weiterführende Informationen",
-    "code1": "Quellcode (Nur beispielhaft, noch nicht aktiv!)",
-    "code2": "Quellcode",
+    "code": "Quellcode",
     "tocEPUB": "Erzeugt aus der EPUB-TOC-Datei",
     "headingsOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Elementnamen)",
     "htmlOutline": "Erzeugt aus den HTML-Überschriften (Anzeige mit Nummerierung)",
@@ -26,7 +25,8 @@
     "dialogViolations" : "Dialog fehlgeschlagene Regeln",
     "updateDetails" : "Details zu ${violation} wird angezeigt",
     "rule" : "Regel",
-    "optimiseHints" : "Optimierungshinweise:"
+    "optimiseHints" : "Optimierungshinweise:",
+    "metadata" : "Metadaten"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

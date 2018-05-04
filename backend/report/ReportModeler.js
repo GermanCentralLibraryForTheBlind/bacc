@@ -151,6 +151,10 @@ class ReportModeler {
         violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
         violation['earl:test'].spineItem = spineItem;
 
+        violation['earl:test'].code = violation['earl:result']['html'];
+        if(violation['earl:test'].code)
+          violation['earl:test'].code = violation['earl:test'].code.replace('\n','').replace(/\s+/g,' ');
+
         // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
         violations.push(violation['earl:test']);
       }
@@ -208,7 +212,8 @@ class ReportModeler {
 
     let baccData = {};
     this.statistics.checkDate = baccData.checkDate = this._aceData['dct:date'];
-    baccData.metaData = this._aceData['earl:testSubject'].metadata;
+    this.statistics.fileName = baccData.fileName = this._aceData['earl:testSubject'].url;
+    this.statistics.metaData = baccData.metaData = this._aceData['earl:testSubject'].metadata;
 
     this.statistics.title = baccData.metaData['dc:title'];
     baccData.totalCount = 0;

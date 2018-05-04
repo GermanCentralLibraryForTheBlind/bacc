@@ -13,7 +13,6 @@
 <body>
 <div class="header">
   <span class="header-title">BACC REPORT</span>
-  <br>
   <span class="bookTitle">{{metaData.dc:title}}   </span>
   <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
   <i id="total-impact-icon" class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-size: 36px"
@@ -24,6 +23,9 @@
 <div class="subheader">
 </div>
 <div class="tab-wrap">
+  <!-- +++++++++++++++ -->
+  <!-- violations tab  -->
+  <!-- +++++++++++++++ -->
   <input type="radio" name="tabs" id="violation" checked>
   <div class="tab-label-content">
     <label for="violation">{{labeling.violation}}</label>
@@ -50,8 +52,8 @@
                   <tbody>
                   <!--{{#groups}}-->
                   <tr id="{{name}}">
-                    <td class="col-md-2"><span class="sr-only"
-                                               aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
+                    <td class="col-md-2">
+                      <span class="sr-only" aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
                       <i id="{{name}}-impact-icon" class="material-icons mat-36" style="color:{{impact.color}}"
                          aria-hidden="true">accessibility</i>
                     </td>
@@ -120,29 +122,27 @@
                         <!-- +++++++++++ -->
                         <!-- source code  -->
                         <!-- +++++++++++ -->
-                        <div class="panel panel-default" aria-hidden="true">
-                          <div class="panel-heading" role="tab" id="{{name}}-{{index}}-source-code">
-                            <div class="panel-title" style="font-size: small; font-weight: bold">
-                              <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
-                                 aria-expanded="false" aria-controls="collapseOne">
-                                {{labeling.code1}}
-                              </a>
+                        {{#code}}
+                          <div class="panel panel-default" aria-hidden="true">
+                            <div class="panel-heading" role="tab" id="{{name}}-{{index}}-source-code">
+                              <div class="panel-title" style="font-size: small; font-weight: bold">
+                                <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
+                                   aria-expanded="false" aria-controls="collapseOne">
+                                  {{labeling.code}}
+                                </a>
+                              </div>
+                            </div>
+                            <div
+                              id="expandSource-{{name}}-{{index}}"
+                              class="panel-collapse collapse out"
+                              role="panel"
+                              aria-labelledby="source-code">
+                              <div class="panel-body">
+                                <pre><code class="html">{{code}}</code></pre>
+                              </div>
                             </div>
                           </div>
-                          <div id="expandSource-{{name}}-{{index}}" class="panel-collapse collapse out" role="panel"
-                               aria-labelledby="source-code">
-                            <div class="panel-body">
-                              <pre><code class="html">
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;title&gt;BACCY&lt;/title&gt;
-  &lt;!-- here goes the rest of the page --&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-                    </code></pre>
-                            </div>
-                          </div>
-                        </div>
+                        {{/code}}
                       </div>
                     </div>
                   </div>
@@ -156,6 +156,28 @@
       </div>
     </div>
   </div>
+  <!-- +++++++++++++++ -->
+  <!-- metadata tab  -->
+  <!-- +++++++++++++++ -->
+  <input type="radio" name="tabs" id="metadata">
+  <div class="tab-label-content">
+    <label for="metadata">{{labeling.metadata}}</label>
+    <div class="tab-content">
+      <section>
+        <h4>Dublin Core</h4>
+        <ul class="list-group">
+          <li class="list-group-item"><b>Date:  </b>{{metaData.dc:date}}</li>
+          <li class="list-group-item"><b>Identifier:  </b>{{metaData.dc:identifier}}</li>
+          <li class="list-group-item"><b>Language:  </b>{{metaData.dc:language}}</li>
+          <li class="list-group-item"><b>Title:  </b>{{metaData.dc:title}}</li>
+          <li class="list-group-item"><b>Modified:  </b>{{metaData.dcterms:modified}}</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <!-- +++++++++++++ -->
+  <!-- tab outlines  -->
+  <!-- +++++++++++++ -->
   <input type="radio" name="tabs" id="outline" aria-hidden="true">
   <div class="tab-label-content" aria-hidden="true">
     <label for="outline">{{labeling.outlines}}</label>
@@ -196,6 +218,9 @@
       </div>
     </div>
   </div>
+  <!-- +++++++++++ -->
+  <!-- tabs images -->
+  <!-- +++++++++++ -->
   <input type="radio" name="tabs" id="image-description" aria-hidden="true">
   <div class="tab-label-content" id="tab3-content" aria-hidden="true">
     <label for="image-description">{{labeling.imgDescription}}</label>
@@ -224,7 +249,7 @@
                 <p><code>figcaption</code> :: {{figcaption}}</p>
                 <p><code>aria-describedby</code> :: </p>
                 <p>
-                  <b>{{labeling.code2}}</b>
+                  <b>{{labeling.code}}</b>
                 <pre><code class="html">{{html}}</code></pre>
                 </p>
               </div>

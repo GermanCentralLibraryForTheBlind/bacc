@@ -134,10 +134,17 @@ export class ReportComponent {
     if (this.reportUrl) {
       $("#" + this.reportId).modal('show');
 
+      const id = 'reportIframe-' +  this.reportId;
+
+      $("#" + id).contents().find(".header-title").remove();
+
       // TODO: move to accessibility module
       this.focusedElementBeforeOpen = document.activeElement;
       const that = this;
-      $("#" + this.reportId).on('hidden.bs.modal', function () {
+      $("#" + this.reportId).on('hidden.bs.modal', () => {
+
+        $("#" + id).contents().find("body").html('');
+
         if (that.focusedElementBeforeOpen)
           that.focusedElementBeforeOpen.focus();
       })
