@@ -24,16 +24,20 @@
     "email": "lars.voigt@dzb.de"
   },
   "scripts": {
+    "build:frontend": "cd ./frontend && npm run build:prod",
+    "build:deploy:test": "npm run build:test && npm run deploy:test",
+    "build:deploy:prod": "npm run build:prod && npm run deploy:prod",
+    "build:backend": "npm run prebuild:backend && mkdir dist/backend/report && cp backend/report/*.* dist/backend/report && mkdir dist/backend/helper && cp backend/helper/*.* dist/backend/helper && mkdir dist/backend/report/locales && cp backend/report/locales/*.* dist/backend/report/locales && mkdir dist/backend/routes && cp backend/routes/*.* dist/backend/routes && mkdir dist/backend/report/locales/ace_patch && cp backend/*.js dist/backend && cp backend/report/locales/ace_patch/*.* dist/backend/report/locales/ace_patch && cp backend/package.json dist/backend",
+    "build:prod": "npm run prebuild && npm run build:frontend && npm run build:backend",
+    "build:test": "npm run prebuild && cd ./frontend && npm run build:test && cd .. && npm run build:backend",
+    "run:backend": "node ./backend/webApi",
     "run:frontend": "cd ./frontend && npm run start:app",
-    "build:dist": "npm run prebuild && npm run build:frontend && npm run build:backend",
+    "deploy:prod": "sh ~/Schreibtisch/update_bacc_dzb.sh",
+    "deploy:test": "sh ~/Schreibtisch/update_bacc_test.sh",
     "prebuild": "./backend/node_modules/.bin/rimraf dist && mkdir dist",
     "prebuild:backend": "./backend/node_modules/.bin/rimraf dist/backend && mkdir dist/backend",
-    "build:backend": "npm run prebuild:backend && mkdir dist/backend/report && cp backend/report/*.* dist/backend/report && mkdir dist/backend/helper && cp backend/helper/*.* dist/backend/helper && mkdir dist/backend/report/locales && cp backend/report/locales/*.* dist/backend/report/locales && mkdir dist/backend/routes && cp backend/routes/*.* dist/backend/routes && mkdir dist/backend/report/locales/ace_patch && cp backend/*.js dist/backend && cp backend/report/locales/ace_patch/*.* dist/backend/report/locales/ace_patch && cp backend/package.json dist/backend",
-    "build:frontend": "cd ./frontend && npm run build:dist",
-    "run:backend": "node ./backend/webApi",
     "clear:uploads": "./backend/node_modules/.bin/rimraf uploads && ./backend/node_modules/.bin/rimraf backend/uploads",
     "postinstall": "cd backend && npm install && cd ./../frontend && npm i",
-    "deploy": "sh ~/Schreibtisch/update_bacc_test.sh",
     "preminor": "npm -f version minor && cd backend && npm -f version minor && cd ./../frontend && npm -f version minor"
   },
   "dependencies": {}

@@ -121,7 +121,7 @@
         </button>
         <button mat-raised-button color="accent" class="my-btn"
                 type="button"
-                (click)="uploader.clearQueue()"
+                (click)="deleteQueue()"
                 [disabled]="!checkOverService.checkoverReady">
           <mat-icon>delete</mat-icon>
           {{ 'BACC.REMOVE_ALL' | translate }}

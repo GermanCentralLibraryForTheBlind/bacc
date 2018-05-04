@@ -5,7 +5,8 @@
   "main": "karma.conf.js",
   "scripts": {
     "start:app": "ng serve --host=0.0.0.0 --disable-host-check --proxy-config proxy.config.js",
-    "build:dist": "ng build ---env=prod",
+    "build:prod": "ng build ---env=prod",
+    "build:test": "ng build ---env=test",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

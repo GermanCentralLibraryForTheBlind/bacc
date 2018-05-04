@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {CheckOverComponent} from './check-over/check-over';
+import {environment} from '../environments/environment';
 
 declare var $: any;
 
@@ -21,7 +22,9 @@ export class AppComponent {
     translate.setDefaultLang('en');
     let browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
-    this.showLinkToOfficialBACC();
+
+    if (environment.envName === 'test')
+      this.showLinkToOfficialBACC();
   }
 
   // direkt link for screenreader user
@@ -31,6 +34,8 @@ export class AppComponent {
 
 
   showLinkToOfficialBACC() {
-    setTimeout(function(){ $('#officialVersion').modal('show');},1000);
+    setTimeout(function () {
+      $('#officialVersion').modal('show');
+    }, 1000);
   }
 }

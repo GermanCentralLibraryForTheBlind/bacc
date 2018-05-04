@@ -71,6 +71,11 @@ export class CheckOverComponent implements OnInit {
     onElement.click();
   }
 
+  public deleteQueue() {
+    this.uploader.clearQueue();
+    this.checkOverService.checkoverReady = false;
+  }
+
   public saveReports() {
 
     let params = new HttpParams();
@@ -103,6 +108,7 @@ export class CheckOverComponent implements OnInit {
       + ':' +
       todayDate.getSeconds();
   }
+
 }
 
 
