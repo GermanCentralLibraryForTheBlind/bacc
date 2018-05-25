@@ -12,6 +12,8 @@ const SendMail = require('sendmail')({silent: true});
 
 module.exports = function (req, res) {
 
+  req.setTimeout(0);
+
   const uploadID = req.query['uploadID'];
   if (!uploadID) {
     res.status(400).send('Parameter uploadID is missing!');
@@ -25,7 +27,7 @@ module.exports = function (req, res) {
     if (!epubFile)
       return res.status(404).send(`No EPUB file for ${uploadID} found`);
 
-    logger.log('info', 'Run baccify ...');
+    logger.log('info', `Run baccify for ${uploadID} ...`);
 
     const baccify = new Baccify();
     const epubPath = path.join(workingPath, epubFile);

@@ -166,11 +166,11 @@
       <section>
         <h4>Dublin Core</h4>
         <ul class="list-group">
-          <li class="list-group-item"><b>Date:  </b>{{metaData.dc:date}}</li>
-          <li class="list-group-item"><b>Identifier:  </b>{{metaData.dc:identifier}}</li>
-          <li class="list-group-item"><b>Language:  </b>{{metaData.dc:language}}</li>
-          <li class="list-group-item"><b>Title:  </b>{{metaData.dc:title}}</li>
-          <li class="list-group-item"><b>Modified:  </b>{{metaData.dcterms:modified}}</li>
+          <li class="list-group-item"><b>Date: </b>{{metaData.dc:date}}</li>
+          <li class="list-group-item"><b>Identifier: </b>{{metaData.dc:identifier}}</li>
+          <li class="list-group-item"><b>Language: </b>{{metaData.dc:language}}</li>
+          <li class="list-group-item"><b>Title: </b>{{metaData.dc:title}}</li>
+          <li class="list-group-item"><b>Modified: </b>{{metaData.dcterms:modified}}</li>
         </ul>
       </section>
     </div>
@@ -197,7 +197,7 @@
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <b>{{labeling.headingsOutline}}</b>
+                {{{labeling.headingsOutline}}}
               </div>
               <div class="panel-body">
                 {{{outlines.headings}}}
@@ -207,7 +207,7 @@
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <b>{{labeling.htmlOutline}}</b>
+                {{{labeling.htmlOutline}}}
               </div>
               <div class="panel-body">
                 {{{outlines.html}}}

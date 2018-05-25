@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpParams, HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 
+import { Observable } from "rxjs/Rx";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
@@ -23,7 +24,6 @@ export class CheckOverService {
       .set('lang', this.translate.getBrowserLang());
 
     return this.http.get(this.WEB_API_CHECKOVER, {responseType: 'text', params: params})
-    // .timeout(120000)
       .toPromise()
       .then(response => {this.checkoverReady = true; return response;} )
       .catch(this.handleError);
@@ -32,6 +32,6 @@ export class CheckOverService {
   private handleError(error: any): Promise<any> {
 
     // console.error(error);
-    return Promise.reject(error._body || error);
+    return Promise.reject(error.message || error);
   }
 }

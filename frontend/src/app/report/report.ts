@@ -80,8 +80,8 @@ export class ReportComponent {
         this.afterSuccessfulCheck(item, report);
       })
       .catch(err => {
-          this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred ' + err);
-          console.error('An error occurred ' + err);
+          this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred:  ' + err);
+          console.error('An error occurred:  ' + err);
         }
       );
   }

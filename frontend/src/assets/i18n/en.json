@@ -22,7 +22,7 @@
       "STRONG" : "very strong limited accessibility",
       "PARTIALLY" : "partially limited accessibility",
       "MINOR" : "minor limited accessibility",
-      "NONE" : "None limited accessibility"
+      "NONE" : "Unlimited accessibility"
     },
     "START_CHECKER": "Begin check",
     "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",

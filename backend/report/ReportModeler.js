@@ -78,6 +78,7 @@ class ReportModeler {
     reportData = this.getBACCReportData();
     reportData.lang = "en";
     reportData.outlines = this._aceData.outlines;
+    reportData.outlines.html = reportData.outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g,'</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
     reportData.images = this._aceData.data.images;
 
     this.statistics.cover = reportData.images ? reportData.images[0] : '';
