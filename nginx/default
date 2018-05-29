@@ -64,8 +64,8 @@
 
 
 server {
-        listen 80;
-        listen [::]:80;
+        listen 3333;
+        listen [::]:3333;
 
         server_name _;
 
