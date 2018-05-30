@@ -166,7 +166,15 @@ img {
 
 /* from ace report */
 
-.toc-h1:before, .toc-h2:before, .toc-h3:before, .toc-h4:before, .toc-h5:before, .toc-h6:before, .toc-missing {
+.toc-h1:before,
+.toc-h2:before,
+.toc-h3:before,
+.toc-h4:before,
+.toc-h5:before,
+.toc-h6:before,
+.toc-missing,
+.metadata-success,
+.metadata-failed{
   display: inline-block;
   height: 1.5em;
   padding: 0 .4em;
@@ -202,10 +210,12 @@ img {
   content: 'h6'
 }
 
-.toc-missing {
+.toc-missing, .metadata-failed {
   font-family: inherit;
   background-color: #c9302c
 }
+
+
 
 code {
   padding: 0.2rem 0.4rem;

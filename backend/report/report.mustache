@@ -164,14 +164,122 @@
     <label for="metadata">{{labeling.metadata}}</label>
     <div class="tab-content">
       <section>
-        <h4>Dublin Core</h4>
-        <ul class="list-group">
-          <li class="list-group-item"><b>Date: </b>{{metaData.dc:date}}</li>
-          <li class="list-group-item"><b>Identifier: </b>{{metaData.dc:identifier}}</li>
-          <li class="list-group-item"><b>Language: </b>{{metaData.dc:language}}</li>
-          <li class="list-group-item"><b>Title: </b>{{metaData.dc:title}}</li>
-          <li class="list-group-item"><b>Modified: </b>{{metaData.dcterms:modified}}</li>
-        </ul>
+        <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4>Metadata</h4>
+                </div>
+                <div class="panel-body">
+
+                  <ul class="list-group">
+                    {{#metaData.dc:date}}
+                      <li class="list-group-item"><b>Date: </b>{{metaData.dc:date}}</li>
+                    {{/metaData.dc:date}}
+                    <li class="list-group-item">
+                      <b>Identifier: </b>
+                      <span class="metadata-success">{{metaData.dc:identifier}}</span>
+                      {{^metaData.dc:identifier}}
+                        <span class="metadata-failed">Missing</span>
+                      {{/metaData.dc:identifier}}
+                    </li>
+                    <li class="list-group-item">
+                      <b>Language: </b>
+                      <span class="metadata-success">{{metaData.dc:language}}</span>
+                      {{^metaData.dc:language}}
+                        <span class="metadata-failed">Missing</span>
+                      {{/metaData.dc:language}}
+                    </li>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Title: </b>
+                      <span class="metadata-success">{{metaData.dc:title}}</span>
+                      {{^metaData.dc:title}}
+                        <span class="metadata-failed">Missing</span>
+                      {{/metaData.dc:title}}
+                    </li>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Modified: </b>
+                      <span class="metadata-success">{{metaData.dcterms:modified}}</span>
+                      {{^metaData.dcterms:modified}}
+                        <span class="metadata-failed">Missing</span>
+                      {{/metaData.dcterms:modified}}
+                    </li>
+                    </li>
+                    {{#metaData.dc:rights}}
+                      <li class="list-group-item"><b>Rights: </b>{{metaData.dc:rights}}</li>
+                    {{/metaData.dc:rights}}
+                    {{#metaData.dc:creator}}
+                      <li class="list-group-item"><b>Creator: </b>{{metaData.dc:creator}}</li>
+                    {{/metaData.dc:creator}}
+                    {{#metaData.dc:contributor}}
+                      <li class="list-group-item"><b>Contributor: </b>{{metaData.dc:contributor}}</li>
+                    {{/metaData.dc:contributor}}
+                    {{#metaData.dc:source}}
+                      <li class="list-group-item"><b>Source: </b>{{metaData.dc:source}}</li>
+                    {{/metaData.dc:source}}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4>Accessibility metadata</h4>
+                </div>
+                <div class="panel-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <b>AccessMode:<br><br></b>
+                      <ul>
+                        {{#metaData.schema:accessMode}}
+                          <li class="metadata-success">{{.}}</li>
+                        {{/metaData.schema:accessMode}}
+                        {{^metaData.schema:accessMode}}
+                          <span class="metadata-failed">Missing</span>
+                        {{/metaData.schema:accessMode}}
+                      </ul>
+                    </li>
+                    <li class="list-group-item">
+                      <b>AccessModeSufficient:<br><br></b>
+                      <ul>
+                        {{#metaData.schema:accessModeSufficient}}
+                          <li class="metadata-success">{{.}}</li>
+                        {{/metaData.schema:accessModeSufficient}}
+                        {{^metaData.schema:accessModeSufficient}}
+                          <span class="metadata-failed">Missing</span>
+                        {{/metaData.schema:accessModeSufficient}}
+                      </ul>
+                    </li>
+                    <li class="list-group-item "><b>AccessibilitySummary: <br><br></b>
+                      <ul>
+                        {{#metaData.schema:accessibilitySummary}}
+                          <span class="metadata-success">{{metaData.schema:accessibilitySummary}}</span>
+                        {{/metaData.schema:accessibilitySummary}}
+                        {{^metaData.schema:accessibilitySummary}}
+                          <span class="metadata-failed">Missing</span>
+                        {{/metaData.schema:accessibilitySummary}}
+                      </ul>
+                    </li>
+                    <li class="list-group-item">
+                      <b>AccessibilityFeature:<br><br></b>
+                      <ul>
+                        {{#metaData.schema:accessibilityFeature}}
+                          <li class="metadata-success">{{.}}</li>
+                        {{/metaData.schema:accessibilityFeature}}
+                        {{^metaData.schema:accessibilityFeature}}
+                          <span class="metadata-failed">Missing</span>
+                        {{/metaData.schema:accessibilityFeature}}
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   </div>
