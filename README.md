@@ -41,6 +41,10 @@ TODO
 
 ## CHANGELOG 
 
+### 0.7.0 
+
+* Added meta data view, which signals if recommended meta data isnt set
+
 ### 0.6.0
 
 * Save actually checked reports to local disk 

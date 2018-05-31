@@ -215,7 +215,13 @@ img {
   background-color: #c9302c
 }
 
+.metadata-failed, .metadata-success {
+  font-weight: bold;
+}
 
+.space-right {
+  margin-right: 10px;
+}
 
 code {
   padding: 0.2rem 0.4rem;

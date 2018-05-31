@@ -175,17 +175,17 @@
 
                   <ul class="list-group">
                     {{#metaData.dc:date}}
-                      <li class="list-group-item"><b>Date: </b>{{metaData.dc:date}}</li>
+                      <li class="list-group-item"><b class="space-right">Date: </b>{{metaData.dc:date}}</li>
                     {{/metaData.dc:date}}
                     <li class="list-group-item">
-                      <b>Identifier: </b>
+                      <b class="space-right">Identifier: </b>
                       <span class="metadata-success">{{metaData.dc:identifier}}</span>
                       {{^metaData.dc:identifier}}
                         <span class="metadata-failed">Missing</span>
                       {{/metaData.dc:identifier}}
                     </li>
                     <li class="list-group-item">
-                      <b>Language: </b>
+                      <b class="space-right">Language: </b>
                       <span class="metadata-success">{{metaData.dc:language}}</span>
                       {{^metaData.dc:language}}
                         <span class="metadata-failed">Missing</span>
@@ -193,7 +193,7 @@
                     </li>
                     </li>
                     <li class="list-group-item">
-                      <b>Title: </b>
+                      <b class="space-right">Title: </b>
                       <span class="metadata-success">{{metaData.dc:title}}</span>
                       {{^metaData.dc:title}}
                         <span class="metadata-failed">Missing</span>
@@ -201,7 +201,7 @@
                     </li>
                     </li>
                     <li class="list-group-item">
-                      <b>Modified: </b>
+                      <b class="space-right">Modified: </b>
                       <span class="metadata-success">{{metaData.dcterms:modified}}</span>
                       {{^metaData.dcterms:modified}}
                         <span class="metadata-failed">Missing</span>
@@ -209,16 +209,22 @@
                     </li>
                     </li>
                     {{#metaData.dc:rights}}
-                      <li class="list-group-item"><b>Rights: </b>{{metaData.dc:rights}}</li>
+                      <li class="list-group-item"><b class="space-right">Rights: </b>{{metaData.dc:rights}}</li>
                     {{/metaData.dc:rights}}
                     {{#metaData.dc:creator}}
-                      <li class="list-group-item"><b>Creator: </b>{{metaData.dc:creator}}</li>
+                      <li class="list-group-item"><b class="space-right">Creator: </b>{{metaData.dc:creator}}</li>
                     {{/metaData.dc:creator}}
-                    {{#metaData.dc:contributor}}
-                      <li class="list-group-item"><b>Contributor: </b>{{metaData.dc:contributor}}</li>
-                    {{/metaData.dc:contributor}}
+                    {{#metaData.dc:contributor.length}}
+                      <li class="list-group-item"><b>Contributors: </b>
+                        <ul>
+                          {{#metaData.dc:contributor}}
+                            <li>{{.}}</li>
+                          {{/metaData.dc:contributor}}
+                        </ul>
+                      </li>
+                    {{/metaData.dc:contributor.length}}
                     {{#metaData.dc:source}}
-                      <li class="list-group-item"><b>Source: </b>{{metaData.dc:source}}</li>
+                      <li class="list-group-item"><b class="space-right">Source: </b>{{metaData.dc:source}}</li>
                     {{/metaData.dc:source}}
                   </ul>
                 </div>
