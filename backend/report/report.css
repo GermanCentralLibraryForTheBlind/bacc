@@ -2,7 +2,10 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,300,700");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css");
+/*@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css");*/
+/*@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css");*/
+/*@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css");*/
+/*@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css");*/
 
 html, body {
   width: 100%;
@@ -33,8 +36,8 @@ html, body {
 .header-title {
   font-size: 24px;
   color: #bfbfbf;
-  display:table;
-  margin:0 auto;
+  display: table;
+  margin: 0 auto;
 }
 
 .check-date {
@@ -82,9 +85,10 @@ input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
-left: calc((100% / 4) * 3); /* tab count */
+  left: calc((100% / 4) * 3); /* tab count */
 
 }
+
 input[type="radio"][name="tabs"]:first-of-type:checked ~ .slide {
   left: 0;
 }
@@ -174,7 +178,7 @@ img {
 .toc-h6:before,
 .toc-missing,
 .metadata-success,
-.metadata-failed{
+.metadata-failed {
   display: inline-block;
   height: 1.5em;
   padding: 0 .4em;
@@ -280,7 +284,6 @@ code {
   margin-right: 0px !important;
 }
 
-
 #template-violation-table {
   caption-side: bottom;
 }
@@ -288,11 +291,13 @@ code {
 #template-violation-table > thead {
   width: 100%;
 }
+
 #template-violation-table > tbody {
   height: 300px;
   overflow-y: auto;
   width: 100%;
 }
+
 #template-violation-table > thead,
 #template-violation-table > tbody,
 #template-violation-table > tr,
@@ -300,6 +305,7 @@ code {
 #template-violation-table > th {
   display: block;
 }
+
 #template-violation-table > tbody td,
 #template-violation-table > thead > tr > th {
   border-bottom-width: 0;
@@ -307,4 +313,59 @@ code {
 
 #template-violation-table caption {
   margin-top: 30px;
+}
+
+
+/*
+code style
+*/
+
+
+.hljs-comment, .hljs-quote {
+  color: #8e908c
+}
+
+.hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion {
+  color: #264b63
+}
+
+.hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link {
+  color: #f5871f
+}
+
+.hljs-attribute {
+  color: #eab700
+}
+
+.hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
+  color: #8a6d3b;
+}
+
+.hljs-title, .hljs-section {
+  color: #4271ae
+}
+
+.hljs-keyword, .hljs-selector-tag {
+  color: #8959a8
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #fcf8e3;
+  color: black;
+  padding: 0.5em
+}
+
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-strong {
+  font-weight: bold
+}
+
+pre {
+  background-color: #fcf8e3;
+  border: 1px solid #e4e1ce;
 }

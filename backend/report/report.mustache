@@ -8,7 +8,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
           integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
           crossorigin="anonymous"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.initHighlightingOnLoad();</script> <!--style see report.css-->
 </head>
 <body>
 <div class="header">
@@ -123,24 +123,10 @@
                         <!-- source code  -->
                         <!-- +++++++++++ -->
                         {{#code}}
-                          <div class="panel panel-default" aria-hidden="true">
-                            <div class="panel-heading" role="tab" id="{{name}}-{{index}}-source-code">
-                              <div class="panel-title" style="font-size: small; font-weight: bold">
-                                <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
-                                   aria-expanded="false" aria-controls="collapseOne">
-                                  {{labeling.code}}
-                                </a>
-                              </div>
-                            </div>
-                            <div
-                              id="expandSource-{{name}}-{{index}}"
-                              class="panel-collapse collapse out"
-                              role="panel"
-                              aria-labelledby="source-code">
-                              <div class="panel-body">
-                                <pre><code class="html">{{code}}</code></pre>
-                              </div>
-                            </div>
+                          <div aria-labelledby="source-code">
+                              <pre style="display: inline-flex">
+                                <code class="html">{{code}}</code>
+                              </pre>
                           </div>
                         {{/code}}
                       </div>
