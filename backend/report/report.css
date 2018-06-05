@@ -315,11 +315,9 @@ code {
   margin-top: 30px;
 }
 
-
 /*
 code style
 */
-
 
 .hljs-comment, .hljs-quote {
   color: #8e908c
@@ -368,4 +366,14 @@ code style
 pre {
   background-color: #fcf8e3;
   border: 1px solid #e4e1ce;
+}
+
+.no-issues-icon {
+  top: 150px!important;
+  font-size: 100px;
+  margin: 0;
+  position: absolute;
+  left: 35%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

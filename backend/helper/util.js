@@ -43,4 +43,30 @@ Util.addToStatistics = (task) => {
   logger.log('info', `Written task to STATISTICS`);
 };
 
+
+// Util.addPropertyToLastTaskofStatistics = (property, value) => {
+//
+//   try {
+//     const current = jsonfile.readFileSync(constants.STATISTICS);
+//     current.reports[current.reports.length - 1][property] = value;
+//     jsonfile.writeFileSync(constants.STATISTICS, current, {spaces: 2});
+//   } catch (err) {
+//     logger.log('error', `Error add property to last task of statistics` + err);
+//   }
+// };
+//
+// // works only if nginx is compiled with this module ngx_http_realip_module
+// Util.writeRequestAddressToStatistics = (req) => {
+//
+//   var ip = req.get('x-real-ip') ||
+//     req.headers['x-forwarded-for'] ||
+//     req.connection.remoteAddress ||
+//     req.socket.remoteAddress ||
+//     req.connection.socket.remoteAddress;
+//   ip = ip.split(',')[0];
+//   ip = ip.split(':').slice(-1);
+//
+//   Util.addPropertyToLastTaskofStatistics('ip', ip);
+// };
+
 module.exports = Util;

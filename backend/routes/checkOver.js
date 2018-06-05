@@ -50,6 +50,7 @@ module.exports = function (req, res) {
           if (process.env.BACC)
             sendTaskInfo(epubFile, report.path);
 
+          // Util.writeRequestAddressToStatistics(req);
           Util.setCheckFinishedFlag(workingPath, epubFile);
 
           return res.json(report);
