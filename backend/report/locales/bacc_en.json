@@ -9,7 +9,7 @@
     "impact": "Impact of Accessibility",
     "help": "More help",
     "code": "Source Code",
-    "tocEPUB": "EPUB Table of Contents *.ncx",
+    "tocEPUB": "EPUB Table of Contents",
     "headingsOutline": "<b>HTML headings</b> <br> (&lt;h1&gt; to &lt;h6&gt;)",
     "htmlOutline": "<b>Nested sections</b>",
     "description": "Description",

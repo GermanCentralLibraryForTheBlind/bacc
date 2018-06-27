@@ -57,7 +57,7 @@ class Localise {
 
       if (groups[i].assertedBy === 'Ace') {
 
-        const localeDescription = translatedRule.description;
+        const localeDescription = translatedRule.help;
 
 
         if (localeDescription !== "No translation") {
