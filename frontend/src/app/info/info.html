@@ -9,8 +9,7 @@
         class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
         [popover]="popoverInfo"
         [popoverOnHover]="true"
-        data-toggle="modal"
-        data-target="#myModalInfo">
+        (click)="show()">
   <mat-icon>info</mat-icon>
 </button>
 <!-- Modal -->

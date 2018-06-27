@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 
+declare var $: any;
+
 @Component({
   selector: 'info',
   templateUrl: './info.html',
@@ -8,17 +10,31 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class InfoComponent implements OnInit {
 
-  infoPath: string;
+  public infoPath: string;
+  private focusedElementBeforeOpen: any;
 
   constructor(private translate: TranslateService) {
   }
 
   ngOnInit() {
+  }
 
-    let browserLang = this.translate.currentLang;
-    this.infoPath = "./assets/Infotext_en.md";
 
-    if(browserLang === 'de')
+  show() {
+
+    if (this.translate.currentLang === 'de')
       this.infoPath = "./assets/Infotext_de.md";
+    else
+      this.infoPath = "./assets/Infotext_en.md";
+
+    $("#myModalInfo").modal('show');
+
+    // TODO: move to accessibility module
+    this.focusedElementBeforeOpen = document.activeElement;
+    const that = this;
+    $("#myModalInfo").on('hidden.bs.modal', function () {
+      if (that.focusedElementBeforeOpen)
+        that.focusedElementBeforeOpen.focus();
+    })
   }
 }
