@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +13,20 @@ export class HeaderComponent implements OnInit {
 
   title = 'born accessible content checker';
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
+  switchLanguage() {
+
+    if (event.srcElement.innerHTML.trim() === 'en') {
+      event.srcElement.innerHTML = "de";
+      this.translate.use('en');
+    } else if (event.srcElement.innerHTML.trim() === 'de') {
+      event.srcElement.innerHTML = "en";
+      this.translate.use('de');
+    }
+  }
 }

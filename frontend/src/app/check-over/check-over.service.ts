@@ -21,7 +21,7 @@ export class CheckOverService {
 
     let params = new HttpParams()
       .set('uploadID', uploadID)
-      .set('lang', this.translate.getBrowserLang());
+      .set('lang', this.translate.currentLang);
 
     return this.http.get(this.WEB_API_CHECKOVER, {responseType: 'text', params: params})
       .toPromise()

@@ -15,7 +15,7 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
 
-    let browserLang = this.translate.getBrowserLang();
+    let browserLang = this.translate.currentLang;
     this.infoPath = "./assets/Infotext_en.md";
 
     if(browserLang === 'de')

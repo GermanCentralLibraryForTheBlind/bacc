@@ -14,7 +14,8 @@
     "FILE_DIALOG": "Choose a file to upload.",
     "CLOSE": "close",
     "TOOLTIP_SHOW_RULES" : "Show used rules",
-    "TOOLTIP_INFO" : "Information about this tool.",
+    "TOOLTIP_INFO" : "Information about this tool",
+    "TOOLTIP_SWITCH_LANGUAGE" : "Switch language",
     "SKIP_TO_CHECKER": "Choose an Ebook-file to check it",
     "LEGEND" : "legend of accessibility levels",
     "LEGEND_LEVELS": {

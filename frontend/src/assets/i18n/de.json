@@ -13,7 +13,8 @@
     "FILE_DIALOG": "Datei zum Hochladen auswählen.",
     "CLOSE": "Schließen",
     "TOOLTIP_SHOW_RULES" : "Regelwerk anzeigen",
-    "TOOLTIP_INFO" : "Informationen über das Prüftool.",
+    "TOOLTIP_INFO" : "Informationen über das Prüftool",
+    "TOOLTIP_SWITCH_LANGUAGE" : "Sprache ändern",
     "SKIP_TO_CHECKER": "Ebook zur Prüfung auswählen",
     "LEGEND" : "Legende der Zugänglichkeitsstufen eines E-books",
     "LEGEND_LEVELS": {
@@ -29,7 +30,5 @@
     "HEADER_RULES_DIALOG": "Regelwerk",
     "HEADER_REPORT_DIALOG": "BACC REPORT",
     "SAVE_REPORTS": "Reporte speichern"
-
-
   }
 }
