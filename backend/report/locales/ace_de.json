@@ -2,35 +2,35 @@
   "lang": "de",
   "rules": {
     "metadata-schema-accessMode": {
-      "description": "Stellt sicher, dass 'schema:accessMode' vorhanden ist."
+      "description": "Stellt sicher, dass 'schema:accessMode' vorhanden ist.",
       "help": "Die Accessibility-Metadatenangabe 'schema:accessMode' muss im Package-Dokument des EPUB-Dokumentes definiert sein."
     },
     "metadata-schema-accessibilityFeature": {
-      "description": "Stellt sicher, dass 'schema:accessibilityFeature' vorhanden ist."
+      "description": "Stellt sicher, dass 'schema:accessibilityFeature' vorhanden ist.",
       "help": "Die Accessibility-Metadatenangabe 'schema:accessibilityFeature' muss im Package-Dokument des EPUB-Dokumentes definiert sein."
     },
     "metadata-schema-accessibilitySummary": {
-      "description": "Stellt sicher, dass 'schema:accessibilitySummary' vorhanden ist."
+      "description": "Stellt sicher, dass 'schema:accessibilitySummary' vorhanden ist.",
       "help": "Die Accessibility-Metadatenangabe 'schema:accessibilitySummary' muss im Package-Dokument des EPUB-Dokumentes definiert sein."
     },
     "metadata-schema-accessModeSufficient": {
-      "description": "Stellt sicher, dass 'schema:accessModeSufficient' vorhanden ist."
+      "description": "Stellt sicher, dass 'schema:accessModeSufficient' vorhanden ist.",
       "help": "Die Accessibility-Metadatenangabe 'schema:accessModeSufficient' sollte im Package-Dokument des EPUB-Dokumentes definiert sein."
     },
     "epub-title": {
-      "description": "Stellt sicher, dass der Titel in den Metadaten des Package-Dokumentes angegeben ist."
+      "description": "Stellt sicher, dass der Titel in den Metadaten des Package-Dokumentes angegeben ist.",
       "help": "In den Metadaten des Package-Dokumentes muss der EPUB-Titel angegeben werden."
     },
     "epub-pagesource": {
-      "description": "Stellt sicher, dass wenn der Inhalt Seitenumbruchsmarkierungen (peagebreak) enthält, die zugehörige Printquelle mit dc:source in den Metadaten des Package-Dokumentes angegeben ist."
+      "description": "Stellt sicher, dass wenn der Inhalt Seitenumbruchsmarkierungen (peagebreak) enthält, die zugehörige Printquelle mit dc:source in den Metadaten des Package-Dokumentes angegeben ist.",
       "help": "Bei der Verwendung von Seitenmarkierungen (pagebreak) muss die zugehörige Printquelle in den Metadaten des Package-Dokumentes angegeben werden."
     },
     "pagebreak-label": {
-      "description": "Stellt sicher, dass Seitenumbruchsmarkierungen (pagebreak) eine zugängliche Beschriftung haben."
+      "description": "Stellt sicher, dass Seitenumbruchsmarkierungen (pagebreak) eine zugängliche Beschriftung haben.",
       "help": "Seitenmarkierungen (pagebreak) müssen eine zugängliche Beschriftung besitzen."
     },
     "epub-type-has-matching-role": {
-      "description": "Stellt sicher, dass das Element zusätzlich zum epub:type-Attribut die zugehörige ARIA role besitzt."
+      "description": "Stellt sicher, dass das Element zusätzlich zum epub:type-Attribut die zugehörige ARIA role besitzt.",
       "help": "Zusätzlich zum epub:type-Attribut sollte das ARIA-Attribut role verwendet werden."
     }
 
