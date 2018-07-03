@@ -84,7 +84,7 @@ function makeTempFolder(temp) {
 function makeReportPath(temp, fileName) {
 
   var idx = 0;
-  var tempFileName = fileName;
+  var tempFileName = fileName.replace('.epub', '').replace("'", '_');
 
   while (fs.existsSync(path.join(temp, tempFileName))) {
     idx++;

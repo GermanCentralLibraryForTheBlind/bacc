@@ -19,13 +19,16 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  switchLanguage() {
+  switchLanguage(event) {
 
-    if (event.srcElement.innerHTML.trim() === 'en') {
-      event.srcElement.innerHTML = "de";
+    const target = event.target || event.srcElement;
+    const text = target.innerHTML.trim();
+
+    if (text === 'en') {
+      target.innerHTML = "de";
       this.translate.use('en');
-    } else if (event.srcElement.innerHTML.trim() === 'de') {
-      event.srcElement.innerHTML = "en";
+    } else if (text === 'de') {
+      target.innerHTML = "en";
       this.translate.use('de');
     }
   }

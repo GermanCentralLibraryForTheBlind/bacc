@@ -1,4 +1,4 @@
-# Notes to baCC backend
+# Notes to BACC backend
 
 ### Setup
 
