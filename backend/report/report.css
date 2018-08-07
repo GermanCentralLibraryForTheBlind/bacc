@@ -236,7 +236,7 @@ code {
 }
 
 .selected td {
-  font-weight: bold;
+  background-color: rgba(19, 107, 22, 0.18);
 }
 
 .btnPagerPrev {
@@ -252,8 +252,7 @@ code {
 }
 
 .panel-title-custom {
-  margin-bottom: 12px !important;
-  font-size: 20px !important;
+  font-size: 16px !important;
 }
 
 .panel-title > a:before {

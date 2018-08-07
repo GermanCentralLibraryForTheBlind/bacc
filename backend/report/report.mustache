@@ -2,20 +2,28 @@
 <html lang="{{lang}}">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./../report.css"/>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
           crossorigin="anonymous"></script>
   <script>hljs.initHighlightingOnLoad();</script> <!--style see report.css-->
 </head>
-<body>
+<body id="report">
 <div class="header">
   <span class="header-title">BACC REPORT</span>
   <span class="bookTitle">{{metaData.dc:title}}   </span>
   <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
-  <i id="total-impact-icon" class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-style: normal!important; font-size: 36px"
+  <i id="total-impact-icon" class="material-icons"
+     style="color:{{totalAccessibilityLevel.color}}; font-style: normal!important; font-size: 36px"
      aria-hidden="true">accessibility</i>
   <br>
   <span class="check-date">{{labeling.checkDate}}: {{checkDate}}</span>
@@ -74,51 +82,38 @@
             <div class="col-md-6">
               <div id="details" class="panel panel-default">
                 <div class="panel-heading">
-                  <div class="row">
-                    <div class="col-sm-8">
-                      <h3 class="panel-title panel-title-custom">{{labeling.details}}</h3>
-                      <h6 id="detailsViolationLabel"></h6>
-                    </div>
-                    <!-- +++++++++++ -->
-                    <!-- pager -->
-                    <!-- +++++++++++ -->
-                    <div class="col-sm-4">
-                      <nav class="violation-nav" aria-label="{{labeling.vioNav}}">
-                        <button class="btn btnPagerPrev" href="#" aria-label="{{labeling.detailsPrevious}}">
-                          <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-                        </button>
-                        <button class="btn btnPagerNext" href="#" aria-label="{{labeling.detailsNext}}">
-                          <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-                        </button>
-                      </nav>
-                    </div>
-                  </div>
+                  <h5 class="ruleDescription"></h5>
+                  <!-- +++++++++++ -->
+                  <!-- pager -->
+                  <!-- +++++++++++ -->
+                  <nav style="margin-top: 31px" class="violation-nav" aria-label="{{labeling.vioNav}}">
+                    <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerPrev" href="#"
+                            aria-label="{{labeling.detailsPrevious}}">
+                      <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                    <h6 style="display: inline-block" id="pagerIndex"></h6>
+                    <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerNext" href="#"
+                            aria-label="{{labeling.detailsNext}}">
+                      <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </nav>
                 </div>
                 <div class="panel-body">
                 <!--{{#groups}}-->
                   <div id="p-{{name}}" class="violation" style="display: none">
                   <!--{{#violations}}-->
-                    <div class="violation">
+                    <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
                       <div class="panel panel-default">
                         <div class="panel-heading">
-                          <b>{{index}}. EPUB item:</b> <a>{{spineItem}}</a>
+                          {{labeling.file}}: <b><a>{{spineItem}}</a></b>
                         </div>
                         <div class="panel-body">
                           <!-- +++++++++++ -->
                           <!-- description -->
                           <!-- +++++++++++ -->
-                          <div class="panel panel-warning">
-                            <div class="panel-heading">
-                              <b>{{labeling.rule}}</b>
-                              <div style="float: right">
-                                <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
-                              </div>
-                              <p style="margin-top: 10px">{{help.dct:description}}</p>
-                            </div>
-                            <div class="panel-body">
-                              <p><b>{{labeling.optimiseHints}}</b></p>
-                              <p>{{{shortHelp}}}</p>
-                            </div>
+                          <div class="panel-body">
+                            <p><b>{{labeling.optimiseHints}}</b></p>
+                            <p>{{{shortHelp}}}</p>
                           </div>
                           <!-- +++++++++++ -->
                           <!-- source code  -->
@@ -130,6 +125,9 @@
                               </pre>
                             </div>
                           {{/code}}
+                          <div style="float: right">
+                            <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -408,7 +406,7 @@
       $(vioPanel).hide();
       that.next(vioPanel).show()
     }
-     prefNextBtnState();
+    prefNextBtnState();
   });
 
   //
@@ -428,10 +426,12 @@
 
   });
 
-  //
-  // first load select first row
-  //
-  $('#template-violation-table > tbody > tr').first().trigger('click');
+  setTimeout(function(){
+    //
+    // first load select first row
+    //
+    $('#template-violation-table > tbody > tr').first().trigger('click');
+  }, 500);
 
   function selectViolationDetails(el) {
 
@@ -443,7 +443,7 @@
     $(currViolationID).toggle();
     $(vioPanel).hide().first().show();
 
-    $('#detailsViolationLabel').text(el.id);
+    $('.ruleDescription').text($(vioPanel + ':visible').attr('rule'));
 
     const violation = el.id;
     const detailsStatus = $('#detailsStatusString').text();
@@ -460,6 +460,7 @@
 
   function prefNextBtnState() {
 
+    $('#pagerIndex').text("{{labeling.file}} " + $(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
     $('button.btnPagerPrev').prop('disabled', $(vioPanel + ':visible').prev(vioPanel).length === 0);
     $('button.btnPagerNext').prop('disabled', $(vioPanel + ':visible').next(vioPanel).length === 0);
   }

@@ -91,7 +91,7 @@ class ReportModeler {
     // console.log(JSON.stringify(reportData), undefined, 2);
     const reportTemplate = fs.readFileSync(constants.PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), reportData);
-    const reportPath = this._outputPath + constants.BACC_REPORT
+    const reportPath = this._outputPath + constants.BACC_REPORT;
     fs.writeFileSync(reportPath, output, 'utf-8');
     this.statistics.reportPath = reportPath;
 
@@ -146,9 +146,13 @@ class ReportModeler {
       for (let j in violationsInSpineItem.assertions) {
 
         let violation = violationsInSpineItem.assertions[j];
+        // console.log('violation: ' + JSON.stringify(violation));
 
         // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
+        if(violation['earl:test'].assertedBy === 'Ace')
+          violation['earl:test'].help['dct:description'] = violation['earl:test']['dct:description'];
+
         violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
         violation['earl:test'].spineItem = spineItem;
 

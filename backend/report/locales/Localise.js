@@ -41,6 +41,8 @@ class Localise {
     for (let i in groups) {
       // aXe
       if (groups[i].assertedBy === 'aXe')
+        // It is not really required to load the local axe file. Because it will be directly
+        // build into axe-lib during the post install. But it is good to check that all axe rules are translated.
         locale = axeDE;
       // Ace
       else if (groups[i].assertedBy === 'Ace')
@@ -57,18 +59,13 @@ class Localise {
 
       if (groups[i].assertedBy === 'Ace') {
 
-        const localeDescription = translatedRule.help;
-
-
-        if (localeDescription !== "No translation") {
           groups[i].violations.map((obj) => {
-            obj['dct:description'] = localeDescription;
-            obj['shortHelp'] = localeDescription;
+            obj.help['dct:description'] = translatedRule.description;
+            obj['dct:description'] = translatedRule.description;
+            obj['shortHelp'] = translatedRule.help;
           })
         }
       }
-    }
-
     // console.log(JSON.stringify(groups));
   }
 
@@ -86,13 +83,18 @@ class Localise {
     this._data.totalAccessibilityLevel.label = locale.accessibilityLimitation[this._data.totalAccessibilityLevel.baccName];
 
     const groups = this._data.groups;
-    for (let i in groups)
+    for (let i in groups) {
+      if (!groups[i].impact) {
+        logger.log('warn', 'Unsupported impact identifier:' + groups[i].impact);
+        return;
+      }
       groups[i].impact.label = locale.accessibilityLimitation[groups[i].impact.baccName]
+    }
   }
 
   localiseBACCLabeling(lang) {
 
-    if(lang === 'en')
+    if (lang === 'en')
       return;
 
     if (lang === 'de')
