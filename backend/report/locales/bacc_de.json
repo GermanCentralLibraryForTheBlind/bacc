@@ -28,7 +28,8 @@
     "optimiseHints" : "Optimierungshinweise:",
     "metadata" : "Metadaten",
     "file" : "Datei",
-    "of" : "von"
+    "of" : "von",
+    "hints" : "Hinweise"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

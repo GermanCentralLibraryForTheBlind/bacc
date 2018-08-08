@@ -38,12 +38,12 @@
   <div class="tab-label-content">
     <label for="violation">{{labeling.violation}}</label>
     <div class="tab-content">
-      {{#groups.length}}
+      {{#groups.rules.length}}
         <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
           <div class="row">
-            <!-- +++++++++++ -->
-            <!-- violation group     -->
-            <!-- +++++++++++ -->
+            <!-- +++++++++++++++++++++++++++++ -->
+            <!-- rule violations groupBy rules -->
+            <!-- +++++++++++++++++++++++++++++ -->
             <div class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-body">
@@ -59,7 +59,7 @@
                     <th class="col-md-2">{{labeling.count}}</th>
                     </thead>
                     <tbody>
-                    <!--{{#groups}}-->
+                    <!--{{#groups.rules}}-->
                     <tr id="{{name}}">
                       <td class="col-md-2">
                         <span class="sr-only" aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
@@ -70,7 +70,7 @@
                       <td class="col-md-4">{{ruleSet}}</td>
                       <td class="col-md-2">{{count}}</td>
                     </tr>
-                      <!--{{/groups}}-->
+                      <!--{{/groups.rules}}-->
                     </tbody>
                   </table>
                 </div>
@@ -99,9 +99,9 @@
                   </nav>
                 </div>
                 <div class="panel-body">
-                <!--{{#groups}}-->
+                <!--{{#groups.rules}}-->
                   <div id="p-{{name}}" class="violation" style="display: none">
-                  <!--{{#violations}}-->
+                  <!--{{#fails}}-->
                     <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
                       <div class="panel panel-default">
                         <div class="panel-heading">
@@ -131,19 +131,19 @@
                         </div>
                       </div>
                     </div>
-                    <!--{{/violations}}-->
+                    <!--{{/fails}}-->
                   </div>
-                  <!--{{/groups}}-->
+                  <!--{{/groups.rules}}-->
                 </div>
               </div>
             </div>
           </div>
         </div>
-      {{/groups.length}}
-      <!-- +++++++++++++++ -->
-      <!--  none issues    -->
-      <!-- +++++++++++++++ -->
-      {{^groups.length}}
+      {{/groups.rules.length}}
+      {{^groups.rules.length}}
+        <!-- +++++++++++++++ -->
+        <!--  none issues    -->
+        <!-- +++++++++++++++ -->
         <div>
           <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
           <i id="total-impact-icon"
@@ -152,7 +152,131 @@
              class="material-icons no-issues-icon"
              style="color:{{totalAccessibilityLevel.color}};">sentiment_very_satisfied</i>
         </div>
-      {{/groups.length}}
+      {{/groups.rules.length}}
+    </div>
+  </div>
+  <!-- +++++++++++++++ -->
+  <!-- hints tab  -->
+  <!-- +++++++++++++++ -->
+  <input type="radio" name="tabs" id="hints">
+  <div class="tab-label-content">
+    <label for="hints">{{labeling.hints}}</label>
+    <div class="tab-content">
+      {{#groups.hints.length}}
+        <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
+          <div class="row">
+            <!-- ++++++ -->
+            <!-- hints  -->
+            <!-- ++++++ -->
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <table id="template-violation-table"
+                         class="table table-striped table-hover"
+                         data-click-to-select="true"
+                         data-single-select="true">
+                    <caption>{{labeling.total}}: {{totalCount}}</caption>
+                    <thead class="thead-violations">
+                    <th class="col-md-2">{{labeling.violationImpact}}</th>
+                    <th class="col-md-7">{{labeling.violation}}</th>
+                    <th class="col-md-4">{{labeling.guideline}}</th>
+                    <th class="col-md-2">{{labeling.count}}</th>
+                    </thead>
+                    <tbody>
+                    <!--{{#groups.hints}}-->
+                    <tr id="{{name}}">
+                      <td class="col-md-2">
+                        <span class="sr-only" aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
+                        <i id="{{name}}-impact-icon" class="material-icons mat-36" style="color:{{impact.color}}"
+                           aria-hidden="true">accessibility</i>
+                      </td>
+                      <td class="col-md-7">{{name}}</td>
+                      <td class="col-md-4">{{ruleSet}}</td>
+                      <td class="col-md-2">{{count}}</td>
+                    </tr>
+                      <!--{{/groups.hints}}-->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- +++++++++++ -->
+            <!-- details     -->
+            <!-- +++++++++++ -->
+            <div class="col-md-6">
+              <div id="details" class="panel panel-default">
+                <div class="panel-heading">
+                  <h5 class="ruleDescription"></h5>
+                  <!-- +++++++++++ -->
+                  <!-- pager -->
+                  <!-- +++++++++++ -->
+                  <nav style="margin-top: 31px" class="violation-nav" aria-label="{{labeling.vioNav}}">
+                    <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerPrev" href="#"
+                            aria-label="{{labeling.detailsPrevious}}">
+                      <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                    <h6 style="display: inline-block" id="pagerIndex"></h6>
+                    <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerNext" href="#"
+                            aria-label="{{labeling.detailsNext}}">
+                      <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </nav>
+                </div>
+                <div class="panel-body">
+                <!--{{#groups.hints}}-->
+                  <div id="p-{{name}}" class="violation" style="display: none">
+                  <!--{{#fails}}-->
+                    <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          {{labeling.file}}: <b><a>{{spineItem}}</a></b>
+                        </div>
+                        <div class="panel-body">
+                          <!-- +++++++++++ -->
+                          <!-- description -->
+                          <!-- +++++++++++ -->
+                          <div class="panel-body">
+                            <p><b>{{labeling.optimiseHints}}</b></p>
+                            <p>{{{shortHelp}}}</p>
+                          </div>
+                          <!-- +++++++++++ -->
+                          <!-- source code  -->
+                          <!-- +++++++++++ -->
+                          {{#code}}
+                            <div aria-labelledby="source-code">
+                              <pre style="display: inline-flex">
+                                <code class="html">{{code}}</code>
+                              </pre>
+                            </div>
+                          {{/code}}
+                          <div style="float: right">
+                            <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--{{/fails}}-->
+                  </div>
+                  <!--{{/groups.hints}}-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/groups.hints.length}}
+      {{^groups.hints.length}}
+        <!-- +++++++++++++++ -->
+        <!--  none hints    -->
+        <!-- +++++++++++++++ -->
+        <div>
+          <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
+          <i id="total-impact-icon"
+             role="img"
+             aria-hidden="true"
+             class="material-icons no-issues-icon"
+             style="color:{{totalAccessibilityLevel.color}};">sentiment_very_satisfied</i>
+        </div>
+      {{/groups.hints.length}}
     </div>
   </div>
   <!-- +++++++++++++++ -->

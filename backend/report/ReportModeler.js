@@ -38,7 +38,6 @@ class Impact {
     for (let prop in impactLevels) {
 
       const match = '\"' + prop + '\",';
-      // console.log(match);
 
       if (aceDataAsString.includes(match)) {
         iLevel = impactLevels[prop];
@@ -75,10 +74,10 @@ class ReportModeler {
     let reportData = {};
 
     // TODO own mapper module
-    reportData = this.getBACCReportData();
+    reportData = this.getDataForReport();
     reportData.lang = "en";
     reportData.outlines = this._aceData.outlines;
-    reportData.outlines.html = reportData.outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g,'</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
+    reportData.outlines.html = reportData.outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g, '</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
     reportData.images = this._aceData.data.images;
 
     this.statistics.cover = reportData.images ? reportData.images[0] : '';
@@ -88,7 +87,7 @@ class ReportModeler {
       .setLocale(this._language)
       .build();
 
-    // console.log(JSON.stringify(reportData), undefined, 2);
+     // console.log(JSON.stringify(reportData), undefined, 2);
     const reportTemplate = fs.readFileSync(constants.PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), reportData);
     const reportPath = this._outputPath + constants.BACC_REPORT;
@@ -131,9 +130,9 @@ class ReportModeler {
 //       }
 //     ]
 //   }
-  getBACCReportData() {
+  getDataForReport() {
 
-    let violations = [];
+    let assertions = [];
 
     const violationsGroupedBySpineItem = this._aceData.assertions;
 
@@ -145,26 +144,26 @@ class ReportModeler {
 
       for (let j in violationsInSpineItem.assertions) {
 
-        let violation = violationsInSpineItem.assertions[j];
+        let assertion = violationsInSpineItem.assertions[j];
         // console.log('violation: ' + JSON.stringify(violation));
 
         // assertedBy Ace or Axe or ...
-        violation['earl:test'].assertedBy = violation['earl:assertedBy'];
-        if(violation['earl:test'].assertedBy === 'Ace')
-          violation['earl:test'].help['dct:description'] = violation['earl:test']['dct:description'];
+        assertion['earl:test'].assertedBy = assertion['earl:assertedBy'];
+        if (assertion['earl:test'].assertedBy === 'Ace')
+          assertion['earl:test'].help['dct:description'] = assertion['earl:test']['dct:description'];
 
-        violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
-        violation['earl:test'].spineItem = spineItem;
+        assertion['earl:test'].shortHelp = this.formatHelp(assertion['earl:result']['dct:description']);
+        assertion['earl:test'].spineItem = spineItem;
 
-        violation['earl:test'].code = violation['earl:result']['html'];
-        if(violation['earl:test'].code)
-          violation['earl:test'].code = violation['earl:test'].code.replace('\n','').replace(/\s+/g,' ');
+        assertion['earl:test'].code = assertion['earl:result']['html'];
+        if (assertion['earl:test'].code)
+          assertion['earl:test'].code = assertion['earl:test'].code.replace('\n', '').replace(/\s+/g, ' ');
 
         // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
-        violations.push(violation['earl:test']);
+        assertions.push(assertion['earl:test']);
       }
     }
-    return this.groupViolationsAndMapToBacc(violations);
+    return this.aceBaccMapping(assertions);
   }
 
   formatHelp(help) {
@@ -209,59 +208,71 @@ class ReportModeler {
     return found.length > 0 ? guidelineTags[found] : tag.join();
   }
 
-  groupViolationsAndMapToBacc(violations) {
 
-    let groupedByViolation = _.groupBy(violations, 'dct:title');
+  aceBaccMapping(results) {
+
+    /*
+    To get an better data overview all assertions are grouped by rule
+    */
+    let groupedByTitle = _.groupBy(results, 'dct:title');
 
     // console.log(JSON.stringify(groupedByViolation, null, '\t'));
 
-    let baccData = {};
-    this.statistics.checkDate = baccData.checkDate = this._aceData['dct:date'];
-    this.statistics.fileName = baccData.fileName = this._aceData['earl:testSubject'].url;
-    this.statistics.metaData = baccData.metaData = this._aceData['earl:testSubject'].metadata;
+    let bacc = {};
+    this.statistics.checkDate = bacc.checkDate = this._aceData['dct:date'];
+    this.statistics.fileName = bacc.fileName = this._aceData['earl:testSubject'].url;
+    this.statistics.metaData = bacc.metaData = this._aceData['earl:testSubject'].metadata;
+    this.statistics.impact = bacc.totalAccessibilityLevel = this._totalAccessibilityLevel;
 
-    this.statistics.title = baccData.metaData['dc:title'];
-    baccData.totalCount = 0;
-    baccData.groups = [];
-    this.statistics.impact = baccData.totalAccessibilityLevel = this._totalAccessibilityLevel;
+    this.statistics.title = bacc.metaData['dc:title'];
 
-    _(groupedByViolation).each((elem, key) => {
+    bacc.totalCount = 0;
+
+    bacc.groups = {};
+    bacc.groups.rules = [];
+    bacc.groups.hints = [];
+
+
+    _(groupedByTitle).each((elem, key) => {
 
       // console.log(elem);
-      let group = {};
+      let rule = {};
 
       if (elem.length == 0) {
         logger.log('error', 'Found no violations in group!');
         return;
       }
       // name of rule
-      group.name = key;
-      // grouped violations
-      group.violations = elem;
-      group.impact = this._impacts.getAccessibilityImpactLevel(elem[0]['earl:impact']);
+      rule.name = key;
+      // grouped assertions
+      rule.fails = elem;
+      rule.impact = this._impacts.getAccessibilityImpactLevel(elem[0]['earl:impact']);
       // engine axe or ace
-      group.assertedBy = elem[0].assertedBy;
+      rule.assertedBy = elem[0].assertedBy;
       // add index
-      group.violations.map(function (vio, i) {
+      rule.fails.map(function (vio, i) {
         vio.index = i + 1
         // attention violation counter start on 1
       });
-      // total count of violation type
-      group.count = group.violations.length;
+      // total count of rule fails
+      rule.count = rule.fails.length;
       // add guideline
       const that = this;
 
-      group.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
-      // total count of all violation
-      baccData.totalCount += group.count;
+      rule.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
+      // total count of all fails
+      bacc.totalCount += rule.count;
 
-      baccData.groups.push(group);
+      if (rule.ruleSet === 'hints')
+        bacc.groups.hints.push(rule);
+      else
+        bacc.groups.rules.push(rule);
       // todo: delete 'dct:title'
     });
 
-    this.statistics.totalCount = baccData.totalCount;
-    // console.log(JSON.stringify(baccData, null, '\t'));
-    return baccData;
+    this.statistics.totalCount = bacc.totalCount;
+    console.log(JSON.stringify(bacc, null, '\t'));
+    return bacc;
   }
 
   // mv report style to upload folder

@@ -28,7 +28,8 @@
     "optimiseHints" : "Recommendations for optimisation:",
     "metadata" : "Metadata",
     "file" : "file",
-    "of" : "of"
+    "of" : "of",
+    "hints" : "Hints"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",
