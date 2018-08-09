@@ -2,6 +2,7 @@
   "labeling": {
     "greetings": "Have a good day!",
     "violation": "Fehlgeschlagene Regeln",
+    "violationTab": "Prüfergebnis Richtlichtlinien",
     "count": "Anzahl",
     "outlines": "Abbildung der Struktur des Buches",
     "imgDescription": "Bildbeschreibungen",

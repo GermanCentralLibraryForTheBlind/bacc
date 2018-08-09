@@ -62,7 +62,7 @@ const check = {
     return (div + span) < all * 0.5 /* 50% */;
   },
   metadata: {
-    impact: 'hint',
+    impact: 'serious',
     messages: {
       pass: function anonymous(it) {
         var out = 'Rich semantic';

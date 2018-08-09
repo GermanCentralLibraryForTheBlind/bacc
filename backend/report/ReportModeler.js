@@ -87,7 +87,7 @@ class ReportModeler {
       .setLocale(this._language)
       .build();
 
-     // console.log(JSON.stringify(reportData), undefined, 2);
+    // console.log(JSON.stringify(reportData), undefined, 2);
     const reportTemplate = fs.readFileSync(constants.PATH_TO_TEMPLATE_REPORT, 'utf-8');
     const output = mustache.render(reportTemplate.toString(), reportData);
     const reportPath = this._outputPath + constants.BACC_REPORT;
@@ -226,11 +226,11 @@ class ReportModeler {
 
     this.statistics.title = bacc.metaData['dc:title'];
 
-    bacc.totalCount = 0;
-
     bacc.groups = {};
     bacc.groups.rules = [];
     bacc.groups.hints = [];
+    bacc.groups.totalCountRules = 0;
+    bacc.groups.totalCountHints = 0;
 
 
     _(groupedByTitle).each((elem, key) => {
@@ -258,20 +258,20 @@ class ReportModeler {
       rule.count = rule.fails.length;
       // add guideline
       const that = this;
-
       rule.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
-      // total count of all fails
-      bacc.totalCount += rule.count;
 
-      if (rule.ruleSet === 'hints')
+      if (rule.ruleSet === 'hints') {
+        bacc.groups.totalCountHints += rule.count;
         bacc.groups.hints.push(rule);
-      else
+      } else {
+        bacc.groups.totalCountRules += rule.count;
         bacc.groups.rules.push(rule);
+      }
       // todo: delete 'dct:title'
     });
 
-    this.statistics.totalCount = bacc.totalCount;
-    console.log(JSON.stringify(bacc, null, '\t'));
+    this.statistics.totalCount = bacc.groups.totalCountRules;
+     // console.log(JSON.stringify(bacc, null, '\t'));
     return bacc;
   }
 
