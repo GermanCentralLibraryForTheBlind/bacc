@@ -283,10 +283,6 @@ code {
   background-color: rgba(0, 0, 0, 0.54);
 }
 
-.violation-container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
 
 #template-violation-table {
   caption-side: bottom;
