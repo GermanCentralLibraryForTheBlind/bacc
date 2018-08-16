@@ -2,7 +2,7 @@
 
 const readline = require('readline');
 const fs = require('fs');
-
+const definition = require('./definition');
 
 const IN = './node_modules/ace-core/packages/ace-core/src/scripts/ace-axe.js';
 const OUT = './node_modules/ace-core/packages/ace-core/lib/scripts/ace-axe.js';
@@ -25,14 +25,14 @@ rl.on('line', function (line) {
   if (line.includes("checks:")) {
     console.log('Start inject checks.');
     validateInject += 1;
-    temp.push(dumpObject(check) + ',');
+    definition.checks.forEach((check) => { temp.push(dumpObject(check) + ','); });
     console.log('Injected...');
   }
 
   if (line.includes("rules:")) {
     console.log('Start inject rules.');
     validateInject += 1;
-    temp.push(dumpObject(rule) + ',');
+    definition.rules.forEach((rule) => { temp.push(dumpObject(rule) + ','); });
     console.log('Injected...');
   }
 
@@ -50,44 +50,6 @@ rl.on('close', function () {
   console.log('Ready new file written.')
 });
 
-
-const check = {
-  id: "hint-poor-semantic",
-  evaluate: function evaluate(node, options) {
-
-    const div = node.querySelectorAll('div').length;
-    const span = node.querySelectorAll('span').length;
-    const all = node.querySelectorAll('*').length;
-    // alert('div: ' + div + ' span:' + span + ' all:' + all);
-    return (div + span) < all * 0.5 /* 50% */;
-  },
-  metadata: {
-    impact: 'serious',
-    messages: {
-      pass: function anonymous(it) {
-        var out = 'Rich semantic';
-        return out;
-      },
-      fail: function anonymous(it) {
-        var out = 'Poor semantic';
-        return out;
-      }
-    }
-  }
-};
-
-const rule = {
-  id: 'poor-semantic',
-  selector: 'body',
-  any: ['hint-poor-semantic'],
-  metadata: {
-    description: "Hint to ensures ",
-    help: "Please use more semantic elements. " +
-    "Examples of non-semantic elements: div and span - Tells nothing about its content. " +
-    "Examples of semantic elements: form , table , and article - Clearly defines its content."
-  },
-  tags: ['hints']
-};
 
 function dumpObject(obj) {
   var buff, prop;

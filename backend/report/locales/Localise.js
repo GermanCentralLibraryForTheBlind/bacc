@@ -35,38 +35,44 @@ class Localise {
 
     this._data.lang = lang;
 
-    const rules = this._data.groups.rules;
+    // console.log(JSON.stringify(this._data.groups));
+    this.translate(this._data.groups.rules);
+    this.translate(this._data.groups.hints);
+  }
+
+
+  translate(set) {
+
     let locale = axeDE;
 
-    for (let j in rules) {
+    for (let j in set) {
 
       // aXe
-      if (rules[j].assertedBy === 'aXe')
+      if (set[j].assertedBy === 'aXe')
       // It is not really required to load the local axe file. Because it will be directly
       // build into axe-lib during the post install. But it is good to check that all axe rules are translated.
         locale = axeDE;
       // Ace
-      else if (rules[j].assertedBy === 'Ace')
+      else if (set[j].assertedBy === 'Ace')
         locale = aceDE;
       else
         logger.log('error', 'Rule description localisation: assertedBy not valid.');
 
-      const translatedRule = locale.rules[rules[j].name]
+      const translatedRule = locale.rules[set[j].name];
 
       if (translatedRule == undefined) {
-        logger.log('warn', 'No translation found for rule ' + rules[j].name + ' from ' + rules[j].assertedBy);
+        logger.log('warn', 'No translation found for rule ' + set[j].name + ' from ' + set[j].assertedBy);
         continue;
       }
 
-      if (rules[j].assertedBy === 'Ace') {
+      if (set[j].assertedBy === 'Ace') {
 
-        rules[j].fails.map((obj) => {
+        set[j].fails.map((obj) => {
           obj.help['dct:description'] = translatedRule.description;
           obj['dct:description'] = translatedRule.description;
           obj['shortHelp'] = translatedRule.help;
         })
       }
-      // console.log(JSON.stringify(groups));
     }
   }
 
