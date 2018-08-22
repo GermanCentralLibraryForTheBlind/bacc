@@ -76,9 +76,9 @@
                 </div>
               </div>
             </div>
-            <!-- +++++++++++ -->
-            <!-- details     -->
-            <!-- +++++++++++ -->
+            <!-- ++++++++++++++++++++++++++ -->
+            <!-- details rule violations    -->
+            <!-- ++++++++++++++++++++++++++ -->
             <div class="col-md-6">
               <div id="details" class="panel panel-default">
                 <div class="panel-heading">
@@ -160,7 +160,8 @@
   <!-- +++++++++++++++ -->
   <input type="radio" name="tabs" id="hints">
   <div class="tab-label-content">
-    <label id="lbHintsTab" for="hints">{{labeling.hints}}{{#groups.totalCountHints}}<mark>{{groups.totalCountHints}}</mark>{{/groups.totalCountHints}}
+    <label id="lbHintsTab" for="hints">{{labeling.hints}}{{#groups.totalCountHints}}
+      <mark>{{groups.totalCountHints}}</mark>{{/groups.totalCountHints}}
     </label>
     <div class="tab-content">
       {{#groups.hints.length}}
@@ -178,9 +179,9 @@
                          data-single-select="true">
                     <!--<caption>{{labeling.total}}: {{totalCount}}</caption>-->
                     <thead class="thead-violations">
-                    <th class="col-md-2">{{labeling.violationImpact}}</th>
-                    <th class="col-md-2">{{labeling.hints}}</th>
-                    <th class="col-md-2">{{labeling.count}}</th>
+                    <th class="col-md-1">{{labeling.violationImpact}}</th>
+                    <th class="col-md-6">{{labeling.hints}}</th>
+                    <th class="col-md-1">{{labeling.count}}</th>
                     </thead>
                     <tbody>
                     <!--{{#groups.hints}}-->
@@ -199,9 +200,9 @@
                 </div>
               </div>
             </div>
-            <!-- +++++++++++ -->
-            <!-- details     -->
-            <!-- +++++++++++ -->
+            <!-- ++++++++++++++++ -->
+            <!-- details hints    -->
+            <!-- ++++++++++++++++ -->
             <div class="col-md-6">
               <div id="details" class="panel panel-default">
                 <div class="panel-heading">
@@ -534,16 +535,19 @@
 
 
   $('#template-violation-table > tbody > tr').click(function () {
-    selectViolationDetails(this);
+    selectDetails(this);
   });
+
   $('#template-violation-table > tbody > tr').keypress(function (event) {
-    if (event.which == 13) selectViolationDetails(this);
+    if (event.which == 13) selectDetails(this);
   });
+
   $('#template-hints-table > tbody > tr').click(function () {
-    selectViolationDetails(this);
+    selectDetails(this);
   });
+
   $('#template-hints-table > tbody > tr').keypress(function (event) {
-    if (event.which == 13) selectViolationDetails(this);
+    if (event.which == 13) selectDetails(this);
   });
 
 
@@ -562,14 +566,14 @@
     $('#template-violation-table > tbody > tr').first().trigger('click');
   });
 
-  function selectViolationDetails(el) {
+  function selectDetails(el) {
 
     const currViolationID = '#p-' + el.id;
     vioPanel = currViolationID + ' .violation';
 
     if ($(vioPanel + ':visible').length === 0) {
 
-      $("#details").find(".violation[id]").css("display", "none");
+      $(".violation[id]").css("display", "none");
       // $('.violation-nav').show();
 
       $(currViolationID).toggle();
@@ -582,6 +586,7 @@
 
       $('.selected').removeClass('selected');
       $(el).addClass('selected');
+      $(el).select();
     }
 
     const violation = el.id;
@@ -604,6 +609,26 @@
     $('#ariaLive').text(text);
   }
 
+  // $(document).ready(function () {
+  //   // User navigates table using keyboard
+  //   var currCell = $('tr').first();
+  //   $('tr').keyup((e) => {
+  //     var c = "";
+  //
+  //     if (e.which === 38) {
+  //       // Up Arrow
+  //       c = currCell.closest('tr').prev().find('td:eq(' + currCell.index() + ')');
+  //     } else if (e.which === 40) {
+  //       // Down Arrow
+  //       c = currCell.closest('tr').next().find('td:eq(' + currCell.index() + ')');
+  //     }
+  //     // If we didn't hit a boundary, update the current cell
+  //     if (c.length > 0) {
+  //       currCell = c;
+  //       currCell.focus();
+  //     }
+  //   });
+  // });
 </script>
 </body>
 </html>
