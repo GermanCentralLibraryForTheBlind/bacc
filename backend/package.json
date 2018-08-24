@@ -27,7 +27,7 @@
     "postinstall": "cd ./node_modules/ && rm -rf ace-core && git clone -b get-all-rules https://github.com/larsvoigt/ace-core && cd ace-core && lerna bootstrap && cd ../../ && npm run post:axe:locale && npm run post:hints",
     "post:axe:locale": "cp ./report/locales/axe_de.json ./node_modules/ace-core/node_modules/axe-core/locales/de.json && cd ./node_modules/ace-core/node_modules/axe-core/ && npm i && ./node_modules/grunt/bin/grunt build --all-lang",
     "post:hints": "node ./hints/inject.js",
-    "dev:hints": "npm run post:hints && node /home/alan/workspace/bacc/backend/node_modules/ace-core/packages/ace/bin/ace.js -o /home/alan/workspace/bacc/uploads/fd24cc42-c8b5-43b3-a1d0-b4c600fdc913 /home/alan/Dokumente/epubs/hints.epub --force && node ./report/only-dev.js"
+    "dev:hints": "npm run post:hints && node ./node_modules/ace-core/packages/ace/bin/ace.js -o /tmp ./hints/Test-E-Book_Zusatzhinweise.epub --force && node ./report/only-dev.js /tmp"
   },
   "private": true,
   "dependencies": {
@@ -41,9 +41,11 @@
     "fs-extra": "^5.0.0",
     "ip": "^1.1.5",
     "jsonfile": "^4.0.0",
+    "meow": "^5.0.0",
     "multer": "^1.3.0",
     "mustache": "^2.3.0",
     "node-schedule": "^1.2.4",
+    "normalize-package-data": "^2.4.0",
     "pm2": "^2.6.1",
     "rimraf": "^2.6.1",
     "rxjs": "^5.4.1",
