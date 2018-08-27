@@ -105,7 +105,7 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return 'The document structure should be identified by grouping primary sections of content using (nested) <section> elements or other sectioning elements.';
+            return 'The publication structure should be identified by grouping primary sections of content using (nested) <section> elements or other sectioning elements.';
           }
         }
       }
@@ -268,7 +268,7 @@ const rules = [
     any: ['hint-section-missing'],
     metadata: {
       description: '',
-      help: "Are <section> elements used to identify the document structure?"
+      help: "Are <section> elements used to identify the publication structure?"
     },
     tags: ['hints']
   },
