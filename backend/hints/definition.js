@@ -207,7 +207,7 @@ const rules = [
     selector: 'body',
     any: ['hint-poor-semantic'],
     metadata: {
-      description: "Semantic should be added by using HTML5 elements",
+      description: "Ensures HTML5 elements are used to mark up the content",
       help: "Are semantic HTML5 elements utilized to markup the content?"
     },
     tags: ['hints']
@@ -217,7 +217,7 @@ const rules = [
     selector: 'body',
     any: ['hint-epub-specific-attributes'],
     metadata: {
-      description: "",
+      description: "Ensures epub:type attributes are used to provide additional semantic information",
       help: "Are epub:type attributes utilized to provide additional semantic information?"
     },
     tags: ['hints']
@@ -227,7 +227,7 @@ const rules = [
     selector: 'img',
     any: ['hint-aria-required-alt-is-empty'],
     metadata: {
-      description: '',
+      description: 'Ensures all informative images have a non-empty alt-Attribute resp. all decorative images are marked with role=”presentation”',
       help: "Are all informative images described by a text alternative?"
     },
     tags: ['hints']
@@ -237,7 +237,7 @@ const rules = [
     selector: 'figure',
     any: ['hint-figure-missing-figcaption'],
     metadata: {
-      description: '',
+      description: 'Ensures all <figure> elements include a non-empty <figcaption> element',
       help: "Could a figure caption be useful to describe the content or purpose of a figure?"
     },
     tags: ['hints']
@@ -247,7 +247,7 @@ const rules = [
     selector: 'section',
     any: ['missing-role'],
     metadata: {
-      description: '',
+      description: 'Ensures all <section> elements are specified by an aria role attribute',
       help: "Is it possible to specify the semantic of a <section> element by an aria role attribute?"
     },
     tags: ['hints']
@@ -257,7 +257,7 @@ const rules = [
     selector: 'aside',
     any: ['missing-role'],
     metadata: {
-      description: '',
+      description: 'Ensures all <aside> elements are specified by an aria role attribute',
       help: "Is it possible to specify the semantic of an <aside> element by an aria role attribute?"
     },
     tags: ['hints']
@@ -267,7 +267,7 @@ const rules = [
     selector: 'body',
     any: ['hint-section-missing'],
     metadata: {
-      description: '',
+      description: 'Ensures the document contains <section> elements',
       help: "Are <section> elements used to identify the publications structural hierarchy?"
     },
     tags: ['hints']
@@ -279,7 +279,7 @@ const rules = [
       "hint-heading-missing"
     ],
     metadata: {
-      description: '',
+      description: 'Ensures every <section> element contains a heading (marked with <h1>...<h6> or role=”heading”) as its direct child or has an aria-label or aria-labelledby attribute',
       help: "Is every section titled by a heading (<h1> … <h6>)?"
     },
     tags: ['hints']
@@ -289,7 +289,7 @@ const rules = [
     selector: 'section',
     any: ['hint-section-multiple-headings'],
     metadata: {
-      description: '',
+      description: 'Ensures every <section> element contains not more than one heading (<h1>...<h6>) as its direct child',
       help: "Does every section have only one single heading?"
     },
     tags: ['hints']
@@ -299,7 +299,7 @@ const rules = [
     selector: 'table',
     any: ['hint-table-layout-missing-aria'],
     metadata: {
-      description: '',
+      description: 'Ensures layout tables (<table> elements with neither <thead> nor <th> nor <caption> nor one of the attributes summary, headers or scope) have the aria attribute role=”presentation”',
       help: "Are layout tables identified?"
     },
     tags: ['hints']
