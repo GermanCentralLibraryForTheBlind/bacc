@@ -15,9 +15,8 @@ const checks = [
           pass: () => {
             return 'Rich semantic';
           }, fail: () => {
-            return "Please use more semantic elements. " +
-              "Examples of non-semantic elements: div and span - Tells nothing about its content. " +
-              "Examples of semantic elements: form , table , and article - Clearly defines its content.";
+            return 'Where applicable, semantic HTML 5 elements should be used instead of non-semantic elements like <div> and <span>.' +
+              'Examples for semantic elements are <h1> … <h6>, <ol>, <ul>, <dl>, <caption>, <blockquote>, <code>, <em>, etc.';
           }
         }
       }
@@ -34,7 +33,8 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return 'fail';
+            return 'When applicable, epub:type attributes should be used to specify the semantic of an element.' + 
+              'Examples for common epub:type values are footnote, endnote, toc, cover, glossary, etc.';
           }
         }
       }
@@ -54,7 +54,8 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return 'The alt attribute of an image should only be empty, if it is a non-informative, decorative image; decorative images should be marked with the aria attribute role=”presentation”.';
+            return 'The alt attribute of an image should only be empty, if it is a non-informative, decorative image.' + 
+              'Decorative images should be marked using the aria attribute role=”presentation”.';
           }
         }
       }
@@ -71,7 +72,8 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return '<figure> elements should have a figcaption.';
+            return 'Including a figure caption makes it easier to understand the purpose or content of a figure.' +
+              'A figure caption should be marked with the <figcaption> element.';
           }
         }
       }
@@ -87,7 +89,7 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return ' When applicable, the role of this element should be specified by using the aria role attribute.';
+            return 'When applicable, the role of this element should be specified by using the aria role attribute.';
           }
         }
       }
@@ -103,7 +105,7 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return 'The document structure should be identified by using <section> elements.';
+            return 'The document structure should be identified by grouping primary sections of content using (nested) <section> elements or other sectioning elements.';
           }
         }
       }
@@ -126,7 +128,7 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return 'Every <section> element should include a heading (h1 … h6).';
+            return 'Every <section> element should include a heading (<h1> … <h6>).';
           }
         }
       }
@@ -145,9 +147,9 @@ const checks = [
           pass: () => {
             return 'pass';
           }, fail: () => {
-            return ' Every <section> element should include only one heading; Subsections with a new heading should be' +
-              ' contained in a new <section> element or by other sectioning elements;' +
-              ' Subtitles should not be marked in a separate heading tag';
+            return 'Every <section> element should include only one heading.' + 
+              'Subsections with a new heading should be contained in a new <section> element or by other sectioning elements.' +
+              'Subtitles should not be marked with a separate heading tag.';
           }
         }
       }
@@ -185,8 +187,8 @@ const checks = [
                 return 'pass';
               }, fail:
                 () => {
-                  return 'The layout tables should be marked using the aria attribute role=”presentation”;' +
-                    ' data tables should contain <th> elements and a <caption> element';
+                  return 'Layout tables should be identified using the aria attribute role=”presentation”.' +
+                    'Data tables should contain semantic table markup like <th> elements and a <caption> element.';
                 }
             }
         }
@@ -206,7 +208,7 @@ const rules = [
     any: ['hint-poor-semantic'],
     metadata: {
       description: "Semantic should be added by using HTML5 elements",
-      help: "help"
+      help: "Are semantic HTML5 elements utilized to markup the content?"
     },
     tags: ['hints']
   },
@@ -216,7 +218,7 @@ const rules = [
     any: ['hint-epub-specific-attributes'],
     metadata: {
       description: "",
-      help: "Semantic should be added by using epub:type attributes."
+      help: "Are epub:type attributes utilized to provide additional semantic information?"
     },
     tags: ['hints']
   },
@@ -226,7 +228,7 @@ const rules = [
     any: ['hint-aria-required-alt-is-empty'],
     metadata: {
       description: '',
-      help: "If the alt attribute of an <img> element is empty but there is no aria attribute role=“presentation“."
+      help: "Are all informative images described by a text alternative?"
     },
     tags: ['hints']
   },
@@ -236,7 +238,7 @@ const rules = [
     any: ['hint-figure-missing-figcaption'],
     metadata: {
       description: '',
-      help: "If a <figure> element contains no <figcaption> element."
+      help: "Could a figure caption be useful to describe the content or purpose of a figure?"
     },
     tags: ['hints']
   },
@@ -246,7 +248,7 @@ const rules = [
     any: ['missing-role'],
     metadata: {
       description: '',
-      help: "If a <section> element does not have an aria attribute role=”...”"
+      help: "Is it possible to specify the semantic of a <section> element by an aria role attribute?"
     },
     tags: ['hints']
   },
@@ -256,7 +258,7 @@ const rules = [
     any: ['missing-role'],
     metadata: {
       description: '',
-      help: "If an <aside> element does not have an aria attribute role=”...”"
+      help: "Is it possible to specify the semantic of an <aside> element by an aria role attribute?"
     },
     tags: ['hints']
   },
@@ -266,7 +268,7 @@ const rules = [
     any: ['hint-section-missing'],
     metadata: {
       description: '',
-      help: "If there is no section element."
+      help: "Are <section> elements used to identify the document structure?"
     },
     tags: ['hints']
   },
@@ -278,8 +280,7 @@ const rules = [
     ],
     metadata: {
       description: '',
-      help: "If a <section> element contains no heading (none of the elements <h1> … <h6> " +
-      "and no aria-label=”...” or aria-labelledby=”...”) as its direct child element."
+      help: "Is every section titled by a heading (<h1> … <h6>)?"
     },
     tags: ['hints']
   },
@@ -289,7 +290,7 @@ const rules = [
     any: ['hint-section-multiple-headings'],
     metadata: {
       description: '',
-      help: "If a <section> element contains more than one heading (<h1> … <h6>) as its direct child element"
+      help: "Does every section have only one single heading?"
     },
     tags: ['hints']
   },
@@ -299,8 +300,7 @@ const rules = [
     any: ['hint-table-layout-missing-aria'],
     metadata: {
       description: '',
-      help: "If a <table> has neither <thead> nor <th> nor <caption> nor one of the attributes summary," +
-      " headers or scope and no aria attribute role=”presentation”."
+      help: "Are layout tables identified?"
     },
     tags: ['hints']
   }
