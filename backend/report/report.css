@@ -381,15 +381,15 @@ mark {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 23px;
   background-color: #FF6B6B;
   position: relative;
   top: -13px;
-  font-size: 13px;
+  font-size: 12px;
   font-family: 'Roboto', sans-serif;
   color: #FFF;
   font-weight: 700;
   text-align: center;
-  padding-top: 3.7px;
+  padding-top: 4px;
 }
