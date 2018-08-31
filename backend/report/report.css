@@ -376,3 +376,21 @@ pre {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+mark {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  border: 2px solid #FFF;
+  width: 25px;
+  height: 25px;
+  background-color: #FF6B6B;
+  position: relative;
+  top: -13px;
+  left: 5px;
+  font-size: 13px;
+  line-height: 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #FFF;
+  font-weight: 700;
+}
