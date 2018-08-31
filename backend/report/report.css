@@ -283,6 +283,10 @@ code {
   background-color: rgba(0, 0, 0, 0.54);
 }
 
+.violation-container {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
 
 #template-violation-table {
   caption-side: bottom;
@@ -382,16 +386,15 @@ mark {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  border: 2px solid #FFF;
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 23px;
   background-color: #FF6B6B;
   position: relative;
   top: -13px;
-  left: 5px;
-  font-size: 13px;
-  line-height: 15px;
+  font-size: 12px;
   font-family: 'Roboto', sans-serif;
   color: #FFF;
   font-weight: 700;
+  text-align: center;
+  padding-top: 4px;
 }

@@ -36,7 +36,11 @@
   <!-- +++++++++++++++ -->
   <input type="radio" name="tabs" id="violation" checked>
   <div class="tab-label-content">
-    <label for="violation">{{labeling.violationTab}}</label>
+    <label for="violation">{{labeling.violationTab}}
+      {{#totalCount}}
+        <mark>{{totalCount}}</mark>
+      {{/totalCount}}
+    </label>
     <div class="tab-content">
       {{#groups.rules.length}}
         <div class="container" role="region" aria-label="{{labeling.dialogViolations}}">
@@ -295,21 +299,29 @@
                   <h4>Metadata</h4>
                 </div>
                 <div class="panel-body">
-
                   <ul class="list-group">
-                    {{#metaData.dc:date}}
-                      <li class="list-group-item"><b class="space-right">Date: </b>{{metaData.dc:date}}</li>
-                    {{/metaData.dc:date}}
+                    {{#metaData.dc:date.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">Date: </b>
+                          {{#metaData.dc:date}}
+                            <span>{{.}};  </span>
+                          {{/metaData.dc:date}}
+                      </li>
+                    {{/metaData.dc:date.length}}
                     <li class="list-group-item">
                       <b class="space-right">Identifier: </b>
-                      <span class="metadata-success">{{metaData.dc:identifier}}</span>
+                      {{#metaData.dc:identifier}}
+                        <span class="metadata-success">{{metaData.dc:identifier}}</span>
+                      {{/metaData.dc:identifier}}
                       {{^metaData.dc:identifier}}
                         <span class="metadata-failed">Missing</span>
                       {{/metaData.dc:identifier}}
                     </li>
                     <li class="list-group-item">
                       <b class="space-right">Language: </b>
-                      <span class="metadata-success">{{metaData.dc:language}}</span>
+                      {{#metaData.dc:language}}
+                        <span class="metadata-success">{{metaData.dc:language}}</span>
+                      {{/metaData.dc:language}}
                       {{^metaData.dc:language}}
                         <span class="metadata-failed">Missing</span>
                       {{/metaData.dc:language}}
@@ -317,7 +329,9 @@
                     </li>
                     <li class="list-group-item">
                       <b class="space-right">Title: </b>
-                      <span class="metadata-success">{{metaData.dc:title}}</span>
+                      {{#metaData.dc:title}}
+                        <span class="metadata-success">{{metaData.dc:title}}</span>
+                      {{/metaData.dc:title}}
                       {{^metaData.dc:title}}
                         <span class="metadata-failed">Missing</span>
                       {{/metaData.dc:title}}
@@ -325,7 +339,9 @@
                     </li>
                     <li class="list-group-item">
                       <b class="space-right">Modified: </b>
-                      <span class="metadata-success">{{metaData.dcterms:modified}}</span>
+                      {{#metaData.dcterms:modified}}
+                        <span class="metadata-success">{{metaData.dcterms:modified}}</span>
+                      {{/metaData.dcterms:modified}}
                       {{^metaData.dcterms:modified}}
                         <span class="metadata-failed">Missing</span>
                       {{/metaData.dcterms:modified}}
@@ -565,7 +581,7 @@
   $('input[id="violation"]').on('click', function (e) {
     $('#template-violation-table > tbody > tr').first().trigger('click');
   });
-
+totalCount
   function selectDetails(el) {
 
     const currViolationID = '#p-' + el.id;
@@ -597,9 +613,8 @@
 
   function prefNextBtnState() {
 
-    $('#pagerIndexViolations').text("{{labeling.file}} " + $(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
-    $('#pagerIndexHints').text("{{labeling.file}} " + $(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
-
+    $('#pagerIndexViolations').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
+    $('#pagerIndexHints').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
     $('button.btnPagerPrev').prop('disabled', $(vioPanel + ':visible').prev(vioPanel).length === 0);
     $('button.btnPagerNext').prop('disabled', $(vioPanel + ':visible').next(vioPanel).length === 0);
   }
