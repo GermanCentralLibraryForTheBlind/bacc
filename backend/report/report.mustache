@@ -37,9 +37,9 @@
   <input type="radio" name="tabs" id="violation" checked>
   <div class="tab-label-content">
     <label for="violation">{{labeling.violationTab}}
-      {{#totalCount}}
-        <mark>{{totalCount}}</mark>
-      {{/totalCount}}
+      {{#groups.totalCountRules}}
+        <mark>{{groups.totalCountRules}}</mark>
+      {{/groups.totalCountRules}}
     </label>
     <div class="tab-content">
       {{#groups.rules.length}}
@@ -51,11 +51,8 @@
             <div class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-body">
-                  <table id="template-violation-table"
-                         class="table table-striped table-hover"
-                         data-click-to-select="true"
-                         data-single-select="true">
-                    <caption>{{labeling.total}}: {{groups.totalCountRules}}</caption>
+                  <table id="template-violation-table" class="table table-striped table-hover template-table"
+                         data-click-to-select="true" data-single-select="true">
                     <thead class="thead-violations">
                     <th class="col-md-2">{{labeling.violationImpact}}</th>
                     <th class="col-md-8">{{labeling.violation}}</th>
@@ -169,7 +166,7 @@
     </label>
     <div class="tab-content">
       {{#groups.hints.length}}
-        <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
+        <div class="container" role="region" aria-label="{{labeling.dialogViolations}}">
           <div class="row">
             <!-- ++++++ -->
             <!-- hints  -->
@@ -178,7 +175,7 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <table id="template-hints-table"
-                         class="table table-striped table-hover"
+                         class="table table-striped table-hover template-table"
                          data-click-to-select="true"
                          data-single-select="true">
                     <!--<caption>{{labeling.total}}: {{totalCount}}</caption>-->
@@ -303,9 +300,9 @@
                     {{#metaData.dc:date.length}}
                       <li class="list-group-item">
                         <b class="space-right">Date: </b>
-                          {{#metaData.dc:date}}
-                            <span>{{.}};  </span>
-                          {{/metaData.dc:date}}
+                        {{#metaData.dc:date}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:date}}
                       </li>
                     {{/metaData.dc:date.length}}
                     <li class="list-group-item">
@@ -581,7 +578,8 @@
   $('input[id="violation"]').on('click', function (e) {
     $('#template-violation-table > tbody > tr').first().trigger('click');
   });
-totalCount
+  totalCount
+
   function selectDetails(el) {
 
     const currViolationID = '#p-' + el.id;

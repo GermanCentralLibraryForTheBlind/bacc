@@ -283,41 +283,33 @@ code {
   background-color: rgba(0, 0, 0, 0.54);
 }
 
-.violation-container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
-#template-violation-table {
+.template-table {
   caption-side: bottom;
 }
 
-#template-violation-table > thead {
+.template-table > thead {
   width: 100%;
 }
 
-#template-violation-table > tbody {
+.template-table > tbody {
   height: 300px;
   overflow-y: auto;
   width: 100%;
 }
 
-#template-violation-table > thead,
-#template-violation-table > tbody,
-#template-violation-table > tr,
-#template-violation-table > td,
-#template-violation-table > th {
+.template-table > thead,
+.template-table > tbody,
+.template-table > tr,
+.template-table > td,
+.template-table > th {
   display: block;
 }
 
-#template-violation-table > tbody td,
-#template-violation-table > thead > tr > th {
+.template-table > tbody td,
+.template-table > thead > tr > th {
   border-bottom-width: 0;
 }
 
-#template-violation-table caption {
-  margin-top: 30px;
-}
 
 /*
 code style
