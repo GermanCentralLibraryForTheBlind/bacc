@@ -632,7 +632,7 @@
     },
     "matching-aria-role": {
       "pass": "",
-      "fail": "Das Element besitzt kein role-Attribut, passend zum epub:type.",
+      "fail": "Das Element besitzt kein role-Attribut, passend zum epub:type."
     }
   },
   "failureSummaries": {

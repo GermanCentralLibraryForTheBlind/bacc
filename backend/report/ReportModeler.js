@@ -150,6 +150,7 @@ class ReportModeler {
 
         // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
+        // console.log(JSON.stringify(violation['earl:test']));
         if(violation['earl:test'].assertedBy === 'Ace')
           violation['earl:test'].help['dct:description'] = violation['earl:test']['dct:description'];
 

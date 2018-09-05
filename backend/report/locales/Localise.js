@@ -37,12 +37,13 @@ class Localise {
 
     const groups = this._data.groups;
     let locale = axeDE;
+
     // console.log(groups)
     for (let i in groups) {
       // aXe
       if (groups[i].assertedBy === 'aXe')
-        // It is not really required to load the local axe file. Because it will be directly
-        // build into axe-lib during the post install. But it is good to check that all axe rules are translated.
+      // It is not really required to load the local axe file. Because it will be directly
+      // build into axe-lib during the post install. But it is good to check that all axe rules are translated.
         locale = axeDE;
       // Ace
       else if (groups[i].assertedBy === 'Ace')
@@ -50,7 +51,13 @@ class Localise {
       else
         logger.log('error', 'Rule description localisation: assertedBy not valid.');
 
-      const translatedRule = locale.rules[groups[i].name]
+      /* #### hack #### */
+      if (groups[i].name === "pagebreak-label" || groups[i].name === "epub-type-has-matching-role") {
+        groups[i].assertedBy = 'Ace';
+        locale = aceDE;
+      }
+
+      var translatedRule = locale.rules[groups[i].name]
 
       if (translatedRule == undefined) {
         logger.log('warn', 'No translation found for rule ' + groups[i].name + ' from ' + groups[i].assertedBy);
@@ -58,14 +65,13 @@ class Localise {
       }
 
       if (groups[i].assertedBy === 'Ace') {
-
-          groups[i].violations.map((obj) => {
-            obj.help['dct:description'] = translatedRule.help;
-            // obj['dct:description'] = translatedRule.description;
-            obj['shortHelp'] = translatedRule.optimize;
-          })
-        }
+        groups[i].violations.map((obj) => {
+          obj.help['dct:description'] = translatedRule.help;
+          // obj['dct:description'] = translatedRule.description;
+          obj['shortHelp'] = translatedRule.optimize;
+        })
       }
+    }
     // console.log(JSON.stringify(groups));
   }
 
