@@ -251,7 +251,8 @@ const checks = [
               return 'pass';
             },
             fail: () => {
-              return 'Data tables should have a <caption> element';
+              return 'Including a table caption makes it easier to understand the purpose or content of a table.' +
+                'A table caption should be marked with the <caption> element.';
             }
           }
       }
@@ -273,7 +274,8 @@ const checks = [
               return 'pass';
             },
             fail: () => {
-              return 'Data tables should have at least one <th> element';
+              return 'Data tables should contain one or more table header cells, working as a heading for a group of data cells in the table.' +
+                'Table header cells should be marked with a <th> element.';
             }
           }
       }
@@ -299,7 +301,7 @@ const checks = [
               return 'pass';
             },
             fail: () => {
-              return 'Groups of links should be marked as ul, ol or dl.';
+              return 'Groups of links should be marked as a list, using the <ul>, <ol> or <dl> element.';
             }
           }
       }
@@ -438,8 +440,8 @@ const rules = [
     selector: 'body',
     any: ['hint-heading-ranks'],
     metadata: {
-      description: '',
-      help: "Skipping heading ranks should be avoided/only appear, when semantically neccessary."
+      description: 'Ensures skipping heading ranks only appears, when semantically neccessary.',
+      help: "Do the headings reflect the publications structural hierarchy?"
     },
     tags: ['hints']
   },
@@ -448,8 +450,8 @@ const rules = [
     selector: 'table',
     any: ['hint-datatable-missing-caption'],
     metadata: {
-      description: '',
-      help: "If a <table> has no aria attribute role=”presentation” and contains a <th> element."
+      description: 'Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <th> element also include a table caption.',
+      help: "Could a table caption be useful to describe the content or purpose of a table?"
     },
     tags: ['hints']
   },
@@ -458,8 +460,8 @@ const rules = [
     selector: 'table',
     any: ['hint-datatable-missing-th'],
     metadata: {
-      description: '',
-      help: "If a <table> has no aria attribute role=”presentation” and contains a <caption> element."
+      description: 'Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <caption> element also include at least one th header cell <th>.',
+      help: "Are there table cells, that should be identified as table headers?"
     },
     tags: ['hints']
   },
@@ -468,8 +470,8 @@ const rules = [
     selector: 'a',
     any: ['hint-links-not-grouped'],
     metadata: {
-      description: '',
-      help: "If more than three <a> elements follow eachother."
+      description: 'Ensures groups of more than three <a> elements are marked as a list.',
+      help: "Should a group of links be marked as a list?"
     },
     tags: ['hints']
   },

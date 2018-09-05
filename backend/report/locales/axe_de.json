@@ -272,6 +272,14 @@
     "video-description": {
       "description": "",
       "help": "<video>-Elemente müssen eine Audiodeskription besitzen."
+    },
+    "pagebreak-label": {
+      "description": "Stellt sicher, dass Seitenumbruchsmarkierungen (pagebreak) eine zugängliche Beschriftung haben.",
+      "help": "Seitenmarkierungen (pagebreak) müssen eine zugängliche Beschriftung besitzen."
+    },
+    "epub-type-has-matching-role": {
+      "description": "Stellt sicher, dass das Element zusätzlich zum epub:type-Attribut die zugehörige ARIA role besitzt.",
+      "help": "Zusätzlich zum epub:type-Attribut sollte das ARIA-Attribut role verwendet werden."
     }
   },
   "checks": {
