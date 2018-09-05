@@ -60,12 +60,11 @@ class Localise {
 
       const translatedRule = locale.rules[set[j].name];
       /* #### hack #### */
-      if (groups[i].name === "pagebreak-label" || groups[i].name === "epub-type-has-matching-role") {
-        groups[i].assertedBy = 'Ace';
+      if (set[j].name === "pagebreak-label" || set[j].name === "epub-type-has-matching-role") {
+        set[j].assertedBy = 'Ace';
         locale = aceDE;
       }
 
-      var translatedRule = locale.rules[groups[i].name]
 
       if (translatedRule == undefined) {
         logger.log('warn', 'No translation found for rule ' + set[j].name + ' from ' + set[j].assertedBy);
