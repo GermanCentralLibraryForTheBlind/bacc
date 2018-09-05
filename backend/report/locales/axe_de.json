@@ -629,6 +629,10 @@
       "pass": "",
       "fail": "Beim Analysieren der Inhalte auf dieser Seite sind Probleme aufgetreten.",
       "incomplete": "Auf der Seite befinden sich versteckte Inhalte, die nicht analysiert werden konnten. Um den Inhalt analysieren zu können, müssen Sie die Anzeige auslösen."
+    },
+    "matching-aria-role": {
+      "pass": "",
+      "fail": "Das Element besitzt kein role-Attribut, passend zum epub:type."
     }
   },
   "failureSummaries": {

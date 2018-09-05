@@ -37,9 +37,9 @@
     },
     "epub-type-has-matching-role": {
       "description": "Stellt sicher, dass das Element zusätzlich zum epub:type-Attribut die zugehörige ARIA role besitzt.",
-      "help": "Zusätzlich zum epub:type-Attribut sollte das ARIA-Attribut role verwendet werden."
+      "help": "Zusätzlich zum epub:type-Attribut sollte das ARIA-Attribut role verwendet werden.",
+      "optimize": "Das Element besitzt kein role-Attribut, passend zum epub:type."
     }
-
   }
 }
 

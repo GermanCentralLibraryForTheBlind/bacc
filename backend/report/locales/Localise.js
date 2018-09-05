@@ -59,6 +59,13 @@ class Localise {
         logger.log('error', 'Rule description localisation: assertedBy not valid.');
 
       const translatedRule = locale.rules[set[j].name];
+      /* #### hack #### */
+      if (groups[i].name === "pagebreak-label" || groups[i].name === "epub-type-has-matching-role") {
+        groups[i].assertedBy = 'Ace';
+        locale = aceDE;
+      }
+
+      var translatedRule = locale.rules[groups[i].name]
 
       if (translatedRule == undefined) {
         logger.log('warn', 'No translation found for rule ' + set[j].name + ' from ' + set[j].assertedBy);

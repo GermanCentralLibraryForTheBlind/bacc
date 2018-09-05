@@ -38,6 +38,7 @@ class Impact {
     for (let prop in impactLevels) {
 
       const match = '\"' + prop + '\",';
+      // console.log(match);
 
       if (aceDataAsString.includes(match)) {
         iLevel = impactLevels[prop];
