@@ -60,8 +60,8 @@ class Localise {
       if (groups[i].assertedBy === 'Ace') {
 
           groups[i].violations.map((obj) => {
-            obj.help['dct:description'] = translatedRule.description;
-            obj['dct:description'] = translatedRule.description;
+            obj.help['dct:description'] = translatedRule.help;
+            // obj['dct:description'] = translatedRule.description;
             obj['shortHelp'] = translatedRule.help;
           })
         }
