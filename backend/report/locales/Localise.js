@@ -68,19 +68,12 @@ class Localise {
       if (set[j].assertedBy === 'Ace') {
 
         set[j].fails.map((obj) => {
-          obj.help['dct:description'] = translatedRule.description;
-          obj['dct:description'] = translatedRule.description;
-          obj['shortHelp'] = translatedRule.help;
+          obj.help['dct:description'] = translatedRule.help;
+          // obj['dct:description'] = translatedRule.description;
+          obj['shortHelp'] = translatedRule.optimize;
         })
       }
     }
-          groups[i].violations.map((obj) => {
-            obj.help['dct:description'] = translatedRule.help;
-            // obj['dct:description'] = translatedRule.description;
-            obj['shortHelp'] = translatedRule.optimize;
-          })
-        }
-      }
     // console.log(JSON.stringify(groups));
   }
 
