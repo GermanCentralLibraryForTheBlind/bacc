@@ -1,3 +1,5 @@
+// this hints will be inject as post install into ace (see npm task post:hints) and on runtime process via axe
+
 const definition = {};
 
 const checks = [
@@ -301,6 +303,26 @@ const checks = [
             }
           }
       }
+  },
+  {
+    id: "hint-footnote-missing-backlink",
+    evaluate: function evaluate(node, options) {
+      const link = node.querySelector('a');
+      return link ? link.hasAttribute('role') && link.getAttribute('role') === 'doc-backlink' : false;
+    },
+    metadata:
+      {
+        impact: 'serious',
+        messages:
+          {
+            pass: () => {
+              return 'pass';
+            },
+            fail: () => {
+              return 'Footnotes and endnotes should have a backlink, marked as role=“doc-backlink.';
+            }
+          }
+      }
   }
 ];
 
@@ -448,6 +470,16 @@ const rules = [
     metadata: {
       description: '',
       help: "If more than three <a> elements follow eachother."
+    },
+    tags: ['hints']
+  },
+  {
+    id: 'footnote-missing-backlink',
+    selector: "[*|type~='footnote'], [role~='doc-footnote'], [*|type~='endnote'], [role~='doc-endnote']",
+    any: ['hint-footnote-missing-backlink'],
+    metadata: {
+      description: '',
+      help: "If footnotes (elements with the attribute epub:type=”footnote” or role=”doc-footnote”) or endnotes (elements with the attribute epub:type=”endnote” or role=”doc-endnote”) do not contain a backlink (containing the aria attribute role=”backlink”)."
     },
     tags: ['hints']
   }
