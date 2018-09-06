@@ -1,0 +1,15 @@
+{
+  "lang": "de",
+  "rules": {
+    "accesskeys": {
+      "description": "",
+      "help": "Der Wert des accesskey-Attributes muss einzigartig sein."
+    }
+  },
+  "checks": {
+    "matching-aria-role": {
+      "pass": "",
+      "fail": "Das Element besitzt kein role-Attribut, passend zum epub:type."
+    }
+  }
+}
