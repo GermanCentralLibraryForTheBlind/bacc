@@ -77,8 +77,7 @@ class ReportModeler {
     // TODO own mapper module
     reportData = this.getDataForReport();
     reportData.lang = "en";
-    reportData.outlines = this._aceData.outlines;
-    reportData.outlines.html = reportData.outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g, '</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
+    reportData.outlines = this.setOwnOutlinesStyle(this._aceData.outlines);
     reportData.images = this._aceData.data.images;
 
     this.statistics.cover = reportData.images ? reportData.images[0] : '';
@@ -98,6 +97,17 @@ class ReportModeler {
     util.addToStatistics(this.statistics)
   }
 
+
+  setOwnOutlinesStyle(outlines) {
+    // console.log(outlines);
+    if (outlines.toc)
+      outlines.toc = outlines.toc.replace(/<ol(.*?)>/g, '<ul $1>').replace(/<\/ol>/g, '</ul>');
+    if (outlines.html) {
+      outlines.html = outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g, '</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
+      outlines.html = outlines.html.replace(/<li><ul>/g, '').replace(/<\/ul><\/li>/g, '<\/ul>');
+    }
+    return outlines;
+  }
 
   // todo: make ace-> bacc mapper module -> ReportData
   // Ace comes with a list of violation grouped by spineitem. But atm groups of violations types preferred.
