@@ -2,6 +2,8 @@
   "id": "section-missing",
   "selector": "body",
   "any": ["hint-section-missing"],
+  "all": [],
+  "none": [],
   "metadata": {
     "description": "Ensures the document contains <section> elements",
     "help": "Are <section> elements used to identify the publications structural hierarchy?"

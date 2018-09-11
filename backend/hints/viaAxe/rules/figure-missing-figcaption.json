@@ -2,6 +2,8 @@
   "id": "figure-missing-figcaption",
   "selector": "figure",
   "any": ["hint-figure-missing-figcaption"],
+  "all": [],
+  "none": [],
   "metadata": {
     "description": "Ensures all <figure> elements include a non-empty <figcaption> element",
     "help": "Could a figure caption be useful to describe the content or purpose of a figure?"

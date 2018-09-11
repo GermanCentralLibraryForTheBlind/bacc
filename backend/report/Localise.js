@@ -1,10 +1,10 @@
 // TODO: This json files should be loaded only onetime when the service is lift up
-const baccDE = require('./bacc_de.json');
-const baccEN = require('./bacc_en.json');
-const axeDE = require('./axe_de.json');
-const aceDE = require('./ace_de.json');
+const baccDE = require('../locales/bacc_de.json');
+const baccEN = require('../locales/bacc_en.json');
+const axeDE = require('../locales/axe_de.json');
+const aceDE = require('../locales/ace_de.json');
 
-const logger = require('../../helper/logger');
+const logger = require('../helper/logger');
 
 // default language is english
 class Localise {

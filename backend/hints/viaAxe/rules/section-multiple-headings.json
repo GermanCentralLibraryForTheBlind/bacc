@@ -2,6 +2,8 @@
   "id": "section-multiple-headings",
   "selector": "section",
   "any": ["hint-section-multiple-headings"],
+  "all": [],
+  "none": [],
   "metadata": {
     "description": "Ensures every <section> element contains not more than one heading (<h1>...<h6>) as its direct child",
     "help": "Does every section have only one single heading?"

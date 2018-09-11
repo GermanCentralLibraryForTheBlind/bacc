@@ -2,6 +2,8 @@
   "id": "heading-ranks",
   "selector": "body",
   "any": ["hint-heading-ranks"],
+  "all": [],
+  "none": [],
   "metadata": {
     "description": "Ensures skipping heading ranks only appears, when semantically neccessary.",
     "help": "Do the headings reflect the publications structural hierarchy?"

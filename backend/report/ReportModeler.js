@@ -5,7 +5,7 @@ const path = require('path');
 const _ = require('underscore');
 
 const logger = require('../helper/logger');
-const Localise = require('./locales/Localise');
+const Localise = require('./Localise');
 const constants = require('../constants');
 const util = require('../helper/util');
 
