@@ -179,9 +179,9 @@
                     {{#metaData.dc:date.length}}
                       <li class="list-group-item">
                         <b class="space-right">Date: </b>
-                          {{#metaData.dc:date}}
-                            <span>{{.}};  </span>
-                          {{/metaData.dc:date}}
+                        {{#metaData.dc:date}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:date}}
                       </li>
                     {{/metaData.dc:date.length}}
                     <li class="list-group-item">
@@ -316,7 +316,7 @@
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <b>{{labeling.tocEPUB}}</b>
+                {{{labeling.tocEPUB}}}
               </div>
               <div class="panel-body">
                 {{{outlines.toc}}}

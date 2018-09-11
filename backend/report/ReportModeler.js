@@ -77,8 +77,7 @@ class ReportModeler {
     // TODO own mapper module
     reportData = this.getBACCReportData();
     reportData.lang = "en";
-    reportData.outlines = this._aceData.outlines;
-    reportData.outlines.html = reportData.outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g,'</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
+    reportData.outlines = this.setOwnOutlinesStyle(this._aceData.outlines);
     reportData.images = this._aceData.data.images;
 
     this.statistics.cover = reportData.images ? reportData.images[0] : '';
@@ -98,6 +97,17 @@ class ReportModeler {
     util.addToStatistics(this.statistics)
   }
 
+
+  setOwnOutlinesStyle(outlines) {
+    // console.log(outlines);
+    if (outlines.toc)
+      outlines.toc = outlines.toc.replace(/<ol(.*?)>/g, '<ul $1>').replace(/<\/ol>/g, '</ul>');
+    if (outlines.html) {
+      outlines.html = outlines.html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g, '</ul>');//<ol style="list-style-type:none">');//.replace(/<\/ol>/g,'</ul>');
+      outlines.html = outlines.html.replace(/<li><ul>/g, '').replace(/<\/ul><\/li>/g, '<\/ul>');
+    }
+    return outlines;
+  }
 
   // todo: make ace-> bacc mapper module -> ReportData
   // Ace comes with a list of violation grouped by spineitem. But atm groups of violations types preferred.
@@ -151,15 +161,15 @@ class ReportModeler {
         // assertedBy Ace or Axe or ...
         violation['earl:test'].assertedBy = violation['earl:assertedBy'];
         // console.log(JSON.stringify(violation['earl:test']));
-        if(violation['earl:test'].assertedBy === 'Ace')
+        if (violation['earl:test'].assertedBy === 'Ace')
           violation['earl:test'].help['dct:description'] = violation['earl:test']['dct:description'];
 
         violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
         violation['earl:test'].spineItem = spineItem;
 
         violation['earl:test'].code = violation['earl:result']['html'];
-        if(violation['earl:test'].code)
-          violation['earl:test'].code = violation['earl:test'].code.replace('\n','').replace(/\s+/g,' ');
+        if (violation['earl:test'].code)
+          violation['earl:test'].code = violation['earl:test'].code.replace('\n', '').replace(/\s+/g, ' ');
 
         // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
         violations.push(violation['earl:test']);
