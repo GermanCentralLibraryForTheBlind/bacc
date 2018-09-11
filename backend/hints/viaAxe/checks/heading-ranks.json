@@ -1,0 +1,11 @@
+{
+  "id": "hint-heading-ranks",
+  "evaluate": "heading-ranks.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "{{=it.data}}"
+    }
+  }
+}

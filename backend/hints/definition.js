@@ -4,117 +4,117 @@ const definition = {};
 
 const checks = [
   {
-    id: "hint-poor-semantic",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-poor-semantic",
+    "evaluate": function evaluate(node, options) {
       const div = node.querySelectorAll('div').length;
       const span = node.querySelectorAll('span').length;
       const all = node.querySelectorAll('*').length;
       return (div + span) < all * 0.5 /* 50% */;
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'Rich semantic';
-        }, fail: () => {
-          return 'Where applicable, semantic HTML 5 elements should be used instead of non-semantic elements like <div> and <span>.' +
-            'Examples for semantic elements are <h1> … <h6>, <ol>, <ul>, <dl>, <caption>, <blockquote>, <code>, <em>, etc.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "Rich semantic";
+        }, "fail": () => {
+          return "Where applicable, semantic HTML 5 elements should be used instead of non-semantic elements like <div> and <span>." +
+            "Examples for semantic elements are <h1> … <h6>, <ol>, <ul>, <dl>, <caption>, <blockquote>, <code>, <em>, etc.";
         }
       }
     }
   },
   {
-    id: "hint-epub-specific-attributes",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-epub-specific-attributes",
+    "evaluate": function evaluate(node, options) {
       return !!node.querySelector('[*|type]:not([type])'); // hack!
       // return !!node.querySelector('*[epub\\:type]'); // null why?????????????????????????? arrr :-(
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'When applicable, epub:type attributes should be used to specify the semantic of an element.' +
-            'Examples for common epub:type values are footnote, endnote, toc, cover, glossary, etc.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "When applicable, epub:type attributes should be used to specify the semantic of an element." +
+            "Examples for common epub:type values are footnote, endnote, toc, cover, glossary, etc.";
         }
       }
     }
   },
   {
-    id: "hint-aria-required-alt-is-empty",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-aria-required-alt-is-empty",
+    "evaluate": function evaluate(node, options) {
 
       if (node.hasAttribute('alt') && node.getAttribute('alt') === '') {
         return node.hasAttribute('role') && node.getAttribute('role') === 'presentation';
       }
       return true;
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'The alt attribute of an image should only be empty, if it is a non-informative, decorative image.' +
-            'Decorative images should be marked using the aria attribute role=”presentation”.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "The alt attribute of an image should only be empty, if it is a non-informative, decorative image." +
+            "Decorative images should be marked using the aria attribute role=”presentation”.";
         }
       }
     }
   },
   {
-    id: "hint-figure-missing-figcaption",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-figure-missing-figcaption",
+    "evaluate": function evaluate(node, options) {
       return !!node.querySelector('figcaption') &&
         node.querySelector('figcaption').textContent !== "";
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'Including a figure caption makes it easier to understand the purpose or content of a figure.' +
-            'A figure caption should be marked with the <figcaption> element.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "Including a figure caption makes it easier to understand the purpose or content of a figure." +
+            "A figure caption should be marked with the <figcaption> element.";
         }
       }
     }
   },
   {
-    id: "missing-role",
-    evaluate: function evaluate(node, options) {
+    "id": "missing-role",
+    "evaluate": function evaluate(node, options) {
       return node.hasAttribute('role');
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'When applicable, the role of this element should be specified by using the aria role attribute.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "When applicable, the role of this element should be specified by using the aria role attribute.";
         }
       }
     }
   },
   {
-    id: "hint-section-missing",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-section-missing",
+    "evaluate": function evaluate(node, options) {
       return !!node.querySelector('section');
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'The structural hierarchy of the publication should be identified by grouping primary sections of content using (nested) <section> elements or other sectioning elements.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "The structural hierarchy of the publication should be identified by grouping primary sections of content using (nested) <section> elements or other sectioning elements.";
         }
       }
     }
   },
   {
-    id: "hint-heading-missing",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-heading-missing",
+    "evaluate": function evaluate(node, options) {
 
       const children = Array.from(node.children);
       const header = 'h1 h2 h3 h4 h5 h6';
@@ -124,41 +124,41 @@ const checks = [
         node.hasAttribute('aria-label') ||
         node.hasAttribute('aria-labelledby');
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'Every <section> element should include a heading (<h1> … <h6>).';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "Every <section> element should include a heading (<h1> … <h6>).";
         }
       }
     }
   },
   {
-    id: "hint-section-multiple-headings",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-section-multiple-headings",
+    "evaluate": function evaluate(node, options) {
 
       const children = Array.from(node.children);
       const header = 'h1 h2 h3 h4 h5 h6';
       return children.filter(node => header.indexOf(node.nodeName) !== -1).length <= 1
     },
-    metadata: {
-      impact: 'serious',
-      messages: {
-        pass: () => {
-          return 'pass';
-        }, fail: () => {
-          return 'Every <section> element should include only one heading.' +
-            'Subsections with a new heading should be contained in a new <section> element or by other sectioning elements.' +
-            'Subtitles should not be marked with a separate heading tag.';
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": () => {
+          return "pass";
+        }, "fail": () => {
+          return "Every <section> element should include only one heading." +
+            "Subsections with a new heading should be contained in a new <section> element or by other sectioning elements." +
+            "Subtitles should not be marked with a separate heading tag.";
         }
       }
     }
   },
   {
-    id: "hint-table-layout-missing-aria",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-table-layout-missing-aria",
+    "evaluate": function evaluate(node, options) {
 
       if (!isLayoutTable(node))
         return true;
@@ -180,24 +180,24 @@ const checks = [
         return true;
       }
     },
-    metadata:
+    "metadata":
       {
-        impact: 'serious',
-        messages:
+        "impact": "serious",
+        "messages":
           {
-            pass: () => {
-              return 'pass';
-            }, fail:
+            "pass": () => {
+              return "pass";
+            }, "fail":
               () => {
-                return 'Layout tables should be identified using the aria attribute role=”presentation”.' +
-                  'Data tables should contain semantic table markup like <th> elements and a <caption> element.';
+                return "Layout tables should be identified using the aria attribute role=”presentation”." +
+                  "Data tables should contain semantic table markup like <th> elements and a <caption> element.";
               }
           }
       }
   },
   {
-    id: "hint-heading-ranks",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-heading-ranks",
+    "evaluate": function evaluate(node, options) {
 
       var result = true;
       var issueHeadings = '';
@@ -220,69 +220,69 @@ const checks = [
       this.data(issueHeadings);
       return result;
     },
-    metadata:
+    "metadata":
       {
-        impact: 'serious',
-        messages:
+        "impact": "serious",
+        "messages":
           {
-            pass: () => {
-              return 'pass';
+            "pass": () => {
+              return "pass";
             },
-            fail: (it) => {
+            "fail": (it) => {
               return it.data;
             }
           }
       }
   },
   {
-    id: "hint-datatable-missing-caption",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-datatable-missing-caption",
+    "evaluate": function evaluate(node, options) {
 
       if (!node.hasAttribute('role') && node.querySelectorAll('th').length > 0)
         return !!node.querySelector('caption');
       return true;
     },
-    metadata:
+    "metadata":
       {
-        impact: 'serious',
-        messages:
+        "impact": "serious",
+        "messages":
           {
-            pass: () => {
-              return 'pass';
+            "pass": () => {
+              return "pass";
             },
-            fail: () => {
-              return 'Including a table caption makes it easier to understand the purpose or content of a table.' +
-                'A table caption should be marked with the <caption> element.';
+            "fail": () => {
+              return "Including a table caption makes it easier to understand the purpose or content of a table." +
+                "A table caption should be marked with the <caption> element.";
             }
           }
       }
   },
   {
-    id: "hint-datatable-missing-th",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-datatable-missing-th",
+    "evaluate": function evaluate(node, options) {
 
       if (!node.hasAttribute('role') && !!node.querySelector('caption'))
         return node.querySelectorAll('th').length > 0;
       return true;
     },
-    metadata:
+    "metadata":
       {
-        impact: 'serious',
-        messages:
+        "impact": "serious",
+        "messages":
           {
-            pass: () => {
-              return 'pass';
+            "pass": () => {
+              return "pass";
             },
-            fail: () => {
-              return 'Data tables should contain one or more table header cells, working as a heading for a group of data cells in the table.' +
-                'Table header cells should be marked with a <th> element.';
+            "fail": () => {
+              return "Data tables should contain one or more table header cells, working as a heading for a group of data cells in the table." +
+                "Table header cells should be marked with a <th> element.";
             }
           }
       }
   },
   {
-    id: "hint-links-not-grouped",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-links-not-grouped",
+    "evaluate": function evaluate(node, options) {
       var count = 1;
       var tempNode = node;
 
@@ -292,36 +292,36 @@ const checks = [
 
       return true;
     },
-    metadata:
+    "metadata":
       {
-        impact: 'serious',
-        messages:
+        "impact": "serious",
+        "messages":
           {
-            pass: () => {
-              return 'pass';
+            "pass": () => {
+              return "pass";
             },
-            fail: () => {
-              return 'Groups of links should be marked as a list, using the <ul>, <ol> or <dl> element.';
+            "fail": () => {
+              return "Groups of links should be marked as a list, using the <ul>, <ol> or <dl> element.";
             }
           }
       }
   },
   {
-    id: "hint-footnote-missing-backlink",
-    evaluate: function evaluate(node, options) {
+    "id": "hint-footnote-missing-backlink",
+    "evaluate": function evaluate(node, options) {
       const link = node.querySelector('a');
       return link ? link.hasAttribute('role') && link.getAttribute('role') === 'doc-backlink' : false;
     },
-    metadata:
+    "metadata":
       {
-        impact: 'serious',
-        messages:
+        "impact": "serious",
+        "messages":
           {
-            pass: () => {
-              return 'pass';
+            "pass": () => {
+              return "pass";
             },
-            fail: () => {
-              return 'Footnotes and endnotes should have a backlink, marked as role=“doc-backlink.';
+            "fail": () => {
+              return "Footnotes and endnotes should have a backlink, marked as role=“doc-backlink.";
             }
           }
       }
@@ -334,156 +334,156 @@ const checks = [
 
 const rules = [
   {
-    id: 'poor-semantic',
-    selector: 'body',
-    any: ['hint-poor-semantic'],
-    metadata: {
-      description: "Ensures HTML5 elements are used to mark up the content",
-      help: "Are semantic HTML5 elements utilized to markup the content?"
+    "id": "poor-semantic",
+    "selector": "body",
+    "any": ["hint-poor-semantic"],
+    "metadata": {
+      "description": "Ensures HTML5 elements are used to mark up the content",
+      "help": "Are semantic HTML5 elements utilized to markup the content?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'epub-specific-attributes',
-    selector: 'body',
-    any: ['hint-epub-specific-attributes'],
-    metadata: {
-      description: "Ensures epub:type attributes are used to provide additional semantic information",
-      help: "Are epub:type attributes utilized to provide additional semantic information?"
+    "id": "epub-specific-attributes",
+    "selector": "body",
+    "any": ["hint-epub-specific-attributes"],
+    "metadata": {
+      "description": "Ensures epub:type attributes are used to provide additional semantic information",
+      "help": "Are epub:type attributes utilized to provide additional semantic information?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'aria-required-alt-is-empty',
-    selector: 'img',
-    any: ['hint-aria-required-alt-is-empty'],
-    metadata: {
-      description: 'Ensures all informative images have a non-empty alt-Attribute resp. all decorative images are marked with role=”presentation”',
-      help: "Are all informative images described by a text alternative?"
+    "id": "aria-required-alt-is-empty",
+    "selector": "img",
+    "any": ["hint-aria-required-alt-is-empty"],
+    "metadata": {
+      "description": "Ensures all informative images have a non-empty alt-Attribute resp. all decorative images are marked with role=”presentation”",
+      "help": "Are all informative images described by a text alternative?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'figure-missing-figcaption',
-    selector: 'figure',
-    any: ['hint-figure-missing-figcaption'],
-    metadata: {
-      description: 'Ensures all <figure> elements include a non-empty <figcaption> element',
-      help: "Could a figure caption be useful to describe the content or purpose of a figure?"
+    "id": "figure-missing-figcaption",
+    "selector": "figure",
+    "any": ["hint-figure-missing-figcaption"],
+    "metadata": {
+      "description": "Ensures all <figure> elements include a non-empty <figcaption> element",
+      "help": "Could a figure caption be useful to describe the content or purpose of a figure?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'section-missing-role',
-    selector: 'section',
-    any: ['missing-role'],
-    metadata: {
-      description: 'Ensures all <section> elements are specified by an aria role attribute',
-      help: "Is it possible to specify the semantic of a <section> element by an aria role attribute?"
+    "id": "section-missing-role",
+    "selector": "section",
+    "any": ["missing-role"],
+    "metadata": {
+      "description": "Ensures all <section> elements are specified by an aria role attribute",
+      "help": "Is it possible to specify the semantic of a <section> element by an aria role attribute?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'aside-missing-role',
-    selector: 'aside',
-    any: ['missing-role'],
-    metadata: {
-      description: 'Ensures all <aside> elements are specified by an aria role attribute',
-      help: "Is it possible to specify the semantic of an <aside> element by an aria role attribute?"
+    "id": "aside-missing-role",
+    "selector": "aside",
+    "any": ["missing-role"],
+    "metadata": {
+      "description": "Ensures all <aside> elements are specified by an aria role attribute",
+      "help": "Is it possible to specify the semantic of an <aside> element by an aria role attribute?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'section-missing',
-    selector: 'body',
-    any: ['hint-section-missing'],
-    metadata: {
-      description: 'Ensures the document contains <section> elements',
-      help: "Are <section> elements used to identify the publications structural hierarchy?"
+    "id": "section-missing",
+    "selector": "body",
+    "any": ["hint-section-missing"],
+    "metadata": {
+      "description": "Ensures the document contains <section> elements",
+      "help": "Are <section> elements used to identify the publications structural hierarchy?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'heading-missing',
-    selector: 'section',
-    any: [
+    "id": "heading-missing",
+    "selector": "section",
+    "any": [
       "hint-heading-missing"
     ],
-    metadata: {
-      description: 'Ensures every <section> element contains a heading (marked with <h1>...<h6> or role=”heading”) as its direct child or has an aria-label or aria-labelledby attribute',
-      help: "Is every section titled by a heading (<h1> … <h6>)?"
+    "metadata": {
+      "description": "Ensures every <section> element contains a heading (marked with <h1>...<h6> or role=”heading”) as its direct child or has an aria-label or aria-labelledby attribute",
+      "help": "Is every section titled by a heading (<h1> … <h6>)?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'section-multiple-headings',
-    selector: 'section',
-    any: ['hint-section-multiple-headings'],
-    metadata: {
-      description: 'Ensures every <section> element contains not more than one heading (<h1>...<h6>) as its direct child',
-      help: "Does every section have only one single heading?"
+    "id": "section-multiple-headings",
+    "selector": "section",
+    "any": ["hint-section-multiple-headings"],
+    "metadata": {
+      "description": "Ensures every <section> element contains not more than one heading (<h1>...<h6>) as its direct child",
+      "help": "Does every section have only one single heading?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'table-layout-missing-aria',
-    selector: 'table',
-    any: ['hint-table-layout-missing-aria'],
-    metadata: {
-      description: 'Ensures layout tables (<table> elements with neither <thead> nor <th> nor <caption> nor one of the attributes summary, headers or scope) have the aria attribute role=”presentation”',
-      help: "Are layout tables identified?"
+    "id": "table-layout-missing-aria",
+    "selector": "table",
+    "any": ["hint-table-layout-missing-aria"],
+    "metadata": {
+      "description": "Ensures layout tables (<table> elements with neither <thead> nor <th> nor <caption> nor one of the attributes summary, headers or scope) have the aria attribute role=”presentation”",
+      "help": "Are layout tables identified?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'heading-ranks',
-    selector: 'body',
-    any: ['hint-heading-ranks'],
-    metadata: {
-      description: 'Ensures skipping heading ranks only appears, when semantically neccessary.',
-      help: "Do the headings reflect the publications structural hierarchy?"
+    "id": "heading-ranks",
+    "selector": "body",
+    "any": ["hint-heading-ranks"],
+    "metadata": {
+      "description": "Ensures skipping heading ranks only appears, when semantically neccessary.",
+      "help": "Do the headings reflect the publications structural hierarchy?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'datatable-missing-caption',
-    selector: 'table',
-    any: ['hint-datatable-missing-caption'],
-    metadata: {
-      description: 'Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <th> element also include a table caption.',
-      help: "Could a table caption be useful to describe the content or purpose of a table?"
+    "id": "datatable-missing-caption",
+    "selector": "table",
+    "any": ["hint-datatable-missing-caption"],
+    "metadata": {
+      "description": "Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <th> element also include a table caption.",
+      "help": "Could a table caption be useful to describe the content or purpose of a table?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'datatable-missing-th',
-    selector: 'table',
-    any: ['hint-datatable-missing-th'],
-    metadata: {
-      description: 'Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <caption> element also include at least one th header cell <th>.',
-      help: "Are there table cells, that should be identified as table headers?"
+    "id": "datatable-missing-th",
+    "selector": "table",
+    "any": ["hint-datatable-missing-th"],
+    "metadata": {
+      "description": "Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <caption> element also include at least one th header cell <th>.",
+      "help": "Are there table cells, that should be identified as table headers?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'links-not-grouped',
-    selector: 'a',
-    any: ['hint-links-not-grouped'],
-    metadata: {
-      description: 'Ensures groups of more than three <a> elements are marked as a list.',
-      help: "Should a group of links be marked as a list?"
+    "id": "links-not-grouped",
+    "selector": "a",
+    "any": ["hint-links-not-grouped"],
+    "metadata": {
+      "description": "Ensures groups of more than three <a> elements are marked as a list.",
+      "help": "Should a group of links be marked as a list?"
     },
-    tags: ['hints']
+    "tags": ["hints"]
   },
   {
-    id: 'footnote-missing-backlink',
-    selector: "[*|type~='footnote'], [role~='doc-footnote'], [*|type~='endnote'], [role~='doc-endnote']",
-    any: ['hint-footnote-missing-backlink'],
-    metadata: {
-      description: '',
-      help: "If footnotes (elements with the attribute epub:type=”footnote” or role=”doc-footnote”) or endnotes (elements with the attribute epub:type=”endnote” or role=”doc-endnote”) do not contain a backlink (containing the aria attribute role=”backlink”)."
+    "id": "footnote-missing-backlink",
+    "selector": "[*|type~='footnote'], [role~='doc-footnote'], [*|type~='endnote'], [role~='doc-endnote']",
+    "any": ["hint-footnote-missing-backlink"],
+    "metadata": {
+      "description": '',
+      "help": "If footnotes (elements with the attribute epub:type=”footnote” or role=”doc-footnote”) or endnotes (elements with the attribute epub:type=”endnote” or role=”doc-endnote”) do not contain a backlink (containing the aria attribute role=”backlink”)."
     },
-    tags: ['hints']
+    "tags": ["hints"]
   }
 ];
 

@@ -1,0 +1,10 @@
+{
+    "id": "poor-semantic",
+    "selector": "body",
+    "any": ["hint-poor-semantic"],
+    "metadata": {
+      "description": "Ensures HTML5 elements are used to mark up the content",
+      "help": "Are semantic HTML5 elements utilized to markup the content?"
+    },
+    "tags": ["hints"]
+  }

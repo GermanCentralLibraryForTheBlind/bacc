@@ -1,0 +1,11 @@
+{
+  "id": "hint-footnote-missing-backlink",
+  "evaluate": "footnote-missing-backlink.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Footnotes and endnotes should have a backlink, marked as role=“doc-backlink“."
+    }
+  }
+}

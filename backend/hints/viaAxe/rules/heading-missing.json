@@ -1,0 +1,12 @@
+{
+  "id": "heading-missing",
+  "selector": "section",
+  "any": [
+    "hint-heading-missing"
+  ],
+  "metadata": {
+    "description": "Ensures every <section> element contains a heading (marked with <h1>...<h6> or role=”heading”) as its direct child or has an aria-label or aria-labelledby attribute",
+    "help": "Is every section titled by a heading (<h1> … <h6>)?"
+  },
+  "tags": ["hints"]
+}

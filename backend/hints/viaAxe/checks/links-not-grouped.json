@@ -1,0 +1,11 @@
+{
+  "id": "hint-links-not-grouped",
+  "evaluate": "links-not-grouped.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Groups of links should be marked as a list, using the <ul>, <ol> or <dl> element."
+    }
+  }
+}

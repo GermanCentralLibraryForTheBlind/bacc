@@ -1,0 +1,10 @@
+{
+  "id": "datatable-missing-caption",
+  "selector": "table",
+  "any": ["hint-datatable-missing-caption"],
+  "metadata": {
+    "description": "Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <th> element also include a table caption.",
+    "help": "Could a table caption be useful to describe the content or purpose of a table?"
+  },
+  "tags": ["hints"]
+}

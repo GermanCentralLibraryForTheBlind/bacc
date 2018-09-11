@@ -1,0 +1,11 @@
+{
+  "id": "missing-role",
+  "evaluate": "missing-role.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "When applicable, the role of this element should be specified by using the aria role attribute."
+    }
+  }
+}

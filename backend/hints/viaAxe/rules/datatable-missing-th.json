@@ -1,0 +1,10 @@
+{
+  "id": "datatable-missing-th",
+  "selector": "table",
+  "any": ["hint-datatable-missing-th"],
+  "metadata": {
+    "description": "Ensures all <table> elements that have no aria attribute role=”presentation” but contain a <caption> element also include at least one th header cell <th>.",
+    "help": "Are there table cells, that should be identified as table headers?"
+  },
+  "tags": ["hints"]
+}

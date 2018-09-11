@@ -1,4 +1,4 @@
-// TODO: This json files should be loaded only onetime at startup of web service
+// TODO: This json files should be loaded only onetime when the service is lift up
 const baccDE = require('./bacc_de.json');
 const baccEN = require('./bacc_en.json');
 const axeDE = require('./axe_de.json');

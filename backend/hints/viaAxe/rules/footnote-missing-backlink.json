@@ -1,0 +1,10 @@
+{
+  "id": "footnote-missing-backlink",
+  "selector": "[*|type~='footnote'], [role~='doc-footnote'], [*|type~='endnote'], [role~='doc-endnote']",
+  "any": ["hint-footnote-missing-backlink"],
+  "metadata": {
+    "description": "",
+    "help": "If footnotes (elements with the attribute epub:type=”footnote” or role=”doc-footnote”) or endnotes (elements with the attribute epub:type=”endnote” or role=”doc-endnote”) do not contain a backlink (containing the aria attribute role=”backlink”)."
+  },
+  "tags": ["hints"]
+}

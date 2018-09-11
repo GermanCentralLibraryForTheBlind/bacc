@@ -1,0 +1,11 @@
+{
+    "id": "hint-poor-semantic",
+    "evaluate": "poor-semantic.js",
+    "metadata": {
+      "impact": "serious",
+      "messages": {
+        "pass": "Rich semantic",
+        "fail": "Where applicable, semantic HTML 5 elements should be used instead of non-semantic elements like <div> and <span>. Examples for semantic elements are <h1> … <h6>, <ol>, <ul>, <dl>, <caption>, <blockquote>, <code>, <em>, etc."
+        }
+      }
+}
