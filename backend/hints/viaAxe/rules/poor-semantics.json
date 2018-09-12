@@ -1,7 +1,7 @@
 {
-    "id": "poor-semantic",
+    "id": "poor-semantics",
     "selector": "body",
-    "any": ["hint-poor-semantic"],
+    "any": ["hint-poor-semantics"],
     "all": [],
     "none": [],
     "metadata": {

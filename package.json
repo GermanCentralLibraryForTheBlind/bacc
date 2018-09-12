@@ -1,6 +1,6 @@
 {
   "name": "bacc",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "BACC by DZB assist the EPUB3 production with focus on Accessibility requirements",
   "keywords": [
     "a11y",
@@ -28,7 +28,7 @@
     "build:deploy:test:amazon": "npm run build:test && npm run deploy:test:amazon",
     "build:deploy:test:dzb": "npm run build:prod && npm run deploy:test:dzb",
     "build:deploy:prod": "npm run build:prod && npm run deploy:prod",
-    "build:backend": "npm run prebuild:backend && mkdir dist/backend/hints && cp backend/hints/*.* dist/backend/hints && mkdir dist/backend/report && cp backend/report/*.* dist/backend/report && mkdir dist/backend/helper && cp backend/helper/*.* dist/backend/helper && mkdir dist/backend/report/locales && cp backend/report/locales/*.* dist/backend/report/locales && mkdir dist/backend/routes && cp backend/routes/*.* dist/backend/routes && mkdir dist/backend/report/locales/ace_patch && cp backend/*.js dist/backend && cp backend/report/locales/ace_patch/*.* dist/backend/report/locales/ace_patch && cp backend/package.json dist/backend",
+    "build:backend": "npm run prebuild:backend && rsync -ru --progress ./backend/* ./dist/backend --exclude='node_modules/' --exclude='.git/' --exclude='.idea/' --exclude='uploads/'--exclude='bacc.log' --exclude='package-lock.json' --exclude='statistics.json' --exclude='yarn.lock'",
     "build:prod": "npm run prebuild && npm run build:frontend && npm run build:backend",
     "build:test": "npm run prebuild && cd ./frontend && npm run build:test && cd .. && npm run build:backend",
     "run:backend": "node ./backend/webApi",
