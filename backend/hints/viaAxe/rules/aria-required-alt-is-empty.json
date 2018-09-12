@@ -1,7 +1,7 @@
 {
   "id": "aria-required-alt-is-empty",
   "selector": "img",
-  "any": ["hint-aria-required-alt-is-empty"],
+  "any": ["aria-required-alt-is-empty"],
   "all": [],
   "none": [],
   "metadata": {

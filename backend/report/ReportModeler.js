@@ -20,32 +20,11 @@ class Impact {
   init() {
 
     this._impacts = {
-      critical: {'name': 'critical', 'baccName': 'veryStrong', 'color': 'Red'},
-      serious: {'name': 'serious', 'baccName': 'strong', 'color': 'Orange'},
-      moderate: {'name': 'moderate', 'baccName': 'partially', 'color': 'Yellow'},
-      minor: {'name': 'minor', 'baccName': 'minor', 'color': 'GreenYellow'}
+      critical: {'name': 'critical', 'baccName': 'veryStrong', 'color': 'Red', 'level': 4},
+      serious: {'name': 'serious', 'baccName': 'strong', 'color': 'Orange', 'level': 3},
+      moderate: {'name': 'moderate', 'baccName': 'partially', 'color': 'Yellow', 'level': 2},
+      minor: {'name': 'minor', 'baccName': 'minor', 'color': 'GreenYellow', 'level': 1},
     };
-  }
-
-  getTotalAccessibilityImpactLevel(aceData) {
-
-    let iLevel = {'name': 'no', 'baccName': 'none', 'color': 'Green'}; // default no impact
-
-    const aceDataAsString = JSON.stringify(aceData);
-
-    const impactLevels = this._impacts;
-
-    for (let prop in impactLevels) {
-
-      const match = '\"' + prop + '\",';
-      // console.log(match);
-
-      if (aceDataAsString.includes(match)) {
-        iLevel = impactLevels[prop];
-        break;
-      }
-    }
-    return iLevel;
   }
 
   getAccessibilityImpactLevel(impact) {
@@ -61,6 +40,7 @@ class ReportModeler {
     this._language = lang || 'en';
     this._impacts = new Impact(lang);
     this.statistics = {};
+    this._totalAccessibilityLevel = {'name': 'no', 'baccName': 'none', 'color': 'Green', 'level': 0}; // default no impact
   }
 
   // private ???
@@ -68,14 +48,22 @@ class ReportModeler {
     this._aceData = require(this._outputPath + constants.ACE_REPORT);
   }
 
+  updateTotalAccessibilityImpactLevel(assertion) {
+
+    if (assertion["earl:test"].rulesetTags.includes('hints'))
+      return;
+
+    const impact = assertion["earl:test"]["earl:impact"];
+    const impactDefintion = this._impacts.getAccessibilityImpactLevel(impact);
+
+    if (impactDefintion.level > this._totalAccessibilityLevel.level)
+      this._totalAccessibilityLevel = impactDefintion;
+  }
+
   generateReport() {
 
-    this._totalAccessibilityLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
-
-    let reportData = {};
-
     // TODO own mapper module
-    reportData = this.getDataForReport();
+    let reportData = this.getDataForReport();
     reportData.lang = "en";
     reportData.outlines = this.setOwnOutlinesStyle(this._aceData.outlines);
     reportData.images = this._aceData.data.images;
@@ -156,7 +144,8 @@ class ReportModeler {
       for (let j in violationsInSpineItem.assertions) {
 
         let assertion = violationsInSpineItem.assertions[j];
-        // console.log('violation: ' + JSON.stringify(violation));
+
+        this.updateTotalAccessibilityImpactLevel(assertion);
 
         // assertedBy Ace or Axe or ...
         assertion['earl:test'].assertedBy = assertion['earl:assertedBy'];
@@ -170,7 +159,6 @@ class ReportModeler {
         if (assertion['earl:test'].code)
           assertion['earl:test'].code = assertion['earl:test'].code.replace('\n', '').replace(/\s+/g, ' ');
 
-        // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
         assertions.push(assertion['earl:test']);
       }
     }
@@ -199,7 +187,7 @@ class ReportModeler {
       if (item === "")
         return;
 
-      if (item.indexOf("Fix") > -1) {
+      if (item.indexOf("Fix") > -1 || item.indexOf("Korrigiere") > -1) {
         ul += ("</ul>");
         ul += item;
         ul += "<ul>";
@@ -282,7 +270,7 @@ class ReportModeler {
     });
 
     this.statistics.totalCount = bacc.groups.totalCountRules;
-     // console.log(JSON.stringify(bacc, null, '\t'));
+    // console.log(JSON.stringify(bacc, null, '\t'));
     return bacc;
   }
 

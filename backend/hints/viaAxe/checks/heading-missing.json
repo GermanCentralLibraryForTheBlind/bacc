@@ -1,5 +1,5 @@
 {
-  "id": "hint-heading-missing",
+  "id": "heading-missing",
   "evaluate": "heading-missing.js",
   "metadata": {
     "impact": "serious",

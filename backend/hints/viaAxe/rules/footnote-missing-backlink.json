@@ -1,7 +1,7 @@
 {
   "id": "footnote-missing-backlink",
   "selector": "[*|type~='footnote'], [role~='doc-footnote'], [*|type~='endnote'], [role~='doc-endnote']",
-  "any": ["hint-footnote-missing-backlink"],
+  "any": ["footnote-missing-backlink"],
   "all": [],
   "none": [],
   "metadata": {

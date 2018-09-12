@@ -1,7 +1,7 @@
 {
   "id": "heading-missing",
   "selector": "section",
-  "any": ["hint-heading-missing"],
+  "any": ["heading-missing"],
   "all": [],
   "none": [],
   "metadata": {

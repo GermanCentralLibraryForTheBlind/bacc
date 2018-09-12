@@ -1,6 +1,6 @@
 {
   "name": "bacc-backend",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Backend for BACC",
   "license": "MIT",
   "author": {
@@ -23,10 +23,9 @@
     "clear:bacc:log": "rimraf bacc.log",
     "post:deploy": "npm install && npm run reload",
     "test": "date && mocha tests --recursive",
-    "postinstall:proxy": "cd ./node_modules/ && export http_proxy=http://192.168.1.135:8080 && export https_proxy=$http_proxy && export HTTP_PROXY=$http_proxy && export HTTPS_PROXY=$http_proxy && rm -rf ace-core && git clone -b get-all-rules https://github.com/larsvoigt/ace-core && cd ace-core && lerna bootstrap && cd ../../ && npm run post:axe:locale",
+    "postinstall:proxy": "export http_proxy=http://192.168.1.135:8080 && export https_proxy=$http_proxy && export HTTP_PROXY=$http_proxy && export HTTPS_PROXY=$http_proxy && npm run postinstall",
     "postinstall": "cd ./node_modules/ && rm -rf ace-core && git clone -b get-all-rules https://github.com/larsvoigt/ace-core && cd ace-core && lerna bootstrap && cd ../../ && npm run inject:hints:to:axe && npm run post:axe:locale",
-    "post:axe:locale": "cp ./report/locales/axe_de.json ./node_modules/ace-core/node_modules/axe-core/locales/de.json && cd ./node_modules/ace-core/node_modules/axe-core/ && npm i && ./node_modules/grunt/bin/grunt build --all-lang",
-    "post:hints": "node ./hints/inject.js",
+    "post:axe:locale": "node ./locales/mergeLocalesFiles.js && cd ./node_modules/ace-core/node_modules/axe-core/ && npm i && ./node_modules/grunt/bin/grunt build --all-lang",
     "inject:hints:to:axe": "rm -rf ./node_modules/ace-core/node_modules/axe-core/lib/checks/bacc-hints && mkdir ./node_modules/ace-core/node_modules/axe-core/lib/checks/bacc-hints && cp ./hints/viaAxe/checks/* ./node_modules/ace-core/node_modules/axe-core/lib/checks/bacc-hints && rm -rf ./node_modules/ace-core/node_modules/axe-core/lib/rules/bacc-hints && mkdir ./node_modules/ace-core/node_modules/axe-core/lib/rules/bacc-hints && cp ./hints/viaAxe/rules/* ./node_modules/ace-core/node_modules/axe-core/lib/rules/bacc-hints",
     "dev:hints": "node ./node_modules/ace-core/packages/ace/bin/ace.js -o /tmp/bacc_hints ./hints/Test-E-Book_Zusatzhinweise.epub --force && node ./report/only-dev.js /tmp/bacc_hints && node ./node_modules/opn-cli/cli.js /tmp/bacc_hints/bacc_report.html"
   },

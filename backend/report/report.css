@@ -390,3 +390,10 @@ mark {
   text-align: center;
   padding-top: 4px;
 }
+
+.column-first {
+  padding-left: 20px !important;
+}
+.column-last {
+  padding-right: 30px !important;
+}

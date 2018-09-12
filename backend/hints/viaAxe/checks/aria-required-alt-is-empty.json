@@ -1,5 +1,5 @@
 {
-  "id": "hint-aria-required-alt-is-empty",
+  "id": "aria-required-alt-is-empty",
   "evaluate": "aria-required-alt-is-empty.js",
   "metadata": {
     "impact": "serious",

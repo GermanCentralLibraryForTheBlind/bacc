@@ -1,7 +1,7 @@
 {
   "id": "datatable-missing-th",
   "selector": "table",
-  "any": ["hint-datatable-missing-th"],
+  "any": ["datatable-missing-th"],
   "all": [],
   "none": [],
   "metadata": {

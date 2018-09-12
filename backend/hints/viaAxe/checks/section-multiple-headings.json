@@ -1,5 +1,5 @@
 {
-  "id": "hint-section-multiple-headings",
+  "id": "section-multiple-headings",
   "evaluate": "section-multiple-headings.js",
   "metadata": {
     "impact": "serious",

@@ -1,5 +1,5 @@
 {
-  "id": "hint-links-not-grouped",
+  "id": "links-not-grouped",
   "evaluate": "links-not-grouped.js",
   "metadata": {
     "impact": "serious",

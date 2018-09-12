@@ -1,7 +1,7 @@
 {
   "id": "section-missing",
   "selector": "body",
-  "any": ["hint-section-missing"],
+  "any": ["section-missing"],
   "all": [],
   "none": [],
   "metadata": {

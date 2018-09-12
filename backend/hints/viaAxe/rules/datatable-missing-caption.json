@@ -1,7 +1,7 @@
 {
   "id": "datatable-missing-caption",
   "selector": "table",
-  "any": ["hint-datatable-missing-caption"],
+  "any": ["datatable-missing-caption"],
   "all": [],
   "none": [],
   "metadata": {

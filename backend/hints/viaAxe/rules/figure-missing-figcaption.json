@@ -1,7 +1,7 @@
 {
   "id": "figure-missing-figcaption",
   "selector": "figure",
-  "any": ["hint-figure-missing-figcaption"],
+  "any": ["figure-missing-figcaption"],
   "all": [],
   "none": [],
   "metadata": {

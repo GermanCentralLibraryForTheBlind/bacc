@@ -1,5 +1,5 @@
 {
-  "id": "hint-epub-specific-attributes",
+  "id": "epub-specific-attributes",
   "evaluate": "epub-specific-attributes.js",
   "metadata": {
     "impact": "serious",

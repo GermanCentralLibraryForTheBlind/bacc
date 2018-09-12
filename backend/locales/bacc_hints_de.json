@@ -123,11 +123,7 @@
       "pass": "",
       "fail": "Gruppierungen von Links sollten mithilfe der Elemente <ul>, <ol> oder <dl> als Listen ausgezeichnet sein."
     },
-    "aside-missing-role": {
-      "pass": "",
-      "fail": "Wenn anwendbar, sollten die Rolle dieses Elementes mithilfe des ARIA role-Attributes näher bestimmt werden."
-    },
-    "section-missing-role": {
+    "missing-role": {
       "pass": "",
       "fail": "Wenn anwendbar, sollten die Rolle dieses Elementes mithilfe des ARIA role-Attributes näher bestimmt werden."
     }

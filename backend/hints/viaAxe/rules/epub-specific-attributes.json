@@ -1,7 +1,7 @@
 {
   "id": "epub-specific-attributes",
   "selector": "body",
-  "any": ["hint-epub-specific-attributes"],
+  "any": ["epub-specific-attributes"],
   "all": [],
   "none": [],
   "metadata": {

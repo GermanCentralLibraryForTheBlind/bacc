@@ -13,5 +13,5 @@ module.exports = Object.freeze({
   ACE_CHECKER_CHROMIUM_DEFAULT : path.join(__dirname,'ace_patch/checker-chromium.js'),
   ACE_CHECKER_CHROMIUM_DE : path.join(__dirname,'ace_patch/checker-chromium-de.js'),
   ACE_CHECKER_CHROMIUM_DEFAULT_PATH : path.join(__dirname,'node_modules/ace-core/packages/ace-core/lib/checker/checker-chromium.js'),
-
+  AXE_DE_PATH : path.join(__dirname,'node_modules/ace-core/node_modules/axe-core/locales/de.json')
 });

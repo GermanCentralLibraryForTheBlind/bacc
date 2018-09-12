@@ -1,5 +1,5 @@
 {
-  "id": "hint-figure-missing-figcaption",
+  "id": "figure-missing-figcaption",
   "evaluate": "figure-missing-figcaption.js",
   "metadata": {
     "impact": "serious",

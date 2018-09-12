@@ -1,5 +1,5 @@
 {
-  "id": "hint-section-missing",
+  "id": "section-missing",
   "evaluate": "section-missing.js",
   "metadata": {
     "impact": "serious",

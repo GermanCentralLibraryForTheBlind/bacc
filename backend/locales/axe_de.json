@@ -637,15 +637,15 @@
   },
   "failureSummaries": {
     "any": {
-      "failureMessage": "Fixe mindestens einen der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
+      "failureMessage": "Korrigiere mindestens einen der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
     },
     "none": {
-      "failureMessage": "Fixe alle der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
+      "failureMessage": "Korrigiere alle der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
     }
   },
   "incompleteFallbackMessage": {
     "undefined": {
-      "failureMessage": "Fixe alle der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
+      "failureMessage": "Korrigiere alle der folgenden Punkte:{{~it:value}}\n  {{=value.split('\\n').join('\\n  ')}}{{~}}"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": "links-not-grouped",
   "selector": "a",
-  "any": ["hint-links-not-grouped"],
+  "any": ["links-not-grouped"],
   "all": [],
   "none": [],
   "metadata": {

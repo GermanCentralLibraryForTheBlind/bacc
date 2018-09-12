@@ -1,7 +1,7 @@
 {
   "id": "heading-ranks",
   "selector": "body",
-  "any": ["hint-heading-ranks"],
+  "any": ["heading-ranks"],
   "all": [],
   "none": [],
   "metadata": {

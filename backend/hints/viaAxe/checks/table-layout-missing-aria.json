@@ -1,5 +1,5 @@
 {
-  "id": "hint-table-layout-missing-aria",
+  "id": "table-layout-missing-aria",
   "evaluate": "table-layout-missing-aria.js",
   "metadata": {
     "impact": "serious",

@@ -1,5 +1,5 @@
 {
-  "id": "hint-heading-ranks",
+  "id": "heading-ranks",
   "evaluate": "heading-ranks.js",
   "metadata": {
     "impact": "serious",

@@ -1,12 +1,16 @@
 {
-    "id": "poor-semantics",
-    "selector": "body",
-    "any": ["hint-poor-semantics"],
-    "all": [],
-    "none": [],
-    "metadata": {
-      "description": "Ensures HTML5 elements are used to mark up the content",
-      "help": "Are semantic HTML5 elements utilized to markup the content?"
-    },
-    "tags": ["hints"]
+  "id": "poor-semantics",
+  "selector": "body",
+  "any": [
+    "poor-semantics"
+  ],
+  "all": [],
+  "none": [],
+  "metadata": {
+    "description": "Ensures HTML5 elements are used to mark up the content",
+    "help": "Are semantic HTML5 elements utilized to markup the content?"
+  },
+  "tags": [
+    "hints"
+  ]
 }
