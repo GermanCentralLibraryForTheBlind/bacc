@@ -10,9 +10,9 @@
     "impact": "Einfluss auf die Zugänglichkeit",
     "help": "Weiterführende Informationen",
     "code": "Quellcode",
-    "tocEPUB": "<b>Inhaltsverzeichnis</b> <br> (EPUB-TOC)",
+    "tocEPUB": "<b>EPUB-Inhaltsverzeichnis</b> <br> (TOC)",
     "headingsOutline": "<b>HTML-Überschriftsebenen</b> <br> (&lt;h1&gt; bis &lt;h6&gt;)",
-    "htmlOutline": "<b>Struktureller Aufbau</b> <br> <small style='font-size: smaller'>(Verschachtelte Elemente: &lt;section&gt; &lt;article&gt; &lt;aside&gt; &lt;nav&gt; &lt;body&gt;)</small>",
+    "htmlOutline": "<b>Struktureller HTML-Aufbau</b> <br> <small style='font-size: smaller'>(&lt;section&gt; &lt;article&gt; &lt;aside&gt; &lt;nav&gt; &lt;body&gt;)</small>",
     "description": "Beschreibung",
     "image": "Bild",
     "location": "Bereich im Dokument",
@@ -30,7 +30,10 @@
     "metadata" : "Metadaten",
     "file" : "Datei",
     "of" : "von",
-    "hints" : "Hinweise"
+    "hints" : "Hinweise",
+    "tooltipTOC" : "Die Ansicht <i>EPUB-Inhaltsverzeichnis (TOC)</i> hilft Ihnen zu kontrollieren, ob ein Inhaltsverzeichnis vorhanden ist, das die gesamte Buchstruktur abbildet.",
+    "tooltipHeadings" : "Die Ansicht <i>HTML-Überschriftsebenen</i> hilft Ihnen zu kontrollieren, ob die Hierarchien der Überschriften logisch aufeinander aufbauen  oder ob Überschriftsebenen ausgelassen bzw. übersprungen wurden.",
+    "tooltipSections" : "Die Ansicht <i>Struktureller HTML-Aufbau</i> hilft Ihnen zu kontrollieren, ob die  hierarchische Struktur, die durch die Verschachtelung der Elemente &lt;article&gt;, &lt;aside&gt;, &lt;body&gt;, &lt;nav&gt; und &lt;section&gt; entsteht, korrekt ist und ob jedes &lt;section&gt;-Element eine Überschrift besitzt."
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

@@ -10,7 +10,7 @@
     "impact": "Impact of Accessibility",
     "help": "More help",
     "code": "Source Code",
-    "tocEPUB": "<b>EPUB Table of Contents</b> <br> (TOC)",
+    "tocEPUB": "<b>EPUB table of contents</b> <br> (TOC)",
     "headingsOutline": "<b>HTML headings</b> <br> (&lt;h1&gt; to &lt;h6&gt;)",
     "htmlOutline": "<b>Nested sections</b> <br> <small>(&lt;section&gt; &lt;article&gt; &lt;aside&gt; &lt;nav&gt; &lt;body&gt;)</small>",
     "description": "Description",
@@ -30,6 +30,9 @@
     "metadata" : "Metadata",
     "file" : "file",
     "of" : "of",
+    "tooltipTOC" : "The <i>EPUB table of contents (TOC)</i> view helps you to check whether the table of contents comprises the entire book structure.",
+    "tooltipHeadings" : "The <i>HTML headings</i> view helps you to check the hierarchy of headings and make sure skipping heading ranks only appears when semantically necessary.",
+    "tooltipSections" : "The <i>Nested sections</i> view helps you to check, whether the nesting of sectioning elements (&lt;article&gt;, &lt;aside&gt;, &lt;body&gt;, &lt;nav&gt; und &lt;section&gt;) reflects the publications hierarchy and whether every &lt;section&gt; element contains a heading. ",
     "hints" : "Hints"
   },
   "accessibilityLimitation" : {
