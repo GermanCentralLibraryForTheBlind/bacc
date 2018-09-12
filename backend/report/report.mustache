@@ -36,34 +36,31 @@
   <!-- +++++++++++++++ -->
   <input type="radio" name="tabs" id="violation" checked>
   <div class="tab-label-content">
-    <label for="violation">{{labeling.violation}}
-      {{#totalCount}}
-        <mark>{{totalCount}}</mark>
-      {{/totalCount}}
+    <label for="violation">{{labeling.violationTab}}
+      {{#groups.totalCountRules}}
+        <mark>{{groups.totalCountRules}}</mark>
+      {{/groups.totalCountRules}}
     </label>
     <div class="tab-content">
-      {{#groups.length}}
-        <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
+      {{#groups.rules.length}}
+        <div class="container" role="region" aria-label="{{labeling.dialogViolations}}">
           <div class="row">
-            <!-- +++++++++++ -->
-            <!-- violation group     -->
-            <!-- +++++++++++ -->
+            <!-- +++++++++++++++++++++++++++++ -->
+            <!-- rule violations groupBy rules -->
+            <!-- +++++++++++++++++++++++++++++ -->
             <div class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-body">
-                  <table id="template-violation-table"
-                         class="table table-striped table-hover"
-                         data-click-to-select="true"
-                         data-single-select="true">
-                    <!--<caption>{{labeling.total}}: {{totalCount}}</caption>-->
+                  <table id="template-violation-table" class="table table-striped table-hover template-table"
+                         data-click-to-select="true" data-single-select="true">
                     <thead class="thead-violations">
                     <th class="col-md-2">{{labeling.violationImpact}}</th>
-                    <th class="col-md-7">{{labeling.violation}}</th>
+                    <th class="col-md-8">{{labeling.violation}}</th>
                     <th class="col-md-4">{{labeling.guideline}}</th>
                     <th class="col-md-2">{{labeling.count}}</th>
                     </thead>
                     <tbody>
-                    <!--{{#groups}}-->
+                    <!--{{#groups.rules}}-->
                     <tr id="{{name}}">
                       <td class="col-md-2">
                         <span class="sr-only" aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
@@ -71,18 +68,18 @@
                            aria-hidden="true">accessibility</i>
                       </td>
                       <td class="col-md-7">{{name}}</td>
-                      <td class="col-md-4">{{ruleSet}}</td>
+                      <td class="col-md-3">{{ruleSet}}</td>
                       <td class="col-md-2">{{count}}</td>
                     </tr>
-                      <!--{{/groups}}-->
+                      <!--{{/groups.rules}}-->
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-            <!-- +++++++++++ -->
-            <!-- details     -->
-            <!-- +++++++++++ -->
+            <!-- ++++++++++++++++++++++++++ -->
+            <!-- details rule violations    -->
+            <!-- ++++++++++++++++++++++++++ -->
             <div class="col-md-6">
               <div id="details" class="panel panel-default">
                 <div class="panel-heading">
@@ -95,7 +92,7 @@
                             aria-label="{{labeling.detailsPrevious}}">
                       <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
                     </button>
-                    <h6 style="display: inline-block" id="pagerIndex"></h6>
+                    <h6 style="display: inline-block" id="pagerIndexViolations"></h6>
                     <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerNext" href="#"
                             aria-label="{{labeling.detailsNext}}">
                       <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
@@ -103,9 +100,9 @@
                   </nav>
                 </div>
                 <div class="panel-body">
-                <!--{{#groups}}-->
+                <!--{{#groups.rules}}-->
                   <div id="p-{{name}}" class="violation" style="display: none">
-                  <!--{{#violations}}-->
+                  <!--{{#fails}}-->
                     <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
                       <div class="panel panel-default">
                         <div class="panel-heading">
@@ -135,28 +132,141 @@
                         </div>
                       </div>
                     </div>
-                    <!--{{/violations}}-->
+                    <!--{{/fails}}-->
                   </div>
-                  <!--{{/groups}}-->
+                  <!--{{/groups.rules}}-->
                 </div>
               </div>
             </div>
           </div>
         </div>
-      {{/groups.length}}
-      <!-- +++++++++++++++ -->
-      <!--  none issues    -->
-      <!-- +++++++++++++++ -->
-      {{^groups.length}}
+      {{/groups.rules.length}}
+      {{^groups.rules.length}}
+        <!-- +++++++++++++++ -->
+        <!--  none issues    -->
+        <!-- +++++++++++++++ -->
         <div>
           <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
           <i id="total-impact-icon"
              role="img"
              aria-hidden="true"
              class="material-icons no-issues-icon"
-             style="color:{{totalAccessibilityLevel.color}};">sentiment_very_satisfied</i>
+             style="color:Green;">sentiment_very_satisfied</i>
         </div>
-      {{/groups.length}}
+      {{/groups.rules.length}}
+    </div>
+  </div>
+  <!-- +++++++++++++++ -->
+  <!-- hints tab  -->
+  <!-- +++++++++++++++ -->
+  <input type="radio" name="tabs" id="hints">
+  <div class="tab-label-content">
+    <label id="lbHintsTab" for="hints">{{labeling.hints}}{{#groups.totalCountHints}}
+      <mark>{{groups.totalCountHints}}</mark>{{/groups.totalCountHints}}
+    </label>
+    <div class="tab-content">
+      {{#groups.hints.length}}
+        <div class="container" role="region" aria-label="{{labeling.dialogViolations}}">
+          <div class="row">
+            <!-- ++++++ -->
+            <!-- hints  -->
+            <!-- ++++++ -->
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <table id="template-hints-table" class="table table-striped table-hover template-table"
+                         data-click-to-select="true" data-single-select="true">
+                    <!--<caption>{{labeling.total}}: {{totalCount}}</caption>-->
+                    <thead class="thead-violations">
+                    <th class="col column-first">{{labeling.hints}}</th>
+                    <th class="col column-last">{{labeling.count}}</th>
+                    </thead>
+                    <tbody>
+                    <!--{{#groups.hints}}-->
+                    <tr id="{{name}}">
+                      <td class="col column-first">{{name}}</td>
+                      <td class="col column-last">{{count}}</td>
+                    </tr>
+                      <!--{{/groups.hints}}-->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- ++++++++++++++++ -->
+            <!-- details hints    -->
+            <!-- ++++++++++++++++ -->
+            <div class="col-md-6">
+              <div id="details" class="panel panel-default">
+                <div class="panel-heading">
+                  <h5 class="ruleDescription"></h5>
+                  <!-- +++++++++++ -->
+                  <!-- pager -->
+                  <!-- +++++++++++ -->
+                  <nav style="margin-top: 31px" class="violation-nav" aria-label="{{labeling.vioNav}}">
+                    <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerPrev" href="#"
+                            aria-label="{{labeling.detailsPrevious}}">
+                      <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                    <h6 style="display: inline-block" id="pagerIndexHints"></h6>
+                    <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerNext" href="#"
+                            aria-label="{{labeling.detailsNext}}">
+                      <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </nav>
+                </div>
+                <div class="panel-body">
+                <!--{{#groups.hints}}-->
+                  <div id="p-{{name}}" class="violation" style="display: none">
+                  <!--{{#fails}}-->
+                    <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          {{labeling.file}}: <b><a>{{spineItem}}</a></b>
+                        </div>
+                        <div class="panel-body">
+                          <!-- +++++++++++ -->
+                          <!-- description -->
+                          <!-- +++++++++++ -->
+                          <div class="panel-body">
+                            <p><b>{{labeling.optimiseHints}}</b></p>
+                            <p>{{{shortHelp}}}</p>
+                          </div>
+                          <!-- +++++++++++ -->
+                          <!-- source code  -->
+                          <!-- +++++++++++ -->
+                          {{#code}}
+                            <div aria-labelledby="source-code">
+                              <pre style="display: inline-flex">
+                                <code class="html">{{code}}</code>
+                              </pre>
+                            </div>
+                          {{/code}}
+                          <div style="float: right">
+                            <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--{{/fails}}-->
+                  </div>
+                  <!--{{/groups.hints}}-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/groups.hints.length}}
+      {{^groups.hints.length}}
+        <!-- +++++++++++++++ -->
+        <!--  none hints    -->
+        <!-- +++++++++++++++ -->
+        <div>
+          <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
+          <i id="total-impact-icon" role="img" aria-hidden="true" class="material-icons no-issues-icon"
+             style="color:green;">sentiment_very_satisfied</i>
+        </div>
+      {{/groups.hints.length}}
     </div>
   </div>
   <!-- +++++++++++++++ -->
@@ -425,22 +535,23 @@
     prefNextBtnState();
   });
 
-  //
-  // table row mouse click
-  //
+
   $('#template-violation-table > tbody > tr').click(function () {
-    selectViolationDetails(this);
+    selectDetails(this);
   });
 
-  //
-  // table row key press
-  //
   $('#template-violation-table > tbody > tr').keypress(function (event) {
-
-    if (event.which == 13)
-      selectViolationDetails(this);
-
+    if (event.which == 13) selectDetails(this);
   });
+
+  $('#template-hints-table > tbody > tr').click(function () {
+    selectDetails(this);
+  });
+
+  $('#template-hints-table > tbody > tr').keypress(function (event) {
+    if (event.which == 13) selectDetails(this);
+  });
+
 
   setTimeout(function () {
     //
@@ -449,34 +560,47 @@
     $('#template-violation-table > tbody > tr').first().trigger('click');
   }, 500);
 
-  function selectViolationDetails(el) {
+  $('input[id="hints"]').on('click', function (e) {
+    $('#template-hints-table > tbody > tr').first().trigger('click');
+  });
 
-    $("#details").find(".violation[id]").css("display", "none");
-    $('.violation-nav').show();
+  $('input[id="violation"]').on('click', function (e) {
+    $('#template-violation-table > tbody > tr').first().trigger('click');
+  });
+
+  function selectDetails(el) {
 
     const currViolationID = '#p-' + el.id;
     vioPanel = currViolationID + ' .violation';
-    $(currViolationID).toggle();
-    $(vioPanel).hide().first().show();
 
-    $('.ruleDescription').text($(vioPanel + ':visible').attr('rule'));
+    if ($(vioPanel + ':visible').length === 0) {
+
+      $(".violation[id]").css("display", "none");
+      // $('.violation-nav').show();
+
+      $(currViolationID).toggle();
+      $(vioPanel).hide().first().show();
+
+      $('.ruleDescription').text($(vioPanel + ':visible').attr('rule'));
+
+      // hide navigation bar if only one violation occurred for current type
+      prefNextBtnState();
+
+      $('.selected').removeClass('selected');
+      $(el).addClass('selected');
+      $(el).select();
+    }
 
     const violation = el.id;
     const detailsStatus = $('#detailsStatusString').text();
 
     setStateForSR(detailsStatus.replace("${violation}", violation));
-
-    // hide navigation bar if only one violation occurred for current type
-    prefNextBtnState();
-
-    $('.selected').removeClass('selected');
-    $(el).find("i").addClass('material-icons.mat-36');
-    $(el).addClass('selected');
   }
 
   function prefNextBtnState() {
 
-    $('#pagerIndex').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
+    $('#pagerIndexViolations').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
+    $('#pagerIndexHints').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
     $('button.btnPagerPrev').prop('disabled', $(vioPanel + ':visible').prev(vioPanel).length === 0);
     $('button.btnPagerNext').prop('disabled', $(vioPanel + ':visible').next(vioPanel).length === 0);
   }
@@ -486,6 +610,26 @@
     $('#ariaLive').text(text);
   }
 
+  // $(document).ready(function () {
+  //   // User navigates table using keyboard
+  //   var currCell = $('tr').first();
+  //   $('tr').keyup((e) => {
+  //     var c = "";
+  //
+  //     if (e.which === 38) {
+  //       // Up Arrow
+  //       c = currCell.closest('tr').prev().find('td:eq(' + currCell.index() + ')');
+  //     } else if (e.which === 40) {
+  //       // Down Arrow
+  //       c = currCell.closest('tr').next().find('td:eq(' + currCell.index() + ')');
+  //     }
+  //     // If we didn't hit a boundary, update the current cell
+  //     if (c.length > 0) {
+  //       currCell = c;
+  //       currCell.focus();
+  //     }
+  //   });
+  // });
 </script>
 </body>
 </html>

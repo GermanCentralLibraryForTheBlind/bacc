@@ -1,0 +1,12 @@
+{
+  "id": "aside-missing-role",
+  "selector": "aside",
+  "any": ["missing-role"],
+  "all": [],
+  "none": [],
+  "metadata": {
+    "description": "Ensures all <aside> elements are specified by an aria role attribute",
+    "help": "Is it possible to specify the semantic of an <aside> element by an aria role attribute?"
+  },
+  "tags": ["hints"]
+}

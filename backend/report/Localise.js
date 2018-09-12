@@ -1,10 +1,10 @@
-// TODO: This json files should be loaded only onetime at startup of web service
-const baccDE = require('./bacc_de.json');
-const baccEN = require('./bacc_en.json');
-const axeDE = require('./axe_de.json');
-const aceDE = require('./ace_de.json');
+// TODO: This json files should be loaded only onetime when the service is lift up
+const baccDE = require('../locales/bacc_de.json');
+const baccEN = require('../locales/bacc_en.json');
+const axeDE = require('../locales/axe_de.json');
+const aceDE = require('../locales/ace_de.json');
 
-const logger = require('../../helper/logger');
+const logger = require('../helper/logger');
 
 // default language is english
 class Localise {
@@ -35,37 +35,45 @@ class Localise {
 
     this._data.lang = lang;
 
-    const groups = this._data.groups;
+    // console.log(JSON.stringify(this._data.groups));
+    this.translate(this._data.groups.rules);
+    this.translate(this._data.groups.hints);
+  }
+
+
+  translate(set) {
+
     let locale = axeDE;
 
-    // console.log(groups)
-    for (let i in groups) {
+    for (let j in set) {
+
       // aXe
-      if (groups[i].assertedBy === 'aXe')
+      if (set[j].assertedBy === 'aXe')
       // It is not really required to load the local axe file. Because it will be directly
       // build into axe-lib during the post install. But it is good to check that all axe rules are translated.
         locale = axeDE;
       // Ace
-      else if (groups[i].assertedBy === 'Ace')
+      else if (set[j].assertedBy === 'Ace')
         locale = aceDE;
       else
         logger.log('error', 'Rule description localisation: assertedBy not valid.');
 
+      const translatedRule = locale.rules[set[j].name];
       /* #### hack #### */
-      if (groups[i].name === "pagebreak-label" || groups[i].name === "epub-type-has-matching-role") {
-        groups[i].assertedBy = 'Ace';
+      if (set[j].name === "pagebreak-label" || set[j].name === "epub-type-has-matching-role") {
+        set[j].assertedBy = 'Ace';
         locale = aceDE;
       }
 
-      var translatedRule = locale.rules[groups[i].name]
 
       if (translatedRule == undefined) {
-        logger.log('warn', 'No translation found for rule ' + groups[i].name + ' from ' + groups[i].assertedBy);
+        logger.log('warn', 'No translation found for rule ' + set[j].name + ' from ' + set[j].assertedBy);
         continue;
       }
 
-      if (groups[i].assertedBy === 'Ace') {
-        groups[i].violations.map((obj) => {
+      if (set[j].assertedBy === 'Ace') {
+
+        set[j].fails.map((obj) => {
           obj.help['dct:description'] = translatedRule.help;
           // obj['dct:description'] = translatedRule.description;
           obj['shortHelp'] = translatedRule.optimize;
@@ -88,13 +96,13 @@ class Localise {
 
     this._data.totalAccessibilityLevel.label = locale.accessibilityLimitation[this._data.totalAccessibilityLevel.baccName];
 
-    const groups = this._data.groups;
-    for (let i in groups) {
-      if (!groups[i].impact) {
-        logger.log('warn', 'Unsupported impact identifier:' + groups[i].impact);
+    const rules = this._data.rules;
+    for (let i in rules) {
+      if (!rules[i].impact) {
+        logger.log('warn', 'Unsupported impact identifier:' + rules[i].impact);
         return;
       }
-      groups[i].impact.label = locale.accessibilityLimitation[groups[i].impact.baccName]
+      rules[i].impact.label = locale.accessibilityLimitation[rules[i].impact.baccName]
     }
   }
 

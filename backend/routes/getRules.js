@@ -6,8 +6,8 @@ const logger = require('../helper/logger');
 const constants = require('../constants');
 const RULES_FILE = 'uploads/rules.html';
 
-const axeDE = require('../report/locales/axe_de.json');
-const aceDE = require('../report/locales/ace_de.json');
+const axeDE = require('../locales/axe_de.json');
+const aceDE = require('../locales/ace_de.json');
 
 module.exports = function (req, res) {
 

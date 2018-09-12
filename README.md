@@ -41,6 +41,10 @@ TODO
 
 ## CHANGELOG 
 
+### 0.8.0 
+
+* Added rules called hints that need some additional manual checking
+
 ### 0.7.0 
 
 * Added meta data view, which signals if recommended meta data isnt set

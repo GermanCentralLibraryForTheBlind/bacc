@@ -2,6 +2,7 @@
   "labeling": {
     "greetings": "Have a good day!",
     "violation": "Violations",
+    "violationTab": "Result guidelines",
     "count": "Count",
     "outlines": "Outlines",
     "imgDescription": "Image description",
@@ -28,7 +29,8 @@
     "optimiseHints" : "Recommendations for optimisation:",
     "metadata" : "Metadata",
     "file" : "file",
-    "of" : "of"
+    "of" : "of",
+    "hints" : "Hints"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",

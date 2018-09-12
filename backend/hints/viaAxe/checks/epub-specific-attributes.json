@@ -1,0 +1,11 @@
+{
+  "id": "epub-specific-attributes",
+  "evaluate": "epub-specific-attributes.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "When applicable, epub:type attributes should be used to specify the semantic of an element. Examples for common epub:type values are footnote, endnote, toc, cover, glossary, etc."
+    }
+  }
+}

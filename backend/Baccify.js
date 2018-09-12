@@ -59,15 +59,12 @@ class Baccify {
 
   patchAceLocale(lang) {
 
-    var locale = __dirname + '/report/locales/ace_patch/checker-chromium.js';
+    var locale = constants.ACE_CHECKER_CHROMIUM_DEFAULT;
 
     if (lang === 'de')
-      locale = __dirname + '/report/locales/ace_patch/checker-chromium-de.js';
+      locale = constants.ACE_CHECKER_CHROMIUM_DE;
 
-    const dest = __dirname + '/node_modules/ace-core/packages/ace-core/lib/checker/checker-chromium.js';
-
-    fs.writeFileSync(dest, fs.readFileSync(locale));
-
+    fs.writeFileSync(constants.ACE_CHECKER_CHROMIUM_DEFAULT_PATH, fs.readFileSync(locale));
   }
 }
 

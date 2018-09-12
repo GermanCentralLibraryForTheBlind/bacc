@@ -1,0 +1,11 @@
+{
+  "id": "section-missing",
+  "evaluate": "section-missing.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "The structural hierarchy of the publication should be identified by grouping primary sections of content using (nested) <section> elements or other sectioning elements."
+    }
+  }
+}

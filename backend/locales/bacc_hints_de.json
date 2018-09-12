@@ -1,0 +1,171 @@
+{
+  "lang": "de",
+  "rules": {
+    "poor-semantics": {
+      "description": "",
+      "help": "Werden die semantischen Elemente von HTML5 ausgeschöpft, um Inhalte auszuzeichnen?"
+    },
+    "epub-specific-attributes": {
+      "description": "",
+      "help": "Werden epub:type-Attribute eingesetzt, um zusätzliche semantische Informationen anzureichern?"
+    },
+    "aria-required-alt-is-empty": {
+      "description": "",
+      "help": "Besitzen alle informativen Abbildungen einen beschreibenden Alternativtext?"
+    },
+    "table-layout-missing-aria": {
+      "description": "",
+      "help": "Sind Layouttabellen als solche gekennzeichnet?"
+    },
+    "datatable-missing-caption": {
+      "description": "",
+      "help": "Könnte der Einsatz einer Tabellenbeschriftung hilfreich sein, um den Inhalt oder Zweck der Tabelle zu beschreiben?"
+    },
+    "datatable-missing-th": {
+      "description": "",
+      "help": "Besitzt die Tabelle Überschrifts- bzw. Kopfzellen, die als solche ausgezeichnet werden können?"
+    },
+    "figure-missing-figcaption": {
+      "description": "",
+      "help": "Könnte der Einsatz einer Abbildungsbeschriftung hilfreich sein, um den Inhalt oder Zweck der Abbildung zu beschreiben?"
+    },
+    "section-missing": {
+      "description": "",
+      "help": "Wird die hierarchische Struktur der Publikation mithilfe von <section>-Elementen korrekt abgebildet?"
+    },
+    "heading-missing": {
+      "description": "",
+      "help": "Besitzt jeder Inhaltsabschnitt, bspw. jedes Kapitel, eine Überschrift (<h1> … <h6>)?"
+    },
+    "section-multiple-headings": {
+      "description": "",
+      "help": "Besitzt jeder Inhaltsabschnitt, bspw. jedes Kapitel, lediglich eine einzige Überschrift?"
+    },
+    "heading-ranks": {
+      "description": "",
+      "help": "Bilden die Überschriftsebenen die hierarchische Struktur der Publikation ab?"
+    },
+    "toc-not-represent-outline": {
+      "description": "",
+      "help": "Bildet das Inhaltsverzeichnis (TOC) die Struktur der gesamten Publikation ab?"
+    },
+    "nav-loi-missing": {
+      "description": "",
+      "help": "Könnte der Einsatz eines Abbildungsverzeichnisses zu einer verbesserten Navigation in der Publikation beitragen?"
+    },
+    "nav-lot-missing": {
+      "description": "",
+      "help": "Könnte der Einsatz eines Tabellenverzeichnisses zu einer verbesserten Navigation in der Publikation beitragen?"
+    },
+    "nav-landmarks-missing": {
+      "description": "",
+      "help": "Könnte der Einsatz von Orientierungspunkten (landmarks) zu einer verbesserten Navigation in der Publikation beitragen?"
+    },
+    "footnote-missing-backlink": {
+      "description": "",
+      "help": "Besitzen Fuß- und Endnoten einen Backlink, um die Navigation zu erleichtern?"
+    },
+    "links-not-grouped": {
+      "description": "",
+      "help": "Sollte die Gruppierung von Links als Liste ausgezeichnet werden?"
+    },
+    "duplicate-title": {
+      "description": "",
+      "help": "Sind die Dokumente der Publikation eindeutig und aussagekräftig betitelt?"
+    },
+    "aside-missing-role": {
+      "description": "",
+      "help": "Kann die Semantik des <aside>-Elementes durch die Verwendung des ARIA role-Attributes näher spezifiziert werden?"
+    },
+    "section-missing-role": {
+      "description": "",
+      "help": "Kann die Semantik des <section>-Elementes durch die Verwendung des ARIA role-Attributes näher spezifiziert werden?"
+    },
+    "epub-version": {
+      "description": "",
+      "help": "Handelt es sich bei der Publikation um ein valides EPUB3-E-Book?"
+    }
+  },
+  "checks": {
+    "poor-semantics": {
+      "pass": "",
+      "fail": "Wenn anwendbar, sollten zur Auzeichnung der Inhalte semantische HTML5-Elemente anstelle der allgemeinen Elemente <div> oder <span> verwendet werden. Beispiele für semantische Elemente sind <h1> … <h6>, <ol>, <ul>, <dl>, <caption>, <blockquote>, <code>, <em>, etc."
+    },
+    "epub-specific-attributes": {
+      "pass": "",
+      "fail": "Wenn anwendbar, sollten epub:type-Attribute verwendet werden, um die Semantik der Elemente näher zu bestimmen. Beispiele für häufig vorkommende epub:type-Werte sind footnote, endnote, toc, cover, glossary, etc."
+    },
+    "aria-required-alt-is-empty": {
+      "pass": "",
+      "fail": "Das alt-Attribut einer Abbildung sollte nur dann leer sein, wenn es sich um eine rein dekorative Abbildung ohne Informationsgehalt handelt. Dekorative Abbildungen sollten mithilfe des ARIA-Attributes role=”presentation” gekennzeichnet sein."
+    },
+    "table-layout-missing-aria": {
+      "pass": "",
+      "fail": "Layouttabellen sollten mithilfe des ARIA-Attributes role=”presentation” gekennzeichnet werden. Datentabellen sollten semantisches Tabellen-Markup, wie bspw. <th>-Elemente, besitzen sowie eine Tabellenbeschriftung, die mithilfe des <caption>-Elementes ausgezeichnet ist."
+    },
+    "datatable-missing-caption": {
+      "pass": "",
+      "fail": "Der Einsatz einer Tabellenbeschriftung bzw. Tabellenüberschrift erleichtert es, den Inhalt oder Zweck einer Tabelle verständlich zu machen. Eine Tabellenüberschrift sollte mithilfe des <caption>-Elementes ausgezeichnet sein."
+    },
+    "datatable-missing-th": {
+      "pass": "",
+      "fail": "Datentabellen sollten eine oder mehrere Kopfzellen besitzen, die als Überschriften für die Datenzellen der Tabelle fungieren. Die Überschrifts- bzw. Kopfzellen sollten mithilfe des <th>-Elementes ausgezeichnet sein."
+    },
+    "figure-missing-figcaption": {
+      "pass": "",
+      "fail": "Der Einsatz einer Abbildungsbeschriftung, bspw. In Form einer Abbildungsüber- oder unterschrift, erleichtert es, den Inhalt oder Zweck der Abbildung verständlich zu machen. Eine Abbildungsbeschriftung sollte mithilfe des <figcaption>-Elementes ausgezeichnet sein."
+    },
+    "section-missing": {
+      "pass": "",
+      "fail": "Um die hierarchische Struktur der Publikation abzubilden, sollten (verschachtelte) <section>-Elemente oder anderer Sectioning-Elemente zur Auszeichnung primärer Inhalte verwendet werden."
+    },
+    "heading-missing": {
+      "pass": "",
+      "fail": "Jedes <section>-Element sollte eine Überschrift (<h1> … <h6>) besitzen."
+    },
+    "section-multiple-headings": {
+      "pass": "",
+      "fail": "Jedes <section>-Element sollte lediglich eine Überschrift (<h1> … <h6>) besitzen. Unterkapitel mit einer neuen Überschrift sollten innerhalb eines  untergeordneten <section>-Elementes (oder innerhalb eines anderen Sectioning-Elementes) stehen. Untertitel, die zu einer Überschrift gehören, sollten nicht durch ein separates Überschriftenelement <h1> ... <h6> ausgezeichnet sein."
+    },
+    "heading-ranks": {
+      "pass": "",
+      "fail": "Das Überspringen bzw. Auslassen von Überschriftsebenen sollte wenn möglich vermieden werden und nur erfolgen, wenn semantisch begründet."
+    },
+    "toc-not-represent-outline": {
+      "pass": "",
+      "fail": "Das Inhaltsverzeichnis (TOC) im Navigationsdokument sollte die gesamte Buchstruktur abbilden. Das bedeutet, jedes Inhaltsdokument sollte über mindestens einen Eintrag im Inhaltsverzeichnis (TOC) erreichbar sein"
+    },
+    "nav-loi-missing": {
+      "pass": "",
+      "fail": "Abbildungsverzeichnisse können helfen, die Navigation in der Publikation zu erleichtern. Abbildungsverzeichnisse sollten mithilfe des Attributes epub:type=”loi” gekennzeichnet sein."
+    },
+    "nav-lot-missing": {
+      "pass": "",
+      "fail": "Tabellenverzeichnisse können helfen, die Navigation in der Publikation zu erleichtern. Tabellenverzeichnisse sollten mithilfe des Attributes epub:type=”lot” gekennzeichnet sein."
+    },
+    "nav-landmarks-missing": {
+      "pass": "",
+      "fail": "Die Publikation sollte Orientierungspunkte (Landmarks) besitzen, um die Navigation zu erleichtern. Die Landmarks-Navigation sollte mithilfe des Elementes <nav epub:type=”landmarks”> im Navigationsdokument der Publikation ausgezeichnet sein."
+    },
+    "footnote-missing-backlink": {
+      "pass": "",
+      "fail": "Fuß- und Endnoten sollten einen Backlink enthalten, der zurück zum Fußnotenzeiger führt. Der Backlink sollte mithilfe des ARIA-Attributes role=”doc-backlink” ausgezeichnet sein."
+    },
+    "links-not-grouped": {
+      "pass": "",
+      "fail": "Gruppierungen von Links sollten mithilfe der Elemente <ul>, <ol> oder <dl> als Listen ausgezeichnet sein."
+    },
+    "duplicate-title": {
+      "pass": "",
+      "fail": "Sämtliche Dokumente der Publikation sollten einen aussagekräftig und eindeutig Titel haben, der mithilfe des <title>-Elementes ausgezeichnet ist. Ein und derselbe Titel sollte nicht für mehrere Dokumente verwendet werden."
+    },
+    "missing-role": {
+      "pass": "",
+      "fail": "Wenn anwendbar, sollten die Rolle dieses Elementes mithilfe des ARIA role-Attributes näher bestimmt werden."
+    },
+    "epub-version": {
+      "pass": "",
+      "fail": "Anstelle von EPUB2 sollte das Format in der Version EPUB3 verwendet werden. Das E-Book sollte valide sein."
+    }
+  }
+}

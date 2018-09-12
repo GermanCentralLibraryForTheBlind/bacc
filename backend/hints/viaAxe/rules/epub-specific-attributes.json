@@ -1,0 +1,12 @@
+{
+  "id": "epub-specific-attributes",
+  "selector": "body",
+  "any": ["epub-specific-attributes"],
+  "all": [],
+  "none": [],
+  "metadata": {
+    "description": "Ensures epub:type attributes are used to provide additional semantic information",
+    "help": "Are epub:type attributes utilized to provide additional semantic information?"
+  },
+  "tags": ["hints"]
+}

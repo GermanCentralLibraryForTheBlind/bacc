@@ -2,6 +2,7 @@
   "labeling": {
     "greetings": "Have a good day!",
     "violation": "Fehlgeschlagene Regeln",
+    "violationTab": "Prüfergebnis Richtlinien",
     "count": "Anzahl",
     "outlines": "Struktur des Buches",
     "imgDescription": "Bildbeschreibungen",
@@ -28,7 +29,8 @@
     "optimiseHints" : "Optimierungshinweise:",
     "metadata" : "Metadaten",
     "file" : "Datei",
-    "of" : "von"
+    "of" : "von",
+    "hints" : "Hinweise"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

@@ -73,19 +73,24 @@ input[type="radio"][name="tabs"]:checked + .tab-label-content .tab-content {
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(1):checked ~ .slide {
-  left: calc((100% / 4) * 0); /* tab count */
+  left: calc((100% / 5) * 0); /* tab count */
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(2):checked ~ .slide {
-  left: calc((100% / 4) * 1); /* tab count */
+  left: calc((100% / 5) * 1); /* tab count */
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(3):checked ~ .slide {
-  left: calc((100% / 4) * 2); /* tab count */
+  left: calc((100% / 5) * 2); /* tab count */
 }
 
 input[type="radio"][name="tabs"]:nth-of-type(4):checked ~ .slide {
-  left: calc((100% / 4) * 3); /* tab count */
+  left: calc((100% / 5) * 3); /* tab count */
+
+}
+
+input[type="radio"][name="tabs"]:nth-of-type(5):checked ~ .slide {
+  left: calc((100% / 5) * 4); /* tab count */
 
 }
 
@@ -116,7 +121,7 @@ label {
 
 .slide {
   background: #ffeb3b;
-  width: calc(100% / 4); /* tab count */
+  width: calc(100% / 5); /* tab count */
   height: 1px;
   position: absolute;
   left: 0;
@@ -278,41 +283,33 @@ code {
   background-color: rgba(0, 0, 0, 0.54);
 }
 
-.violation-container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
-#template-violation-table {
+.template-table {
   caption-side: bottom;
 }
 
-#template-violation-table > thead {
+.template-table > thead {
   width: 100%;
 }
 
-#template-violation-table > tbody {
+.template-table > tbody {
   height: 300px;
   overflow-y: auto;
   width: 100%;
 }
 
-#template-violation-table > thead,
-#template-violation-table > tbody,
-#template-violation-table > tr,
-#template-violation-table > td,
-#template-violation-table > th {
+.template-table > thead,
+.template-table > tbody,
+.template-table > tr,
+.template-table > td,
+.template-table > th {
   display: block;
 }
 
-#template-violation-table > tbody td,
-#template-violation-table > thead > tr > th {
+.template-table > tbody td,
+.template-table > thead > tr > th {
   border-bottom-width: 0;
 }
 
-#template-violation-table caption {
-  margin-top: 30px;
-}
 
 /*
 code style
@@ -392,4 +389,11 @@ mark {
   font-weight: 700;
   text-align: center;
   padding-top: 4px;
+}
+
+.column-first {
+  padding-left: 20px !important;
+}
+.column-last {
+  padding-right: 30px !important;
 }

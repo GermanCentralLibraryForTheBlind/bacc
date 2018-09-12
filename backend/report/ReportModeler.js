@@ -5,7 +5,7 @@ const path = require('path');
 const _ = require('underscore');
 
 const logger = require('../helper/logger');
-const Localise = require('./locales/Localise');
+const Localise = require('./Localise');
 const constants = require('../constants');
 const util = require('../helper/util');
 
@@ -20,32 +20,11 @@ class Impact {
   init() {
 
     this._impacts = {
-      critical: {'name': 'critical', 'baccName': 'veryStrong', 'color': 'Red'},
-      serious: {'name': 'serious', 'baccName': 'strong', 'color': 'Orange'},
-      moderate: {'name': 'moderate', 'baccName': 'partially', 'color': 'Yellow'},
-      minor: {'name': 'minor', 'baccName': 'minor', 'color': 'GreenYellow'}
+      critical: {'name': 'critical', 'baccName': 'veryStrong', 'color': 'Red', 'level': 4},
+      serious: {'name': 'serious', 'baccName': 'strong', 'color': 'Orange', 'level': 3},
+      moderate: {'name': 'moderate', 'baccName': 'partially', 'color': 'Yellow', 'level': 2},
+      minor: {'name': 'minor', 'baccName': 'minor', 'color': 'GreenYellow', 'level': 1},
     };
-  }
-
-  getTotalAccessibilityImpactLevel(aceData) {
-
-    let iLevel = {'name': 'no', 'baccName': 'none', 'color': 'Green'}; // default no impact
-
-    const aceDataAsString = JSON.stringify(aceData);
-
-    const impactLevels = this._impacts;
-
-    for (let prop in impactLevels) {
-
-      const match = '\"' + prop + '\",';
-      // console.log(match);
-
-      if (aceDataAsString.includes(match)) {
-        iLevel = impactLevels[prop];
-        break;
-      }
-    }
-    return iLevel;
   }
 
   getAccessibilityImpactLevel(impact) {
@@ -61,6 +40,7 @@ class ReportModeler {
     this._language = lang || 'en';
     this._impacts = new Impact(lang);
     this.statistics = {};
+    this._totalAccessibilityLevel = {'name': 'no', 'baccName': 'none', 'color': 'Green', 'level': 0}; // default no impact
   }
 
   // private ???
@@ -68,14 +48,22 @@ class ReportModeler {
     this._aceData = require(this._outputPath + constants.ACE_REPORT);
   }
 
+  updateTotalAccessibilityImpactLevel(assertion) {
+
+    if (assertion["earl:test"].rulesetTags.includes('hints'))
+      return;
+
+    const impact = assertion["earl:test"]["earl:impact"];
+    const impactDefintion = this._impacts.getAccessibilityImpactLevel(impact);
+
+    if (impactDefintion.level > this._totalAccessibilityLevel.level)
+      this._totalAccessibilityLevel = impactDefintion;
+  }
+
   generateReport() {
 
-    this._totalAccessibilityLevel = this._impacts.getTotalAccessibilityImpactLevel(this._aceData);
-
-    let reportData = {};
-
     // TODO own mapper module
-    reportData = this.getBACCReportData();
+    let reportData = this.getDataForReport();
     reportData.lang = "en";
     reportData.outlines = this.setOwnOutlinesStyle(this._aceData.outlines);
     reportData.images = this._aceData.data.images;
@@ -141,9 +129,9 @@ class ReportModeler {
 //       }
 //     ]
 //   }
-  getBACCReportData() {
+  getDataForReport() {
 
-    let violations = [];
+    let assertions = [];
 
     const violationsGroupedBySpineItem = this._aceData.assertions;
 
@@ -155,27 +143,26 @@ class ReportModeler {
 
       for (let j in violationsInSpineItem.assertions) {
 
-        let violation = violationsInSpineItem.assertions[j];
-        // console.log('violation: ' + JSON.stringify(violation));
+        let assertion = violationsInSpineItem.assertions[j];
+
+        this.updateTotalAccessibilityImpactLevel(assertion);
 
         // assertedBy Ace or Axe or ...
-        violation['earl:test'].assertedBy = violation['earl:assertedBy'];
-        // console.log(JSON.stringify(violation['earl:test']));
-        if (violation['earl:test'].assertedBy === 'Ace')
-          violation['earl:test'].help['dct:description'] = violation['earl:test']['dct:description'];
+        assertion['earl:test'].assertedBy = assertion['earl:assertedBy'];
+        if (assertion['earl:test'].assertedBy === 'Ace')
+          assertion['earl:test'].help['dct:description'] = assertion['earl:test']['dct:description'];
 
-        violation['earl:test'].shortHelp = this.formatHelp(violation['earl:result']['dct:description']);
-        violation['earl:test'].spineItem = spineItem;
+        assertion['earl:test'].shortHelp = this.formatHelp(assertion['earl:result']['dct:description']);
+        assertion['earl:test'].spineItem = spineItem;
 
-        violation['earl:test'].code = violation['earl:result']['html'];
-        if (violation['earl:test'].code)
-          violation['earl:test'].code = violation['earl:test'].code.replace('\n', '').replace(/\s+/g, ' ');
+        assertion['earl:test'].code = assertion['earl:result']['html'];
+        if (assertion['earl:test'].code)
+          assertion['earl:test'].code = assertion['earl:test'].code.replace('\n', '').replace(/\s+/g, ' ');
 
-        // console.log('assertedBy: ' + violation['earl:test'].assertedBy);
-        violations.push(violation['earl:test']);
+        assertions.push(assertion['earl:test']);
       }
     }
-    return this.groupViolationsAndMapToBacc(violations);
+    return this.aceBaccMapping(assertions);
   }
 
   formatHelp(help) {
@@ -200,7 +187,7 @@ class ReportModeler {
       if (item === "")
         return;
 
-      if (item.indexOf("Fix") > -1) {
+      if (item.indexOf("Fix") > -1 || item.indexOf("Korrigiere") > -1) {
         ul += ("</ul>");
         ul += item;
         ul += "<ul>";
@@ -220,68 +207,86 @@ class ReportModeler {
     return found.length > 0 ? guidelineTags[found] : tag.join();
   }
 
-  groupViolationsAndMapToBacc(violations) {
 
-    let groupedByViolation = _.groupBy(violations, 'dct:title');
+  aceBaccMapping(results) {
+
+    /*
+    To get an better data overview all assertions are grouped by rule
+    */
+    let groupedByTitle = _.groupBy(results, 'dct:title');
 
     // console.log(JSON.stringify(groupedByViolation, null, '\t'));
 
-    let baccData = {};
-    this.statistics.checkDate = baccData.checkDate = this._aceData['dct:date'];
-    this.statistics.fileName = baccData.fileName = this._aceData['earl:testSubject'].url;
-    this.statistics.metaData = baccData.metaData = this._aceData['earl:testSubject'].metadata;
+    let bacc = {};
+    this.statistics.checkDate = bacc.checkDate = this._aceData['dct:date'];
+    this.statistics.fileName = bacc.fileName = this._aceData['earl:testSubject'].url;
+    this.statistics.metaData = bacc.metaData = this._aceData['earl:testSubject'].metadata;
+    this.statistics.impact = bacc.totalAccessibilityLevel = this._totalAccessibilityLevel;
 
-    this.statistics.title = baccData.metaData['dc:title'];
-    baccData.totalCount = 0;
-    baccData.groups = [];
-    this.statistics.impact = baccData.totalAccessibilityLevel = this._totalAccessibilityLevel;
+    this.statistics.title = bacc.metaData['dc:title'];
 
-    _(groupedByViolation).each((elem, key) => {
+    bacc.groups = {};
+    bacc.groups.rules = [];
+    bacc.groups.hints = [];
+    bacc.groups.totalCountRules = 0;
+    bacc.groups.totalCountHints = 0;
+
+
+    _(groupedByTitle).each((elem, key) => {
 
       // console.log(elem);
-      let group = {};
+      let rule = {};
 
       if (elem.length == 0) {
         logger.log('error', 'Found no violations in group!');
         return;
       }
       // name of rule
-      group.name = key;
-      // grouped violations
-      group.violations = elem;
-      group.impact = this._impacts.getAccessibilityImpactLevel(elem[0]['earl:impact']);
+      rule.name = key;
+      // grouped assertions
+      rule.fails = elem;
+      rule.impact = this._impacts.getAccessibilityImpactLevel(elem[0]['earl:impact']);
       // engine axe or ace
-      group.assertedBy = elem[0].assertedBy;
+      rule.assertedBy = elem[0].assertedBy;
       // add index
-      group.violations.map(function (vio, i) {
+      rule.fails.map(function (vio, i) {
         vio.index = i + 1
         // attention violation counter start on 1
       });
-      // total count of violation type
-      group.count = group.violations.length;
+      // total count of rule fails
+      rule.count = rule.fails.length;
       // add guideline
       const that = this;
+      rule.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
 
-      group.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
-      // total count of all violation
-      baccData.totalCount += group.count;
-
-      baccData.groups.push(group);
+      if (rule.ruleSet === 'hints') {
+        bacc.groups.totalCountHints += rule.count;
+        bacc.groups.hints.push(rule);
+      } else {
+        bacc.groups.totalCountRules += rule.count;
+        bacc.groups.rules.push(rule);
+      }
       // todo: delete 'dct:title'
     });
 
-    this.statistics.totalCount = baccData.totalCount;
-    // console.log(JSON.stringify(baccData, null, '\t'));
-    return baccData;
+    this.statistics.totalCount = bacc.groups.totalCountRules;
+    // console.log(JSON.stringify(bacc, null, '\t'));
+    return bacc;
   }
 
   // mv report style to upload folder
   copyReportStyle() {
     try {
-      fsExtra.copySync(
-        path.resolve(__dirname, constants.REPORT_SYTLE),
-        path.join(this._outputPath, '../' + constants.REPORT_SYTLE)
-      );
+
+
+      const source = path.resolve(__dirname, constants.REPORT_SYTLE);
+      const dist = path.join(this._outputPath, '../' + constants.REPORT_SYTLE);
+
+      console.log('source ' + source);
+      console.log('dist ' + dist);
+
+      fsExtra.copySync(source, dist);
+
     } catch (err) {
       logger.log('error', err);
     }

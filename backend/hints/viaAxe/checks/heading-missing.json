@@ -1,0 +1,11 @@
+{
+  "id": "heading-missing",
+  "evaluate": "heading-missing.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Every <section> element should include a heading (<h1> … <h6>)."
+    }
+  }
+}
