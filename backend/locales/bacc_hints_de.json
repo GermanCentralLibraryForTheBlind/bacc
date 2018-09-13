@@ -113,11 +113,11 @@
     },
     "figure-missing-figcaption": {
       "pass": "",
-      "fail": "Der Einsatz einer Abbildungsbeschriftung, bspw. In Form einer Abbildungsüber- oder unterschrift, erleichtert es, den Inhalt oder Zweck der Abbildung verständlich zu machen. Eine Abbildungsbeschriftung sollte mithilfe des <figcaption>-Elementes ausgezeichnet sein."
+      "fail": "Der Einsatz einer Abbildungsbeschriftung, bspw. in Form einer Abbildungsüber- oder unterschrift, erleichtert es, den Inhalt oder Zweck der Abbildung verständlich zu machen. Eine Abbildungsbeschriftung sollte mithilfe des <figcaption>-Elementes ausgezeichnet sein."
     },
     "section-missing": {
       "pass": "",
-      "fail": "Um die hierarchische Struktur der Publikation abzubilden, sollten (verschachtelte) <section>-Elemente oder anderer Sectioning-Elemente zur Auszeichnung primärer Inhalte verwendet werden."
+      "fail": "Um die hierarchische Struktur der Publikation abzubilden, sollten (verschachtelte) <section>-Elemente oder andere Sectioning-Elemente zur Auszeichnung primärer Inhalte verwendet werden."
     },
     "heading-missing": {
       "pass": "",
@@ -161,7 +161,7 @@
     },
     "missing-role": {
       "pass": "",
-      "fail": "Wenn anwendbar, sollten die Rolle dieses Elementes mithilfe des ARIA role-Attributes näher bestimmt werden."
+      "fail": "Wenn anwendbar, sollte die Rolle dieses Elementes mithilfe des ARIA role-Attributes näher bestimmt werden."
     },
     "epub-version": {
       "pass": "",
