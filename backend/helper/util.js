@@ -21,12 +21,12 @@ Util.ensureUploadDirExists = (path) => {
   }
 };
 
-Util.setCheckFinishedFlag = (workingPath, epubFileName) => {
-  fs.writeFileSync(path.join(workingPath, constants.SUCCEEDED_FLAG), epubFileName, 'utf8');
+Util.setCheckProgressState = (workingPath, state) => {
+  fs.writeFileSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE), JSON.stringify(state), 'utf8');
 };
 
 Util.isReadyState = (workingPath) => {
-  return fs.existsSync(path.join(workingPath, constants.SUCCEEDED_FLAG))
+  return fs.existsSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE)) // TODO:
 };
 
 Util.addToStatistics = (task) => {

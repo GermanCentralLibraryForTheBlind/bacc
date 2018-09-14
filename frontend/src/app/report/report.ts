@@ -2,10 +2,11 @@ import {Component, ViewChild, Input, ElementRef, Inject} from '@angular/core';
 import {Report, ReportService} from "./report.service";
 import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
+import {CheckStateService} from "../check-over/check.state.service";
 import {FileItem} from 'ng2-file-upload';
 import {AlertsService} from "@jaspero/ng2-alerts";
 
-import * as jsPDF from 'jspdf';
+// import * as jsPDF from 'jspdf';
 
 import {Accessibility} from "../accessibility";
 import {TranslateService} from "@ngx-translate/core";
@@ -36,7 +37,8 @@ export class ReportComponent {
               private sanitizer: DomSanitizer,
               private checkOverService: CheckOverService,
               private alert: AlertsService,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private checkStateService: CheckStateService) {
 
     this.btnReportEnabled = false;
     this.btnReportAnimated = false;
@@ -61,7 +63,7 @@ export class ReportComponent {
 
   private afterSuccessfulUpload(response: string, item: FileItem): any {
 
-    console.log('afterSuccessfulUpload');
+    // console.log('afterSuccessfulUpload');
 
     const responseData = JSON.parse(response);
     const uploadID = responseData.uploadID;
@@ -74,16 +76,22 @@ export class ReportComponent {
     this.checkOverService.runCheck(uploadID)
       .then(response => {
 
-        const report = JSON.parse(response);
-        this.reportService.add(new Report(responseData.name, uploadID, report.path));
-        // console.log('btnID: ' + this.btnId);
-        this.afterSuccessfulCheck(item, report);
+        this.checkStateService.checkState(response).then(response => {
+
+          const report = JSON.parse(response);
+          this.reportService.add(new Report(responseData.name, uploadID, report.path));
+          // console.log('btnID: ' + this.btnId);
+          this.afterSuccessfulCheck(item, report);
+
+        }).catch(err => {
+              this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred:  ' + err);
+              console.error('An error occurred:  ' + err);
+            }
+          );
       })
       .catch(err => {
-          this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred:  ' + err);
-          console.error('An error occurred:  ' + err);
-        }
-      );
+        console.error('An error occurred:  ' + err);
+      });
   }
 
   showReport(): void {
@@ -117,7 +125,7 @@ export class ReportComponent {
         let onElement = document.getElementById(this.btnId);
 
         setTimeout(() => {
-          console.log(onElement);
+          // console.log(onElement);
           onElement.focus();
         }, 500)
       });
@@ -134,7 +142,7 @@ export class ReportComponent {
     if (this.reportUrl) {
       $("#" + this.reportId).modal('show');
 
-      const id = 'reportIframe-' +  this.reportId;
+      const id = 'reportIframe-' + this.reportId;
 
       $("#" + id).contents().find(".header-title").remove();
 
@@ -151,19 +159,19 @@ export class ReportComponent {
     }
   }
 
-  saveAsPDF() {
-
-    let pdf = new jsPDF('p', 'pt', 'a4');
-    pdf.text(20, 20, 'BACC Report');
-    pdf.fromHTML(this.iframe.nativeElement.contentDocument.body, 15, 15, {
-        'width': 180
-      },
-      (dispose) => {
-        // dispose: object with X, Y of the last line add to the PDF
-        //          this allow the insertion of new lines after html
-        pdf.save('Test.pdf');
-      });
-  }
+  // saveAsPDF() {
+  //
+  //   let pdf = new jsPDF('p', 'pt', 'a4');
+  //   pdf.text(20, 20, 'BACC Report');
+  //   pdf.fromHTML(this.iframe.nativeElement.contentDocument.body, 15, 15, {
+  //       'width': 180
+  //     },
+  //     (dispose) => {
+  //       // dispose: object with X, Y of the last line add to the PDF
+  //       //          this allow the insertion of new lines after html
+  //       pdf.save('Test.pdf');
+  //     });
+  // }
 }
 
 

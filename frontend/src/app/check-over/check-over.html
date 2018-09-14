@@ -59,13 +59,8 @@
             </td>
             <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
             <td>
-              <mat-progress-bar
-                mode="buffer"
-                [value]="item?.progressValue"
-                [bufferValue]="item.progress"
-                class="custom-progressbar"
-                aria-valuemin="0"
-                aria-valuemax="100">
+              <mat-progress-bar [mode]="checkOverService.mode" [value]="item?.progressValue" [bufferValue]="item.progress"
+                                class="custom-progressbar">
               </mat-progress-bar>
             </td>
             <td nowrap>

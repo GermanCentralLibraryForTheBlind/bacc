@@ -281,9 +281,8 @@ class ReportModeler {
 
       const source = path.resolve(__dirname, constants.REPORT_SYTLE);
       const dist = path.join(this._outputPath, '../' + constants.REPORT_SYTLE);
-
-      console.log('source ' + source);
-      console.log('dist ' + dist);
+      // console.log('source ' + source);
+      // console.log('dist ' + dist);
 
       fsExtra.copySync(source, dist);
 

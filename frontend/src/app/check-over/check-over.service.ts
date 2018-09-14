@@ -12,12 +12,14 @@ export class CheckOverService {
 
   private WEB_API_CHECKOVER: string = '/checkover';
   public checkoverReady: boolean = false;
+  public mode:string = "determinate";
 
   constructor(private http: HttpClient, private translate: TranslateService) {}
 
   runCheck(uploadID: string): Promise<any> {
 
     this.checkoverReady = false;
+    this.mode = "indeterminate";
 
     let params = new HttpParams()
       .set('uploadID', uploadID)
@@ -25,7 +27,7 @@ export class CheckOverService {
 
     return this.http.get(this.WEB_API_CHECKOVER, {responseType: 'text', params: params})
       .toPromise()
-      .then(response => {this.checkoverReady = true; return response;} )
+      .then(response => {return response;} )
       .catch(this.handleError);
   }
 

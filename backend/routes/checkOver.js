@@ -21,6 +21,7 @@ module.exports = function (req, res) {
   }
   const lang = req.query['lang'];
   const workingPath = path.join(constants.UPLOAD_DIR, uploadID);
+  Util.setCheckProgressState(workingPath, {state:'inProgress'});
 
   getEPUBPath(workingPath).then(epubFile => {
 
@@ -51,11 +52,10 @@ module.exports = function (req, res) {
             sendTaskInfo(epubFile, report.path);
 
           // Util.writeRequestAddressToStatistics(req);
-          Util.setCheckFinishedFlag(workingPath, epubFile);
+          report.state = 'ready';
+          Util.setCheckProgressState(workingPath, report);
 
-          return res.json(report);
-
-        }, 1000);
+        }, 100);
       })
       .catch((err) => {
 
@@ -64,7 +64,7 @@ module.exports = function (req, res) {
           sendTaskInfo(epubFile);
         logger.log('error', 'Baccify stopped with errors ...');
         logger.log('error', err);
-        return res.status(500).send(err.stderr);
+        Util.setCheckProgressState(workingPath, {state:'error', msg: err.stderr});
       });
   });
 
@@ -112,4 +112,7 @@ module.exports = function (req, res) {
 
     }
   }
+
+  const statePath = Util.setHost(req, workingPath + '/' + constants.CHECK_PROGRESS_STATE_FILE);
+  return res.status(200).send(statePath);
 };

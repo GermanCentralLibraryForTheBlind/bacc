@@ -12,6 +12,7 @@ import {MarkdownModule} from 'angular2-markdown';
 import {PopoverModule} from 'ngx-popover';
 import {NgModule} from '@angular/core';
 
+import {CheckStateService} from './check-over/check.state.service';
 import {CheckOverService} from './check-over/check-over.service';
 import {HintOfficialComponent} from './hintOfficialVersion';
 import {CheckOverComponent} from './check-over/check-over';
@@ -77,7 +78,8 @@ const translateConfig: TranslateModuleConfig = {
   providers: [
     UploadService,
     CheckOverService,
-    ReportService
+    ReportService,
+    CheckStateService
   ],
   bootstrap: [AppComponent]
 })

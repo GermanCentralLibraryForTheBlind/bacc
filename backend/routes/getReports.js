@@ -34,7 +34,7 @@ module.exports = function (req, res) {
 
       if (util.isReadyState(workingPath)) {
 
-        const fileName = fs.readFileSync(path.join(workingPath, constants.SUCCEEDED_FLAG)).toString();
+        const fileName = fs.readFileSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE)).toString();
         try {
 
           const reportPath = makeReportPath(temp, fileName);

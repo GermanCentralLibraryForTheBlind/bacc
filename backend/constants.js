@@ -3,7 +3,7 @@ const temp = path.join(process.cwd(), 'uploads');
 
 module.exports = Object.freeze({
   ACE: path.join(__dirname, './node_modules/ace-core/packages/ace/bin/ace.js'),
-  SUCCEEDED_FLAG : 'succeeded.txt',
+  CHECK_PROGRESS_STATE_FILE : 'progress_state.json',
   STATISTICS : path.join(process.cwd(), 'statistics.json'),
   UPLOAD_DIR : temp,
   REPORT_SYTLE : 'report.css',
