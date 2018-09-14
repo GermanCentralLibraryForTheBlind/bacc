@@ -1,11 +1,19 @@
-import procedure
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {AlertsService} from "@jaspero/ng2-alerts";
+import {Observable} from "rxjs/Rx";
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import {CheckOverService} from "./check-over.service";
 
 
 @Injectable()
 export class CheckStateService {
 
   private timeOut = false;
-  private POLLING_INTERVAL = 1500; // in millisecoinsteadprivate TIME_OUT = 5 * 60 * 1000; // 5min
+  private POLLING_INTERVAL = 1500; // in milliseconds
+  private TIME_OUT = 5 * 60 * 1000; // 5min
 
   constructor(private http: HttpClient, private checkOverService: CheckOverService, private alert: AlertsService) {
   }
