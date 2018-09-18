@@ -34,7 +34,8 @@
     "tooltipTOC" : "Die Ansicht <i>EPUB-Inhaltsverzeichnis (TOC)</i> hilft Ihnen zu kontrollieren, ob ein Inhaltsverzeichnis vorhanden ist, das die gesamte Buchstruktur abbildet.",
     "tooltipHeadings" : "Die Ansicht <i>HTML-Überschriftsebenen</i> hilft Ihnen zu kontrollieren, ob die Hierarchien der Überschriften logisch aufeinander aufbauen  oder ob Überschriftsebenen ausgelassen bzw. übersprungen wurden.",
     "tooltipSections" : "Die Ansicht <i>Struktureller HTML-Aufbau</i> hilft Ihnen zu kontrollieren, ob die  hierarchische Struktur, die durch die Verschachtelung der Elemente &lt;article&gt;, &lt;aside&gt;, &lt;body&gt;, &lt;nav&gt; und &lt;section&gt; entsteht, korrekt ist und ob jedes &lt;section&gt;-Element eine Überschrift besitzt.",
-    "tooltipHints" : "Die zusätzlichen Hinweise helfen Ihnen, die Zugänglichkeit Ihrer EPUB-Publikation weiter zu optimieren. Anders als die fehlgeschlagenen Regeln erfordern die Hinweise eine manuelle Überprüfung und fließen nicht in die Gesamtwertung mit ein."
+    "tooltipHints" : "Die zusätzlichen Hinweise helfen Ihnen, die Zugänglichkeit Ihrer EPUB-Publikation weiter zu optimieren. Anders als die fehlgeschlagenen Regeln erfordern die Hinweise eine manuelle Überprüfung und fließen nicht in die Gesamtwertung mit ein.",
+    "infoLongTime" : "Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld."
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",
