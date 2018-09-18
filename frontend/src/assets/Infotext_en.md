@@ -3,9 +3,9 @@
 __BACC is an online tool for the automated checking of EPUB accessibility.__
 
 ## About BACC
-You can use BACC to check whether your EPUB document meets the accessibility requirements of the following standards:
--	EPUB Accessibility 1.0
--	WCAG 2.0
+You can use BACC to check whether your EPUB3 document meets the accessibility requirements of the following standards:
+-	[EPUB Accessibility 1.0](http://www.idpf.org/epub/a11y/accessibility-20170105.html)
+-	[WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/)
   
 __Note:__ As only a limited number of accessibility requirements can be assessed automatically, it needs some further human-based accessibility testing to evaluate the total accessibility of an EPUB document.
 
