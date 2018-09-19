@@ -3,6 +3,7 @@ const os = require('os');
 const shell = require('child_process').execSync;
 const rimraf = require('rimraf');
 const dateFormat = require('dateformat');
+const jsonfile = require('jsonfile');
 
 const logger = require('../helper/logger');
 const util = require('../helper/util');
@@ -34,7 +35,7 @@ module.exports = function (req, res) {
 
       if (util.isReadyState(workingPath)) {
 
-        const fileName = fs.readFileSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE)).toString();
+        const fileName = jsonfile.readFileSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE)).filename;
         try {
 
           const reportPath = makeReportPath(temp, fileName);

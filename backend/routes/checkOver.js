@@ -21,12 +21,13 @@ module.exports = function (req, res) {
   }
   const lang = req.query['lang'];
   const workingPath = path.join(constants.UPLOAD_DIR, uploadID);
-  Util.setCheckProgressState(workingPath, {state:'inProgress'});
 
   getEPUBPath(workingPath).then(epubFile => {
 
     if (!epubFile)
       return res.status(404).send(`No EPUB file for ${uploadID} found`);
+
+    Util.setCheckProgressState(workingPath, {state: 'inProgress', filename : epubFile});
 
     logger.log('info', `Run baccify for ${uploadID} ...`);
 
@@ -53,6 +54,7 @@ module.exports = function (req, res) {
 
           // Util.writeRequestAddressToStatistics(req);
           report.state = 'ready';
+          report.filename = epubFile;
           Util.setCheckProgressState(workingPath, report);
 
         }, 100);
@@ -64,7 +66,12 @@ module.exports = function (req, res) {
           sendTaskInfo(epubFile);
         logger.log('error', 'Baccify stopped with errors ...');
         logger.log('error', err);
-        Util.setCheckProgressState(workingPath, {state:'error', msg: err.stderr});
+        Util.setCheckProgressState(workingPath,
+          {
+            state: 'error',
+            msg: err.stderr,
+            filename: epubFile
+          });
       });
   });
 

@@ -6,9 +6,12 @@ import {Accessibility} from "../accessibility";
 import {TranslateService} from "@ngx-translate/core";
 import {HttpParams, HttpClient} from '@angular/common/http';
 import {saveAs} from "file-saver";
-import {AlertsService} from "@jaspero/ng2-alerts";
 import {CheckOverService} from "./check-over.service";
+import {Observable} from "rxjs/Rx";
+import swal from 'sweetalert2';
 
+
+declare var $: any;
 
 @Component({
   selector: 'check-over',
@@ -25,6 +28,7 @@ export class CheckOverComponent implements OnInit {
   public checkOverService: CheckOverService;
   private a11y: Accessibility;
   private WEB_API_REPORTS: string = '/reports';
+  private LONG_TIME_INFO = 60000; // 1min
 
   @ViewChildren(ReportComponent) reports: QueryList<ReportComponent>;
   @ViewChild('chooseEPUB') input: ElementRef;
@@ -33,17 +37,22 @@ export class CheckOverComponent implements OnInit {
               private renderer: Renderer2,
               private translate: TranslateService,
               private http: HttpClient,
-              private alert: AlertsService,
-              private checkoverS : CheckOverService) {
+              private checkoverS: CheckOverService) {
 
     this.checkOverService = this.checkoverS;
     this.a11y = new Accessibility(translate);
     this.uploader = this.uploadService.Uploader;
     this.uploadService.Uploader.onAfterAddingFile = this.onAfterAddingFile;
-
   }
 
   private onAfterAddingFile = (fileItem) => {
+
+    Observable.timer(this.LONG_TIME_INFO).subscribe(() => {
+      this.translate.get('BACC.INFO_LONG_TIME').subscribe((res: string) => {
+        if (!$(".swal2-container")[0])
+          swal({type: 'info', title: res});
+      });
+    });
 
     (fileItem as any).mode = "indeterminate";
 
@@ -90,17 +99,19 @@ export class CheckOverComponent implements OnInit {
       .subscribe(
         data => saveAs(data, 'bacc_reports_' + this.getTimeStamp() + '.zip'),
         error => {
-          this.alert.create('error', 'Save reports: An error occurred ' + error);
-          console.error('An error occurred ' + error);}
+          swal({type: 'error', title: 'Save reports: An error occurred ' + error});
+          console.error('An error occurred ' + error);
+        }
       );
   }
 
 
   private getTimeStamp() {
     const todayDate = new Date();
+    const realMonth = todayDate.getMonth() + 1; // The getMonth() method returns the month (from 0 to 11)
     return todayDate.getFullYear()
       + '-' +
-      todayDate.getMonth()
+      realMonth
       + '-' +
       todayDate.getDate()
       + '_' +

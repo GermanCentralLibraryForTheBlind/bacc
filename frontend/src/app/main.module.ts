@@ -5,7 +5,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BrowserModule} from '@angular/platform-browser';
-import {JasperoAlertsModule} from '@jaspero/ng2-alerts';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FileUploadModule} from 'ng2-file-upload';
 import {MarkdownModule} from 'angular2-markdown';
@@ -65,7 +64,6 @@ const translateConfig: TranslateModuleConfig = {
     BrowserAnimationsModule,
     FileUploadModule,
     MatProgressBarModule,
-    JasperoAlertsModule,
     HttpClientModule,
     PopoverModule,
     FormsModule,

@@ -26,7 +26,7 @@ Util.setCheckProgressState = (workingPath, state) => {
 };
 
 Util.isReadyState = (workingPath) => {
-  return fs.existsSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE)) // TODO:
+  return jsonfile.readFileSync(path.join(workingPath, constants.CHECK_PROGRESS_STATE_FILE)).state === 'ready' //todo: state constants
 };
 
 Util.addToStatistics = (task) => {

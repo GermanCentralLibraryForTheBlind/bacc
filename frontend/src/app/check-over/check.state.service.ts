@@ -1,13 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {AlertsService} from "@jaspero/ng2-alerts";
 import {Observable} from "rxjs/Rx";
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {CheckOverService} from "./check-over.service";
-
-declare var $: any;
 
 @Injectable()
 export class CheckStateService {
@@ -16,7 +13,7 @@ export class CheckStateService {
   private POLLING_INTERVAL = 1500; // in milliseconds
   private TIME_OUT = 10 * 60 * 1000; // 10min
 
-  constructor(private http: HttpClient, private checkOverService: CheckOverService, private alert: AlertsService) {
+  constructor(private http: HttpClient, private checkOverService: CheckOverService) {
   }
 
   checkState(pathToStateFile: string): Promise<any> {
@@ -36,16 +33,9 @@ export class CheckStateService {
         Observable.timer(this.TIME_OUT).subscribe(() => {
             this.timeOut = true;
             progress.unsubscribe();
-            reject('Time Out');
+            reject('Cant get an positive result from baccy :-(. So time out error.');
           }
         );
-
-        let infoTime = Observable.timer(1000).subscribe(() => {
-
-          if (!$(".jaspero__dialog")[0])
-            this.alert.create('info', 'Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld...');
-
-        });
 
         let progress = Observable.interval(this.POLLING_INTERVAL)
           .switchMap(() => this.http.get(pathToStateFile, {responseType: 'text'}))
@@ -53,7 +43,7 @@ export class CheckStateService {
           .skipWhile(skipIf)
           .subscribe((response) => {
               progress.unsubscribe();
-              infoTime.unsubscribe();
+              // infoTime.unsubscribe();
               this.checkOverService.checkoverReady = true;
               resolve(response);
             },
@@ -61,7 +51,6 @@ export class CheckStateService {
       }
     );
   }
-
 
   handleError(error: any): Promise<any> {
     // console.error(error);

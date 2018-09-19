@@ -4,7 +4,7 @@ import {SafeUrl, DomSanitizer} from "@angular/platform-browser";
 import {CheckOverService} from "../check-over/check-over.service";
 import {CheckStateService} from "../check-over/check.state.service";
 import {FileItem} from 'ng2-file-upload';
-import {AlertsService} from "@jaspero/ng2-alerts";
+import swal from 'sweetalert2';
 
 // import * as jsPDF from 'jspdf';
 
@@ -36,7 +36,6 @@ export class ReportComponent {
   constructor(private reportService: ReportService,
               private sanitizer: DomSanitizer,
               private checkOverService: CheckOverService,
-              private alert: AlertsService,
               private translate: TranslateService,
               private checkStateService: CheckStateService) {
 
@@ -84,10 +83,10 @@ export class ReportComponent {
           this.afterSuccessfulCheck(item, report);
 
         }).catch(err => {
-              this.alert.create('error', 'EPUB: ' + responseData.name + ' ' + 'An error occurred:  ' + err);
-              console.error('An error occurred:  ' + err);
-            }
-          );
+            swal({type: 'error', title: 'EPUB: ' + responseData.name + ' ' + 'An error occurred:  ' + err});
+            console.error('An error occurred:  ' + err);
+          }
+        );
       })
       .catch(err => {
         console.error('An error occurred:  ' + err);
