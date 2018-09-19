@@ -70,7 +70,7 @@ export class ReportComponent {
     this.btnId = uploadID;
     this.reportId = uploadID + "_id";
 
-    (item as any).progressValue = 50;
+    // (item as any).progressValue = 50;
     this.a11y.setAriaLiveValue("50%");
 
     this.checkOverService.runCheck(uploadID)
@@ -104,6 +104,7 @@ export class ReportComponent {
 
     this.btnReportEnabled = true;
     this.btnReportAnimated = true;
+    (item as any).mode = "determinate";
     (item as any).progressValue = 100;
     (item as any).accessibility = {
       'color': report.aLevel.color,

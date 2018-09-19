@@ -45,6 +45,8 @@ export class CheckOverComponent implements OnInit {
 
   private onAfterAddingFile = (fileItem) => {
 
+    (fileItem as any).mode = "indeterminate";
+
     this.a11y.progressInterpolation(fileItem, 40);
 
     setTimeout(() => {

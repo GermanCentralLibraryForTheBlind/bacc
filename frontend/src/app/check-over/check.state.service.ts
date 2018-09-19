@@ -7,13 +7,14 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {CheckOverService} from "./check-over.service";
 
+declare var $: any;
 
 @Injectable()
 export class CheckStateService {
 
   private timeOut = false;
   private POLLING_INTERVAL = 1500; // in milliseconds
-  private TIME_OUT = 5 * 60 * 1000; // 5min
+  private TIME_OUT = 10 * 60 * 1000; // 10min
 
   constructor(private http: HttpClient, private checkOverService: CheckOverService, private alert: AlertsService) {
   }
@@ -39,8 +40,11 @@ export class CheckStateService {
           }
         );
 
-        let infoTime = Observable.timer(60000).subscribe(() => {
-          this.alert.create('info', 'Ihr Dokument wird geprüft, bitte haben Sie noch etwas gedult...');
+        let infoTime = Observable.timer(1000).subscribe(() => {
+
+          if (!$(".jaspero__dialog")[0])
+            this.alert.create('info', 'Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld...');
+
         });
 
         let progress = Observable.interval(this.POLLING_INTERVAL)
@@ -51,7 +55,6 @@ export class CheckStateService {
               progress.unsubscribe();
               infoTime.unsubscribe();
               this.checkOverService.checkoverReady = true;
-              this.checkOverService.mode = "determinate";
               resolve(response);
             },
             error => this.handleError(error));
