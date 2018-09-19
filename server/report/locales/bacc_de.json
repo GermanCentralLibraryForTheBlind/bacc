@@ -1,0 +1,19 @@
+{
+  "labeling": {
+    "greetings": "Have a good day!",
+    "violation": "Violation",
+    "count": "Anzahl",
+    "outlines": "Outlines",
+    "imgDescription": "Image description",
+    "details": "Details",
+    "impact": "Impact of Accessibility",
+    "help": "More help",
+    "code": "Source Code",
+    "tocEPUB": "EPUB Table of Contents",
+    "headingsOutline": "Headings outline",
+    "htmlOutline": "HTML outline",
+    "description": "Description",
+    "image": "Image",
+    "location": "Location"
+  }
+}
