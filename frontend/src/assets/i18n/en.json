@@ -30,6 +30,7 @@
     "HEADER_INFO_DIALOG": "Information about BACC tool",
     "HEADER_RULES_DIALOG": "Rules",
     "HEADER_REPORT_DIALOG": "BACC REPORT",
-    "SAVE_REPORTS": "Save reports"
+    "SAVE_REPORTS": "Save reports",
+    "INFO_LONG_TIME" : "Your document is being checked, please be patient."
   }
 }
