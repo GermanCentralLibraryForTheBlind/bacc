@@ -2,7 +2,7 @@
   "labeling": {
     "greetings": "Have a good day!",
     "violation": "Violations",
-    "violationTab": "Result guidelines",
+    "violationTab": "Test results",
     "count": "Count",
     "outlines": "Outlines",
     "imgDescription": "Image description",
@@ -32,8 +32,10 @@
     "of" : "of",
     "tooltipTOC" : "The <i>EPUB table of contents (TOC)</i> view helps you to check whether the table of contents comprises the entire book structure.",
     "tooltipHeadings" : "The <i>HTML headings</i> view helps you to check the hierarchy of headings and make sure skipping heading ranks only appears when semantically necessary.",
-    "tooltipSections" : "The <i>Nested sections</i> view helps you to check, whether the nesting of sectioning elements (&lt;article&gt;, &lt;aside&gt;, &lt;body&gt;, &lt;nav&gt; und &lt;section&gt;) reflects the publications hierarchy and whether every &lt;section&gt; element contains a heading. ",
-    "hints" : "Hints"
+    "tooltipSections" : "The <i>Nested sections</i> view helps you to check, whether the nesting of sectioning elements (&lt;article&gt;, &lt;aside&gt;, &lt;body&gt;, &lt;nav&gt; und &lt;section&gt;) reflects the publications hierarchy and whether every &lt;section&gt; element contains a heading.",
+    "tooltipHints" : "The additional hints will help you to further optimize the accessibility of your publication. In contrast to violations, hints require some further manual checking. Hints do not influence the test result.",
+    "hints" : "Hints",
+    "infoLongTime" : "Your document is being checked, please be patient."
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",

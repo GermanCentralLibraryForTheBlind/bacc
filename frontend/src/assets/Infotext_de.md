@@ -3,12 +3,12 @@
 __BACC ist ein Online-Prüfwerkzeug zum automatisierten Testen der Zugänglichkeit von EPUB-Dokumenten.__
 
 ## Über BACC
-Mithilfe von BACC können Sie einfach und selbstständig überprüfen, ob Ihr EPUB-Dokument den Anforderungen einer barrierefreien Gestaltung entspricht.  
+Mithilfe von BACC können Sie einfach und selbstständig überprüfen, ob Ihr EPUB3-Dokument den Anforderungen einer barrierefreien Gestaltung entspricht.
 Die Prüfung basiert auf den Anforderungen der folgenden Standards:
-*	EPUB Accessibility 1.0
-*	WCAG 2.0
+*	[EPUB Accessibility 1.0](http://www.idpf.org/epub/a11y/accessibility-20170105.html)
+*	[WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/)
   
-__Achtung:__ Nicht alle Anforderungen einer barrierefreien EPUB-Gestaltung lassen sich automatisiert bewerten, weshalb durch BACC nur ein Teil aller Anforderungen geprüft werden kann.   
+__Achtung:__ Nicht alle Anforderungen einer barrierefreien EPUB-Gestaltung lassen sich automatisiert bewerten, weshalb durch BACC nur ein Teil der Anforderungen geprüft werden kann.   
 Um einen ganzheitlichen Eindruck von der Zugänglichkeit eines EPUB-Dokumentes zu bekommen, ist es erforderlich, die BACC-Prüfung um weitere, personengestützte Tests zu ergänzen.
 
 ## Funktionsweise
@@ -17,8 +17,8 @@ Um einen ganzheitlichen Eindruck von der Zugänglichkeit eines EPUB-Dokumentes z
 3. Nach Vollendung der Prüfung, liefert BACC für jedes geprüfte EPUB-Dokument eine Einschätzung der Zugänglichkeit sowie einen ausführlichen Prüfbericht.
 
 ## Entwicklung
-__Aktuell befindet sich BACC in der Beta-Version.__  
-Die Entwicklung erfolgt durch die Deutsche Zentralbücherei für Blinde Leipzig.  
+__Aktuell befindet sich BACC in der Beta-Version.__
+Die Entwicklung erfolgt durch die Deutsche Zentralbücherei für Blinde Leipzig.
 Das BACC-Prüfwerkzeug setzt auf dem vom Daisy-Consortium entwickelten *Ace*-Tool auf und erweitert dieses um weitere Features:
 *	Als __Web-Applikation__ ist BACC __ohne Installations- und Wartungsaufwand__ auf allen Systemen und von überall nutzbar.
 *	Die __grafische Bedienoberfläche__ ermöglicht eine nutzerfreundliche Bedienung.
