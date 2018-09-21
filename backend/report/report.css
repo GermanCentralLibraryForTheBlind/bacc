@@ -397,3 +397,11 @@ mark {
 .column-last {
   padding-right: 30px !important;
 }
+
+.info {
+  font-family: "Soleil", Helvetica, Arial, sans-serif;
+  color: #888b8d;
+  font-size: 27px;
+  line-height: 48px;
+  text-align: center;
+}
