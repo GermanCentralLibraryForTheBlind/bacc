@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from "rxjs/Rx";
+import {Observable, Subject} from "rxjs/Rx";
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -9,9 +9,11 @@ import {CheckOverService} from "./check-over.service";
 @Injectable()
 export class CheckStateService {
 
-  private timeOut = false;
+  private _timeOut = false;
   private POLLING_INTERVAL = 1500; // in milliseconds
   private TIME_OUT = 10 * 60 * 1000; // 10min
+  private _subject = new Subject();
+  private _readyState = this._subject.asObservable();
 
   constructor(private http: HttpClient, private checkOverService: CheckOverService) {
   }
@@ -31,7 +33,7 @@ export class CheckStateService {
         };
 
         Observable.timer(this.TIME_OUT).subscribe(() => {
-            this.timeOut = true;
+            this._timeOut = true;
             progress.unsubscribe();
             reject('Cant get an positive result from baccy :-(. So time out error.');
           }
@@ -39,17 +41,21 @@ export class CheckStateService {
 
         let progress = Observable.interval(this.POLLING_INTERVAL)
           .switchMap(() => this.http.get(pathToStateFile, {responseType: 'text'}))
-          .takeWhile(() => !this.timeOut)
+          .takeWhile(() => !this._timeOut)
           .skipWhile(skipIf)
           .subscribe((response) => {
               progress.unsubscribe();
-              // infoTime.unsubscribe();
+              this._subject.next('todo');
               this.checkOverService.checkoverReady = true;
               resolve(response);
             },
             error => this.handleError(error));
       }
     );
+  }
+
+  get onReadyState() {
+    return this._readyState;
   }
 
   handleError(error: any): Promise<any> {

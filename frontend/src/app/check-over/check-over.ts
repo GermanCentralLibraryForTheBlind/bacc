@@ -9,6 +9,7 @@ import {saveAs} from "file-saver";
 import {CheckOverService} from "./check-over.service";
 import {Observable} from "rxjs/Rx";
 import swal from 'sweetalert2';
+import {CheckStateService} from "./check.state.service";
 
 
 declare var $: any;
@@ -28,7 +29,9 @@ export class CheckOverComponent implements OnInit {
   public checkOverService: CheckOverService;
   private a11y: Accessibility;
   private WEB_API_REPORTS: string = '/reports';
-  private LONG_TIME_INFO = 60000; // 1min
+  private LONG_TIME_INFO = 60 * 1000; // 1min
+  private taskCounter = 0;
+  private infoLongTime;
 
   @ViewChildren(ReportComponent) reports: QueryList<ReportComponent>;
   @ViewChild('chooseEPUB') input: ElementRef;
@@ -37,22 +40,21 @@ export class CheckOverComponent implements OnInit {
               private renderer: Renderer2,
               private translate: TranslateService,
               private http: HttpClient,
-              private checkoverS: CheckOverService) {
+              private checkoverS: CheckOverService,
+              private checkState: CheckStateService) {
 
     this.checkOverService = this.checkoverS;
     this.a11y = new Accessibility(translate);
     this.uploader = this.uploadService.Uploader;
     this.uploadService.Uploader.onAfterAddingFile = this.onAfterAddingFile;
+    this.checkState.onReadyState.subscribe(() => {this.taskCounter--; this.infoLongTime.unsubscribe() });
   }
+
 
   private onAfterAddingFile = (fileItem) => {
 
-    Observable.timer(this.LONG_TIME_INFO).subscribe(() => {
-      this.translate.get('BACC.INFO_LONG_TIME').subscribe((res: string) => {
-        if (!$(".swal2-container")[0])
-          swal({type: 'info', title: res});
-      });
-    });
+    this.longTimeInfo();
+    this.taskCounter++;
 
     (fileItem as any).mode = "indeterminate";
 
@@ -69,6 +71,19 @@ export class CheckOverComponent implements OnInit {
         this.uploader.uploadAll();
     });
   };
+
+  private longTimeInfo() {
+
+    if(this.taskCounter > 0)
+      return;
+
+    this.infoLongTime = Observable.timer(this.LONG_TIME_INFO).subscribe(() => {
+      this.translate.get('BACC.INFO_LONG_TIME').subscribe((res: string) => {
+        if (!$(".swal2-container")[0])
+          swal({type: 'info', title: res});
+      });
+    });
+  }
 
   ngOnInit() {
   };
