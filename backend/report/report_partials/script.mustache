@@ -4,7 +4,7 @@
   //
   // prev button
   //
-  $('button.btnPagerPrev').on('click',accordion (e) {
+  $('button.btnPagerPrev').on('click', function (e) {
     e.preventDefault();
     const that = $(vioPanel + ':visible');
 
@@ -124,5 +124,5 @@
   //     }
   //   });
   // });
-  $('.tooltip-active').tooltip();
+  $('.tooltip-active').tooltip({ html: true });
 </script>

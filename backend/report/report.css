@@ -475,3 +475,10 @@ mark {
   margin-right: 10px;
   margin-bottom: 4px;
 }
+
+.tooltip .tooltip-inner {
+  background-color: green;
+  font-size: medium;
+  font-weight: bold;
+  max-width: 550px;
+}
