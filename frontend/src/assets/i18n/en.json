@@ -13,7 +13,7 @@
     "DRAG_DROP": "Drag & Drop your file here to check-over your EPUB<br><br> or",
     "FILE_DIALOG": "Choose a file to upload.",
     "CLOSE": "close",
-    "TOOLTIP_SHOW_RULES" : "Show used rules",
+    "TOOLTIP_SHOW_RULES" : "Show test rules",
     "TOOLTIP_INFO" : "Information about this tool",
     "TOOLTIP_SWITCH_LANGUAGE" : "Switch language",
     "SKIP_TO_CHECKER": "Choose an Ebook-file to check it",
