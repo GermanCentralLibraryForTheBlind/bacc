@@ -469,3 +469,9 @@ mark {
   color: #6a6c6f;
 }
 
+.logo {
+  width: 29px;
+  height: 32px;
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
