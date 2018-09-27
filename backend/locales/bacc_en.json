@@ -1,7 +1,7 @@
 {
   "labeling": {
     "greetings": "Have a good day!",
-    "violation": "Violations",
+    "violation": "Violation",
     "violationTab": "Test results",
     "count": "Count",
     "outlines": "Outlines",
@@ -40,7 +40,8 @@
     "hints" : "Hints",
     "infoNoViolation" : "Congratulations! All automated accessibility checks passed.",
     "infoNoHint" : "Congratulations! No additional hints available.",
-    "infoNoImage" : "No images found."
+    "infoNoImage" : "No images found.",
+    "moreMetaData" : "More metadata"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",

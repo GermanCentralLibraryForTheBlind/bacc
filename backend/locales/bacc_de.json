@@ -1,7 +1,7 @@
 {
   "labeling": {
     "greetings": "Have a good day!",
-    "violation": "Fehlgeschlagene Regeln",
+    "violation": "Regel",
     "violationTab": "Prüfergebnis Regeln",
     "count": "Anzahl",
     "outlines": "Struktur des Buches",
@@ -40,7 +40,8 @@
     "tooltipHints" : "Die zusätzlichen Hinweise helfen Ihnen, die Zugänglichkeit Ihrer EPUB-Publikation weiter zu optimieren. Anders als die fehlgeschlagenen Regeln erfordern die Hinweise eine manuelle Überprüfung und fließen nicht in die Gesamtwertung mit ein.",
     "infoNoViolation" : "Glückwunsch! Das E-Book erfüllt alle automatisiert prüfbaren Regeln.",
     "infoNoHint" : "Glückwunsch! Keine zusätzlichen Hinweise vorhanden.",
-    "infoNoImage" : "Keine Bilder vorhanden."
+    "infoNoImage" : "Keine Bilder vorhanden.",
+    "moreMetaData" : "Weitere Metadaten"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

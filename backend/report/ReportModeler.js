@@ -3,6 +3,7 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 const path = require('path');
 const _ = require('underscore');
+const glob = require('glob');
 
 const logger = require('../helper/logger');
 const Localise = require('./Localise');
@@ -50,7 +51,7 @@ class ReportModeler {
 
   updateTotalAccessibilityImpactLevel(assertion) {
 
-    if (assertion["earl:test"].rulesetTags.includes('hints'))
+    if (this.isHint(assertion))
       return;
 
     const impact = assertion["earl:test"]["earl:impact"];
@@ -77,7 +78,14 @@ class ReportModeler {
 
     // console.log(JSON.stringify(reportData), undefined, 2);
     const reportTemplate = fs.readFileSync(constants.PATH_TO_TEMPLATE_REPORT, 'utf-8');
-    const output = mustache.render(reportTemplate.toString(), reportData);
+
+    var partials = {};
+    const files = glob.sync('./report_partials/*.mustache', { cwd: __dirname });
+    files.forEach((file) => {
+      partials[path.basename(file, '.mustache')] = fs.readFileSync(path.join(__dirname, file), 'utf-8')
+    });
+
+    const output = mustache.render( reportTemplate.toString(), reportData, partials);
     const reportPath = this._outputPath + constants.BACC_REPORT;
     fs.writeFileSync(reportPath, output, 'utf-8');
     this.statistics.reportPath = reportPath;
@@ -154,8 +162,8 @@ class ReportModeler {
 
         assertion['earl:test'].shortHelp = this.formatHelp(assertion['earl:result']['dct:description']);
         assertion['earl:test'].spineItem = spineItem;
-
         assertion['earl:test'].code = assertion['earl:result']['html'];
+
         if (assertion['earl:test'].code)
           assertion['earl:test'].code = assertion['earl:test'].code.replace('\n', '').replace(/\s+/g, ' ');
 
@@ -200,13 +208,16 @@ class ReportModeler {
     return ul;
   }
 
-
   guidelineTagForHumans(tag) {
 
     let found = _.intersection(Object.keys(guidelineTags), tag);
     return found.length > 0 ? guidelineTags[found] : tag.join();
   }
 
+
+  isHint(assertion) {
+    return assertion["earl:test"].rulesetTags.includes('hints');
+  }
 
   aceBaccMapping(results) {
 
@@ -276,16 +287,14 @@ class ReportModeler {
 
   // mv report style to upload folder
   copyReportStyle() {
+
     try {
-
-
       const source = path.resolve(__dirname, constants.REPORT_SYTLE);
       const dist = path.join(this._outputPath, '../' + constants.REPORT_SYTLE);
       // console.log('source ' + source);
       // console.log('dist ' + dist);
 
       fsExtra.copySync(source, dist);
-
     } catch (err) {
       logger.log('error', err);
     }

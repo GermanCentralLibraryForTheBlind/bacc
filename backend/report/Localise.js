@@ -117,6 +117,30 @@ class Localise {
       logger.log('warn', 'Unsupported language:' + lang);
   }
 
+  replaceLocaliseHintsHelpText() {
+    // hack to fit axe failureMessage for our hints
+    try {
+
+      let pattern = /<\/ul>.*?<ul>/;
+      this._data.groups.hints.forEach((hint) => {
+        hint.fails.forEach((fail) => {
+
+          let newText = '';
+          if (fail.shortHelp.indexOf("Fix") > -1)
+            newText = baccEN.labeling.checkHints;
+
+          if (fail.shortHelp.indexOf("Korrigiere") > -1)
+            newText = baccDE.labeling.checkHints;
+
+          if (newText)
+            fail.shortHelp = fail.shortHelp.replace(pattern, '<\/ul>' + newText + '<ul>');
+        });
+      });
+    } catch (err) {
+      logger.log('error', err);
+    }
+  }
+
 
   build() {
 
@@ -124,6 +148,7 @@ class Localise {
     this.localiseImpactLabel(this._locale);
     this.localiseRuleDescription(this._locale);
     this.localiseBACCLabeling(this._locale);
+    this.replaceLocaliseHintsHelpText();
 
     return this._data;
   }
