@@ -6,7 +6,6 @@ module.exports = Object.freeze({
   CHECK_PROGRESS_STATE_FILE : 'progress_state.json',
   STATISTICS : path.join(process.cwd(), 'statistics.json'),
   UPLOAD_DIR : temp,
-  REPORT_SYTLE : 'report.css',
   PATH_TO_TEMPLATE_REPORT :  path.join(__dirname, 'report/report.mustache'),
   ACE_REPORT : '/report.json',
   BACC_REPORT : '/bacc_report.html',

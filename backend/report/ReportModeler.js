@@ -285,27 +285,11 @@ class ReportModeler {
     return bacc;
   }
 
-  // mv report style to upload folder
-  copyReportStyle() {
-
-    try {
-      const source = path.resolve(__dirname, constants.REPORT_SYTLE);
-      const dist = path.join(this._outputPath, '../' + constants.REPORT_SYTLE);
-      // console.log('source ' + source);
-      // console.log('dist ' + dist);
-
-      fsExtra.copySync(source, dist);
-    } catch (err) {
-      logger.log('error', err);
-    }
-  }
-
   // public
   build() {
 
     this.loadAceOutput();
     this.generateReport();
-    this.copyReportStyle();
 
     const Report = {
       aLevel: this._totalAccessibilityLevel,
