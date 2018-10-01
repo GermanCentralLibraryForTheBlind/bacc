@@ -24,7 +24,7 @@ import {ReportComponent} from './report/report';
 import {LegendComponent} from './legend/legend';
 import {InfoComponent} from './info/info';
 import {AppComponent} from './main';
-
+import {Logo} from './logo.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -49,7 +49,8 @@ const translateConfig: TranslateModuleConfig = {
     InfoComponent,
     FeedbackComponent,
     HintOfficialComponent,
-    LegendComponent
+    LegendComponent,
+    Logo
   ],
   imports: [
     BrowserModule,

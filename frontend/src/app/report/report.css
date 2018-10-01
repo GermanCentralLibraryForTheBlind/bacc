@@ -16,6 +16,8 @@
 #myReport {
   font-family: "Helvetica Neue";
   color: #bfbfbf;
+  display: inline-block;
+  margin-bottom: 5px;
 }
 
 iframe {
