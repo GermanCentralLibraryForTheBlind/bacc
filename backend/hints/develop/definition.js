@@ -26,7 +26,7 @@ const checks = [
   {
     "id": "hint-epub-specific-attributes",
     "evaluate": function evaluate(node, options) {
-      return !!node.querySelector('[*|type]:not([type])'); // hack!
+      return /*curNode*/node.hasAttribute('epub:type') || /*children*/ !!node.querySelector('[*|type]:not([type])'/*hack!*/);
       // return !!node.querySelector('*[epub\\:type]'); // null why?????????????????????????? arrr :-(
     },
     "metadata": {
