@@ -1,5 +1,5 @@
 {
-minore": "bacc",
+  "name": "bacc",
   "version": "0.8.0",
   "description": "BACC by DZB assist the EPUB3 production with focus on Accessibility requirements",
   "keywords": [
