@@ -20,6 +20,8 @@ export class CheckStateService {
 
   checkState(pathToStateFile: string): Promise<any> {
 
+    this._timeOut = false;
+
     return new Promise<any>((resolve, reject) => {
 
         let skipIf = (response) => {
@@ -32,7 +34,7 @@ export class CheckStateService {
           return stateObj.state !== 'ready'
         };
 
-        Observable.timer(this.TIME_OUT).subscribe(() => {
+        let timeOutTimer = Observable.timer(this.TIME_OUT).subscribe(() => {
             this._timeOut = true;
             progress.unsubscribe();
             reject('Cant get an positive result from baccy :-(. So time out error.');
@@ -47,6 +49,7 @@ export class CheckStateService {
               progress.unsubscribe();
               this._subject.next('todo');
               this.checkOverService.checkoverReady = true;
+              timeOutTimer.unsubscribe();
               resolve(response);
             },
             error => this.handleError(error));
