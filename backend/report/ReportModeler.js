@@ -229,6 +229,7 @@ class ReportModeler {
     // console.log(JSON.stringify(groupedByViolation, null, '\t'));
 
     let bacc = {};
+    bacc.version = constants.BACC_VERSION;
     this.statistics.checkDate = bacc.checkDate = this._aceData['dct:date'];
     this.statistics.fileName = bacc.fileName = this._aceData['earl:testSubject'].url;
     this.statistics.metaData = bacc.metaData = this._aceData['earl:testSubject'].metadata;
