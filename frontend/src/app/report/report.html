@@ -1,13 +1,6 @@
-<button [id]="btnId"
-        mat-icon-button
-        type="button"
-        (click)="showReport()"
-        [disabled]="!btnReportEnabled"
+<button [id]="btnId" mat-icon-button type="button" (click)="showReport()" [disabled]="!btnReportEnabled"
         [ngClass]="{'btn-animate': btnReportAnimated}">
-  <mat-icon
-    [ngClass]="{'btn-active': btnReportEnabled}">
-    playlist_add_check
-  </mat-icon>
+<mat-icon [ngClass]="{'btn-active': btnReportEnabled}">playlist_add_check</mat-icon>
 </button>
 <!-- Modal -->
 <div class="modal fade" [id]="reportId" tabindex="-1" role="dialog" aria-labelledby="myReport">
