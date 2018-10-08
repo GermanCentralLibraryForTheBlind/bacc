@@ -41,6 +41,10 @@ TODO
 
 ## CHANGELOG 
 
+### 1.0.0 
+
+* First official version :tada:
+
 ### 0.8.0 
 
 * Added rules called hints that need some additional manual checking

@@ -1,4 +1,4 @@
-.legend {
+.a11y-legend {
   position: absolute;
   bottom: 2px;
   left: 2px;
@@ -6,12 +6,12 @@
   border-radius: 25px;
 }
 
-.legend mat-icon{
+.a11y-legend mat-icon{
   font-size: 26px;
 }
 
 
-.legend tr, td {
+.a11y-legend tr, td {
   padding: 4px  5px  2px 5px;
   text-align: center;
 }

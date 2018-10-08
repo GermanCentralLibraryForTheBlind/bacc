@@ -53,6 +53,8 @@ export class CheckOverComponent implements OnInit {
 
   private onAfterAddingFile = (fileItem) => {
 
+    $('#checkover-tbody').css('height', '250px');
+
     this.longTimeInfo();
     this.taskCounter++;
 

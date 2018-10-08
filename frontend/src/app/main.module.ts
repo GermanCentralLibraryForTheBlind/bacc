@@ -19,6 +19,7 @@ import {ShowRulesComponent} from './show-rules/show-rules';
 import {UploadService} from './check-over/upload.service';
 import {ReportService} from './report/report.service';
 import {FeedbackComponent} from './feedback/feedback';
+import {FooterComponent} from './footer/footer';
 import {HeaderComponent} from './header/header';
 import {ReportComponent} from './report/report';
 import {LegendComponent} from './legend/legend';
@@ -50,7 +51,8 @@ const translateConfig: TranslateModuleConfig = {
     FeedbackComponent,
     HintOfficialComponent,
     LegendComponent,
-    Logo
+    Logo,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

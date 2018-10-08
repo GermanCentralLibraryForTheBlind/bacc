@@ -2,6 +2,7 @@
 
 body {
   min-width: 840px;
+  min-height: 880px;
 }
 
 .flat-btn {
@@ -27,16 +28,11 @@ body {
 
 .flat-border-btn {
   padding: 6px 14px;
-  border: 2px solid #ffffff;
-}
-.flat-border-btn:hover {
-  border: 2px solid #ffffff;
 }
 
-.flat-info-border-btn:hover {
-  border-color: #ffffff;
+.flat-border-btn, .flat-border-btn:hover {
+  border: 2px solid #ffffff;
 }
-
 
 .custom-modal {
   width: 85vw !important;

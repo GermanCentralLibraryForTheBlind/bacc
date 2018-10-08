@@ -30,6 +30,7 @@
     "HEADER_RULES_DIALOG": "Regelwerk",
     "HEADER_REPORT_DIALOG": "BACC REPORT",
     "SAVE_REPORTS": "Reporte speichern",
-    "INFO_LONG_TIME" : "Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld."
+    "INFO_LONG_TIME" : "Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld.",
+    "DATA_PROTECTION" : "Datenschutz"
   }
 }

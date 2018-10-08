@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'legend',
+  selector: 'violation-level-legend',
   templateUrl: './legend.html',
   styleUrls: ['./legend.css']
 })

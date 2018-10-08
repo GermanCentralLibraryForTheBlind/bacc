@@ -1,5 +1,5 @@
 .app-component-filler {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 98px);
 }
 
 * {
@@ -35,3 +35,8 @@ a {
   font-size: medium;
   font-weight: bold;
 }
+
+.bacc-background-color {
+  background-color: #e2e2e2;
+}
+

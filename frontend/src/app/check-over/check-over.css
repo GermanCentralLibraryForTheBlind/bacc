@@ -3,18 +3,20 @@
 
 .check-over-whole-wrapper {
   color: #949494;
-  width: 80vh;
+  width: 100vh;
   text-align: center;
 }
 
 .upload * {
-  margin: 2% 0;
+  margin: 1% 0;
 }
 
 .my-drop-zone {
   border: dotted 5px lightgray;
   background-color: white;
   margin-top: 40px;
+  height: 30vh;
+  min-height: 250px;
 }
 
 .nv-file-over {
@@ -84,7 +86,7 @@
 }
 
 /*.own-table-layout thead tr th:first-child, tbody tr td:first-child {*/
-  /*padding-right: 5%;*/
+/*padding-right: 5%;*/
 /*}*/
 
 .custom-progressbar {
@@ -99,3 +101,46 @@
   position: relative;
 }
 
+.table-fixed tbody {
+  height: 20px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+  text-align: center
+}
+
+.table-fixed tr:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.table-fixed tbody td,
+.table-fixed thead > tr > th {
+  float: left;
+}
+
+.col1 {
+  width: 16%;
+}
+
+.col2 {
+  width: 28%;
+  word-wrap: break-word;
+}
+
+.col3, .col4, .col5, .col6 {
+  width: 14%;
+}
+
+.col1, .col2, .col4, .col5 {
+  padding-top: 19px;
+}
