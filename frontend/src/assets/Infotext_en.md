@@ -15,7 +15,6 @@ __Note:__ As only a limited number of accessibility requirements can be assessed
 3.	After finishing the validation, BACC will provide an accessibility evaluation as well as a detailed report for each checked EPUB.
 
 ## Software Development
-__At this time, BACC is still in a beta status.__  
 The development of BACC takes place in the German Central Library for the Blind in Leipzig.  
 For the validation of EPUB documents, BACC uses the accessibility checker *Ace*,  developed by the Daisy-Consortium, and extends it with some additional features:
 -	As a __web application__, BACC can be used on every system __without any installation or maintenance effort__. 

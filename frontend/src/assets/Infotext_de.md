@@ -17,7 +17,6 @@ Um einen ganzheitlichen Eindruck von der Zugänglichkeit eines EPUB-Dokumentes z
 3. Nach Vollendung der Prüfung, liefert BACC für jedes geprüfte EPUB-Dokument eine Einschätzung der Zugänglichkeit sowie einen ausführlichen Prüfbericht.
 
 ## Entwicklung
-__Aktuell befindet sich BACC in der Beta-Version.__
 Die Entwicklung erfolgt durch die Deutsche Zentralbücherei für Blinde Leipzig.
 Das BACC-Prüfwerkzeug setzt auf dem vom Daisy-Consortium entwickelten *Ace*-Tool auf und erweitert dieses um weitere Features:
 *	Als __Web-Applikation__ ist BACC __ohne Installations- und Wartungsaufwand__ auf allen Systemen und von überall nutzbar.
