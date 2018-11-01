@@ -25,8 +25,6 @@ module.exports = function (req, res) {
 
   makeTempFolder(temp);
 
-  shell(`cp -r ${uploadDir}/report.css ${temp}`);
-
   ids.forEach(id => {
 
     const workingPath = path.join(uploadDir, id);

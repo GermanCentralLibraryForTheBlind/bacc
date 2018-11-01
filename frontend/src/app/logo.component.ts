@@ -29,6 +29,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class Logo implements OnInit {
 
+  // logo ratio 0.86
   constructor() {
   }
 

@@ -3,7 +3,7 @@ const meow = require('meow');
 
 const cli = meow(``, {});
 
-const path = cli.input[0] || '/home/alan/workspace/bacc/uploads/53248e33-35fb-4025-b57e-6f51502afb6a';
+const path = cli.input[0] || '/home/alan/workspace/bacc/uploads/16919fc6-6ba0-422a-9a79-8739aa03ee86';
 
 const r = new ReportModeler(path, 'de');
 console.log('start report build ...');
