@@ -219,6 +219,18 @@ class ReportModeler {
     return assertion["earl:test"].rulesetTags.includes('hints');
   }
 
+  extractHints(rule, bacc) {
+
+    if (rule.ruleSet === 'hints') {
+      bacc.groups.totalCountHints += rule.count;
+      bacc.groups.hints.push(rule);
+    } else {
+      bacc.groups.totalCountRules += rule.count;
+      bacc.groups.rules.push(rule);
+    }
+
+  }
+
   aceBaccMapping(results) {
 
     /*
@@ -271,22 +283,19 @@ class ReportModeler {
       const that = this;
       rule.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
 
-      if (rule.ruleSet === 'hints') {
-        bacc.groups.totalCountHints += rule.count;
-        bacc.groups.hints.push(rule);
-      } else {
-        bacc.groups.totalCountRules += rule.count;
-        bacc.groups.rules.push(rule);
-      }
+      this.extractHints(rule, bacc);
       // todo: delete 'dct:title'
     });
+
+    // sort rule violation by impact level ascending
+    bacc.groups.rules = _.sortBy(bacc.groups.rules, obj => obj.impact.level).reverse();
 
     this.statistics.totalCount = bacc.groups.totalCountRules;
     // console.log(JSON.stringify(bacc, null, '\t'));
     return bacc;
   }
 
-  // public
+// public
   build() {
 
     this.loadAceOutput();
