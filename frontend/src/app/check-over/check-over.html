@@ -107,20 +107,20 @@
         <!--<mat-icon>cancel</mat-icon>-->
         <!--{{ 'BACC.CANCEL_ALL' | translate }}-->
         <!--</button>-->
-        <button mat-raised-button color="primary"
-                class="my-btn"
-                type="button"
-                (click)="saveReports()"
-                [disabled]="!checkOverService.checkoverReady">
-          <mat-icon>file_download</mat-icon>
-          {{ 'BACC.SAVE_REPORTS' | translate }}
-        </button>
-        <button mat-raised-button color="accent" class="my-btn"
+        <button mat-raised-button color="warn" class="btn-delete-all"
                 type="button"
                 (click)="deleteQueue()"
                 [disabled]="!checkOverService.checkoverReady">
           <mat-icon>delete</mat-icon>
           {{ 'BACC.REMOVE_ALL' | translate }}
+        </button>
+        <button mat-raised-button color="primary"
+                class="btn-save-all"
+                type="button"
+                (click)="saveReports()"
+                [disabled]="!checkOverService.checkoverReady">
+          <mat-icon>file_download</mat-icon>
+          {{ 'BACC.SAVE_REPORTS' | translate }}
         </button>
         <!--</mat-card>-->
       </div>

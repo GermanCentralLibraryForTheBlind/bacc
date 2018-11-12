@@ -63,9 +63,17 @@
   width: 72px;
 }
 
-.my-btn {
+.btn-delete-all, .btn-save-all {
   line-height: 32px;
-  padding: 0 16px;
+}
+
+.btn-delete-all {
+  margin-right: 10px;
+}
+
+.btn-save-all {
+  padding: 0 40px;
+  margin-left: 10px;
 }
 
 .own-table-layout table tr:nth-child(even) {
