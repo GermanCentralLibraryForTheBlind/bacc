@@ -96,3 +96,9 @@ textarea.form-control {
   background-color: transparent;
   color: #fff;
 }
+
+@media screen and (max-height: 700px) {
+  .btnFeedback {
+    font-size: 11px;
+  }
+}

@@ -96,7 +96,6 @@
 /*.own-table-layout thead tr th:first-child, tbody tr td:first-child {*/
 /*padding-right: 5%;*/
 /*}*/
-
 .custom-progressbar {
   height: 5px;
   margin-top: 5px;
@@ -151,4 +150,55 @@
 
 .col1, .col2, .col4, .col5 {
   padding-top: 19px;
+}
+
+@media screen and (max-height: 700px) {
+
+  .cloud-icon-upload {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+
+  .my-drop-zone {
+    margin-top: 20px;
+    min-height: 100px;
+  }
+
+  .col1, .col2, .col4, .col5 {
+    padding-top: 0px;
+  }
+
+  #checkover-tbody {
+    height: 50px !important;
+  }
+
+  button {
+    min-height: 23px !important;
+    min-width: 46px !important;
+    font-size: 10px !important;
+    line-height: 0px;
+  }
+
+  .check-over-whole-wrapper {
+    width: 80vh;
+  }
+
+  .table-fixed td {
+    padding-top: 0px;
+  }
+
+  .material-icons {
+    font-size: 16px;
+  }
+  .mat-icon-button .mat-icon, .mat-icon-button i {
+    line-height: 10px;
+  }
+}
+
+@media screen and (max-height: 824px) {
+
+  #checkover-tbody {
+    height: 125px !important;
+  }
 }

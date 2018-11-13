@@ -6,12 +6,21 @@
   border-radius: 25px;
 }
 
-.a11y-legend mat-icon{
+.a11y-legend mat-icon {
   font-size: 26px;
 }
 
-
 .a11y-legend tr, td {
-  padding: 4px  5px  2px 5px;
+  padding: 4px 5px 2px 5px;
   text-align: center;
+}
+
+@media screen and (max-height: 700px) {
+  .a11y-legend mat-icon {
+    font-size: 18px;
+  }
+  .a11y-legend tr, td {
+    padding: 0px;
+    text-align: center;
+  }
 }
