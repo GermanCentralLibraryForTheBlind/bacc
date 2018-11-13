@@ -83,7 +83,7 @@ const checks = [
   {
     "id": "missing-role",
     "evaluate": function evaluate(node, options) {
-      return node.hasAttribute('role');
+      return node.hasAttribute('epub:type') || node.hasAttribute('role') && node.getAttribute('role') !== '';
     },
     "metadata": {
       "impact": "serious",

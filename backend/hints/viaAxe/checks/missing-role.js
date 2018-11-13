@@ -1,1 +1,1 @@
-return node.hasAttribute('role');
+return node.hasAttribute('epub:type') || node.hasAttribute('role') && node.getAttribute('role') !== '';

@@ -59,8 +59,9 @@ class Localise {
         logger.log('error', 'Rule description localisation: assertedBy not valid.');
 
       var translatedRule = locale.rules[set[j].name];
+
       /* #### hack #### */
-      if (set[j].name === "pagebreak-label" || set[j].name === "epub-type-has-matching-role") {
+      if (set[j].name === "epub-type-has-matching-role") {
         set[j].assertedBy = 'Ace';
         locale = aceDE;
         translatedRule = locale.rules[set[j].name];
@@ -79,8 +80,11 @@ class Localise {
           obj['shortHelp'] = translatedRule.optimize;
         })
       }
+
+      if (set[j].name === "pagebreak-label")
+        set[j].assertedBy = 'Ace';
     }
-     // console.log(JSON.stringify(set));
+    // console.log(JSON.stringify(set));
   }
 
   setDefaultBACCLabeling() {
