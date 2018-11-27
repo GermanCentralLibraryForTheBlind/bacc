@@ -1,12 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const jsonfile = require('jsonfile');
-
+const mongoose = require('mongoose');
 
 const logger = require('./logger');
 const constants = require('../constants');
 
 const Util = {};
+let reportSchema;
+
+setUpConnectionToStatisticDB();
 
 Util.setHost = (req, path) => {
 
@@ -31,30 +33,30 @@ Util.isReadyState = (workingPath) => {
 
 Util.addToStatistics = (task) => {
 
-  // ensure statistics exists
-  if (!fs.existsSync(constants.STATISTICS)) {
-    jsonfile.writeFileSync(constants.STATISTICS, {reports: []}, {spaces: 2});
-    logger.log('info', `Written new STATISTICS file to : ${constants.STATISTICS}`);
-  }
+  if (process.env.BACC) {
 
-  const current = jsonfile.readFileSync(constants.STATISTICS);
-  current.reports.push(task);
-  jsonfile.writeFileSync(constants.STATISTICS, current, {spaces: 2});
-  logger.log('info', `Written task to STATISTICS`);
+    const Report = mongoose.model('report', reportSchema, 'reports');
+
+    const report = new Report({
+      checkDate: task.checkDate,
+      fileName: task.fileName,
+      metaData : task.metaData,
+      title: task.title,
+      impact: task.impact,
+      totalCount: task.totalCount,
+      cover: task.cover,
+      reportPath: task.reportPath
+    });
+
+    report.save((err, report) => {
+      if (err) return logger.log('error', err);
+      logger.log('info', report.title + " meta data saved to statics.");
+    });
+
+  }
 };
 
 
-// Util.addPropertyToLastTaskofStatistics = (property, value) => {
-//
-//   try {
-//     const current = jsonfile.readFileSync(constants.STATISTICS);
-//     current.reports[current.reports.length - 1][property] = value;
-//     jsonfile.writeFileSync(constants.STATISTICS, current, {spaces: 2});
-//   } catch (err) {
-//     logger.log('error', `Error add property to last task of statistics` + err);
-//   }
-// };
-//
 // // works only if nginx is compiled with this module ngx_http_realip_module
 // Util.writeRequestAddressToStatistics = (req) => {
 //
@@ -68,5 +70,28 @@ Util.addToStatistics = (task) => {
 //
 //   Util.addPropertyToLastTaskofStatistics('ip', ip);
 // };
+
+
+function setUpConnectionToStatisticDB() {
+
+  const mongoDB = 'mongodb://192.168.1.195/bacc';
+
+  mongoose.connect(mongoDB, {useNewUrlParser: true});
+  mongoose.Promise = global.Promise;
+  const db = mongoose.connection;
+  reportSchema = mongoose.Schema({
+    checkDate: String,
+    fileName: String,
+    metaData: Object,
+    title: String,
+    impact: Object,
+    totalCount: Number,
+    cover: Object,
+    reportPath: String
+  });
+
+  db.on('error', (err) => logger.log('error', 'MongoDB connection error:' + err));
+  db.once('open', () => logger.log('info', 'Connected to statistic mongo server.'));
+}
 
 module.exports = Util;
