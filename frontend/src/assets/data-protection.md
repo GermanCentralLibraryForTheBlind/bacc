@@ -2,7 +2,7 @@
 ## Datensicherheit
 
 Die EPUB-Dokumente werden für den Zeitraum der Prüfung temporär zwischengespeichert und im Anschluss an die Prüfung gelöscht. 
-Die Prüfberichte werden zu Zwecken der Server-Administration, Nutzungsstatistik und Anwendungsoptimierung für einen Zeitraum von drei Monaten gespeichert und anschließend gelöscht.
+Die Prüfberichte werden zu Zwecken der Server-Administration, Nutzungsstatistik und Anwendungsoptimierung für einen begrenzten Zeitraum gespeichert und anschließend gelöscht.
 
 ## Datenschutz
 ### Verantwortlicher für die Datenverarbeitung
