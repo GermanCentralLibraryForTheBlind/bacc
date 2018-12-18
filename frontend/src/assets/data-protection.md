@@ -1,4 +1,4 @@
-# Datenschutz & Datensicherheit
+# Datensicherheit & Datenschutz
 ## Datensicherheit
 
 Die EPUB-Dokumente werden für den Zeitraum der Prüfung temporär zwischengespeichert und im Anschluss an die Prüfung gelöscht. 
