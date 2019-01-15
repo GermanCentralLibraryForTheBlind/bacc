@@ -20,7 +20,7 @@ Sämtliche Regelverletzungen, die im EPUB festgestellt wurden, werden im Prüfbe
 __Achtung: Nicht alle Anforderungen einer barrierefreien EPUB-Gestaltung lassen sich automatisiert bewerten. Daher kann mithilfe der BACC-Prüfung lediglich ein Teil der Anforderungen der oben genannten Standards geprüft werden.__  
 Um einen ganzheitlichen Eindruck von der Zugänglichkeit eines EPUB-Dokumentes zu bekommen, ist es erforderlich, die BACC-Prüfung um weitere, personengestützte Tests zu ergänzen. Als Unterstützung können dabei die Anmerkungen und Fragestellungen im Reiter "Zusätzliche Hinweise" sowie die Metadaten-, Struktur- und Bildbeschreibungsansicht dienen.
 
-## Entwicklung
+## Entwicklung des Prüfwerkzeuges
 Die Entwicklung des BACC-Prüfwerkzeuges erfolgt durch die Deutsche Zentralbücherei für Blinde (Leipzig).  
 Das Tool setzt auf dem vom Daisy-Consortium entwickelten *Accessibility Checker for EPUB (Ace)* auf und erweitert dieses um weitere Features:
 *	Als __Web-Applikation__ ist BACC __ohne Installations- und Wartungsaufwand__ auf allen Systemen und von überall nutzbar.
