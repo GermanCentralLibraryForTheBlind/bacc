@@ -1,5 +1,10 @@
-## Datenschutz
+# Datensicherheit & Datenschutz
+## Datensicherheit
 
+Die EPUB-Dokumente werden für den Zeitraum der Prüfung temporär zwischengespeichert und im Anschluss an die Prüfung gelöscht. 
+Die Prüfberichte werden zu Zwecken der Server-Administration, Nutzungsstatistik und Anwendungsoptimierung für einen begrenzten Zeitraum gespeichert und anschließend gelöscht.
+
+## Datenschutz
 ### Verantwortlicher für die Datenverarbeitung
 
 Soweit über die Internetseiten von dzb.de personenbezogene Daten verarbeitet werden, ist Verantwortlicher im Sinne der Datenschutz-Grundverordnung:
@@ -21,8 +26,7 @@ Die DZB verarbeitet personenbezogene Daten ausschließlich auf der Grundlage Art
 
 #### Erhebung, Verwendung und Nutzung personenbezogener Daten
 
-Wir erheben und verarbeiten personenbezogene Daten (Angaben wie Namen, E-Mail-Adresse) nur, soweit Sie uns diese von sich aus, z. B. bei der Nutzung der Feedback-Funktion, freiwillig angeben. Ohne Ihre gesonderte Einwilligung werden die von Ihnen mitgeteilten Daten ausschließlich zur Erfüllung und Abwicklung
-unseres beiderseitigen Vertragsverhältnisses verwendet (Art. 6 Abs. 1 lit. a/b DSGVO).
+Wir erheben und verarbeiten personenbezogene Daten (Angaben wie Namen, E-Mail-Adresse) nur, soweit Sie uns diese von sich aus, z. B. bei der Nutzung der Feedback-Funktion, freiwillig angeben. Ohne Ihre gesonderte Einwilligung werden die von Ihnen mitgeteilten Daten ausschließlich zur Erfüllung und Abwicklung unseres beiderseitigen Vertragsverhältnisses verwendet (Art. 6 Abs. 1 lit. a/b DSGVO).
 
 Beim Zugriff auf unsere Website werden uns automatisch von Ihrem Internet-Browser Nutzungsdaten an unseren Webserver übermittelt. Das sind z. B. Datum und Uhrzeit des Zugriffs, die Website, von der aus Sie uns besuchen, und die Website, die Sie bei uns besuchen, die vorgenommenen Downloads auf unserer Website sowie Browsertyp. Diese Nutzungsdaten werden von uns gespeichert und zur Optimierung unserer Website ausgewertet. Die einzelnen Nutzerprofile bleiben jedoch anonym, so dass eine Zuordnung der Daten zu einer konkreten Person nicht möglich ist.
 
