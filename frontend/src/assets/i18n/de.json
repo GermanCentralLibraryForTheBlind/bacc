@@ -31,6 +31,7 @@
     "HEADER_REPORT_DIALOG": "BACC REPORT",
     "SAVE_REPORTS": "Reporte speichern",
     "INFO_LONG_TIME" : "Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld.",
-    "DATA_PROTECTION" : "Datenschutz"
+    "DATA_PROTECTION" : "Datenschutz",
+    "NO_SUPPORT_FOR_IE" : "Entschuldigung. BACC kann mit dem Internet Explorer nicht genutzt werden. Bitte benutzen Sie Firefox oder Chrome."
   }
 }
