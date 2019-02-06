@@ -309,8 +309,20 @@ const checks = [
   {
     "id": "hint-footnote-missing-backlink",
     "evaluate": function evaluate(node, options) {
-      const link = node.querySelector('a');
-      return link ? link.hasAttribute('role') && link.getAttribute('role') === 'doc-backlink' : false;
+      const epubType = node.hasAttribute('epub:type') && (node.getAttribute('epub:type') === 'footnote' || node.getAttribute('epub:type') === 'endnote');
+      const role = node.hasAttribute('role') && (node.getAttribute('role') === 'doc-footnote' || node.getAttribute('role') === 'doc-endnote');
+
+      var res = false;
+
+      if (epubType || role) {
+        const a = node.querySelectorAll('a');
+        a.forEach((link, index) => {
+          if (link.hasAttribute('role') && link.getAttribute('role') === 'doc-backlink')
+            res = true;
+        });
+      }
+
+      return res;
     },
     "metadata":
       {
