@@ -1,3 +1,5 @@
+
+import {map} from 'rxjs/operators';
 import {Component, OnInit, QueryList, ViewChildren, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
 import {UploadService} from "./upload.service";
@@ -7,7 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {HttpParams, HttpClient} from '@angular/common/http';
 import {saveAs} from "file-saver";
 import {CheckOverService} from "./check-over.service";
-import {Observable} from "rxjs/Rx";
+import {timer} from "rxjs";
 import swal from 'sweetalert2';
 import {CheckStateService} from "./check.state.service";
 
@@ -79,7 +81,7 @@ export class CheckOverComponent implements OnInit {
     if(this.taskCounter > 0)
       return;
 
-    this.infoLongTime = Observable.timer(this.LONG_TIME_INFO).subscribe(() => {
+    this.infoLongTime = timer(this.LONG_TIME_INFO).subscribe(() => {
       this.translate.get('BACC.INFO_LONG_TIME').subscribe((res: string) => {
         if (!$(".swal2-container")[0])
           swal({type: 'info', title: res});
@@ -111,8 +113,8 @@ export class CheckOverComponent implements OnInit {
       params = params.append('ids[]', reportInstance.btnId);
     });
 
-    this.http.get(this.WEB_API_REPORTS, {params, responseType: 'blob'})
-      .map(res => res)
+    this.http.get(this.WEB_API_REPORTS, {params, responseType: 'blob'}).pipe(
+      map(res => res))
       .subscribe(
         data => saveAs(data, 'bacc_reports_' + this.getTimeStamp() + '.zip'),
         error => {

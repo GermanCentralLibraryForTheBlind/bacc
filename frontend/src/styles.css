@@ -1,8 +1,8 @@
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 body {
   min-width: 620px;
   min-height: 630px;
+  font-feature-settings: 'liga'
 }
 
 .flat-btn {
@@ -55,3 +55,6 @@ body {
     height: 20px !important;
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

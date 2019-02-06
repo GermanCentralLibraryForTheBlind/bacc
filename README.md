@@ -34,11 +34,45 @@ BACC requires [Node.js](https://nodejs.org/en/) 7+ to run.
 
 TODO
 
-#### Install backend on Linux server 
-[hint puppeteer](https://github.com/GoogleChrome/puppeteer/issues/404
-)
+#### Install backend on Linux Ubuntu server 
+TODO : move to server.md
 
+TODO: create bacc Docker 
 
+Prepare server 
+
+* Node.js
+
+  ```
+  # Using Ubuntu
+  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  ```
+* nginx
+  ```
+  sudo apt update
+  sudo apt install nginx
+  ```
+  Backup! and replace with bacc\\nginx\\... configs  todo:via script
+  ```
+  $ sudo nano /etc/nginx/sites-available/default 
+  $ sudo nano /etc/nginx/nginx.conf
+  $ sudo service restart nginx
+  ```
+
+* yarn
+  
+  <sup> Note: Ubuntu 17.04 comes with cmdtest installed by default. If you’re getting errors from installing yarn, you may want to run sudo apt remove cmdtest first. Refer to this for more information.</sup>
+  ```
+  $ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  $ sudo apt-get update && sudo apt-get install yarn
+  ```
+
+* Chrome setup 
+  ```
+  $ sudo apt-get update && sudo apt-get install libx11-xcb1 libxss1 libasound2 libxkbfile1
+  ```
 ## CHANGELOG 
 
 ### 1.0.0 
