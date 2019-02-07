@@ -1,12 +1,9 @@
-
-import {interval as observableInterval, timer as observableTimer, Observable, Subject} from 'rxjs';
-
-import {skipWhile, takeWhile, switchMap} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable, Subject} from "rxjs/Rx";
 
-
-
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 import {CheckOverService} from "./check-over.service";
 
 @Injectable()
@@ -37,17 +34,17 @@ export class CheckStateService {
           return stateObj.state !== 'ready'
         };
 
-        let timeOutTimer = observableTimer(this.TIME_OUT).subscribe(() => {
+        let timeOutTimer = Observable.timer(this.TIME_OUT).subscribe(() => {
             this._timeOut = true;
             progress.unsubscribe();
             reject('Cant get an positive result from baccy :-(. So time out error.');
           }
         );
 
-        let progress = observableInterval(this.POLLING_INTERVAL).pipe(
-          switchMap(() => this.http.get(pathToStateFile, {responseType: 'text'})),
-          takeWhile(() => !this._timeOut),
-          skipWhile(skipIf),)
+        let progress = Observable.interval(this.POLLING_INTERVAL)
+          .switchMap(() => this.http.get(pathToStateFile, {responseType: 'text'}))
+          .takeWhile(() => !this._timeOut)
+          .skipWhile(skipIf)
           .subscribe((response) => {
               progress.unsubscribe();
               this._subject.next('todo');

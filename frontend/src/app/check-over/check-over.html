@@ -81,7 +81,8 @@
                 <button mat-icon-button
                         color="accent"
                         type="button"
-                        (click)="item.remove()">
+                        (click)="item.remove()"
+                        attr.aria-label="{{'BACC.DELETE_RESULT' | translate }}">
                   <mat-icon>delete</mat-icon>
                 </button>
               </td>

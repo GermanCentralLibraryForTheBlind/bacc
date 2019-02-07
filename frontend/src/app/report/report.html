@@ -1,5 +1,7 @@
 <button [id]="btnId" mat-icon-button type="button" (click)="showReport()" [disabled]="!btnReportEnabled"
-        [ngClass]="{'btn-animate': btnReportAnimated}">
+        [ngClass]="{'btn-animate': btnReportAnimated}"
+        attr.aria-label="{{'BACC.OPEN_REPORT' | translate }}"
+>
 <mat-icon [ngClass]="{'btn-active': btnReportEnabled}">playlist_add_check</mat-icon>
 </button>
 <!-- Modal -->

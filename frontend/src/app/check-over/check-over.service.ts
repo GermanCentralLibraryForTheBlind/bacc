@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpParams, HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 
-import { Observable } from "rxjs";
-
-
+import { Observable } from "rxjs/Rx";
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()

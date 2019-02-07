@@ -1,14 +1,14 @@
-<footer>
-  <violation-level-legend></violation-level-legend>
+<footer role="contentinfo">
+  <violation-level-legend aria-label="legende"></violation-level-legend>
   <div class="fieldset">
     <div class="text-center" style="display: inline-block">
       <fieldset class="scheduler-border-fieldset">
         <legend class="scheduler-border-legend">© 2018 - 2019 DZB</legend>
-        <button attr.aria-label="{{'BACC.TOOLTIP_SWITCH_LANGUAGE' | translate }}"
+        <button attr.aria-label="{{'BACC.IMPRESS' | translate }}"
                 class="flat-btn flat-info-btn flat-border-btn flat-info-footer-border-btn spacer"
                 data-toggle="modal" data-target="#myModalImpressum"
                 style="font-weight: bolder; font-size: xx-small"
-                (click)="show($event)">Impressum</button>
+                (click)="show($event)">{{'BACC.IMPRESS' | translate }}</button>
         <button attr.aria-label="{{'BACC.DATA_PROTECTION' | translate }}"
                 class="flat-btn flat-info-btn flat-border-btn flat-info-footer-border-btn"
                 style="font-weight: bolder; font-size: xx-small"
