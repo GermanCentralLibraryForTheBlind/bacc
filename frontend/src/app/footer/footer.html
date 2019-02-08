@@ -6,7 +6,6 @@
         <legend class="scheduler-border-legend">© 2018 - 2019 DZB</legend>
         <button attr.aria-label="{{'BACC.IMPRESS' | translate }}"
                 class="flat-btn flat-info-btn flat-border-btn flat-info-footer-border-btn spacer"
-                data-toggle="modal" data-target="#myModalImpressum"
                 style="font-weight: bolder; font-size: xx-small"
                 (click)="show($event)">{{'BACC.IMPRESS' | translate }}</button>
         <button attr.aria-label="{{'BACC.DATA_PROTECTION' | translate }}"
@@ -30,7 +29,7 @@
 </footer>
 
 <!-- Modal -->
-<div class="modal fade" id="myFooterModal" tabindex="-1" role="dialog" aria-labelledby="impressum">
+<div class="modal fade" id="myFooterModal" tabindex="-1" role="dialog">
   <div class="modal-dialog custom-modal">
     <div class="modal-content">
       <div class="modal-header">
