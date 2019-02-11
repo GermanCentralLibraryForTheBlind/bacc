@@ -37,6 +37,7 @@
     "dateformat": "^2.2.0",
     "debug": "^3.0.0",
     "express": "^4.15.4",
+    "find-remove": "^1.2.2",
     "for-in": "^1.0.2",
     "fs-extra": "^5.0.0",
     "ip": "^1.1.5",

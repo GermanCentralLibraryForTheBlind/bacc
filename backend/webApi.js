@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+require('./helper/deleteOlderReports');
 
 
 const getReports = require('./routes/getReports');
