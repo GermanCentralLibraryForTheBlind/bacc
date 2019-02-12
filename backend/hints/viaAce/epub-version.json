@@ -1,8 +1,8 @@
 {
-  "title": "not epub3 ?",
-  "testDesc": "epub version",
-  "resDesc": "epub version",
-  "help": "epub version",
+  "title": "epub-version",
+  "testDesc": "Upgrade epub version?",
+  "resDesc": "If the <package> element in the .opf document has the attribute version=\"2.0\": EPUB 3 should be used to increase accessibility.",
+  "help": "",
   "kbPath": "",
   "kbTitle": "",
   "impact": "serious",

@@ -9,5 +9,5 @@ module.exports = epub => {
   const content = fs.readFileSync(packageDocPath).toString();
   const doc = new DOMParser().parseFromString(content);
 
-  return doc.getElementsByTagName('package')[0].getAttribute('version') !== 3.0;
+  return doc.getElementsByTagName('package')[0].getAttribute('version') !== "3.0";
 };

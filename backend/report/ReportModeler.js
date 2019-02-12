@@ -11,6 +11,7 @@ const constants = require('../constants');
 const util = require('../helper/util');
 
 const guidelineTags = {wcag2a: 'WCAG 2.0 A', wcag2aa: 'WCAG 2.0 AA'};
+let epubVersion = "3.0"; // how we can this dynamically. From Ace?
 
 class Impact {
 
@@ -80,12 +81,12 @@ class ReportModeler {
     const reportTemplate = fs.readFileSync(constants.PATH_TO_TEMPLATE_REPORT, 'utf-8');
 
     var partials = {};
-    const files = glob.sync('./report_partials/*.mustache', { cwd: __dirname });
+    const files = glob.sync('./report_partials/*.mustache', {cwd: __dirname});
     files.forEach((file) => {
       partials[path.basename(file, '.mustache')] = fs.readFileSync(path.join(__dirname, file), 'utf-8')
     });
 
-    const output = mustache.render( reportTemplate.toString(), reportData, partials);
+    const output = mustache.render(reportTemplate.toString(), reportData, partials);
     const reportPath = this._outputPath + constants.BACC_REPORT;
     fs.writeFileSync(reportPath, output, 'utf-8');
     this.statistics.reportPath = reportPath;
@@ -199,8 +200,7 @@ class ReportModeler {
         ul += ("</ul>");
         ul += item;
         ul += "<ul>";
-      }
-      else
+      } else
         ul += ("<li>" + item + "</li>");
     });
 
@@ -221,13 +221,26 @@ class ReportModeler {
 
   extractHints(rule, bacc) {
 
-    console.log(rule.ruleSet);
     if (rule.ruleSet === 'hints') {
       bacc.groups.totalCountHints += rule.count;
       bacc.groups.hints.push(rule);
+      this.isEPUB2(rule);
+
     } else {
       bacc.groups.totalCountRules += rule.count;
       bacc.groups.rules.push(rule);
+    }
+
+  }
+
+  isEPUB2(rule) {
+
+    try {
+      if (rule.fails[0]['dct:title'] === "epub-version") {
+        epubVersion = "2.0";
+      }
+    } catch (e) {
+      logger.log('error', e);
     }
 
   }
@@ -287,6 +300,8 @@ class ReportModeler {
       this.extractHints(rule, bacc);
       // todo: delete 'dct:title'
     });
+
+    this.statistics.epubVersion = bacc.epubVersion = epubVersion;
 
     // sort rule violation by impact level ascending
     bacc.groups.rules = _.sortBy(bacc.groups.rules, obj => obj.impact.level).reverse();
