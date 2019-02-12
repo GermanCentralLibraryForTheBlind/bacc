@@ -221,6 +221,7 @@ class ReportModeler {
 
   extractHints(rule, bacc) {
 
+    console.log(rule.ruleSet);
     if (rule.ruleSet === 'hints') {
       bacc.groups.totalCountHints += rule.count;
       bacc.groups.hints.push(rule);

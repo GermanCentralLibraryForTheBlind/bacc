@@ -27,7 +27,11 @@
     "postinstall": "cd ./node_modules/ && rm -rf ace-core && git clone -b get-all-rules https://github.com/larsvoigt/ace-core && cd ace-core && npm install h5o && npm install --only=dev && ./node_modules/lerna/bin/lerna.js bootstrap && cd ../../ && npm run inject:hints:to:axe && npm run post:axe:locale",
     "post:axe:locale": "node ./locales/mergeLocalesFiles.js && cd ./node_modules/ace-core/node_modules/axe-core/ && npm i && ./node_modules/grunt/bin/grunt build --all-lang",
     "inject:hints:to:axe": "rm -rf ./node_modules/ace-core/node_modules/axe-core/lib/checks/bacc-hints && mkdir ./node_modules/ace-core/node_modules/axe-core/lib/checks/bacc-hints && cp ./hints/viaAxe/checks/* ./node_modules/ace-core/node_modules/axe-core/lib/checks/bacc-hints && rm -rf ./node_modules/ace-core/node_modules/axe-core/lib/rules/bacc-hints && mkdir ./node_modules/ace-core/node_modules/axe-core/lib/rules/bacc-hints && cp ./hints/viaAxe/rules/* ./node_modules/ace-core/node_modules/axe-core/lib/rules/bacc-hints",
-    "dev:hints": "node ./hints/develop/inject.js && node ./node_modules/ace-core/packages/ace/bin/ace.js -o /tmp/bacc_hints ./hints/develop/Test-E-Book_Zusatzhinweise.epub --force && node ./report/only-dev.js /tmp/bacc_hints && node ./node_modules/opn-cli/cli.js /tmp/bacc_hints/bacc_report.html"
+    "inject:hints:to:ace": "rm -rf ./node_modules/ace-core/packages/ace-core/lib/checker/rules/bacc-hints && mkdir ./node_modules/ace-core/packages/ace-core/lib/checker/rules/bacc-hints && cp ./hints/viaAce/* ./node_modules/ace-core/packages/ace-core/lib/checker/rules/bacc-hints",
+    "dev:hints:via:axe": "node ./hints/develop/inject.js && npm run run:test:book:and:show:report",
+    "dev:hints:via:ace": "npm run inject:hints:to:ace && npm run run:test:book:and:show:report",
+    "run:test:book:and:show:report": "npm run run:ace:with:test:book && node ./report/only-dev.js /tmp/bacc_hints && node ./node_modules/opn-cli/cli.js /tmp/bacc_hints/bacc_report.html",
+    "run:ace:with:test:book" : "node ./node_modules/ace-core/packages/ace/bin/ace.js -o /tmp/bacc_hints ./hints/develop/Test-E-Book_Zusatzhinweise.epub --force"
   },
   "private": true,
   "dependencies": {

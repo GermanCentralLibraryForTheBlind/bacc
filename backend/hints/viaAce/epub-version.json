@@ -1,0 +1,15 @@
+{
+  "title": "not epub3 ?",
+  "testDesc": "epub version",
+  "resDesc": "epub version",
+  "help": "epub version",
+  "kbPath": "",
+  "kbTitle": "",
+  "impact": "serious",
+  "tag" : "hints",
+  "spec" : {
+    "name": "",
+    "conformance" : ""
+  },
+  "check": "epub-version.js"
+}
