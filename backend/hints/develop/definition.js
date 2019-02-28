@@ -238,8 +238,9 @@ const checks = [
     "id": "hint-datatable-missing-caption",
     "evaluate": function evaluate(node, options) {
 
-      if (!node.hasAttribute('role') && node.querySelectorAll('th').length > 0)
+      if (/*no layouttable*/ !(node.hasAttribute('role') && node.getAttribute('role') === 'presentation') && node.querySelectorAll('th').length > 0) {
         return !!node.querySelector('caption');
+      }
       return true;
     },
     "metadata":
@@ -260,9 +261,9 @@ const checks = [
   {
     "id": "hint-datatable-missing-th",
     "evaluate": function evaluate(node, options) {
-
-      if (!node.hasAttribute('role') && !!node.querySelector('caption'))
+      if (/*no layouttable*/ !(node.hasAttribute('role') && node.getAttribute('role') === 'presentation') && !!node.querySelector('caption')) {
         return node.querySelectorAll('th').length > 0;
+      }
       return true;
     },
     "metadata":
