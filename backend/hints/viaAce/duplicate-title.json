@@ -1,7 +1,7 @@
 {
   "title": "duplicate-title",
-  "testDesc": "Same title?",
-  "resDesc": "If two or more content elements have the same content in their <title> elements: The title of a content document should be descriptive and explicit. The same title should not be used for several content documents.",
+  "testDesc": "Are the document titles descriptive and explicit?",
+  "resDesc": "Each document of the publication should have a descriptive and explicit title, marked with the <title> element. The same title should not be used for several documents.",
   "help": "",
   "kbPath": "http://kb.daisy.org/publishing/docs/html/title.html",
   "kbTitle": "",

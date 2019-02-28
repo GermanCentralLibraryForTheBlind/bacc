@@ -1,7 +1,7 @@
 {
   "title": "nav-landmarks-missing",
-  "testDesc": "Is landmark navigation present?",
-  "resDesc": "If there is no <nav> element in the navigation document containing the attribute epub:type=\"landmarks\": A landmarks navigation should be present.",
+  "testDesc": "Could a landmarks navigation improve navigation in the publication?",
+  "resDesc": "A landmarks navigation should be included to improve navigation. The landmarks navigation should be marked in the navigation document using <nav epub:type=\"landmarks\">.",
   "help": "",
   "kbPath": "http://kb.daisy.org/publishing/docs/navigation/landmarks.html",
   "kbTitle": "",
