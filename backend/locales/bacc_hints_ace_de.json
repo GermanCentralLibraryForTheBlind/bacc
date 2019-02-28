@@ -1,0 +1,10 @@
+{
+  "lang": "de",
+  "rules": {
+    "test": {
+      "description": "",
+      "help": "",
+      "optimize": ""
+    }
+  }
+}

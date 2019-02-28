@@ -12,7 +12,7 @@ module.exports = epub => {
     const doc = new DOMParser().parseFromString(content);
     const title = doc.getElementsByTagName("title");
 
-    if (title[0])
+    if (title[0] && title[0].childNodes && title[0].childNodes.length > 0)
       titles.push(title[0].childNodes[0].nodeValue);
   });
 
