@@ -57,10 +57,6 @@
       "description": "",
       "help": "Könnte der Einsatz eines Tabellenverzeichnisses zu einer verbesserten Navigation in der Publikation beitragen?"
     },
-    "nav-landmarks-missing": {
-      "description": "",
-      "help": "Könnte der Einsatz von Orientierungspunkten (landmarks) zu einer verbesserten Navigation in der Publikation beitragen?"
-    },
     "footnote-missing-backlink": {
       "description": "",
       "help": "Besitzen Fuß- und Endnoten einen Backlink, um die Navigation zu erleichtern?"
@@ -69,10 +65,6 @@
       "description": "",
       "help": "Sollte die Gruppierung von Links als Liste ausgezeichnet werden?"
     },
-    "duplicate-title": {
-      "description": "",
-      "help": "Sind die Dokumente der Publikation eindeutig und aussagekräftig betitelt?"
-    },
     "aside-missing-role": {
       "description": "",
       "help": "Kann die Semantik des <aside>-Elementes durch die Verwendung des ARIA role-Attributes näher spezifiziert werden?"
@@ -80,10 +72,6 @@
     "section-missing-role": {
       "description": "",
       "help": "Kann die Semantik des <section>-Elementes durch die Verwendung des ARIA role-Attributes näher spezifiziert werden?"
-    },
-    "epub-version": {
-      "description": "",
-      "help": "Handelt es sich bei der Publikation um ein valides EPUB3-E-Book?"
     }
   },
   "checks": {
@@ -143,10 +131,6 @@
       "pass": "",
       "fail": "Tabellenverzeichnisse können helfen, die Navigation in der Publikation zu erleichtern. Tabellenverzeichnisse sollten mithilfe des Attributes epub:type=”lot” gekennzeichnet sein."
     },
-    "nav-landmarks-missing": {
-      "pass": "",
-      "fail": "Die Publikation sollte Orientierungspunkte (Landmarks) besitzen, um die Navigation zu erleichtern. Die Landmarks-Navigation sollte mithilfe des Elementes <nav epub:type=”landmarks”> im Navigationsdokument der Publikation ausgezeichnet sein."
-    },
     "footnote-missing-backlink": {
       "pass": "",
       "fail": "Fuß- und Endnoten sollten einen Backlink enthalten, der zurück zum Fußnotenzeiger führt. Der Backlink sollte mithilfe des ARIA-Attributes role=”doc-backlink” ausgezeichnet sein."
@@ -155,17 +139,9 @@
       "pass": "",
       "fail": "Gruppierungen von Links sollten mithilfe der Elemente <ul>, <ol> oder <dl> als Listen ausgezeichnet sein."
     },
-    "duplicate-title": {
-      "pass": "",
-      "fail": "Sämtliche Dokumente der Publikation sollten einen aussagekräftig und eindeutig Titel haben, der mithilfe des <title>-Elementes ausgezeichnet ist. Ein und derselbe Titel sollte nicht für mehrere Dokumente verwendet werden."
-    },
     "missing-role": {
       "pass": "",
       "fail": "Wenn anwendbar, sollte die Rolle dieses Elementes mithilfe des ARIA role-Attributes näher bestimmt werden."
-    },
-    "epub-version": {
-      "pass": "",
-      "fail": "Anstelle von EPUB2 sollte das Format in der Version EPUB3 verwendet werden. Das E-Book sollte valide sein."
     }
   }
 }
