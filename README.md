@@ -75,6 +75,11 @@ Prepare server
   ```
 ## CHANGELOG 
 
+### 1.1.0 
+
+* Fixed some accessibility pitfalls in the user interface, make more screenreader friendly 
+* Added more useful hints 
+
 ### 1.0.0 
 
 * First official version :tada:

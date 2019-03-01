@@ -64,6 +64,8 @@ class ReportModeler {
 
   generateReport() {
 
+    epubVersion = "3.0";
+
     // TODO own mapper module
     let reportData = this.getDataForReport();
     reportData.lang = "en";
