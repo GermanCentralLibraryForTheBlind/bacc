@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+
 const axeDE = require('./axe_de.json');
 const aceDE = require('./ace_de.json');
 const axeHintsDE = require('./bacc_hints_axe_de.json');
@@ -22,4 +24,4 @@ fs.writeFileSync(constants.AXE_DE_PATH, JSON.stringify(axeDE));
 for (let item in aceHintsDE.rules)
   aceDE.rules[item] = aceHintsDE.rules[item];
 
-fs.writeFileSync('./ace_de.json', JSON.stringify(aceDE));
+fs.writeFileSync(path.join(__dirname,'ace_de.json'), JSON.stringify(aceDE));
