@@ -1,13 +1,8 @@
-<button [id]="btnId"
-        mat-icon-button
-        type="button"
-        (click)="showReport()"
-        [disabled]="!btnReportEnabled"
-        [ngClass]="{'btn-animate': btnReportAnimated}">
-  <mat-icon
-    [ngClass]="{'btn-active': btnReportEnabled}">
-    playlist_add_check
-  </mat-icon>
+<button [id]="btnId" mat-icon-button type="button" (click)="showReport()" [disabled]="!btnReportEnabled"
+        [ngClass]="{'btn-animate': btnReportAnimated}"
+        attr.aria-label="{{'BACC.OPEN_REPORT' | translate }}"
+>
+<mat-icon [ngClass]="{'btn-active': btnReportEnabled}">playlist_add_check</mat-icon>
 </button>
 <!-- Modal -->
 <div class="modal fade" [id]="reportId" tabindex="-1" role="dialog" aria-labelledby="myReport">
@@ -15,13 +10,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <!--<logo></logo>-->
         <h4 class="modal-title" id="myReport"> {{'BACC.HEADER_REPORT_DIALOG' | translate }}</h4>
       </div>
       <div class="modal-body custom-modal">
-        <iframe #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
+        <iframe [id]="'reportIframe-' + reportId" #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>
+        <!--<button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>-->
         <button mat-raised-button color="default" type="button" class="btn btn-default" data-dismiss="modal">
           {{'BACC.CLOSE' | translate }}
         </button>

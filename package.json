@@ -1,6 +1,6 @@
 {
   "name": "bacc",
-  "version": "0.4.0",
+  "version": "1.1.0",
   "description": "BACC by DZB assist the EPUB3 production with focus on Accessibility requirements",
   "keywords": [
     "a11y",
@@ -24,16 +24,25 @@
     "email": "lars.voigt@dzb.de"
   },
   "scripts": {
+    "build:frontend": "cd ./frontend && npm run build:prod",
+    "build:deploy:test:amazon": "npm run build:test && npm run deploy:test:amazon",
+    "build:deploy:test:dzb": "npm run build:prod && npm run deploy:test:dzb",
+    "build:deploy:prod": "npm run build:prod && npm run deploy:prod",
+    "build:backend": "npm run prebuild:backend && rsync -ru --progress ./backend/* ./dist/backend --exclude='node_modules/' --exclude='.git/' --exclude='.idea/' --exclude='uploads/'--exclude='bacc.log' --exclude='package-lock.json' --exclude='statistics.json' --exclude='yarn.lock'",
+    "build:prod": "npm run prebuild && npm run build:frontend && npm run build:backend",
+    "build:test": "npm run prebuild && cd ./frontend && npm run build:test && cd .. && npm run build:backend",
+    "run:backend": "node ./backend/webApi",
     "run:frontend": "cd ./frontend && npm run start:app",
-    "build:dist": "npm run prebuild && npm run build:frontend && npm run build:backend",
+    "deploy:badi:prod": "sh ./deploy_bacc.sh 'lars@dzbvm-badi' '~/.ssh/badi.pem' '~/bacc/www' 'prod'",
+    "deploy:test:amazon": "sh ./deploy_bacc.sh 'ubuntu@ec2-18-220-212-194.us-east-2.compute.amazonaws.com' '~/.ssh/bacc.pem' '~/bacc/www' 'test:amazon'",
+    "deploy:prod": "sh ./deploy_bacc.sh 'lars@dzbvm-dacapo' '~/.ssh/id_rsa' '~/bacc/www' 'prod'",
+    "deploy:test:dzb": "sh ./deploy_bacc.sh 'lars@dzbvm-badi' '~/.ssh/badi.pem' '~/bacc/www_test' 'test:dzb'",
     "prebuild": "./backend/node_modules/.bin/rimraf dist && mkdir dist",
     "prebuild:backend": "./backend/node_modules/.bin/rimraf dist/backend && mkdir dist/backend",
-    "build:backend": "npm run prebuild:backend && mkdir dist/backend/report && mkdir dist/backend/report/locales && cp backend/*.js dist/backend &&  cp backend/report/*.* dist/backend/report && cp backend/report/locales/*.* dist/backend/report/locales && cp backend/package.json dist/backend",
-    "build:frontend": "cd ./frontend && npm run build:dist",
-    "run:backend": "node ./backend/webApi",
     "clear:uploads": "./backend/node_modules/.bin/rimraf uploads && ./backend/node_modules/.bin/rimraf backend/uploads",
     "postinstall": "cd backend && npm install && cd ./../frontend && npm i",
-    "deploy": "sh ~/Schreibtisch/update_bacc.sh",
-    "preminor": "npm version minor"
-  }
+    "npm:version:minor": "npm -f version minor && cd backend && npm -f version minor && cd ./../frontend && npm -f version minor",
+    "npm:version:patch": "npm -f version patch && cd backend && npm -f version patch && cd ./../frontend && npm -f version patch"
+  },
+  "dependencies": {}
 }

@@ -26,7 +26,7 @@ export class Accessibility {
   }
 
 
-  // TODO: should come this data from backend report modeller??
+  // TODO: should come this data from backend report modeler??
   public getAccessibilityLevelAsWord(color) {
     // console.log(color);
     color = color.toLowerCase();

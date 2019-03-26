@@ -1,7 +1,7 @@
 // const decache = require('decache');
 const spawn = require('child-process-promise').spawn;
-
-const logger = require('./logger');
+const fs = require('fs');
+const logger = require('./helper/logger');
 const ReportModeler = require('./report/ReportModeler');
 const constants = require('./constants');
 
@@ -32,6 +32,13 @@ class Baccify {
 
     return new Promise(function (resolve, reject) {
 
+      try {
+        that.patchAceLocale(that._language);
+      }
+      catch (e) {
+        logger.log('error', 'patch locale: ' + e);
+      }
+
       that.runAce()
         .then((result) => {
 
@@ -48,6 +55,16 @@ class Baccify {
 
   runAce() {
     return spawn('node', [constants.ACE, '-o', this._outputPath, this._inputPath], {capture: ['stdout', 'stderr']});
+  }
+
+  patchAceLocale(lang) {
+
+    var locale = constants.ACE_CHECKER_CHROMIUM_DEFAULT;
+
+    if (lang === 'de')
+      locale = constants.ACE_CHECKER_CHROMIUM_DE;
+
+    fs.writeFileSync(constants.ACE_CHECKER_CHROMIUM_DEFAULT_PATH, fs.readFileSync(locale));
   }
 }
 

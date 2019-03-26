@@ -1,13 +1,26 @@
-<mat-toolbar>
-  <h1 class="my-header-title">{{title}}</h1>
+<mat-toolbar role="toolbar">
+  <!--<img src="./assets/logo.png" alt="bacc logo" class="logo">-->
+  <logo aria-label="bacc logo"></logo>
+  <h1 class="my-header-title" lang="en">{{title}}</h1>
   <span class="app-toolbar-filler"></span>
   <show-rules></show-rules>
   <info></info>
   <!--<button mat-icon-button aria-label="accessibility"> &lt;!&ndash;(click)="sidenav.toggle()/">&ndash;&gt;-->
-    <!--<mat-icon>settings</mat-icon>-->
+  <!--<mat-icon>settings</mat-icon>-->
   <!--</button>-->
   <!--<button mat-icon-button aria-label="accessibility"> &lt;!&ndash;(click)="sidenav.toggle()/">&ndash;&gt;-->
-    <!--<mat-icon>accessibility</mat-icon>-->
+  <!--<mat-icon>accessibility</mat-icon>-->
   <!--</button>-->
+  <popover-content #popoverLanguageSwitcher placement="bottom" [animation]="true" [closeOnClickOutside]="true"
+                   aria-hidden="true">
+    {{'BACC.TOOLTIP_SWITCH_LANGUAGE' | translate }}
+  </popover-content>
+  <button attr.aria-label="{{'BACC.TOOLTIP_SWITCH_LANGUAGE' | translate }}"
+          class="flat-btn flat-info-btn flat-border-btn flat-info-border-btn"
+          style="font-weight: bolder; font-size: large"
+          [popover]="popoverLanguageSwitcher"
+          [popoverOnHover]="true"
+          (click)="switchLanguage($event)">en
+  </button>
 </mat-toolbar>
 

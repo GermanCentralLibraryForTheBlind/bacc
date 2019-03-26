@@ -1,4 +1,12 @@
-# Notes to baCC backend
+# Notes to BACC backend
+
+### Setup
+
+* Install zip
+```bash
+sudo apt-get install zip
+
+```
 
 ### New Routes
 

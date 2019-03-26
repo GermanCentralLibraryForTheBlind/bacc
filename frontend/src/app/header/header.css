@@ -1,11 +1,9 @@
 @import '../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
-
 mat-toolbar.mat-default-theme:not(.mat-menu-toolbar), mat-toolbar:not(.mat-menu-toolbar) {
   background-color: #6e6e6e;
   /*color: white;*/
 }
-
 
 .app-toolbar-filler {
   flex: 1 1 auto;
@@ -22,3 +20,4 @@ info, show-rules {
   /*border-radius: 6px;*/
 
 }
+

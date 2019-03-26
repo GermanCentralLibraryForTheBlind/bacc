@@ -1,0 +1,3 @@
+// noinspection JSAnnotator
+return /*curNode*/node.hasAttribute('epub:type') || /*children*/ !!node.querySelector('[*|type]:not([type])'/*hack!*/);
+// return !!node.querySelector('*[epub\\:type]'); // null why?????????????????????????? arrr :-(

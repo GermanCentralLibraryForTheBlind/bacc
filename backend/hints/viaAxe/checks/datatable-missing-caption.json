@@ -1,0 +1,11 @@
+{
+  "id": "datatable-missing-caption",
+  "evaluate": "datatable-missing-caption.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Including a table caption makes it easier to understand the purpose or content of a table. A table caption should be marked with the <caption> element."
+    }
+  }
+}

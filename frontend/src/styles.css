@@ -1,7 +1,8 @@
-@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 
 body {
-  min-width: 840px;
+  min-width: 620px;
+  min-height: 630px;
+  font-feature-settings: 'liga'
 }
 
 .flat-btn {
@@ -17,6 +18,7 @@ body {
 .flat-info-btn {
   background: transparent;
 }
+
 .flat-info-btn:hover {
   background: #223e53;
 }
@@ -27,18 +29,32 @@ body {
 
 .flat-border-btn {
   padding: 6px 14px;
-  border: 2px solid #ffffff;
-}
-.flat-border-btn:hover {
-  border: 2px solid #ffffff;
 }
 
-.flat-info-border-btn:hover {
-  border-color: #ffffff;
+.flat-border-btn, .flat-border-btn:hover {
+  border: 2px solid #ffffff;
 }
-
 
 .custom-modal {
   width: 85vw !important;
   height: 76vh !important;
 }
+
+@media screen and (max-height: 700px) {
+  .bacc-background-color {
+    /*background-color: #fa3c43 !important;;*/
+    font-size: smaller !important;
+  }
+
+  h4 {
+    font-size: small !important;
+  }
+
+  .mat-icon-button {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

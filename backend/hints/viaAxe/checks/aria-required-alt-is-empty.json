@@ -1,0 +1,11 @@
+{
+  "id": "aria-required-alt-is-empty",
+  "evaluate": "aria-required-alt-is-empty.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "The alt attribute of an image should only be empty, if it is a non-informative, decorative image. Decorative images should be marked using the aria attribute role=”presentation”."
+    }
+  }
+}

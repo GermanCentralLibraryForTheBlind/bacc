@@ -3,18 +3,20 @@
 
 .check-over-whole-wrapper {
   color: #949494;
-  width: 80vh;
+  width: 100vh;
   text-align: center;
 }
 
 .upload * {
-  margin: 2% 0;
+  margin: 1% 0;
 }
 
 .my-drop-zone {
   border: dotted 5px lightgray;
   background-color: white;
   margin-top: 40px;
+  height: 30vh;
+  min-height: 250px;
 }
 
 .nv-file-over {
@@ -57,11 +59,21 @@
 
 .cloud-icon-upload {
   font-size: 72px;
+  height: 72px;
+  width: 72px;
 }
 
-.my-btn {
+.btn-delete-all, .btn-save-all {
   line-height: 32px;
-  padding: 0 16px;
+}
+
+.btn-delete-all {
+  margin-right: 10px;
+}
+
+.btn-save-all {
+  padding: 0 40px;
+  margin-left: 10px;
 }
 
 .own-table-layout table tr:nth-child(even) {
@@ -79,35 +91,116 @@
 
 .own-table-layout th, td {
   padding: 10px;
-  text-align: left;
 }
 
 /*.own-table-layout thead tr th:first-child, tbody tr td:first-child {*/
-  /*padding-right: 5%;*/
+/*padding-right: 5%;*/
 /*}*/
-
 .custom-progressbar {
   height: 5px;
   margin-top: 5px;
   margin-bottom: 2px;
 }
 
-.legend {
-  position: absolute;
-  bottom: 2px;
-  left: 2px;
-  border: 2px solid #a1a1a1;
-  border-radius: 25px;
+.sr-label {
+  height: 1px !important;
+  width: 1px !important;
+  position: relative;
 }
 
-.legend mat-icon{
-  font-size: 26px;
+.table-fixed tbody {
+  height: 20px;
+  overflow-y: auto;
+  width: 100%;
 }
 
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+  text-align: center
+}
 
-.legend tr, td {
-  padding: 5px;
-  text-align: center;
+.table-fixed tr:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.table-fixed tbody td,
+.table-fixed thead > tr > th {
+  float: left;
+}
+
+.col1 {
+  width: 17%;
+}
+
+.col2 {
+  width: 27%;
+  word-wrap: break-word;
+}
+
+.col3, .col4, .col5, .col6 {
+  width: 14%;
+}
+
+.col1, .col2, .col4, .col5 {
+  padding-top: 19px;
+}
+
+@media screen and (max-height: 700px) {
+
+  .cloud-icon-upload {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+
+  .my-drop-zone {
+    margin-top: 20px;
+    min-height: 100px;
+  }
+
+  .col1, .col2, .col4, .col5 {
+    padding-top: 0px;
+  }
+
+  #checkover-tbody {
+    height: 50px !important;
+  }
+
+  button {
+    min-height: 23px !important;
+    min-width: 46px !important;
+    font-size: 10px !important;
+    line-height: 0px;
+  }
+
+  .check-over-whole-wrapper {
+    width: 80vh;
+  }
+
+  .table-fixed td {
+    padding-top: 0px;
+  }
+
+  .material-icons {
+    font-size: 16px;
+  }
+  .mat-icon-button .mat-icon, .mat-icon-button i {
+    line-height: 10px;
+  }
+}
+
+@media screen and (max-height: 824px) {
+
+  #checkover-tbody {
+    height: 125px !important;
+  }
 }
 
 .sr-label {

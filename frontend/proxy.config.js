@@ -3,7 +3,9 @@ const PROXY_CONFIG = [
     "context": [
       "/upload",
       "/checkover",
-      "/allRules"
+      "/allRules",
+      "/contact",
+      "/reports"
     ],
     "target": "http://localhost:3111",
     "secure": false,

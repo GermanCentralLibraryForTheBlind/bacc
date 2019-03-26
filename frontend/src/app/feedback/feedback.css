@@ -1,0 +1,104 @@
+@import "https://fonts.googleapis.com/css?family=Oleo+Script:400,700";
+@import "https://fonts.googleapis.com/css?family=Teko:400,700";
+
+.btnFeedback {
+  position: fixed;
+  background: #205081;
+  padding: 5px;
+  border: 2px solid white;
+  border-top: none;
+  font-weight: bold;
+  color: white !important;
+  display: block;
+  white-space: nowrap;
+  text-decoration: none !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 5px 5px;
+  left: 100%;
+  top: 40%;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: top left;
+  -moz-transform: rotate(90deg);
+  -moz-transform-origin: top left;
+  -ms-transform: rotate(90deg);
+  -ms-transform-origin: top left;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+/*Contact sectiom*/
+.content-header {
+  font-family: 'Oleo Script', cursive;
+  color: #fcc500;
+  font-size: 45px;
+}
+
+.section-content {
+  text-align: center;
+
+}
+
+.contact {
+  padding: 60px;
+
+}
+
+.teko {
+  font-family: 'Teko', sans-serif;
+}
+
+.contact-header {
+  background: #3a6186;
+  /*background: -webkit-linear-gradient(to left, #3a6186, #89253e); */
+  /*background: linear-gradient(to left, #3a6186, #89253e); */
+  color: #fff;
+}
+
+.contact-section {
+  padding-top: 40px;
+}
+
+.contact-section .col-md-6 {
+  width: 50%;
+}
+
+.form-line {
+  border-right: 1px solid #B29999;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+label {
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+
+.form-control {
+  font-size: 1.3em;
+  color: #080808;
+}
+
+textarea.form-control {
+  height: 80px;
+  /* margin-top: px;*/
+}
+
+.submit {
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
+  background-color: transparent;
+  color: #fff;
+}
+
+@media screen and (max-height: 700px) {
+  .btnFeedback {
+    font-size: 11px;
+  }
+}

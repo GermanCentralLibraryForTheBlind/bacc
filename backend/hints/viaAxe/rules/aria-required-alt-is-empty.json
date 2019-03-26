@@ -1,0 +1,12 @@
+{
+  "id": "aria-required-alt-is-empty",
+  "selector": "img",
+  "any": ["aria-required-alt-is-empty"],
+  "all": [],
+  "none": [],
+  "metadata": {
+    "description": "Ensures all informative images have a non-empty alt-Attribute resp. all decorative images are marked with role=”presentation”",
+    "help": "Are all informative images described by a text alternative?"
+  },
+  "tags": ["hints"]
+}

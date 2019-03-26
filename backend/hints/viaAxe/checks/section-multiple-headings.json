@@ -1,0 +1,11 @@
+{
+  "id": "section-multiple-headings",
+  "evaluate": "section-multiple-headings.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Every <section> element should include only one heading. Subsections with a new heading should be contained in a new <section> element or by other sectioning elements. Subtitles should not be marked with a separate heading tag."
+    }
+  }
+}

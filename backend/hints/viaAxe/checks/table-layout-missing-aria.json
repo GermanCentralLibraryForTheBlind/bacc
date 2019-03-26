@@ -1,0 +1,11 @@
+{
+  "id": "table-layout-missing-aria",
+  "evaluate": "table-layout-missing-aria.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Layout tables should be identified using the aria attribute role=”presentation”. Data tables should contain semantic table markup like <th> elements and a <caption> element."
+    }
+  }
+}

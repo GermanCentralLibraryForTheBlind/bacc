@@ -1,42 +1,3 @@
-<table class="legend" attr.aria-label="{{'BACC.LEGEND' | translate }}">
-  <tbody>
-  <tr style="color: red">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.VERY_STRONG' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_very_dissatisfied</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: orange">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.STRONG' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_dissatisfied</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: yellow">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.PARTIALLY' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_neutral</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: yellowgreen">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.MINOR' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_satisfied</mat-icon>
-    </td>
-  </tr>
-  <tr style="color: green">
-    <td attr.aria-label="{{'BACC.LEGEND_LEVELS.NONE' | translate }}"><span><mat-icon>accessibility</mat-icon></span>
-    </td>
-    <td aria-hidden="true">
-      <mat-icon>sentiment_very_satisfied</mat-icon>
-    </td>
-  </tr>
-  </tbody>
-</table>
 <div class="check-over-whole-wrapper">
   <div fxLayout="column" fxLayoutGap="30px">
     <div fxFlex="45">
@@ -54,6 +15,7 @@
                  [uploader]="uploader"
                  [ngClass]="{'hide': true}"
                  type="file"
+                 multiple="multiple"
           />
           <label for="input-file-id" class="btn-file" aria-hidden="true">{{ 'BACC.FILE_DIALOG' | translate }}</label>
           <label for="input-file-id" class="sr-only sr-label">{{'BACC.SKIP_TO_CHECKER' | translate }}</label>
@@ -73,89 +35,93 @@
       </div>
       <div class="own-table-layout">
         <div id="aria-live" class="sr-only" aria-live="polite"></div>
-        <table style="width:100%">
-          <thead>
-          <tr>
-            <th>{{ 'BACC.ACCESSIBILITY_LEVEL' | translate }}</th>
-            <th>{{ 'BACC.NAME' | translate }}</th>
-            <th><strong>{{ 'BACC.REPORT' | translate }}</strong></th>
-            <th>{{ 'BACC.SIZE' | translate }}</th>
-            <th>{{ 'BACC.PROGRESS' | translate }}</th>
-            <th>{{ 'BACC.ACTIONS' | translate }}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
-            <td>
+          <table class="table table-fixed">
+            <thead>
+            <tr>
+              <th class="col1">{{ 'BACC.ACCESSIBILITY_LEVEL' | translate }}</th>
+              <th class="col2 text-center">{{ 'BACC.NAME' | translate }}</th>
+              <th class="col3"><strong>{{ 'BACC.REPORT' | translate }}</strong></th>
+              <th class="col4">{{ 'BACC.SIZE' | translate }}</th>
+              <th class="col5">{{ 'BACC.PROGRESS' | translate }}</th>
+              <th class="col5">{{ 'BACC.ACTIONS' | translate }}</th>
+            </tr>
+            </thead>
+            <tbody id="checkover-tbody">
+            <tr *ngFor="let item of uploader.queue; let i = index" item.index=i>
+              <td class="col1">
               <span [attr.aria-label]="item?.accessibilityAriaLabel">
               <mat-icon [ngStyle]="item?.accessibility">accessibility</mat-icon>
             </span>
-            </td>
-            <td><strong>{{ item?.file?.name }}</strong></td>
-            <td>
-              <report [itemIndex]="i"></report>
-            </td>
-            <td>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-            <td>
-              <mat-progress-bar
-                mode="buffer"
-                [value]="item?.progressValue"
-                [bufferValue]="item.progress"
-                class="custom-progressbar"
-                aria-valuemin="0"
-                aria-valuemax="100">
-              </mat-progress-bar>
-            </td>
-            <td nowrap>
-              <!--<button mat-icon-button-->
-              <!--type="button"-->
-              <!--color="primary"-->
-              <!--(click)="item.upload()"-->
-              <!--[disabled]="item.isReady || item.isUploading || item.isSuccess">-->
-              <!--<mat-icon>file_upload</mat-icon>-->
-              <!--</button>-->
-              <button mat-icon-button
-                      type="button"
-                      color="warn"
-                      (click)="item.cancel()"
-                      [disabled]="!item.isUploading">
-                <mat-icon>cancel</mat-icon>
-              </button>
-              <button mat-icon-button
-                      color="accent"
-                      type="button"
-                      (click)="item.remove()">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+              </td>
+              <td class="col2"><strong>{{ item?.file?.name }}</strong></td>
+              <td class="col3">
+                <report [itemIndex]="i"></report>
+              </td>
+              <td class="col4">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+              <td class="col5">
+                <mat-progress-bar [mode]="item?.mode" [value]="item?.progressValue" [bufferValue]="item.progress"
+                                  class="custom-progressbar">
+                </mat-progress-bar>
+              </td>
+              <td nowrap class="col6">
+                <!--<button mat-icon-button-->
+                <!--type="button"-->
+                <!--color="primary"-->
+                <!--(click)="item.upload()"-->
+                <!--[disabled]="item.isReady || item.isUploading || item.isSuccess">-->
+                <!--<mat-icon>file_upload</mat-icon>-->
+                <!--</button>-->
+                <!--<button mat-icon-button-->
+                <!--type="button"-->
+                <!--color="warn"-->
+                <!--(click)="item.cancel()"-->
+                <!--[disabled]="!item.isUploading">-->
+                <!--<mat-icon>cancel</mat-icon>-->
+                <!--</button>-->
+                <button mat-icon-button
+                        color="accent"
+                        type="button"
+                        (click)="item.remove()"
+                        attr.aria-label="{{'BACC.DELETE_RESULT' | translate }}">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+     </div>
     </div>
     <div fxFlex="5">
       <div>
         <!--<mat-card>-->
-        <button mat-raised-button color="primary" class="my-btn"
+        <!--<button mat-raised-button color="primary" class="my-btn"-->
+        <!--type="button"-->
+        <!--(click)="uploader.uploadAll()"-->
+        <!--[disabled]="!uploader.getNotUploadedItems().length">-->
+        <!--<mat-icon>file_upload</mat-icon>-->
+        <!--{{ 'BACC.CHECK_OVER_ALL' | translate }}-->
+        <!--</button>-->
+        <!--<button mat-raised-button color="warn" class="my-btn"-->
+        <!--type="button"-->
+        <!--(click)="uploader.cancelAll()"-->
+        <!--[disabled]="!uploader.isUploading">-->
+        <!--<mat-icon>cancel</mat-icon>-->
+        <!--{{ 'BACC.CANCEL_ALL' | translate }}-->
+        <!--</button>-->
+        <button mat-raised-button color="warn" class="btn-delete-all"
                 type="button"
-                (click)="uploader.uploadAll()"
-                [disabled]="!uploader.getNotUploadedItems().length">
-          <mat-icon>file_upload</mat-icon>
-          {{ 'BACC.CHECK_OVER_ALL' | translate }}
-        </button>
-        <button mat-raised-button color="warn" class="my-btn"
-                type="button"
-                (click)="uploader.cancelAll()"
-                [disabled]="!uploader.isUploading">
-          <mat-icon>cancel</mat-icon>
-          {{ 'BACC.CANCEL_ALL' | translate }}
-        </button>
-        <button mat-raised-button color="accent" class="my-btn"
-                type="button"
-                (click)="uploader.clearQueue()"
-                [disabled]="!uploader.queue.length">
+                (click)="deleteQueue()"
+                [disabled]="!checkOverService.checkoverReady">
           <mat-icon>delete</mat-icon>
           {{ 'BACC.REMOVE_ALL' | translate }}
+        </button>
+        <button mat-raised-button color="primary"
+                class="btn-save-all"
+                type="button"
+                (click)="saveReports()"
+                [disabled]="!checkOverService.checkoverReady">
+          <mat-icon>file_download</mat-icon>
+          {{ 'BACC.SAVE_REPORTS' | translate }}
         </button>
         <!--</mat-card>-->
       </div>

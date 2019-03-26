@@ -1,0 +1,15 @@
+{
+  "title": "epub-version",
+  "testDesc": "Is the publication a valid epub3 ebook?",
+  "resDesc": "EPUB3 should be used instead of EPUB2. The EPUB has to be valid.",
+  "help": "",
+  "kbPath": "",
+  "kbTitle": "",
+  "impact": "serious",
+  "tag" : "hints",
+  "spec" : {
+    "name": "",
+    "conformance" : ""
+  },
+  "check": "epub-version.js"
+}

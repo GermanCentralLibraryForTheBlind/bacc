@@ -64,8 +64,8 @@
 
 
 server {
-        listen 80;
-        listen [::]:80;
+        listen 3333;
+        listen [::]:3333;
 
         server_name _;
 
@@ -107,5 +107,21 @@ server {
           proxy_set_header Connection 'upgrade';
           proxy_set_header Host $host;
           proxy_cache_bypass $http_upgrade;
+        }
+        location /contact {
+           proxy_pass http://localhost:3111/contact;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+        }
+        location /reports {
+           proxy_pass http://localhost:3111/reports;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
         }
 }

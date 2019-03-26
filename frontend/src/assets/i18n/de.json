@@ -8,12 +8,13 @@
     "ACTIONS": "Funktionen",
     "CHECK_OVER_ALL": "Alle Dateien prüfen",
     "CANCEL_ALL": "Alle Prüfungen abbrechen",
-    "REMOVE_ALL": "Alle Dateien entfernen",
-    "DRAG_DROP": "Zum Prüfen der Zugänglichkeit,<br><br> EPUB-Dateien per <b>Drag & Drop</b> einfügen <br><br>oder",
-    "FILE_DIALOG": "Datei zum Hochladen auswählen.",
+    "REMOVE_ALL": "Alle Einträge löschen",
+    "DRAG_DROP": "Zum Prüfen der Zugänglichkeit<br><br> EPUB-Dateien per <b>Drag & Drop</b> einfügen <br><br>oder",
+    "FILE_DIALOG": "Dateien zum Hochladen auswählen.",
     "CLOSE": "Schließen",
     "TOOLTIP_SHOW_RULES" : "Regelwerk anzeigen",
-    "TOOLTIP_INFO" : "Informationen über das Prüftool.",
+    "TOOLTIP_INFO" : "Informationen über das Prüftool",
+    "TOOLTIP_SWITCH_LANGUAGE" : "Sprache ändern",
     "SKIP_TO_CHECKER": "Ebook zur Prüfung auswählen",
     "LEGEND" : "Legende der Zugänglichkeitsstufen eines E-books",
     "LEGEND_LEVELS": {
@@ -27,8 +28,13 @@
     "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
     "HEADER_INFO_DIALOG": "Informationen über das BACC Tool",
     "HEADER_RULES_DIALOG": "Regelwerk",
-    "HEADER_REPORT_DIALOG": "Report"
-
-
+    "HEADER_REPORT_DIALOG": "BACC REPORT",
+    "SAVE_REPORTS": "Reporte speichern",
+    "INFO_LONG_TIME" : "Ihr Dokument wird geprüft, bitte haben Sie noch etwas Geduld.",
+    "DATA_PROTECTION" : "Datenschutz",
+    "IMPRESS" : "Impressum",
+    "NO_SUPPORT_FOR_IE" : "Entschuldigung. BACC kann mit dem Internet Explorer nicht genutzt werden. Bitte benutzen Sie Firefox oder Chrome.",
+    "OPEN_REPORT" : "Report öffnen",
+    "DELETE_RESULT" : "Prüfergebnis löschen"
   }
 }

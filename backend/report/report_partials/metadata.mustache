@@ -1,0 +1,268 @@
+<section>
+  <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>{{labeling.metadataDublinCore}}</h4>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <b class="space-right">Identifier: </b>
+                {{#metaData.dc:identifier}}
+                  <span class="metadata-success">{{.}}  </span>
+                {{/metaData.dc:identifier}}
+                {{^metaData.dc:identifier}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.dc:identifier}}
+              </li>
+              <li class="list-group-item">
+                <b class="space-right">Language: </b>
+                {{#metaData.dc:language}}
+                  <span class="metadata-success">{{.}}  </span>
+                {{/metaData.dc:language}}
+                {{^metaData.dc:language}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.dc:language}}
+              </li>
+              </li>
+              <li class="list-group-item">
+                <b class="space-right">Title: </b>
+                {{#metaData.dc:title}}
+                  <span class="metadata-success">{{.}}  </span>
+                {{/metaData.dc:title}}
+                {{^metaData.dc:title}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.dc:title}}
+              </li>
+              </li>
+              <li class="list-group-item">
+                <b class="space-right">Modified: </b>
+                {{#metaData.dcterms:modified}}
+                  <span class="metadata-success">{{.}}  </span>
+                {{/metaData.dcterms:modified}}
+                {{^metaData.dcterms:modified}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.dcterms:modified}}
+              </li>
+              </li>
+            </ul>
+            <!-- +++++++++++++++ -->
+            <!-- metadata accordion  -->
+            <!-- +++++++++++++++ -->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                       aria-expanded="false" aria-controls="collapseOne">{{labeling.moreMetaData}}</a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    {{#metaData.dc:date.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">Date: </b>
+                        {{#metaData.dc:date}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:date}}
+                      </li>
+                    {{/metaData.dc:date.length}}
+                    {{#metaData.dc:rights}}
+                      <li class="list-group-item"><b class="space-right">Rights: </b>
+                        <span>{{.}};  </span>
+                      </li>
+                    {{/metaData.dc:rights}}
+                    {{#metaData.dc:creator.length}}
+                      <li class="list-group-item"><b class="space-right">Creator: </b>
+                        {{#metaData.dc:creator}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:creator}}
+                      </li>
+                    {{/metaData.dc:creator.length}}
+                    {{#metaData.dc:contributor.length}}
+                      <li class="list-group-item"><b>Contributors: </b>
+                        {{#metaData.dc:contributor}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:contributor}}
+                      </li>
+                    {{/metaData.dc:contributor.length}}
+                    {{#metaData.dc:source}}
+                      <li class="list-group-item"><b class="space-right">Source: </b>
+                        <span>{{.}};  </span>
+                      </li>
+                    {{/metaData.dc:source}}
+                    {{#metaData.dcterms:conformsTo.length}}
+                      <li class="list-group-item"><b>ConformsTo: </b>
+                        {{#metaData.dcterms:conformsTo}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dcterms:conformsTo}}
+                      </li>
+                    {{/metaData.dcterms:conformsTo.length}}
+                    {{#metaData.dc:description.length}}
+                      <li class="list-group-item"><b>Description: </b>
+                        {{#metaData.dc:description}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:description}}
+                      </li>
+                    {{/metaData.dc:description.length}}
+                    {{#metaData.dc:format.length}}
+                      <li class="list-group-item"><b>Format: </b>
+                        {{#metaData.dc:format}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:format}}
+                      </li>
+                    {{/metaData.dc:format.length}}
+                    {{#metaData.dc:publisher.length}}
+                      <li class="list-group-item"><b>Publisher: </b>
+                        {{#metaData.dc:publisher}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:publisher}}
+                      </li>
+                    {{/metaData.dc:publisher.length}}
+                    {{#metaData.dc:relation.length}}
+                      <li class="list-group-item"><b>Relation: </b>
+                        {{#metaData.dc:relation}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:relation}}
+                      </li>
+                    {{/metaData.dc:relation.length}}
+                    {{#metaData.dc:subject.length}}
+                      <li class="list-group-item"><b>Subject: </b>
+                        {{#metaData.dc:subject}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:subject}}
+                      </li>
+                    {{/metaData.dc:subject.length}}
+                    {{#metaData.dc:type.length}}
+                      <li class="list-group-item"><b>Type: </b>
+                        {{#metaData.dc:type}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:type}}
+                      </li>
+                    {{/metaData.dc:type.length}}
+                    {{#metaData.dc:coverage.length}}
+                      <li class="list-group-item"><b>Coverage: </b>
+                        {{#metaData.dc:coverage}}
+                          <span>{{.}};  </span>
+                        {{/metaData.dc:coverage}}
+                      </li>
+                    {{/metaData.dc:coverage.length}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>{{labeling.metadataAccessibility}}</h4>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <b class="space-right">AccessMode: </b>
+                {{#metaData.schema:accessMode}}
+                  <span class="metadata-success">{{.}}</span>
+                {{/metaData.schema:accessMode}}
+                {{^metaData.schema:accessMode}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.schema:accessMode}}
+              </li>
+              <li class="list-group-item">
+                <b class="space-right">AccessModeSufficient: </b>
+                {{#metaData.schema:accessModeSufficient}}
+                  <span class="metadata-success">{{.}}</span>
+                {{/metaData.schema:accessModeSufficient}}
+                {{^metaData.schema:accessModeSufficient}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.schema:accessModeSufficient}}
+              </li>
+              <li class="list-group-item ">
+                <b class="space-right">AccessibilitySummary: <br><br></b>
+                {{#metaData.schema:accessibilitySummary}}
+                  <span class="metadata-success">{{metaData.schema:accessibilitySummary}}</span>
+                {{/metaData.schema:accessibilitySummary}}
+                {{^metaData.schema:accessibilitySummary}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.schema:accessibilitySummary}}
+              </li>
+              <li class="list-group-item">
+                <b class="space-right">AccessibilityFeature: </b>
+                {{#metaData.schema:accessibilityFeature}}
+                  <span class="metadata-success">{{.}}</span>
+                {{/metaData.schema:accessibilityFeature}}
+                {{^metaData.schema:accessibilityFeature}}
+                  <span class="metadata-failed">Missing</span>
+                {{/metaData.schema:accessibilityFeature}}
+              </li>
+            </ul>
+            <!-- +++++++++++++++ -->
+            <!-- accessibility metadata accordion  -->
+            <!-- +++++++++++++++ -->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#accessibility-metadata-collapseOne"
+                       aria-expanded="false" aria-controls="collapseOne">{{labeling.moreMetaData}}</a>
+                  </h4>
+                </div>
+                <div id="accessibility-metadata-collapseOne" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    {{#metaData.schema:accessibilityAPI.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">AccessibilityAPI: </b>
+                        {{#metaData.schema:accessibilityAPI}}
+                          <span>{{.}};  </span>
+                        {{/metaData.schema:accessibilityAPI}}
+                      </li>
+                    {{/metaData.schema:accessibilityAPI.length}}
+                    {{#metaData.schema:accessibilityHazard.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">AccessibilityHazard: </b>
+                        {{#metaData.schema:accessibilityHazard}}
+                          <span>{{.}};  </span>
+                        {{/metaData.schema:accessibilityHazard}}
+                      </li>
+                    {{/metaData.schema:accessibilityHazard.length}}
+                    {{#metaData.schema:accessibilityControl.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">AccessibilityControl: </b>
+                        {{#metaData.schema:accessibilityControl}}
+                          <span>{{.}};  </span>
+                        {{/metaData.schema:accessibilityControl}}
+                      </li>
+                    {{/metaData.schema:accessibilityControl.length}}
+                    {{#metaData.a11y:certifierCredential.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">CertifierCredential: </b>
+                        {{#metaData.a11y:certifierCredential}}
+                          <span>{{.}};  </span>
+                        {{/metaData.a11y:certifierCredential}}
+                      </li>
+                    {{/metaData.a11y:certifierCredential.length}}
+                    {{#metaData.a11y:certifiedBy.length}}
+                      <li class="list-group-item">
+                        <b class="space-right">CertifiedBy: </b>
+                        {{#metaData.a11y:certifiedBy}}
+                          <span>{{.}};  </span>
+                        {{/metaData.a11y:certifiedBy}}
+                      </li>
+                    {{/metaData.a11y:certifiedBy.length}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

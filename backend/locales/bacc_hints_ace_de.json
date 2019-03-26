@@ -1,0 +1,20 @@
+{
+  "lang": "de",
+  "rules": {
+    "epub-version": {
+      "description": "",
+      "help": "Handelt es sich bei der Publikation um ein valides EPUB3-E-Book?",
+      "optimize": "Anstelle von EPUB2 sollte das Format in der Version EPUB3 verwendet werden. Das E-Book sollte valide sein."
+    },
+    "duplicate-title": {
+      "description": "",
+      "help": "Sind die Dokumente der Publikation eindeutig und aussagekräftig betitelt?",
+      "optimize": "Sämtliche Dokumente der Publikation sollten einen aussagekräftig und eindeutig Titel haben, der mithilfe des &lt;title&gt;-Elementes ausgezeichnet ist. Ein und derselbe Titel sollte nicht für mehrere Dokumente verwendet werden."
+    },
+    "nav-landmarks-missing": {
+      "description": "",
+      "help": "Könnte der Einsatz von Orientierungspunkten (landmarks) zu einer verbesserten Navigation in der Publikation beitragen?",
+      "optimize": "Die Publikation sollte Orientierungspunkte (Landmarks) besitzen, um die Navigation zu erleichtern. Die Landmarks-Navigation sollte mithilfe des Elementes &lt;nav epub:type=\"landmarks\"&gt; im Navigationsdokument der Publikation ausgezeichnet sein."
+    }
+  }
+}

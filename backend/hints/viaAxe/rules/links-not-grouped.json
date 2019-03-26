@@ -1,0 +1,12 @@
+{
+  "id": "links-not-grouped",
+  "selector": "a",
+  "any": ["links-not-grouped"],
+  "all": [],
+  "none": [],
+  "metadata": {
+    "description": "Ensures groups of more than three <a> elements are marked as a list.",
+    "help": "Should a group of links be marked as a list?"
+  },
+  "tags": ["hints"]
+}

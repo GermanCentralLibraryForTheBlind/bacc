@@ -1,0 +1,12 @@
+{
+  "id": "table-layout-missing-aria",
+  "selector": "table",
+  "any": ["table-layout-missing-aria"],
+  "all": [],
+  "none": [],
+  "metadata": {
+    "description": "Ensures layout tables (<table> elements with neither <thead> nor <th> nor <caption> nor one of the attributes summary, headers or scope) have the aria attribute role=”presentation”",
+    "help": "Are layout tables identified?"
+  },
+  "tags": ["hints"]
+}

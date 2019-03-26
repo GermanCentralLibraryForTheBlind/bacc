@@ -1,0 +1,50 @@
+<button class="btnFeedback" data-toggle="modal" data-target="#myModalFeedback" lang="en">Give feedback</button>
+<!-- Modal -->
+<div class="modal fade" id="myModalFeedback" tabindex="-1" role="dialog" aria-labelledby="myFeedback">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header contact-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white">&times;</button>
+        <h4 class="modal-title" id="myFeedback">BACC Feedback</h4>
+      </div>
+      <div class="modal-body">
+        <section class="contact contact-header">
+          <div class="section-content teko">
+            <h1 lang="en">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s" > Touch with us</span></h1>
+            <h3>„Bei Fragen oder Feedback nutzen Sie bitte das folgende Kontaktformular, um uns zu kontaktieren.“</h3>
+          </div>
+          <div class="contact-section">
+            <div class="container">
+              <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="col-md-6 form-line">
+                  <div class="form-group">
+                    <label for="username" class="teko" lang="en">Your Name</label>
+                    <div class="alert alert-info" role="alert" *ngIf="!form.controls['name'].valid && form.controls['name'].touched" lang="en">Please specify a name</div>
+                    <input type="text" class="form-control" id="username" formControlName="name" placeholder=" Enter Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="teko" lang="en">Email Address</label>
+                    <div class="alert alert-info" role="alert" *ngIf="!form.controls['email'].valid && form.controls['email'].touched" lang="en">Please specify an email address</div>
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder=" Enter Email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="description" class="teko" lang="en"> Message</label>
+                    <div class="alert alert-info" role="alert" *ngIf="!form.controls['message'].valid && form.controls['message'].touched" lang="en">Please specify a description that's between 30 and 500 characters.</div>
+                    <textarea class="form-control" id="description" formControlName="message" placeholder="Enter Your Message"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-default submit" type="submit" [disabled]="form.invalid" lang="en"> Send Message </button>
+                  <div class="alert alert-success" *ngIf="successMessage" type="success">{{ successMessage }}</div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer contact-header">
+        <button mat-raised-button color="default" type="button" class="btn btn-default submit" data-dismiss="modal">{{'BACC.CLOSE' | translate }}</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

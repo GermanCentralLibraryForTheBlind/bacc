@@ -1,0 +1,11 @@
+{
+  "id": "datatable-missing-th",
+  "evaluate": "datatable-missing-th.js",
+  "metadata": {
+    "impact": "serious",
+    "messages": {
+      "pass": "pass",
+      "fail": "Data tables should contain one or more table header cells, working as a heading for a group of data cells in the table. Table header cells should be marked with a <th> element."
+    }
+  }
+}

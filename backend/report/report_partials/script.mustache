@@ -1,0 +1,128 @@
+<script>
+
+  var vioPanel;
+  //
+  // prev button
+  //
+  $('button.btnPagerPrev').on('click', function (e) {
+    e.preventDefault();
+    const that = $(vioPanel + ':visible');
+
+    if (that.prev(vioPanel).length > 0) {
+      $(vioPanel).hide();
+      that.hide().prev(vioPanel).show()
+    }
+    prefNextBtnState();
+  });
+
+  //
+  // next button
+  //
+  $('button.btnPagerNext').on('click', function (e) {
+    e.preventDefault();
+    const that = $(vioPanel + ':visible');
+
+    if (that.next(vioPanel).length > 0) {
+      $(vioPanel).hide();
+      that.next(vioPanel).show()
+    }
+    prefNextBtnState();
+  });
+
+
+  $('#template-violation-table > tbody > tr').click(function () {
+    selectDetails(this);
+  });
+
+  $('#template-violation-table > tbody > tr').keypress(function (event) {
+    if (event.which == 13) selectDetails(this);
+  });
+
+  $('#template-hints-table > tbody > tr').click(function () {
+    selectDetails(this);
+  });
+
+  $('#template-hints-table > tbody > tr').keypress(function (event) {
+    if (event.which == 13) selectDetails(this);
+  });
+
+
+  setTimeout(function () {
+    //
+    // first load select first row
+    //
+    $('#template-violation-table > tbody > tr').first().trigger('click');
+  }, 500);
+
+  $('input[id="hints"]').on('click', function (e) {
+    $('#template-hints-table > tbody > tr').first().trigger('click');
+  });
+
+  $('input[id="violation"]').on('click', function (e) {
+    $('#template-violation-table > tbody > tr').first().trigger('click');
+  });
+
+  function selectDetails(el) {
+
+    const currViolationID = '#p-' + el.id;
+    vioPanel = currViolationID + ' .violation';
+
+    if ($(vioPanel + ':visible').length === 0) {
+
+      $(".violation[id]").css("display", "none");
+      // $('.violation-nav').show();
+
+      $(currViolationID).toggle();
+      $(vioPanel).hide().first().show();
+
+      $('.ruleDescription').text($(vioPanel + ':visible').attr('rule'));
+
+      // hide navigation bar if only one violation occurred for current type
+      prefNextBtnState();
+
+      $('.selected').removeClass('selected');
+      $(el).addClass('selected');
+      $(el).select();
+    }
+
+    const violation = el.id;
+    const detailsStatus = $('#detailsStatusString').text();
+
+    setStateForSR(detailsStatus.replace("${violation}", violation));
+  }
+
+  function prefNextBtnState() {
+
+    $('#pagerIndexViolations').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
+    $('#pagerIndexHints').text($(vioPanel + ':visible').attr('index') + " {{labeling.of}} " + $(vioPanel + ':visible').parent().children().length);
+    $('button.btnPagerPrev').prop('disabled', $(vioPanel + ':visible').prev(vioPanel).length === 0);
+    $('button.btnPagerNext').prop('disabled', $(vioPanel + ':visible').next(vioPanel).length === 0);
+  }
+
+  // provide current application state to screen reader user
+  function setStateForSR(text) {
+    $('#ariaLive').text(text);
+  }
+
+  // $(document).ready(function () {
+  //   // User navigates table using keyboard
+  //   var currCell = $('tr').first();
+  //   $('tr').keyup((e) => {
+  //     var c = "";
+  //
+  //     if (e.which === 38) {
+  //       // Up Arrow
+  //       c = currCell.closest('tr').prev().find('td:eq(' + currCell.index() + ')');
+  //     } else if (e.which === 40) {
+  //       // Down Arrow
+  //       c = currCell.closest('tr').next().find('td:eq(' + currCell.index() + ')');
+  //     }
+  //     // If we didn't hit a boundary, update the current cell
+  //     if (c.length > 0) {
+  //       currCell = c;
+  //       currCell.focus();
+  //     }
+  //   });
+  // });
+  $('.tooltip-active').tooltip({ html: true });
+</script>

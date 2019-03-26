@@ -1,334 +1,82 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="./../report.css"/>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-          crossorigin="anonymous"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-</head>
-<body>
+{{> head}}
+<body id="report">
 <div class="header">
-  <span class="header-title">BACC REPORT</span>
-  <br>
+  <div class="header-title">
+    <span>{{> logo}}</span>
+    <span style="margin-left: 10px; top: -10px; position: relative;">BACC REPORT</span>
+  </div>
   <span class="bookTitle">{{metaData.dc:title}}   </span>
   <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
-  <i id="total-impact-icon" class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-size: 36px"
-     aria-hidden="true">accessibility</i>
-  <br>
-  <span class="check-date">{{labeling.checkDate}}: {{checkDate}}</span>
+  <i id="total-impact-icon" class="material-icons" style="color:{{totalAccessibilityLevel.color}}; font-style: normal!important; font-size: 36px" aria-hidden="true">accessibility</i>
+  <br><br>
+  <span class="check-date"><b>{{labeling.checkDate}}:</b> {{checkDate}}</span> -
+  <span class="check-date"><b>EPUB version:</b> {{epubVersion}}</span> -
+  <span class="check-date"><b>BACC version:</b> {{version}}</span>
 </div>
-<div class="subheader">
-</div>
+<div class="subheader"></div>
 <div class="tab-wrap">
+  <!-- +++++++++++++++ -->
+  <!-- violations tab  -->
+  <!-- +++++++++++++++ -->
   <input type="radio" name="tabs" id="violation" checked>
   <div class="tab-label-content">
-    <label for="violation">{{labeling.violation}}</label>
+    <label for="violation">{{labeling.violationTab}}
+      {{#groups.totalCountRules}}
+        <mark>{{groups.totalCountRules}}</mark>
+      {{/groups.totalCountRules}}
+    </label>
     <div class="tab-content">
-      <div class="container violation-container" role="region" aria-label="{{labeling.dialogViolations}}">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <table id="template-violation-table"
-                       class="table table-striped table-hover"
-                       data-click-to-select="true"
-                       data-single-select="true">
-                  <caption>{{labeling.total}}: {{totalCount}}</caption>
-                  <thead class="thead-violations">
-                  <th class="col-md-2">{{labeling.violationImpact}}</th>
-                  <th class="col-md-7">{{labeling.violation}}</th>
-                  <th class="col-md-4">{{labeling.guideline}}</th>
-                  <th class="col-md-2">{{labeling.count}}</th>
-                  </thead>
-                  <tbody>
-                  <!--{{#groups}}-->
-                  <tr id="{{name}}">
-                    <td class="col-md-2"><span class="sr-only"
-                                               aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
-                      <i id="{{name}}-impact-icon" class="material-icons mat-36" style="color:{{impact.color}}"
-                         aria-hidden="true">accessibility</i>
-                    </td>
-                    <td class="col-md-7">{{name}}</td>
-                    <td class="col-md-4">{{ruleSet}}</td>
-                    <td class="col-md-2">{{count}}</td>
-                  </tr>
-                    <!--{{/groups}}-->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div id="details" class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h3 class="panel-title panel-title-custom">{{labeling.details}}</h3>
-                    <h6 id="detailsViolationLabel"></h6>
-                  </div>
-                  <div class="col-sm-4">
-                    <nav class="violation-nav" aria-label="{{labeling.vioNav}}">
-                      <button class="btn btnPagerPrev" href="#" aria-label="{{labeling.detailsPrevious}}">
-                        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-                      </button>
-                      <button class="btn btnPagerNext" href="#" aria-label="{{labeling.detailsNext}}">
-                        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-                      </button>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-              <!--{{#groups}}-->
-                <div id="p-{{name}}" class="violation" style="display: none">
-                <!--{{#violations}}-->
-                  <div class="violation">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <b>{{index}}. EPUB item:</b> <a>{{spineItem}}</a>
-                      </div>
-                      <div class="panel-body">
-                        {{#help.dct:description}}
-                          <div class="panel panel-warning">
-                            <div class="panel-heading">
-                              {{labeling.ruleDescription}}
-                            </div>
-                            <div class="panel-body">{{help.dct:description}}</div>
-                          </div>
-                        {{/help.dct:description}}
-                        <div class="panel panel-warning">
-                          <div class="panel-heading">
-                            {{labeling.description}}
-                            <div style="float: right">
-                              <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
-                            </div>
-                          </div>
-                          <div class="panel-body">{{{shortHelp}}}</div>
-                        </div>
-                        <div class="panel panel-default" aria-hidden="true">
-                          <div class="panel-heading" role="tab" id="source-code">
-                            <div class="panel-title" style="font-size: small; font-weight: bold">
-                              <a data-toggle="collapse" href="#expandSource-{{name}}-{{index}}"
-                                 aria-expanded="false" aria-controls="collapseOne">
-                                {{labeling.code}}
-                              </a>
-                            </div>
-                          </div>
-                          <div id="expandSource-{{name}}-{{index}}" class="panel-collapse collapse out" role="panel"
-                               aria-labelledby="source-code">
-                            <div class="panel-body">
-                              <pre><code class="html">
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;title&gt;BACCY&lt;/title&gt;
-  &lt;!-- here goes the rest of the page --&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-                    </code></pre>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--{{/violations}}-->
-                </div>
-                <!--{{/groups}}-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{> violations}}
     </div>
   </div>
-  <input type="radio" name="tabs" id="outline" aria-hidden="true">
-  <div class="tab-label-content" aria-hidden="true">
+  <!-- +++++++++++++++ -->
+  <!-- hints tab  -->
+  <!-- +++++++++++++++ -->
+  <input type="radio" name="tabs" id="hints">
+  <div class="tab-label-content">
+    <label id="lbHintsTab" for="hints">{{labeling.hints}}{{#groups.totalCountHints}}
+      <mark>{{groups.totalCountHints}}</mark>{{/groups.totalCountHints}}
+    </label>
+    <div class="tab-content">
+      {{> hints}}
+    </div>
+  </div>
+  <!-- +++++++++++++++ -->
+  <!-- metadata tab  -->
+  <!-- +++++++++++++++ -->
+  <input type="radio" name="tabs" id="metadata">
+  <div class="tab-label-content">
+    <label for="metadata">{{labeling.metadata}}</label>
+    <div class="tab-content">
+      {{> metadata}}
+    </div>
+  </div>
+  <!-- +++++++++++++ -->
+  <!-- tab outlines  -->
+  <!-- +++++++++++++ -->
+  <input type="radio" name="tabs" id="outline">
+  <div class="tab-label-content">
     <label for="outline">{{labeling.outlines}}</label>
     <div class="tab-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <b>{{labeling.tocEPUB}}</b>
-              </div>
-              <div class="panel-body">
-                {{{outlines.toc}}}
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <b>{{labeling.headingsOutline}}</b>
-              </div>
-              <div class="panel-body">
-                {{{outlines.headings}}}
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <b>{{labeling.htmlOutline}}</b>
-              </div>
-              <div class="panel-body">
-                {{{outlines.html}}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{> outlines}}
     </div>
   </div>
-  <input type="radio" name="tabs" id="image-description" aria-hidden="true">
-  <div class="tab-label-content" id="tab3-content" aria-hidden="true">
+  <!-- +++++++++++ -->
+  <!-- tabs images -->
+  <!-- +++++++++++ -->
+  <input type="radio" name="tabs" id="image-description">
+  <div class="tab-label-content" id="tab3-content">
     <label for="image-description">{{labeling.imgDescription}}</label>
     <div class="tab-content">
-      <table id="images" class="table">
-        <thead>
-        <th>{{labeling.image}}</th>
-        <th style="width:80px"></th>
-        <th>{{labeling.imgDescription}}</th>
-        </thead>
-        <tbody>
-        <!--{{#images}}-->
-        <tr>
-          <td>
-            <img src="data/{{src}}" alt="{{alt}}"/>
-          </td>
-          <td style="width:80px"></td>
-          <td>
-            <div class="panel panel-warning">
-              <div class="panel-heading">
-                {{labeling.description}}
-              </div>
-              <div class="panel-body">
-                <p><b>{{labeling.location}}</b> :: {{location}}</p>
-                <p><code>alt</code> ::  {{alt}}</p>
-                <p><code>figcaption</code> :: {{figcaption}}</p>
-                <p><code>aria-describedby</code> :: </p>
-                <p>
-                  <b>{{labeling.code}}</b>
-                <pre><code class="html">{{html}}</code></pre>
-                </p>
-              </div>
-            </div>
-          </td>
-        </tr>
-          <!--{{/images}}-->
-        </tbody>
-      </table>
+      {{> images}}
     </div>
   </div>
   <div class="slide"></div>
 </div>
 <div id="ariaLive" class="sr-only" role="status" aria-live="polite"></div>
 <div id="detailsStatusString" class="hidden">{{labeling.updateDetails}}</div>
-<script>
-
-  var vioPanel;
-  //
-  // prev button
-  //
-  $('button.btnPagerPrev').on('click', function (e) {
-    e.preventDefault();
-    const that = $(vioPanel + ':visible');
-
-    if (that.prev(vioPanel).length > 0) {
-      $(vioPanel).hide();
-      that.hide().prev(vioPanel).show()
-    }
-    prefNextBtnState();
-  });
-
-  //
-  // next button
-  //
-  $('button.btnPagerNext').on('click', function (e) {
-    e.preventDefault();
-    const that = $(vioPanel + ':visible');
-
-    if (that.next(vioPanel).length > 0) {
-      $(vioPanel).hide();
-      that.next(vioPanel).show()
-    }
-    prefNextBtnState();
-  });
-
-  //
-  // table row mouse click
-  //
-  $('#template-violation-table > tbody > tr').click(function () {
-    selectViolationDetails(this);
-  });
-
-  //
-  // table row key press
-  //
-  $('#template-violation-table > tbody > tr').keypress(function (event) {
-
-    if (event.which == 13)
-      selectViolationDetails(this);
-
-  });
-
-  //
-  // first load select first row
-  //
-  $('#template-violation-table > tbody > tr').first().trigger('click');
-
-  function selectViolationDetails(el) {
-
-    $("#details").find(".violation[id]").css("display", "none");
-    $('.violation-nav').show();
-
-    const currViolationID = '#p-' + el.id;
-    vioPanel = currViolationID + ' .violation';
-    $(currViolationID).toggle();
-    $(vioPanel).hide().first().show();
-
-    $('#detailsViolationLabel').text(el.id);
-
-    const violation = el.id;
-    const detailsStatus = $('#detailsStatusString').text();
-
-    setStateForSR(detailsStatus.replace("${violation}", violation));
-
-    // hide navigation bar if only one violation occurred for current type
-    prefNextBtnState();
-
-    $('.selected').removeClass('selected');
-    $(el).find("i").addClass('material-icons.mat-36');
-    $(el).addClass('selected');
-  }
-
-  function prefNextBtnState() {
-
-    $('button.btnPagerPrev').prop('disabled', $(vioPanel + ':visible').prev(vioPanel).length === 0);
-    $('button.btnPagerNext').prop('disabled', $(vioPanel + ':visible').next(vioPanel).length === 0);
-  }
-
-  // provide current application state to screen reader user
-  function setStateForSR(text) {
-    $('#ariaLive').text(text);
-  }
-
-</script>
+{{> script}}
 </body>
 </html>
-
-<!--<td>-->
-<!--&lt;!&ndash; condition employe.year &ndash;&gt;-->
-  <!--{{#year}} &lt;!&ndash; condition if &ndash;&gt;-->
-<!--{{.}}-->
-  <!--{{/year}}-->
-  <!--{{^year}} &lt;!&ndash; condition else &ndash;&gt;-->
-<!--Not Available-->
-  <!--{{/year}}-->
-<!--&lt;!&ndash; condition employe.year &ndash;&gt;-->
-<!--</td>-->

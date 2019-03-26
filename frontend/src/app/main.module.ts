@@ -1,37 +1,31 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpModule} from '@angular/http';
+import {MatToolbarModule, MatMenuModule, MatCardModule, MatIconModule, MatButtonModule, MatListModule, MatTableModule, MatProgressBarModule} from '@angular/material';
+import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-translate/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {BrowserModule} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FileUploadModule} from 'ng2-file-upload';
-import {JasperoAlertsModule} from '@jaspero/ng2-alerts';
-import {TranslateModule, TranslateModuleConfig, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MarkdownModule} from 'angular2-markdown';
 import {PopoverModule} from 'ngx-popover';
+import {NgModule} from '@angular/core';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatToolbarModule,
-  MatMenuModule,
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatListModule,
-  MatTableModule,
-  MatProgressBarModule
-} from '@angular/material';
-
-import {AppComponent} from './main';
+import {CheckStateService} from './check-over/check.state.service';
+import {CheckOverService} from './check-over/check-over.service';
+import {HintOfficialComponent} from './hintOfficialVersion';
 import {CheckOverComponent} from './check-over/check-over';
+import {ShowRulesComponent} from './show-rules/show-rules';
+import {UploadService} from './check-over/upload.service';
+import {ReportService} from './report/report.service';
+import {FeedbackComponent} from './feedback/feedback';
+import {FooterComponent} from './footer/footer';
 import {HeaderComponent} from './header/header';
 import {ReportComponent} from './report/report';
-import {UploadService} from './check-over/upload.service';
-import {CheckOverService} from './check-over/check-over.service';
-import {ReportService} from './report/report.service';
-import {ShowRulesComponent} from './show-rules/show-rules';
+import {LegendComponent} from './legend/legend';
 import {InfoComponent} from './info/info';
-
+import {AppComponent} from './main';
+import {Logo} from './logo.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,7 +47,12 @@ const translateConfig: TranslateModuleConfig = {
     HeaderComponent,
     ReportComponent,
     ShowRulesComponent,
-    InfoComponent
+    InfoComponent,
+    FeedbackComponent,
+    HintOfficialComponent,
+    LegendComponent,
+    Logo,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -68,10 +67,11 @@ const translateConfig: TranslateModuleConfig = {
     BrowserAnimationsModule,
     FileUploadModule,
     MatProgressBarModule,
-    HttpModule,
-    JasperoAlertsModule,
     HttpClientModule,
     PopoverModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // FileS,
     TranslateModule.forRoot(translateConfig),
     MarkdownModule.forRoot()
   ],
@@ -79,7 +79,8 @@ const translateConfig: TranslateModuleConfig = {
   providers: [
     UploadService,
     CheckOverService,
-    ReportService
+    ReportService,
+    CheckStateService
   ],
   bootstrap: [AppComponent]
 })

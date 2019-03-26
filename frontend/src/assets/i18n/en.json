@@ -13,21 +13,29 @@
     "DRAG_DROP": "Drag & Drop your file here to check-over your EPUB<br><br> or",
     "FILE_DIALOG": "Choose a file to upload.",
     "CLOSE": "close",
-    "TOOLTIP_SHOW_RULES" : "Show used rules",
-    "TOOLTIP_INFO" : "Information about this tool.",
+    "TOOLTIP_SHOW_RULES" : "Show test rules",
+    "TOOLTIP_INFO" : "Information about this tool",
+    "TOOLTIP_SWITCH_LANGUAGE" : "Switch language",
     "SKIP_TO_CHECKER": "Choose an Ebook-file to check it",
     "LEGEND" : "legend of accessibility levels",
     "LEGEND_LEVELS": {
       "VERY_STRONG" : "very strong limited accessibility",
-      "STRONG" : "very strong limited accessibility",
+      "STRONG" : "strong limited accessibility",
       "PARTIALLY" : "partially limited accessibility",
       "MINOR" : "minor limited accessibility",
-      "NONE" : "None limited accessibility"
+      "NONE" : "unlimited accessibility"
     },
     "START_CHECKER": "Begin check",
-    "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
+    "CHECKER_IS_FINISHED": "100% Checking process of {{fileName}} is finished. The result of check is the ebook has {{accessibilityAsWord}}.",
     "HEADER_INFO_DIALOG": "Information about BACC tool",
     "HEADER_RULES_DIALOG": "Rules",
-    "HEADER_REPORT_DIALOG": "Report"
+    "HEADER_REPORT_DIALOG": "BACC REPORT",
+    "SAVE_REPORTS": "Save reports",
+    "INFO_LONG_TIME" : "Your document is being checked, please be patient.",
+    "DATA_PROTECTION" : "Data protection",
+    "IMPRESS" : "Impress",
+    "NO_SUPPORT_FOR_IE" : "Sorry. BACC cannot be used in Internet Explorer. Please use Firefox or Chrome.",
+    "OPEN_REPORT" : "Open report",
+    "DELETE_RESULT" : "Delete check result"
   }
 }

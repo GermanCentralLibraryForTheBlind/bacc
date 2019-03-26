@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {URLSearchParams, RequestOptions, Headers} from '@angular/http';
+import {HttpParams, HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable} from 'rxjs/Rx';
 
+import { Observable } from "rxjs/Rx";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
@@ -12,32 +11,27 @@ import 'rxjs/add/operator/map';
 export class CheckOverService {
 
   private WEB_API_CHECKOVER: string = '/checkover';
+  public checkoverReady: boolean = false;
 
-  constructor(private http: Http, private translate: TranslateService) {
-  }
+  constructor(private http: HttpClient, private translate: TranslateService) {}
 
   runCheck(uploadID: string): Promise<any> {
 
-    let contentHeaders = new Headers();
-    contentHeaders.append('Content-Type', 'application/json');
+    this.checkoverReady = false;
 
-    let myParams = new URLSearchParams();
-    myParams.append('uploadID', uploadID);
-    myParams.append('lang', this.translate.getBrowserLang());
+    let params = new HttpParams()
+      .set('uploadID', uploadID)
+      .set('lang', this.translate.currentLang);
 
-    let options = new RequestOptions({headers: contentHeaders, params: myParams});
-
-    return this.http.get(this.WEB_API_CHECKOVER, options)
-      // .timeout(120000)
+    return this.http.get(this.WEB_API_CHECKOVER, {responseType: 'text', params: params})
       .toPromise()
-      .then(response => response)
+      .then(response => {return response;} )
       .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
 
     // console.error(error);
-    return Promise.reject(error._body || error);
+    return Promise.reject(error.message || error);
   }
-
 }
