@@ -23,7 +23,12 @@
       "STRONG" : "strong limited accessibility",
       "PARTIALLY" : "partially limited accessibility",
       "MINOR" : "minor limited accessibility",
-      "NONE" : "unlimited accessibility"
+      "NONE" : "unlimited accessibility",
+      "VERY_STRONG_SMILEY" : "Very sad red Smiley",
+      "STRONG_SMILEY" : "Sad orange Smiley",
+      "PARTIALLY_SMILEY" : "Disgruntled yellow Smiley",
+      "MINOR_SMILEY" : "Neutral lightgreen Smiley",
+      "NONE_SMILEY" : "Laughing greenu Smiley"
     },
     "START_CHECKER": "Begin check",
     "CHECKER_IS_FINISHED": "100% Checking process of {{fileName}} is finished. The result of check is the ebook has {{accessibilityAsWord}}.",

@@ -22,7 +22,12 @@
       "STRONG" : "Starke Einschränkungen",
       "PARTIALLY" : "Teilweise Einschränkungen",
       "MINOR" : "Geringe Einschränkungen",
-      "NONE" : "Keine Einschränkungen"
+      "NONE" : "Keine Einschränkungen",
+      "VERY_STRONG_SMILEY" : "Sehr trauriger roter Smiley",
+      "STRONG_SMILEY" : "Trauriger oranger Smiley",
+      "PARTIALLY_SMILEY" : "Verstimmter gelber Smiley",
+      "MINOR_SMILEY" : "Neutraler hellgrüner Smiley",
+      "NONE_SMILEY" : "Lachender grüner Smiley"
     },
     "START_CHECKER": "Starte Prüfung",
     "CHECKER_IS_FINISHED": "100% Prüfung von {{fileName}} beendet. Das Ebook weißt {{accessibilityAsWord}} in der Zugänglichkeit auf.",
