@@ -11,8 +11,11 @@
                    data-click-to-select="true" data-single-select="true">
               <!--<caption>{{labeling.total}}: {{totalCount}}</caption>-->
               <thead class="thead-violations">
-              <th class="col column-first tooltip-active" data-toggle="tooltip" data-placement="top"
-                  title='{{{labeling.tooltipHints}}}'>{{labeling.hints}}</th>
+              <th class="col column-first">{{labeling.hints}}
+                <span class="glyphicon glyphicon-question-sign tooltip-active" aria-hidden="true" data-toggle="tooltip"
+                      data-placement="top"
+                      title="{{{labeling.tooltipHints}}}"></span>
+              </th>
               <th class="col column-last">{{labeling.count}}</th>
               </thead>
               <tbody>

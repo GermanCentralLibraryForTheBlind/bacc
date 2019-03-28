@@ -20,12 +20,12 @@
                   <div class="form-group">
                     <label for="username" class="teko" lang="en">Your Name</label>
                     <div class="alert alert-info" role="alert" *ngIf="!form.controls['name'].valid && form.controls['name'].touched" lang="en">Please specify a name</div>
-                    <input type="text" class="form-control" id="username" formControlName="name" placeholder=" Enter Name">
+                    <input type="text" class="form-control" id="username" formControlName="name" placeholder=" Enter Name" autocomplete="name">
                   </div>
                   <div class="form-group">
                     <label for="email" class="teko" lang="en">Email Address</label>
                     <div class="alert alert-info" role="alert" *ngIf="!form.controls['email'].valid && form.controls['email'].touched" lang="en">Please specify an email address</div>
-                    <input type="email" class="form-control" id="email" formControlName="email" placeholder=" Enter Email">
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder=" Enter Email" autocomplete="email">
                   </div>
                 </div>
                 <div class="col-md-6">
