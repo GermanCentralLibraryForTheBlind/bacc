@@ -44,7 +44,8 @@
     "infoNoViolation" : "Glückwunsch! Das E-Book erfüllt alle automatisiert prüfbaren Regeln.",
     "infoNoHint" : "Glückwunsch! Keine zusätzlichen Hinweise vorhanden.",
     "infoNoImage" : "Keine Bilder vorhanden.",
-    "moreMetaData" : "Weitere Metadaten"
+    "moreMetaData" : "Weitere Metadaten",
+    "proofCategories" : "Anzeige Prüfkategorien"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

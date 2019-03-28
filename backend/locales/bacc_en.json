@@ -44,7 +44,8 @@
     "infoNoViolation" : "Congratulations! All automated accessibility checks passed.",
     "infoNoHint" : "Congratulations! No additional advices available.",
     "infoNoImage" : "No images found.",
-    "moreMetaData" : "More metadata"
+    "moreMetaData" : "More metadata",
+    "proofCategories" : "View of proof categories"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",
