@@ -191,6 +191,7 @@
   .material-icons {
     font-size: 16px;
   }
+
   .mat-icon-button .mat-icon, .mat-icon-button i {
     line-height: 10px;
   }
@@ -207,4 +208,10 @@
   height: 1px !important;
   width: 1px !important;
   position: relative;
+}
+
+
+.upload-text {
+  line-height: 1.1;
+  font-size: 18px;
 }
