@@ -100,12 +100,13 @@ class Localise {
 
     this._data.totalAccessibilityLevel.label = locale.accessibilityLimitation[this._data.totalAccessibilityLevel.baccName];
 
-    const rules = this._data.rules;
+    const rules = this._data.groups.rules;
     for (let i in rules) {
       if (!rules[i].impact) {
         logger.log('warn', 'Unsupported impact identifier:' + rules[i].impact);
         return;
       }
+
       rules[i].impact.label = locale.accessibilityLimitation[rules[i].impact.baccName]
     }
   }
