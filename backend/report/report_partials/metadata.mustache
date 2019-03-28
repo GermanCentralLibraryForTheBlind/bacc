@@ -9,7 +9,7 @@
           <div class="panel-body">
             <ul class="list-group">
               <li class="list-group-item">
-                <b class="space-right">Identifier: </b>
+                <strong class="space-right">Identifier: </strong>
                 {{#metaData.dc:identifier}}
                   <span class="metadata-success">{{.}}  </span>
                 {{/metaData.dc:identifier}}
@@ -18,7 +18,7 @@
                 {{/metaData.dc:identifier}}
               </li>
               <li class="list-group-item">
-                <b class="space-right">Language: </b>
+                <strong class="space-right">Language: </strong>
                 {{#metaData.dc:language}}
                   <span class="metadata-success">{{.}}  </span>
                 {{/metaData.dc:language}}
@@ -28,7 +28,7 @@
               </li>
               </li>
               <li class="list-group-item">
-                <b class="space-right">Title: </b>
+                <strong class="space-right">Title: </strong>
                 {{#metaData.dc:title}}
                   <span class="metadata-success">{{.}}  </span>
                 {{/metaData.dc:title}}
@@ -38,7 +38,7 @@
               </li>
               </li>
               <li class="list-group-item">
-                <b class="space-right">Modified: </b>
+                <strong class="space-right">Modified: </strong>
                 {{#metaData.dcterms:modified}}
                   <span class="metadata-success">{{.}}  </span>
                 {{/metaData.dcterms:modified}}
@@ -64,87 +64,87 @@
                   <div class="panel-body">
                     {{#metaData.dc:date.length}}
                       <li class="list-group-item">
-                        <b class="space-right">Date: </b>
+                        <strong class="space-right">Date: </strong>
                         {{#metaData.dc:date}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:date}}
                       </li>
                     {{/metaData.dc:date.length}}
                     {{#metaData.dc:rights}}
-                      <li class="list-group-item"><b class="space-right">Rights: </b>
+                      <li class="list-group-item"><strong class="space-right">Rights: </strong>
                         <span>{{.}};  </span>
                       </li>
                     {{/metaData.dc:rights}}
                     {{#metaData.dc:creator.length}}
-                      <li class="list-group-item"><b class="space-right">Creator: </b>
+                      <li class="list-group-item"><strong class="space-right">Creator: </strong>
                         {{#metaData.dc:creator}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:creator}}
                       </li>
                     {{/metaData.dc:creator.length}}
                     {{#metaData.dc:contributor.length}}
-                      <li class="list-group-item"><b>Contributors: </b>
+                      <li class="list-group-item"><strong>Contributors: </strong>
                         {{#metaData.dc:contributor}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:contributor}}
                       </li>
                     {{/metaData.dc:contributor.length}}
                     {{#metaData.dc:source}}
-                      <li class="list-group-item"><b class="space-right">Source: </b>
+                      <li class="list-group-item"><strong class="space-right">Source: </strong>
                         <span>{{.}};  </span>
                       </li>
                     {{/metaData.dc:source}}
                     {{#metaData.dcterms:conformsTo.length}}
-                      <li class="list-group-item"><b>ConformsTo: </b>
+                      <li class="list-group-item"><strong>ConformsTo: </strong>
                         {{#metaData.dcterms:conformsTo}}
                           <span>{{.}};  </span>
                         {{/metaData.dcterms:conformsTo}}
                       </li>
                     {{/metaData.dcterms:conformsTo.length}}
                     {{#metaData.dc:description.length}}
-                      <li class="list-group-item"><b>Description: </b>
+                      <li class="list-group-item"><strong>Description: </strong>
                         {{#metaData.dc:description}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:description}}
                       </li>
                     {{/metaData.dc:description.length}}
                     {{#metaData.dc:format.length}}
-                      <li class="list-group-item"><b>Format: </b>
+                      <li class="list-group-item"><strong>Format: </strong>
                         {{#metaData.dc:format}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:format}}
                       </li>
                     {{/metaData.dc:format.length}}
                     {{#metaData.dc:publisher.length}}
-                      <li class="list-group-item"><b>Publisher: </b>
+                      <li class="list-group-item"><strong>Publisher: </strong>
                         {{#metaData.dc:publisher}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:publisher}}
                       </li>
                     {{/metaData.dc:publisher.length}}
                     {{#metaData.dc:relation.length}}
-                      <li class="list-group-item"><b>Relation: </b>
+                      <li class="list-group-item"><strong>Relation: </strong>
                         {{#metaData.dc:relation}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:relation}}
                       </li>
                     {{/metaData.dc:relation.length}}
                     {{#metaData.dc:subject.length}}
-                      <li class="list-group-item"><b>Subject: </b>
+                      <li class="list-group-item"><strong>Subject: </strong>
                         {{#metaData.dc:subject}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:subject}}
                       </li>
                     {{/metaData.dc:subject.length}}
                     {{#metaData.dc:type.length}}
-                      <li class="list-group-item"><b>Type: </b>
+                      <li class="list-group-item"><strong>Type: </strong>
                         {{#metaData.dc:type}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:type}}
                       </li>
                     {{/metaData.dc:type.length}}
                     {{#metaData.dc:coverage.length}}
-                      <li class="list-group-item"><b>Coverage: </b>
+                      <li class="list-group-item"><strong>Coverage: </strong>
                         {{#metaData.dc:coverage}}
                           <span>{{.}};  </span>
                         {{/metaData.dc:coverage}}
@@ -165,7 +165,7 @@
           <div class="panel-body">
             <ul class="list-group">
               <li class="list-group-item">
-                <b class="space-right">AccessMode: </b>
+                <strong class="space-right">AccessMode: </strong>
                 {{#metaData.schema:accessMode}}
                   <span class="metadata-success">{{.}}</span>
                 {{/metaData.schema:accessMode}}
@@ -174,7 +174,7 @@
                 {{/metaData.schema:accessMode}}
               </li>
               <li class="list-group-item">
-                <b class="space-right">AccessModeSufficient: </b>
+                <strong class="space-right">AccessModeSufficient: </strong>
                 {{#metaData.schema:accessModeSufficient}}
                   <span class="metadata-success">{{.}}</span>
                 {{/metaData.schema:accessModeSufficient}}
@@ -183,7 +183,7 @@
                 {{/metaData.schema:accessModeSufficient}}
               </li>
               <li class="list-group-item ">
-                <b class="space-right">AccessibilitySummary: <br><br></b>
+                <strong class="space-right">AccessibilitySummary: <br><br></strong>
                 {{#metaData.schema:accessibilitySummary}}
                   <span class="metadata-success">{{metaData.schema:accessibilitySummary}}</span>
                 {{/metaData.schema:accessibilitySummary}}
@@ -192,7 +192,7 @@
                 {{/metaData.schema:accessibilitySummary}}
               </li>
               <li class="list-group-item">
-                <b class="space-right">AccessibilityFeature: </b>
+                <strong class="space-right">AccessibilityFeature: </strong>
                 {{#metaData.schema:accessibilityFeature}}
                   <span class="metadata-success">{{.}}</span>
                 {{/metaData.schema:accessibilityFeature}}
@@ -218,7 +218,7 @@
                   <div class="panel-body">
                     {{#metaData.schema:accessibilityAPI.length}}
                       <li class="list-group-item">
-                        <b class="space-right">AccessibilityAPI: </b>
+                        <strong class="space-right">AccessibilityAPI: </strong>
                         {{#metaData.schema:accessibilityAPI}}
                           <span>{{.}};  </span>
                         {{/metaData.schema:accessibilityAPI}}
@@ -226,7 +226,7 @@
                     {{/metaData.schema:accessibilityAPI.length}}
                     {{#metaData.schema:accessibilityHazard.length}}
                       <li class="list-group-item">
-                        <b class="space-right">AccessibilityHazard: </b>
+                        <strong class="space-right">AccessibilityHazard: </strong>
                         {{#metaData.schema:accessibilityHazard}}
                           <span>{{.}};  </span>
                         {{/metaData.schema:accessibilityHazard}}
@@ -234,7 +234,7 @@
                     {{/metaData.schema:accessibilityHazard.length}}
                     {{#metaData.schema:accessibilityControl.length}}
                       <li class="list-group-item">
-                        <b class="space-right">AccessibilityControl: </b>
+                        <strong class="space-right">AccessibilityControl: </strong>
                         {{#metaData.schema:accessibilityControl}}
                           <span>{{.}};  </span>
                         {{/metaData.schema:accessibilityControl}}
@@ -242,7 +242,7 @@
                     {{/metaData.schema:accessibilityControl.length}}
                     {{#metaData.a11y:certifierCredential.length}}
                       <li class="list-group-item">
-                        <b class="space-right">CertifierCredential: </b>
+                        <strong class="space-right">CertifierCredential: </strong>
                         {{#metaData.a11y:certifierCredential}}
                           <span>{{.}};  </span>
                         {{/metaData.a11y:certifierCredential}}
@@ -250,7 +250,7 @@
                     {{/metaData.a11y:certifierCredential.length}}
                     {{#metaData.a11y:certifiedBy.length}}
                       <li class="list-group-item">
-                        <b class="space-right">CertifiedBy: </b>
+                        <strong class="space-right">CertifiedBy: </strong>
                         {{#metaData.a11y:certifiedBy}}
                           <span>{{.}};  </span>
                         {{/metaData.a11y:certifiedBy}}
