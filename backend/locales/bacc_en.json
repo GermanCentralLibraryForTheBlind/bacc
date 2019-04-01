@@ -45,7 +45,8 @@
     "infoNoHint" : "Congratulations! No additional advices available.",
     "infoNoImage" : "No images found.",
     "moreMetaData" : "More metadata",
-    "proofCategories" : "View of proof categories"
+    "proofCategories" : "View of proof categories",
+    "jumpBack" : "Jump back to violation table"
   },
   "accessibilityLimitation" : {
     "veryStrong" : "very strong limited accessibility",

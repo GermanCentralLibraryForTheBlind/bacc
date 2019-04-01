@@ -5,7 +5,7 @@
 <mat-icon [ngClass]="{'btn-active': btnReportEnabled}">playlist_add_check</mat-icon>
 </button>
 <!-- Modal -->
-<div class="modal fade" [id]="reportId" tabindex="-1" role="dialog" aria-labelledby="myReport">
+<div class="modal fade" [id]="reportId" tabindex="-1" role="dialog">
   <div class="modal-dialog custom-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,7 +13,7 @@
         <h1 class="modal-title" id="myReport"> {{'BACC.HEADER_REPORT_DIALOG' | translate }}</h1>
       </div>
       <div class="modal-body custom-modal">
-        <iframe [id]="'reportIframe-' + reportId" #reportIframe [src]="reportUrl" (load)="onLoad()"></iframe>
+        <iframe [id]="'reportIframe-' + reportId" #reportIframe [src]="reportUrl" (load)="onLoad()" aria-labelledby="myReport"></iframe>
       </div>
       <div class="modal-footer">
         <!--<button type="button" class="btn btn-primary" (click)="saveAsPDF()">Save as PDF (pre alpha)</button>-->

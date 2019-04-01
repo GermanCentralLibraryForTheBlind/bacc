@@ -45,7 +45,8 @@
     "infoNoHint" : "Glückwunsch! Keine zusätzlichen Hinweise vorhanden.",
     "infoNoImage" : "Keine Bilder vorhanden.",
     "moreMetaData" : "Weitere Metadaten",
-    "proofCategories" : "Anzeige Prüfkategorien"
+    "proofCategories" : "Anzeige Prüfkategorien",
+    "jumpBack" : "Zurück zur Auswahl"
   },
   "accessibilityLimitation": {
     "veryStrong": "Sehr starke Einschränkungen",

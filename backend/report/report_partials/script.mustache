@@ -29,27 +29,28 @@
     prefNextBtnState();
   });
 
+  const tableKeyPress = (event) => {
+    if (event.which == 13) {
+      selectDetails(event.target);
+      $('.ruleDescription').focus();
+    }
+  };
 
-  $('#template-violation-table > tbody > tr').click(function () {
-    selectDetails(this);
-  });
 
-  $('#template-violation-table > tbody > tr').keypress(function (event) {
-    if (event.which == 13) selectDetails(this);
-  });
+  $('#template-violation-table > tbody > tr').click(function () {selectDetails(this);});
 
-  $('#template-hints-table > tbody > tr').click(function () {
-    selectDetails(this);
-  });
+  $('#template-violation-table > tbody > tr').keypress(tableKeyPress);
 
-  $('#template-hints-table > tbody > tr').keypress(function (event) {
-    if (event.which == 13) selectDetails(this);
-  });
+  $('#template-hints-table > tbody > tr').click(function () {selectDetails(this);});
+
+  $('#template-hints-table > tbody > tr').keypress(tableKeyPress);
+
+
 
 
   setTimeout(function () {
     //
-    // first load select first row
+    // if the violation table at first time loaded then select first row
     //
     $('#template-violation-table > tbody > tr').first().trigger('click');
   }, 500);
@@ -82,7 +83,7 @@
 
       $('.selected').removeClass('selected');
       $(el).addClass('selected');
-      $(el).select();
+      // $(el).select();
     }
 
     const violation = el.id;
@@ -102,6 +103,10 @@
   // provide current application state to screen reader user
   function setStateForSR(text) {
     $('#ariaLive').text(text);
+  }
+
+  function jumpBack() {
+    $('table tr.selected').focus();
   }
 
   // $(document).ready(function () {

@@ -14,10 +14,11 @@
 /*}*/
 
 #myReport {
-  font-family: "Helvetica Neue";
-  color: #bfbfbf;
+  font-family: "Roboto";
+  color: #959595;
   display: inline-block;
   margin-bottom: 5px;
+  font-weight: lighter;
 }
 
 iframe {

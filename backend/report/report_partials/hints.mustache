@@ -20,7 +20,7 @@
               </thead>
               <tbody>
               <!--{{#groups.hints}}-->
-              <tr id="{{name}}">
+              <tr id="{{name}}" tabindex="0">
                 <td class="col column-first">{{name}}</td>
                 <td class="col column-last">{{count}}</td>
               </tr>
@@ -34,62 +34,64 @@
       <!-- details hints    -->
       <!-- ++++++++++++++++ -->
       <div class="col-md-6">
-        <div id="details" class="panel panel-default">
-          <div class="panel-heading">
-            <h5 class="ruleDescription"></h5>
-            <!-- +++++++++++ -->
-            <!-- pager -->
-            <!-- +++++++++++ -->
-            <nav style="margin-top: 31px" class="violation-nav" aria-label="{{labeling.vioNav}}">
-              <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerPrev" href="#"
-                      aria-label="{{labeling.detailsPrevious}}">
-                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-              </button>
-              <h6 style="display: inline-block" id="pagerIndexHints"></h6>
-              <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerNext" href="#"
-                      aria-label="{{labeling.detailsNext}}">
-                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-              </button>
-            </nav>
-          </div>
-          <div class="panel-body">
-          <!--{{#groups.hints}}-->
-            <div id="p-{{name}}" class="violation" style="display: none">
-            <!--{{#fails}}-->
-              <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    {{labeling.file}}: <strong><a>{{spineItem}}</a></strong>
-                  </div>
-                  <div class="panel-body">
-                    <!-- +++++++++++ -->
-                    <!-- description -->
-                    <!-- +++++++++++ -->
-                    <div class="panel-body">
-                      <p><strong>{{labeling.optimiseHints}}</strong></p>
-                      <p>{{{shortHelp}}}</p>
+        <section>
+          <div id="details" class="panel panel-default">
+            <div class="panel-heading">
+              <h5 class="ruleDescription" tabindex="0"></h5>
+              <!-- +++++++++++ -->
+              <!-- pager -->
+              <!-- +++++++++++ -->
+              <nav style="margin-top: 31px" class="violation-nav" aria-label="{{labeling.vioNav}}">
+                <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerPrev" href="#"
+                        aria-label="{{labeling.detailsPrevious}}">
+                  <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <h6 style="display: inline-block" id="pagerIndexHints"></h6>
+                <button style="display: inline-block" class="btn btn-outline-primary btn-sm btnPagerNext" href="#"
+                        aria-label="{{labeling.detailsNext}}">
+                  <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+              </nav>
+            </div>
+            <div class="panel-body">
+            <!--{{#groups.hints}}-->
+              <div id="p-{{name}}" class="violation" style="display: none">
+              <!--{{#fails}}-->
+                <div class="violation" index="{{index}}" rule="{{help.dct:description}}">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      {{labeling.file}}: <strong><a>{{spineItem}}</a></strong>
                     </div>
-                    <!-- +++++++++++ -->
-                    <!-- source code  -->
-                    <!-- +++++++++++ -->
-                    {{#code}}
-                      <div aria-labelledby="source-code">
+                    <div class="panel-body">
+                      <!-- +++++++++++ -->
+                      <!-- description -->
+                      <!-- +++++++++++ -->
+                      <div class="panel-body">
+                        <p><strong>{{labeling.optimiseHints}}</strong></p>
+                        <p>{{{shortHelp}}}</p>
+                      </div>
+                      <!-- +++++++++++ -->
+                      <!-- source code  -->
+                      <!-- +++++++++++ -->
+                      {{#code}}
+                        <div aria-labelledby="source-code">
                               <pre style="display: inline-flex">
                                 <code class="html">{{code}}</code>
                               </pre>
+                        </div>
+                      {{/code}}
+                      <div style="float: right">
+                        <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
                       </div>
-                    {{/code}}
-                    <div style="float: right">
-                      <a target="_blank" href="{{help.url}}">{{labeling.help}}</a>
                     </div>
                   </div>
                 </div>
+                <!--{{/fails}}-->
               </div>
-              <!--{{/fails}}-->
+              <!--{{/groups.hints}}-->
             </div>
-            <!--{{/groups.hints}}-->
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
@@ -100,7 +102,7 @@
   <!-- +++++++++++++++ -->
   <div>
     <span class="sr-only" aria-labeledby="total-impact-icon">{{totalAccessibilityLevel.label}}</span>
-    <i id="total-impact-icon" role="img" aria-hidden="true" class="material-icons no-issues-icon"
+    <i id="total-impact-icon" aria-hidden="true" class="material-icons no-issues-icon"
        style="color:green;">sentiment_very_satisfied</i>
   </div>
   <span class="info">{{labeling.infoNoHint}}</span>
