@@ -271,6 +271,8 @@ class ReportModeler {
     bacc.groups.totalCountRules = 0;
     bacc.groups.totalCountHints = 0;
 
+    this.statistics.testResults = [];
+
 
     _(groupedByTitle).each((elem, key) => {
 
@@ -281,8 +283,10 @@ class ReportModeler {
         logger.log('error', 'Found no violations in group!');
         return;
       }
+
+      const temp = {};
       // name of rule
-      rule.name = key;
+      temp.name = rule.name = key;
       // grouped assertions
       rule.fails = elem;
       rule.impact = this._impacts.getAccessibilityImpactLevel(elem[0]['earl:impact']);
@@ -294,10 +298,13 @@ class ReportModeler {
         // attention violation counter start on 1
       });
       // total count of rule fails
-      rule.count = rule.fails.length;
+      temp.count = rule.count = rule.fails.length;
       // add guideline
       const that = this;
-      rule.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
+      temp.ruleSet = rule.ruleSet = that.guidelineTagForHumans(elem[0].rulesetTags);
+
+      // stored the validation results for statistical evaluation
+      this.statistics.testResults.push(temp);
 
       this.extractHints(rule, bacc);
       // todo: delete 'dct:title'
@@ -309,6 +316,8 @@ class ReportModeler {
     bacc.groups.rules = _.sortBy(bacc.groups.rules, obj => obj.impact.level).reverse();
 
     this.statistics.totalCount = bacc.groups.totalCountRules;
+
+    //console.log(JSON.stringify(this.statistics.testResults, null, '\t'));
     // console.log(JSON.stringify(bacc, null, '\t'));
     return bacc;
   }
