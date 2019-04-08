@@ -37,15 +37,17 @@
   };
 
 
-  $('#template-violation-table > tbody > tr').click(function () {selectDetails(this);});
+  $('#template-violation-table > tbody > tr').click(function () {
+    selectDetails(this);
+  });
 
   $('#template-violation-table > tbody > tr').keypress(tableKeyPress);
 
-  $('#template-hints-table > tbody > tr').click(function () {selectDetails(this);});
+  $('#template-hints-table > tbody > tr').click(function () {
+    selectDetails(this);
+  });
 
   $('#template-hints-table > tbody > tr').keypress(tableKeyPress);
-
-
 
 
   setTimeout(function () {
@@ -53,12 +55,17 @@
     // if the violation table at first time loaded then select first row
     //
     $('#template-violation-table > tbody > tr').first().trigger('click');
+    setTimeout(function () {
+      $('h1').focus();
+    }, 500);
   }, 500);
 
+  // tab bar
   $('input[id="hints"]').on('click', function (e) {
     $('#template-hints-table > tbody > tr').first().trigger('click');
   });
 
+  // tab bar
   $('input[id="violation"]').on('click', function (e) {
     $('#template-violation-table > tbody > tr').first().trigger('click');
   });
@@ -90,6 +97,8 @@
     const detailsStatus = $('#detailsStatusString').text();
 
     setStateForSR(detailsStatus.replace("${violation}", violation));
+
+    $('.ruleDescription').focus();
   }
 
   function prefNextBtnState() {
@@ -129,5 +138,5 @@
   //     }
   //   });
   // });
-  $('.tooltip-active').tooltip({ html: true });
+  $('.tooltip-active').tooltip({html: true});
 </script>
