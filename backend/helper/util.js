@@ -42,6 +42,8 @@ Util.addToStatistics = (task) => {
     const report = new Report({
       checkDate: task.checkDate,
       fileName: task.fileName,
+      epubVersion: task.epubVersion,
+      testResults: task.testResults,
       metaData : task.metaData,
       title: task.title,
       impact: task.impact,
@@ -84,6 +86,8 @@ function setUpConnectionToStatisticDB() {
   reportSchema = mongoose.Schema({
     checkDate: String,
     fileName: String,
+    epubVersion: String,
+    testResults: Object,
     metaData: Object,
     title: String,
     impact: Object,
