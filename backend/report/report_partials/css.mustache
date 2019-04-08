@@ -516,8 +516,22 @@
     padding-right: 80px !important;
   }
 
-  :focus {
-    outline:2px solid #002795;
-    outline-offset: 5px;
+  h5:focus {
+    outline: 2px solid #378de3 !important;
+    outline-offset: 0 !important;
+    /*outline: 0;*/
+    /*animation: yellowFade 3s forwards;*/
   }
+  @keyframes yellowFade {
+    from { background: #ffcb9a; }
+    to   { background: #f5f5f5; }
+  }
+
+  input[type="radio"][name="tabs"]:focus + .tab-label-content label {
+    background-color: #2c5f79;
+    border-radius: 10px;
+    margin-left: -3px;
+  }
+
+
 </style>
