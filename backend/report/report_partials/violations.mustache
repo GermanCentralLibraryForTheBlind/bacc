@@ -6,26 +6,26 @@
       <!-- +++++++++++++++++++++++++++++ -->
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body scrollable-area-table">
             <table id="template-violation-table" class="table table-striped table-hover template-table"
                    data-click-to-select="true" data-single-select="true">
               <thead class="thead-violations">
-              <th class="col-md-2">{{labeling.violationImpact}}</th>
-              <th class="col-md-8">{{labeling.violation}}</th>
-              <th class="col-md-4">{{labeling.guideline}}</th>
-              <th class="col-md-2">{{labeling.count}}</th>
+              <th class="col-md-2" scope="col">{{labeling.violationImpact}}</th>
+              <th class="col-md-8" scope="col">{{labeling.violation}}</th>
+              <th class="col-md-4" scope="col">{{labeling.guideline}}</th>
+              <th class="col-md-1" scope="col">{{labeling.count}}</th>
               </thead>
               <tbody>
               <!--{{#groups.rules}}-->
               <tr id="{{name}}" tabindex="0">
-                <td class="col-md-2">
+                <td class="col-md-2" scope="row">
                   <span class="sr-only" aria-labelledby="{{name}}-impact-icon">{{impact.label}}</span>
                   <i id="{{name}}-impact-icon" class="material-icons mat-36" style="color:{{impact.color}}"
                      aria-hidden="true">accessibility</i>
                 </td>
-                <td class="col-md-7" lang="en">{{name}}</td>
-                <td class="col-md-3">{{ruleSet}}</td>
-                <td class="col-md-2">{{count}}</td>
+                <td class="col-md-8" lang="en">{{name}}</td>
+                <td class="col-md-5">{{ruleSet}}</td>
+                <td class="col-md-1">{{count}}</td>
               </tr>
                 <!--{{/groups.rules}}-->
               </tbody>

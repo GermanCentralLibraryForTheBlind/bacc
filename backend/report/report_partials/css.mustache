@@ -275,29 +275,35 @@
     caption-side: bottom;
   }
 
-  .template-table > thead {
-    width: 100%;
-  }
-
-  .template-table > tbody {
+  .scrollable-area-table {
     height: 300px;
     overflow-y: auto;
-    width: 100%;
+    padding: 0px;
   }
 
-  .template-table > thead,
-  .template-table > tbody,
-  .template-table > tr,
-  .template-table > td,
-  .template-table > th {
-    display: block;
+
+  th {
+    padding: 5px;
+    /* NOTE: th padding must be set explicitly in order to support IE */
+    font-weight: bold;
+    line-height: 2em;
+    background-color: #555;
   }
 
-  .template-table > tbody td,
-  .template-table > thead > tr > th {
-    border-bottom-width: 0;
+
+  tbody tr:nth-child(2n) {
+    background-color: rgba(220, 187, 53, 0.15)
   }
 
+  td:first-child,
+  th:first-child {
+    text-align: center;
+  }
+
+  td:last-child,
+  th:last-child {
+    text-align: right;
+  }
   /*
   code style
   */
