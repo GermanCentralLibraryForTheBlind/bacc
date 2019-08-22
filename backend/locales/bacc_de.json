@@ -52,10 +52,10 @@
     "jumpBack" : "Zurück zur Auswahl"
   },
   "accessibilityLimitation": {
-    "veryStrong": "Sehr starke Einschränkungen",
-    "strong": "Starke Einschränkungen",
-    "partially": "Teilweise Einschränkungen",
-    "minor": "Geringe Einschränkungen",
-    "none": "Keine Einschränkungen"
+    "veryStrong": "Sehr starke Einschränkungen (rot)",
+    "strong": "Starke Einschränkungen (orange)",
+    "partially": "Teilweise Einschränkungen (gelb)",
+    "minor": "Geringe Einschränkungen (hell grün)",
+    "none": "Keine Einschränkungen (grün)"
   }
 }

@@ -11,7 +11,7 @@
     "CANCEL_ALL": "Cancel all",
     "REMOVE_ALL": "Remove all",
     "DRAG_DROP": "Drag & Drop your file here to check-over your EPUB<br><br> or",
-    "FILE_DIALOG": "Choose a file to upload.",
+    "FILE_DIALOG": "Choose a epub file directly.",
     "CLOSE": "close",
     "TOOLTIP_SHOW_RULES" : "Show test rules",
     "TOOLTIP_INFO" : "Information about this tool",
@@ -28,7 +28,7 @@
       "STRONG_SMILEY" : "Sad orange Smiley",
       "PARTIALLY_SMILEY" : "Disgruntled yellow Smiley",
       "MINOR_SMILEY" : "Neutral lightgreen Smiley",
-      "NONE_SMILEY" : "Laughing greenu Smiley"
+      "NONE_SMILEY" : "Laughing green Smiley"
     },
     "START_CHECKER": "Begin check",
     "CHECKER_IS_FINISHED": "100% Checking process of {{fileName}} is finished. The result of check is the ebook has {{accessibilityAsWord}}.",
