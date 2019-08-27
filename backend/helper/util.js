@@ -78,7 +78,7 @@ Util.addToStatistics = (task) => {
 
 function setUpConnectionToStatisticDB() {
 
-  const mongoDB = 'mongodb://192.168.1.195/bacc';
+  const mongoDB = 'mongodb://mongodb/bacc';
 
   mongoose.connect(mongoDB, {useNewUrlParser: true});
   mongoose.Promise = global.Promise;
