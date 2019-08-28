@@ -1,0 +1,58 @@
+version: '2'
+services:
+    bacc:
+        container_name: "dzb-bacc"
+        image: dzb-node:1.0
+        volumes:
+            - ./dist/bacc/:/home/lars/bacc/www/
+        ports:
+            - 3111:3111
+        depends_on:
+            - mongodb
+        environment:
+          - http_proxy=http://192.168.1.135:8080
+          - https_proxy=http://192.168.1.135:8080
+        working_dir: /home/lars/bacc/www/backend/
+        command: nodejs webApi.js
+        restart: unless-stopped
+        environment:
+          - BACC=prod
+    bacc_stats:
+        container_name: "dzb-bacc-stats"
+        image: node:8.9
+        volumes:
+            - ./dist/bacc_stats/:/app/
+        ports:
+            - 3000:3000
+        depends_on:
+            - mongodb
+        environment:
+          - http_proxy=http://192.168.1.135:8080
+          - https_proxy=http://192.168.1.135:8080
+        command: /app/bin/www
+        restart: unless-stopped
+    mongodb:
+        image: mongo:latest
+        container_name: "mongodb"
+        environment:
+          - MONGO_DATA_DIR=/data/db
+          - MONGO_LOG_DIR=/dev/null
+        volumes:
+          - ./docker/data/mongodb:/data/db
+        ports:
+            - 27017:27017
+        command: mongod --logpath=/dev/null # --quiet
+        restart: unless-stopped
+    nginx:
+        image: nginx:latest
+        container_name: "nginx"
+        volumes:
+          - ./docker/config/nginx/:/etc/nginx/conf.d/
+          - ./dist/bacc/:/home/lars/bacc/www/
+          - ./log/nginx/:/var/log/nginx/
+        ports:
+            - 3333:3333
+        depends_on:
+            - bacc
+            - bacc_stats
+        restart: unless-stopped
